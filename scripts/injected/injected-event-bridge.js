@@ -4,6 +4,8 @@ class InjectedEventBridge extends EventBridge {
     InjectedEventBridge.sendMessage({
       type: 'connect'
     })
+
+    this.injector = new InjectionManager()
   }
 
   static sendMessage(message) {
@@ -14,5 +16,13 @@ class InjectedEventBridge extends EventBridge {
 
   stylesheetContentsResponder(message) {
     this.injector.stylesheet = window.btoa(message.payload)
+
+    InjectedEventBridge.sendMessage({
+      type: 'enableBrowserAction'
+    })
+  }
+
+  toggleResponder(message) {
+    this.injector.enabled = !this.injector.enabled
   }
 }

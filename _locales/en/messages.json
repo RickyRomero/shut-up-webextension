@@ -1,4 +1,8 @@
 {
+  "manifest_product_name": {
+    "message": "Shut Up",
+    "description": "Don't localize this."
+  },
   "manifest_description": {
     "message": "Toggles comments on many popular websites.",
     "description": "This description appears in the list of installed extensions, as well as when the user is prompted to install it."
