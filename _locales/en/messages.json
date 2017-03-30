@@ -1,0 +1,6 @@
+{
+  "manifest_description": {
+    "message": "Toggles comments on many popular websites.",
+    "description": "This description appears in the list of installed extensions, as well as when the user is prompted to install it."
+  }
+}

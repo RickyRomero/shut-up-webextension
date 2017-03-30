@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+
+  "name":             "Shut Up",
+  "version":          "3.0",
+  "description":      "__MSG_manifest_description__",
+
+  "author":           "Ricky Romero",
+
+  "minimum_chrome_version": "41.0.2272.101",
+  "default_locale":   "en",
+
+  "background": {
+    "scripts": [
+      "scripts/private/message-queue.js",
+      "scripts/event-bridge.js",
+      "scripts/private/private-event-bridge.js",
+      "scripts/private/init.js"
+    ],
+    "persistent": false
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "scripts/event-bridge.js",
+        "scripts/injected/injected-event-bridge.js",
+        "scripts/injected/injection-manager.js",
+        "scripts/injected/controller.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
