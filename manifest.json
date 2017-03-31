@@ -8,10 +8,11 @@
   "author":           "Ricky Romero",
   "homepage_url":     "https://rickyromero.com/shutup/",
 
-  "minimum_chrome_version": "41.0.2272.101",
-  "default_locale":         "en",
-  "incognito":              "split",
-  "offline_enabled":        true,
+  "minimum_chrome_version":  "41.0.2272.101",
+  "content_security_policy": "default-src 'self' https://stevenf.com",
+  "default_locale":          "en",
+  "incognito":               "split",
+  "offline_enabled":         true,
 
   "icons": {
     "16": "images/main-icon/16.png",
@@ -19,6 +20,16 @@
     "96": "images/main-icon/96.png",
     "128": "images/main-icon/128.png",
     "256": "images/main-icon/256.png"
+  },
+
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default":    "Ctrl+Shift+E",
+        "mac":     "Command+Shift+E"
+      },
+      "description": "Toggle feature foo"
+    }
   },
 
   "background": {
@@ -43,7 +54,8 @@
         "scripts/injected/injection-manager.js",
         "scripts/injected/controller.js"
       ],
-      "run_at": "document_start"
+      "run_at":     "document_start",
+      "all_frames": true
     }
   ],
 
