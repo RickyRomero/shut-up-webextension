@@ -6,17 +6,20 @@
   "description":      "__MSG_manifest_description__",
 
   "author":           "Ricky Romero",
+  "homepage_url":     "https://rickyromero.com/shutup/",
 
   "minimum_chrome_version": "41.0.2272.101",
-  "default_locale":   "en",
+  "default_locale":         "en",
+  "incognito":              "split",
+  "offline_enabled":        true,
 
-	"icons": {
-		"16": "images/main-icon/16.png",
-		"32": "images/main-icon/32.png",
-		"96": "images/main-icon/96.png",
-		"128": "images/main-icon/128.png",
-		"256": "images/main-icon/256.png"
-	},
+  "icons": {
+    "16": "images/main-icon/16.png",
+    "32": "images/main-icon/32.png",
+    "96": "images/main-icon/96.png",
+    "128": "images/main-icon/128.png",
+    "256": "images/main-icon/256.png"
+  },
 
   "background": {
     "scripts": [
@@ -42,5 +45,10 @@
       ],
       "run_at": "document_start"
     }
-  ]
+  ],
+
+  "options_ui": {
+    "page":         "options/index.html",
+    "chrome_style": false
+  }
 }

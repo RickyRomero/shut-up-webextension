@@ -1,0 +1,116 @@
+html {
+  background-color: #f1f1f1;
+  background-size: 1280px;
+  background-position: center;
+  background: -webkit-linear-gradient(left, #d1d1d1 0%,#f9f9f9 40%,#f9f9f9 60%,#d1d1d1 100%);
+  background: linear-gradient(to right, #d1d1d1 0%,#f9f9f9 40%,#f9f9f9 60%,#d1d1d1 100%);
+  background-repeat: repeat-y;
+
+  height: 100%;
+  display: -webkit-box; display: -webkit-flexbox;
+  -webkit-box-align: center; -webkit-flex-align: center;
+  -webkit-box-pack: center; -webkit-flex-pack: center;
+}
+
+body {
+  -webkit-user-select: none;
+  width: 1024px;
+  height: 1024px;
+  margin: 0 auto;
+  padding: 0 40px;
+  font: 16px Helvetica, Arial, sans-serif;
+  padding-bottom: 60px;
+}
+
+html * {
+  cursor: default;
+}
+
+a {
+  cursor: pointer;
+}
+
+#icon {
+  width: 315px;
+  height: 281px;
+  background-size: 315px 1967px;
+  background-image: url("PoofAnimation.png");
+  margin: 50px auto;
+}
+
+@media  (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  #icon {
+    background-image: url("PoofAnimation@2x.png");
+  }
+}
+
+#options {
+  padding: 55px 0;
+  width: 470px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  left: -54px;
+}
+
+#options label {
+  margin: 0 auto;
+  display: table;
+}
+
+#remember {
+  font-size: 16px;
+}
+
+#misc {
+  color: #9d9d9d;
+  text-shadow: 0 1px 0 #fff;
+  padding-top: 60px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+#misc a {
+  color: #6c91c7;
+  text-decoration: none;
+}
+
+#misc a:hover {
+  color: #1071ff;
+  text-decoration: underline;
+}
+
+#releaseNotes {
+  margin-bottom: 1em;
+}
+
+@-webkit-keyframes fallOff {
+  0% {
+    -webkit-transform: translate(0px, 0px);
+  }
+  10% {
+    -webkit-transform: translate(0px, 0px) rotate(30deg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  40% {
+    -webkit-transform: translate(0px, 0px) rotate(30deg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  99.7% {
+    -webkit-transform: translate(0px, 2000px) rotate(120deg);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  }
+  /* I tried going display: none; but that doesn't appear to work always.  So here we are. */
+  99.8% {
+    -webkit-transform: translate(-2000px, 2000px) rotate(120deg);
+  }
+  99.9% {
+    -webkit-transform: translate(-2000px, -130px) rotate(120deg);
+  }
+  100% {
+    -webkit-transform: translate(0px, -130px);
+  }
+}
