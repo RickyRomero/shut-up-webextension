@@ -46,10 +46,10 @@ class PrivateEventBridge extends EventBridge {
     })
   }
 
-  connectResponder(message, sender) {
+  async connectResponder(message, sender) {
     this.sendMessage(sender, {
       type: 'stylesheetContents',
-      payload: '*{color: red !important}'
+      payload: (await stylesheet.data())
     })
   }
 

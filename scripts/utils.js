@@ -44,3 +44,78 @@ class Utils {
     return true
   }
 }
+
+class Storage {
+  static get(keys)
+  {
+    return new Promise((resolve, reject) => {
+      return chrome.storage.local.get(keys, (items) => {
+        return chrome.runtime.lastError ? reject(chrome.runtime.lastError) : resolve(items);
+      })
+    })
+  }
+
+  static set(items)
+  {
+    return new Promise((resolve, reject) => {
+      return chrome.storage.local.set(items, () => {
+        return chrome.runtime.lastError ? reject(chrome.runtime.lastError) : resolve();
+      })
+    })
+  }
+}
+
+class WebRequest {
+  static fetch(url, headers) {
+    return new Promise((resolve, reject) => {
+      let xhr = new XMLHttpRequest()
+        xhr.open('GET', url, true)
+
+      for (let key in headers)
+      {
+        xhr.setRequestHeader(key, headers[key])
+      }
+
+      xhr.addEventListener('load', () => {
+        if (xhr.status >= 200 && xhr.status < 400)
+        {
+          resolve(simplify(xhr))
+        }
+        else
+        {
+          reject(simplify(xhr))
+        }
+      }, false)
+
+      xhr.addEventListener('error', () => {
+        reject(simplify(xhr))
+      })
+
+      xhr.send()
+    })
+
+    function simplify(xhr)
+    {
+      let headers = {}
+
+      xhr.getAllResponseHeaders()
+        .split('\u000d\u000a')
+        .forEach((line) => {
+          if (line.length > 0)
+          {
+            let delimiter = '\u003a\u0020',
+              header = line.split(delimiter)
+
+            headers[header.shift().toLowerCase()] = header.join(delimiter)
+          }
+        })
+
+      return {
+        body: xhr.responseText,
+        status: xhr.status,
+        statusText: xhr.statusText,
+        headers
+      }
+    }
+  }
+}

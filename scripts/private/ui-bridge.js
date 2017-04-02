@@ -12,7 +12,7 @@ class UIBridge {
     chrome.contextMenus.removeAll()
     chrome.contextMenus.create({
       id: 'toggle-comments-ctx',
-      title: 'Toggle Comments',
+      title: chrome.i18n.getMessage('toggle_comments_menu'),
       contexts: ['page']
     })
 
