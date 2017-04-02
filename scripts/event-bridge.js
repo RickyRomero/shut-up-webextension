@@ -4,6 +4,7 @@ class EventBridge {
   }
 
   receiveMessage(message, sender) {
+    console.log(`Calling ${typeof this}.${message.type}Responder`)
     this[`${message.type}Responder`].call(this, message, sender)
   }
 }

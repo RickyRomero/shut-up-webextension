@@ -19,10 +19,29 @@ class PrivateEventBridge extends EventBridge {
     }
   }
 
-  broadcastMessage(message) {
+  broadcastMessage(message, filter = {}) {
     chrome.tabs.query({}, (tabs) => {
+      if (filter.byHost)
+      {
+        tabs = tabs.filter((tab) => {
+          let location = Utils.parseURI(tab.url)
+
+          if (Utils.compareHosts(filter.byHost, location.hostname))
+            console.log(filter.byHost, location.hostname, Utils.compareHosts(filter.byHost, location.hostname))
+
+          return Utils.compareHosts(filter.byHost, location.hostname)
+        })
+      }
+
       tabs.forEach((tab) => {
-        this.sendMessage({tab}, message)
+        let destination = {tab}
+
+        if (filter.isTopFrame)
+        {
+          destination.frameId = 0
+        }
+
+        this.sendMessage(destination, message)
       })
     })
   }
@@ -30,11 +49,26 @@ class PrivateEventBridge extends EventBridge {
   connectResponder(message, sender) {
     this.sendMessage(sender, {
       type: 'stylesheetContents',
-      payload: 'html{border-right:10px solid red !important}'
+      payload: '*{color: red !important}'
     })
   }
 
   enableBrowserActionResponder(message, sender) {
     this.uiBridge.connectToPage(sender.tab.id)
+  }
+
+  // Synchronize all tabs under the same hostname.
+  injectionStateResponder(message, sender) {
+    this.broadcastMessage({
+      type: 'setStylesheetState',
+      payload: message.payload
+    }, {
+      byHost: message.pageHost
+    })
+  }
+
+  updateBrowserActionStateResponder(message, sender) {
+    console.dir(sender)
+    this.uiBridge.updateBrowserActionIcon(sender.tab.id, message.payload)
   }
 }

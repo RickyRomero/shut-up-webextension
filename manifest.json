@@ -9,10 +9,13 @@
   "homepage_url":     "https://rickyromero.com/shutup/",
 
   "minimum_chrome_version":  "41.0.2272.101",
-  "content_security_policy": "default-src 'self' https://stevenf.com",
   "default_locale":          "en",
-  "incognito":               "split",
   "offline_enabled":         true,
+
+  "permissions":             ["tabs"],
+  "optional_permissions":    ["contextMenus"],
+  "content_security_policy": "default-src 'self' https://stevenf.com",
+  "incognito":               "split",
 
   "icons": {
     "16": "images/main-icon/16.png",
@@ -34,6 +37,7 @@
 
   "background": {
     "scripts": [
+      "scripts/utils.js",
       "scripts/private/ui-bridge.js",
       "scripts/private/message-queue.js",
       "scripts/event-bridge.js",
@@ -55,8 +59,9 @@
         "scripts/injected/injected-event-bridge.js",
         "scripts/injected/controller.js"
       ],
-      "run_at":     "document_start",
-      "all_frames": true
+      "run_at":            "document_start",
+      "all_frames":        true,
+      "match_about_blank": true
     }
   ],
 
