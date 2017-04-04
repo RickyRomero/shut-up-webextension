@@ -11,7 +11,7 @@ class InjectedEventBridge extends EventBridge {
   sendMessage(message, sendFromAnyFrame) {
     if (this.injector.isTopFrame || sendFromAnyFrame)
     {
-      message.pageHost = window.location.host
+      message.pageHost = window.location.hostname
       chrome.runtime.sendMessage(message)
     }
   }

@@ -1,20 +1,26 @@
 class Stylesheet {
-  constructor(readyCallback) {
-    this.readyCallback = readyCallback
-
-    this.readCache()
+  constructor() {
+    this._cache = ''
+    this.readLocalCopy()
   }
 
   async data() {
-    return (await Storage.get('css')).css.cache
+    if (this._cache === '')
+    {
+      this._cache = (await Storage.get('css')).css.cache
+    }
+
+    return this._cache
   }
 
-  async readCache() {
+  async readLocalCopy() {
     let result = await Storage.get('css')
 
     if (result.css === undefined)
     {
       let data = await (await fetch(chrome.runtime.getURL('resources/shutup.css'))).text()
+
+      this._cache = data
 
       await Storage.set({
         css: {
@@ -25,9 +31,12 @@ class Stylesheet {
         }
       })
     }
+    else
+    {
+      this._cache = result.css.cache
+    }
 
     this.update()
-    this.readyCallback()
   }
 
   async update(force) {
@@ -66,6 +75,9 @@ class Stylesheet {
                 lastSuccess: Number(new Date())
               }
             }
+
+            this._cache = response.body
+            bridge.broadcastStylesheet(this._cache)
           }
           else
           {

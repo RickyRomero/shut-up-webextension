@@ -12,8 +12,7 @@
   "default_locale":          "en",
   "offline_enabled":         true,
 
-  "permissions":             ["tabs", "storage"],
-  "optional_permissions":    ["contextMenus"],
+  "permissions":             ["tabs", "storage", "contextMenus"],
   "content_security_policy": "default-src 'self' https://stevenf.com",
   "incognito":               "split",
 
@@ -30,8 +29,7 @@
       "suggested_key": {
         "default":    "Ctrl+Shift+E",
         "mac":     "Command+Shift+E"
-      },
-      "description": "Toggle feature foo"
+      }
     }
   },
 

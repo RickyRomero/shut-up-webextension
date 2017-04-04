@@ -71,4 +71,11 @@ class PrivateEventBridge extends EventBridge {
     console.dir(sender)
     this.uiBridge.updateBrowserActionIcon(sender.tab.id, message.payload)
   }
+
+  broadcastStylesheet(contents) {
+    this.broadcastMessage({
+      type: 'stylesheetContents',
+      payload: contents
+    })
+  }
 }
