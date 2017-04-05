@@ -1,5 +1,5 @@
 {
-  "manifest_product_name": {
+  "product_name": {
     "message": "Shut Up",
     "description": "Don't localize this."
   },
@@ -10,5 +10,137 @@
   "toggle_comments_menu": {
     "message": "Toggle Comments",
     "description": "The title for a menu item which lets users change the comment blocking state."
+  },
+
+  "automatic_whitelisting": {
+    "message": "Remember where I’ve enabled comments",
+    "description": "This setting controls whether, when you click the icon, the extension remembers that you wanted to show comments on that site."
+  },
+  "incognito_note": {
+    "message": "This option is ignored in incognito tabs.",
+    "description": "The extension won't remember if you enable comments on a site in an incognito window."
+  },
+
+  "show_item_in_context_menu": {
+    "message": "Show in context menu",
+    "description": "Adds the toggle_comments_menu key to the right-click menu on all pages."
+  },
+
+  "change_keyboard_shortcut": {
+    "message": "Change keyboard shortcut",
+    "description": "When clicked, lets users customize the keyboard shortcut used to activate the extension."
+  },
+  "keyboard_shortcut": {
+    "message": "Currently $shortcut$",
+    "description": "If there's a shortcut set, we display this to the right of change_keyboard_shortcut.",
+    "placeholders": {
+      "shortcut": {
+        "content": "$1",
+        "example": "Ctrl+Shift+Z"
+      }
+    }
+  },
+  "keyboard_shortcut_disabled": {
+    "message": "Not currently enabled",
+    "description": "If there's no keyboard shortcut set, we show this to the right of change_keyboard_shortcut."
+  },
+
+  "force_stylesheet_update": {
+    "message": "Force stylesheet update",
+    "description": "This link refreshes shutup.css from stevenf.com manually."
+  },
+
+  "last_updated_period_moments": {
+    "message": "Last updated moments ago",
+    "description": "Shown if the stylesheet was just refreshed."
+  },
+  "last_updated_period_minute": {
+    "message": "Last updated a minute ago",
+    "description": "Shown if the stylesheet was refreshed 1 minute ago."
+  },
+  "last_updated_period_minutes": {
+    "message": "Last updated $plural$ minutes ago",
+    "description": "Shown if the stylesheet was refreshed more than 1 minute ago.",
+    "placeholders": {
+      "plural": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "last_updated_period_hour": {
+    "message": "Last updated 1 hour ago",
+    "description": "Shown if the stylesheet was refreshed 1 hour ago."
+  },
+  "last_updated_period_hours": {
+    "message": "Last updated $plural$ hours ago",
+    "description": "Shown if the stylesheet was refreshed more than 1 hour ago.",
+    "placeholders": {
+      "plural": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "last_updated_period_day": {
+    "message": "Last updated yesterday",
+    "description": "Shown if the stylesheet was refreshed yesterday."
+  },
+  "last_updated_period_days": {
+    "message": "Last updated $plural$ days ago",
+    "description": "Shown if the stylesheet was refreshed more than 1 day ago.",
+    "placeholders": {
+      "plural": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "last_updated_period_week": {
+    "message": "Last updated more than a week ago",
+    "description": "Shown if the stylesheet was refreshed more than a week ago."
+  },
+
+  "error_no_internet_connection": {
+    "message": "Couldn’t connect to stevenf.com. Check your Internet connection.",
+    "description": "This error is displayed if we can't reach the update server when manually forcing a stylesheet update."
+  },
+  "error_no_internet_connection": {
+    "message": "Got an unexpected response. Try again in a bit.",
+    "description": "This error is displayed if we get an unexpected response when manually forcing a stylesheet update."
+  },
+
+  "name_version_copyright_ricky": {
+    "message": "$name$ $version$ ©2011 - 2017 $ricky_link$",
+    "description": "For example: Shut Up 3.0, followed by the copyright notice",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Shut Up"
+      },
+      "version": {
+        "content": "$2",
+        "example": "3.0"
+      },
+      "ricky_link": {
+        "content": "<a href=\"https://rickyromero.com/\">Ricky Romero</a>"
+      }
+    }
+  },
+  "copyright_steven": {
+    "message": "shutup.css ©2011 - 2017 $steven_link$ and $contributors_link$",
+    "description": "Copyright notice for shutup.css",
+    "placeholders": {
+      "steven_link": {
+        "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"
+      },
+      "contributors_link": {
+        "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">contributors</a>"
+      }
+    }
+  },
+  "release_notes": {
+    "message": "Release Notes",
+    "description": "Links to the (English-only) release notes page detailing updates to the extension."
   }
 }

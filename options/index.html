@@ -2,24 +2,42 @@
 
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/options.css" />
-    <link id="favicon" rel="icon" type="image/png" href="../images/main-icon/16.png" />
+    <link id="favicon" rel="icon" type="image/png" href="../images/favicon.png" />
 
-    <title>TITLE</title>
+    <title data-i18n="product_name"></title>
   </head>
 
   <body>
-    <div id="icon"></div>
-
-    <div id="options">
-      <label><input id="remember" type="checkbox" /> <span id="rememberLabel">REMEMBER LABEL</span></label>
-    </div>
-
-    <div id="misc">
-      <div id="versionInfo"><strong id="version">VERSION</strong></div>
-      <div id="releaseNotes">RELEASE NOTES</div>
-      <div id="copyright1">COPYRIGHT 1</div>
-      <div id="copyright2">COPYRIGHT 2</div>
-    </div>
+    <section class="main-container">
+      <img alt="" src="" />
+      <form>
+        <div>
+          <label><input class="whitelist" type="checkbox"><span data-i18n="automatic_whitelisting"></span></label>
+          <aside class="note" data-i18n="incognito_note"></aside>
+        </div>
+        <div>
+          <label><input class="context-menu" type="checkbox"><span data-i18n="show_item_in_context_menu"></span></label>
+        </div>
+        <div>
+          <a class="change-shortcut" href="#" data-i18n="change_keyboard_shortcut"></a>
+          <aside data-i18n="keyboard_shortcut"></aside>
+        </div>
+        <div>
+          <a class="stylesheet-update" href="#" data-i18n="force_stylesheet_update"></a>
+          <aside data-i18n="last_updated_period"></aside>
+        </div>
+      </form>
+    </section>
+    <footer>
+      <ul>
+        <li data-i18n="name_version_copyright_ricky"></li>
+        <li data-i18n="copyright_steven"></li>
+        <li><a href="../release-notes/index.html" data-i18n="release_notes"></a></li>
+      </ul>
+    </footer>
   </body>
+
+  <script src="scripts/options.js"></script>
 </html>
