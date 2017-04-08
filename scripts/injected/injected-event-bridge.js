@@ -8,15 +8,14 @@ class InjectedEventBridge extends EventBridge {
     }, true)
   }
 
-  sendMessage(message, sendFromAnyFrame) {
-    if (this.injector.isTopFrame || sendFromAnyFrame)
-    {
+  sendMessage (message, sendFromAnyFrame) {
+    if (this.injector.isTopFrame || sendFromAnyFrame) {
       message.pageHost = window.location.hostname
       chrome.runtime.sendMessage(message)
     }
   }
 
-  stylesheetContentsResponder(message) {
+  stylesheetContentsResponder (message) {
     this.injector.stylesheet = window.btoa(message.payload)
 
     this.sendMessage({
@@ -24,7 +23,7 @@ class InjectedEventBridge extends EventBridge {
     })
   }
 
-  toggleResponder(message) {
+  toggleResponder (message) {
     this.injector.enabled = !this.injector.enabled
 
     this.sendMessage({
@@ -33,7 +32,7 @@ class InjectedEventBridge extends EventBridge {
     })
   }
 
-  setStylesheetStateResponder(message) {
+  setStylesheetStateResponder (message) {
     this.injector.enabled = message.payload
 
     this.sendMessage({

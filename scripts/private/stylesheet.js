@@ -1,97 +1,81 @@
 class Stylesheet {
-  constructor() {
+  constructor () {
     this._cache = ''
     this.readLocalCopy()
   }
 
-  async data() {
-    if (this._cache === '')
-    {
+  async data () {
+    if (this._cache === '') {
       this._cache = (await Storage.get('css')).css.cache
     }
 
     return this._cache
   }
 
-  async readLocalCopy() {
+  async readLocalCopy () {
     let result = await Storage.get('css')
 
-    if (result.css === undefined)
-    {
+    if (result.css === undefined) {
       let data = await (await fetch(chrome.runtime.getURL('resources/shutup.css'))).text()
 
       this._cache = data
 
       await Storage.set({
         css: {
-          cache:               data,
-          etag:                null,
-          lastSuccess:         0,
+          cache: data,
+          etag: null,
+          lastSuccess: 0,
           lastAttemptedUpdate: 0
         }
       })
-    }
-    else
-    {
+    } else {
       this._cache = result.css.cache
     }
 
     this.update()
   }
 
-  async update(force) {
+  async update (force) {
     let css = (await Storage.get('css')).css
 
     if (force || new Date() - css.lastAttemptedUpdate > 1000 * 60 * 60 * 24 * 2) // 2 days
     {
       let storageUpdate = {css}
 
-      try
-      {
+      try {
         let response = await WebRequest.fetch(
           'https://stevenf.com/shutup/shutup-latest.css', !force ? {
             'If-None-Match': css.etag
           } : {}
         )
 
-        if (response.status === 200 && response.body.length > 0)
-        {
+        if (response.status === 200 && response.body.length > 0) {
           let validStylesheet
-          try
-          {
+          try {
             validStylesheet = Stylesheet.validate(response.body)
-          }
-          catch (e)
-          {
+          } catch (e) {
             validStylesheet = false
           }
 
-          if (validStylesheet)
-          {
+          if (validStylesheet) {
             storageUpdate = {
               css: {
-                cache:       response.body,
-                etag:        response.headers['etag'] || null,
+                cache: response.body,
+                etag: response.headers['etag'] || null,
                 lastSuccess: Number(new Date())
               }
             }
 
             this._cache = response.body
             bridge.broadcastStylesheet(this._cache)
-          }
-          else
-          {
+          } else {
             throw 'Stylesheet failed validation. Aborting.'
           }
-        }
-        else if (response.status === 304)
-        {
+        } else if (response.status === 304) {
           storageUpdate.css.etag = response.headers['etag'] || null
           storageUpdate.css.lastSuccess = Number(new Date())
         }
-      }
-      catch (e)
-      {
+      } catch (e) {
         // Generic error occured, so let's delay the next update.
         console.dir(e)
       }
@@ -107,7 +91,7 @@ class Stylesheet {
   // The default failure state is to throw since there's lots of errors which
   // could apply during validation. This is fine since we have a catch-all
   // where this is called.
-  static validate(css) {
+  static validate (css) {
     if (css.length > 2 * 1024 * 1024) // Reject anything over 2 MB
     {
       throw 'Input too large. Aborting update.'
@@ -138,8 +122,7 @@ class Stylesheet {
       })
 
       // Check for a rule containing CSS display properties
-      if (!/display:\s*[a-z\-\ ]+\s+\!important;?/i.test(ruleSet))
-      {
+      if (!/display:\s*[a-z\-\ ]+\s+\!important;?/i.test(ruleSet)) {
         throw 'CSS property is not acceptable. Aborting update.'
       }
 
@@ -147,8 +130,7 @@ class Stylesheet {
       displayNoneFound |= /display:\s*none\s+\!important;?/i.test(ruleSet)
     })
 
-    if (!displayNoneFound)
-    {
+    if (!displayNoneFound) {
       throw 'display: none !important not present. Aborting update.'
     }
 

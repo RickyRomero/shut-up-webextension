@@ -4,16 +4,15 @@ class MessageQueue {
     this.tabReplacementListener = this.dispatchMessages.bind(this)
   }
 
-  add(tabId, message, {frameId}) {
+  add (tabId, message, {frameId}) {
     this.spool.push({tabId, message, options: {frameId}})
 
-    if (!chrome.tabs.onReplaced.hasListener(this.tabReplacementListener))
-    {
+    if (!chrome.tabs.onReplaced.hasListener(this.tabReplacementListener)) {
       chrome.tabs.onReplaced.addListener(this.tabReplacementListener)
     }
   }
 
-  dispatchMessages(tabId) {
+  dispatchMessages (tabId) {
     let spooledMessagesForTab = this.spool.filter((message) => {
       return message.tabId === tabId
     })
@@ -30,8 +29,7 @@ class MessageQueue {
     // Remove any messages queued up for tabs abandoned during pre-render
     this.spool.forEach(({tabId, message, options}) => {
       chrome.tabs.get(tabId, (tab) => {
-        if (chrome.runtime.lastError)
-        {
+        if (chrome.runtime.lastError) {
           this.discardMessages(tabId)
         }
       })
@@ -40,7 +38,7 @@ class MessageQueue {
     this.removeListenersIfQueueEmpty()
   }
 
-  discardMessages(tabId) {
+  discardMessages (tabId) {
     this.spool = this.spool.filter((message) => {
       return message.tabId !== tabId
     })
@@ -48,9 +46,8 @@ class MessageQueue {
     this.removeListenersIfQueueEmpty()
   }
 
-  removeListenersIfQueueEmpty() {
-    if (this.spool.length === 0 && chrome.tabs.onReplaced.hasListener(this.tabReplacementListener))
-    {
+  removeListenersIfQueueEmpty () {
+    if (this.spool.length === 0 && chrome.tabs.onReplaced.hasListener(this.tabReplacementListener)) {
       chrome.tabs.onReplaced.removeListener(this.tabReplacementListener)
     }
   }

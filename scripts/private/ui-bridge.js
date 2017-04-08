@@ -1,5 +1,5 @@
 class UIBridge {
-  constructor(eventBridge) {
+  constructor (eventBridge) {
     this.eventBridge = eventBridge
 
     chrome.tabs.onCreated.addListener(this.newTabCreated)
@@ -21,21 +21,21 @@ class UIBridge {
     })
   }
 
-  newTabCreated({id}) {
+  newTabCreated ({id}) {
     chrome.browserAction.disable(id)
   }
 
-  connectToPage(tabId) {
+  connectToPage (tabId) {
     chrome.browserAction.enable(tabId)
   }
 
-  toggleInjectedState(tab) {
+  toggleInjectedState (tab) {
     this.eventBridge.sendMessage({tab}, {
       type: 'toggle'
     })
   }
 
-  updateBrowserActionIcon(tabId, state) {
+  updateBrowserActionIcon (tabId, state) {
     let iconStates = {
       'turnOff': {
         '16': 'images/browser-action/turn-off.png',

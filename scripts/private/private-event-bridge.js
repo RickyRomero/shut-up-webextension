@@ -6,28 +6,23 @@ class PrivateEventBridge extends EventBridge {
     this.uiBridge = new UIBridge(this)
   }
 
-  sendMessage({tab, frameId}, message) {
-    if (tab.index > -1)
-    {
+  sendMessage ({tab, frameId}, message) {
+    if (tab.index > -1) {
       chrome.tabs.sendMessage(tab.id, message, {frameId})
-    }
-    else if (tab.index === -1)
-    {
+    } else if (tab.index === -1) {
       // Tab is not yet attached to a window, and can't be messaged until it is.
       // This generally happens when entering a query into the omnibox.
       this.tabMessageQueue.add(tab.id, message, {frameId})
     }
   }
 
-  broadcastMessage(message, filter = {}) {
+  broadcastMessage (message, filter = {}) {
     chrome.tabs.query({}, (tabs) => {
-      if (filter.byHost)
-      {
+      if (filter.byHost) {
         tabs = tabs.filter((tab) => {
           let location = Utils.parseURI(tab.url)
 
-          if (Utils.compareHosts(filter.byHost, location.hostname))
-            console.log(filter.byHost, location.hostname, Utils.compareHosts(filter.byHost, location.hostname))
+          if (Utils.compareHosts(filter.byHost, location.hostname)) { console.log(filter.byHost, location.hostname, Utils.compareHosts(filter.byHost, location.hostname)) }
 
           return Utils.compareHosts(filter.byHost, location.hostname)
         })
@@ -36,8 +31,7 @@ class PrivateEventBridge extends EventBridge {
       tabs.forEach((tab) => {
         let destination = {tab}
 
-        if (filter.isTopFrame)
-        {
+        if (filter.isTopFrame) {
           destination.frameId = 0
         }
 
@@ -46,19 +40,19 @@ class PrivateEventBridge extends EventBridge {
     })
   }
 
-  async connectResponder(message, sender) {
+  async connectResponder (message, sender) {
     this.sendMessage(sender, {
       type: 'stylesheetContents',
       payload: (await stylesheet.data())
     })
   }
 
-  enableBrowserActionResponder(message, sender) {
+  enableBrowserActionResponder (message, sender) {
     this.uiBridge.connectToPage(sender.tab.id)
   }
 
   // Synchronize all tabs under the same hostname.
-  injectionStateResponder(message, sender) {
+  injectionStateResponder (message, sender) {
     this.broadcastMessage({
       type: 'setStylesheetState',
       payload: message.payload
@@ -67,12 +61,12 @@ class PrivateEventBridge extends EventBridge {
     })
   }
 
-  updateBrowserActionStateResponder(message, sender) {
+  updateBrowserActionStateResponder (message, sender) {
     console.dir(sender)
     this.uiBridge.updateBrowserActionIcon(sender.tab.id, message.payload)
   }
 
-  broadcastStylesheet(contents) {
+  broadcastStylesheet (contents) {
     this.broadcastMessage({
       type: 'stylesheetContents',
       payload: contents
