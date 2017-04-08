@@ -1,4 +1,4 @@
-class InjectionManager {
+class InjectionManager { // eslint-disable-line no-unused-vars
   constructor () {
     this._stylesheet = ''
 
@@ -82,8 +82,8 @@ class InjectionManager {
   injectIntoShadowDOM () {
     // Boy, this is getting complicated.
     // http://stackoverflow.com/a/34321926/362800
-    let allElems = document.querySelectorAll('html /deep/ *'),
-      customElements = [].map.call(allElems, el => el.nodeName.toLowerCase())
+    let allElems = document.querySelectorAll('html /deep/ *')
+    let customElements = [].map.call(allElems, el => el.nodeName.toLowerCase())
         .filter((value, index, self) => self.indexOf(value) === index)
         .filter(name => document.createElement(name).constructor === window.HTMLUnknownElement)
         .filter(name => !['svg', 'path', 'time', 'menuitem'].includes(name))

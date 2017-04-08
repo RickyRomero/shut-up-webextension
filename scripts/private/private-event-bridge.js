@@ -1,4 +1,4 @@
-class PrivateEventBridge extends EventBridge {
+class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-vars
   constructor () {
     super()
 

@@ -1,4 +1,4 @@
-class Utils {
+class Utils { // eslint-disable-line no-unused-vars
   // http://stackoverflow.com/a/736970
   static parseURI (href) {
     let parser = document.createElement('a')
@@ -22,9 +22,9 @@ class Utils {
       return true
     }
 
-    let matchComponents = match.split('.'),
-      insideComponents = inside.split('.'),
-      delta, i
+    let matchComponents = match.split('.')
+    let insideComponents = inside.split('.')
+    let delta, i
 
     if (matchComponents.length > insideComponents.length) {
       return false
@@ -41,7 +41,7 @@ class Utils {
   }
 }
 
-class Storage {
+class Storage { // eslint-disable-line no-unused-vars
   static get (keys) {
     return new Promise((resolve, reject) => {
       return chrome.storage.local.get(keys, (items) => {
@@ -59,7 +59,7 @@ class Storage {
   }
 }
 
-class WebRequest {
+class WebRequest { // eslint-disable-line no-unused-vars
   static fetch (url, headers) {
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest()
@@ -91,8 +91,8 @@ class WebRequest {
         .split('\u000d\u000a')
         .forEach((line) => {
           if (line.length > 0) {
-            let delimiter = '\u003a\u0020',
-              header = line.split(delimiter)
+            let delimiter = '\u003a\u0020'
+            let header = line.split(delimiter)
 
             headers[header.shift().toLowerCase()] = header.join(delimiter)
           }

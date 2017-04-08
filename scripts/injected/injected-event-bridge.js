@@ -1,4 +1,4 @@
-class InjectedEventBridge extends EventBridge {
+class InjectedEventBridge extends EventBridge { // eslint-disable-line no-unused-vars
   constructor () {
     super()
     this.injector = new InjectionManager()

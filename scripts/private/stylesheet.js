@@ -1,4 +1,4 @@
-class Stylesheet {
+class Stylesheet { // eslint-disable-line no-unused-vars
   constructor () {
     this._cache = ''
     this.readLocalCopy()
@@ -38,8 +38,8 @@ class Stylesheet {
   async update (force) {
     let css = (await Storage.get('css')).css
 
-    if (force || new Date() - css.lastAttemptedUpdate > 1000 * 60 * 60 * 24 * 2) // 2 days
-    {
+    // Unless forced, wait 2 days between hitting the server.
+    if (force || new Date() - css.lastAttemptedUpdate > 1000 * 60 * 60 * 24 * 2) {
       let storageUpdate = {css}
 
       try {
@@ -69,7 +69,7 @@ class Stylesheet {
             this._cache = response.body
             bridge.broadcastStylesheet(this._cache)
           } else {
-            throw 'Stylesheet failed validation. Aborting.'
+            throw new Error('Stylesheet failed validation. Aborting.')
           }
         } else if (response.status === 304) {
           storageUpdate.css.etag = response.headers['etag'] || null
@@ -92,9 +92,9 @@ class Stylesheet {
   // could apply during validation. This is fine since we have a catch-all
   // where this is called.
   static validate (css) {
-    if (css.length > 2 * 1024 * 1024) // Reject anything over 2 MB
-    {
-      throw 'Input too large. Aborting update.'
+    // Reject anything over 2 MB
+    if (css.length > 2 * 1024 * 1024) {
+      throw new Error('Input too large. Aborting update.')
     }
 
     // Normalize input
@@ -105,33 +105,33 @@ class Stylesheet {
 
     let displayNoneFound = false
     css.split('}').forEach(selectorRulePair => {
-      if (selectorRulePair.trim().length === 0) // Ending bracket
-      {
+      // Special case for ending bracket
+      if (selectorRulePair.trim().length === 0) {
         return
       }
 
       selectorRulePair = selectorRulePair.split('{')
-      let selectorSet = selectorRulePair[0].trim(),
-        ruleSet = selectorRulePair[1].trim()
+      let selectorSet = selectorRulePair[0].trim()
+      let ruleSet = selectorRulePair[1].trim()
 
       // Check for a list of (fairly short) selectors
       selectorSet.split(', ').forEach(selector => {
         if (selector.trim().length > 150) {
-          throw 'Selector too long. Aborting update.'
+          throw new Error('Selector too long. Aborting update.')
         }
       })
 
       // Check for a rule containing CSS display properties
-      if (!/display:\s*[a-z\-\ ]+\s+\!important;?/i.test(ruleSet)) {
-        throw 'CSS property is not acceptable. Aborting update.'
+      if (!/display:\s*[a-z\- ]+\s+!important;?/i.test(ruleSet)) {
+        throw new Error('CSS property is not acceptable. Aborting update.')
       }
 
       // At least one "display: none !important" must be present.
-      displayNoneFound |= /display:\s*none\s+\!important;?/i.test(ruleSet)
+      displayNoneFound |= /display:\s*none\s+!important;?/i.test(ruleSet)
     })
 
     if (!displayNoneFound) {
-      throw 'display: none !important not present. Aborting update.'
+      throw new Error('display: none !important not present. Aborting update.')
     }
 
     return true

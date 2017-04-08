@@ -1,0 +1,21 @@
+{
+  "extends": "standard",
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "chrome": true,
+    "bridge": true,
+    "stylesheet": true,
+    "EventBridge": true,
+    "InjectedEventBridge": true,
+    "InjectionManager": true,
+    "MessageQueue": true,
+    "PrivateEventBridge": true,
+    "Storage": true,
+    "Stylesheet": true,
+    "UIBridge": true,
+    "Utils": true,
+    "WebRequest": true
+  }
+}

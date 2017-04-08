@@ -1,4 +1,4 @@
-class UIBridge {
+class UIBridge { // eslint-disable-line no-unused-vars
   constructor (eventBridge) {
     this.eventBridge = eventBridge
 

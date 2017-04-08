@@ -1,4 +1,4 @@
-class MessageQueue {
+class MessageQueue { // eslint-disable-line no-unused-vars
   constructor () {
     this.spool = []
     this.tabReplacementListener = this.dispatchMessages.bind(this)
