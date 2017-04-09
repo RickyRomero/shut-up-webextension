@@ -37,6 +37,8 @@
     "scripts": [
       "scripts/utils.js",
       "scripts/storage.js",
+      "scripts/options.js",
+      "scripts/private/whitelist.js",
       "scripts/private/stylesheet.js",
       "scripts/private/ui-bridge.js",
       "scripts/private/message-queue.js",

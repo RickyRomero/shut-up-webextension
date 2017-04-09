@@ -7,6 +7,8 @@ class Storage { // eslint-disable-line no-unused-vars
     this._cache = schema
 
     this.init(schema)
+
+    chrome.storage.onChanged.addListener(this.storageUpdate.bind(this))
   }
 
   async init (schema) {
@@ -15,8 +17,8 @@ class Storage { // eslint-disable-line no-unused-vars
     if (result[this._rootKey] === undefined) {
       let schemaClone = JSON.parse(JSON.stringify(schema))
 
-      await Storage.set(schemaClone)
       schemaClone[this._rootKey]._initialized = true
+      await Storage.set(schemaClone)
 
       this._cache = schemaClone[this._rootKey]
     } else {
@@ -43,8 +45,16 @@ class Storage { // eslint-disable-line no-unused-vars
     }
 
     let toSet = {}
-    toSet[this._rootKey] = props
+    toSet[this._rootKey] = this._cache
     Storage.set(toSet) // Asynchronous, but fine since we don't access directly
+  }
+
+  // Listen for storage changes (for example, if updated outside of the current scope)
+  storageUpdate (changes) {
+    if (changes[this._rootKey] && changes[this._rootKey].newValue) {
+      console.log((Number(new Date())), 'Updating:', this._rootKey)
+      this._cache = changes[this._rootKey].newValue
+    }
   }
 
   static get (keys) {
