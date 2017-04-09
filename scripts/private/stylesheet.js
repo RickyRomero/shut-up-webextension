@@ -1,46 +1,40 @@
-class Stylesheet { // eslint-disable-line no-unused-vars
+class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
   constructor () {
-    this._cache = ''
-    this.readLocalCopy()
-  }
+    super({
+      css: {
+        cache: '',
+        etag: null,
+        lastSuccess: 0,
+        lastAttemptedUpdate: 0
+      }
+    })
 
-  async data () {
-    if (this._cache === '') {
-      this._cache = (await Storage.get('css')).css.cache
-    }
-
-    return this._cache
+    this.onInitFinished = this.readLocalCopy
   }
 
   async readLocalCopy () {
-    let result = await Storage.get('css')
+    let result = (await this.data())
 
-    if (result.css === undefined) {
+    if (result.cache === '') {
       let data = await (await fetch(chrome.runtime.getURL('resources/shutup.css'))).text()
 
-      this._cache = data
-
-      await Storage.set({
-        css: {
-          cache: data,
-          etag: null,
-          lastSuccess: 0,
-          lastAttemptedUpdate: 0
-        }
+      this.update({
+        cache: data
       })
-    } else {
-      this._cache = result.css.cache
     }
 
-    this.update()
+    this.fetch()
   }
 
-  async update (force) {
-    let css = (await Storage.get('css')).css
+  async fetch (force) {
+console.log('Updating stylesheet...')
+    let css = (await this.data())
+console.log(JSON.stringify(css))
+console.log(css.lastAttemptedUpdate)
 
     // Unless forced, wait 2 days between hitting the server.
     if (force || new Date() - css.lastAttemptedUpdate > 1000 * 60 * 60 * 24 * 2) {
-      let storageUpdate = {css}
+      let storageUpdate = {}
 
       try {
         let response = await WebRequest.fetch(
@@ -58,30 +52,25 @@ class Stylesheet { // eslint-disable-line no-unused-vars
           }
 
           if (validStylesheet) {
-            storageUpdate = {
-              css: {
-                cache: response.body,
-                etag: response.headers['etag'] || null,
-                lastSuccess: Number(new Date())
-              }
-            }
+            storageUpdate.cache = response.body
+            storageUpdate.etag = response.headers['etag'] || null
+            storageUpdate.lastSuccess = Number(new Date())
 
-            this._cache = response.body
-            bridge.broadcastStylesheet(this._cache)
+            bridge.broadcastStylesheet(response.body)
           } else {
             throw new Error('Stylesheet failed validation. Aborting.')
           }
         } else if (response.status === 304) {
-          storageUpdate.css.etag = response.headers['etag'] || null
-          storageUpdate.css.lastSuccess = Number(new Date())
+          storageUpdate.etag = response.headers['etag'] || null
+          storageUpdate.lastSuccess = Number(new Date())
         }
       } catch (e) {
         // Generic error occured, so let's delay the next update.
         console.dir(e)
       }
 
-      storageUpdate.css.lastAttemptedUpdate = Number(new Date())
-      await Storage.set(storageUpdate)
+      storageUpdate.lastAttemptedUpdate = Number(new Date())
+      await this.update(storageUpdate)
     }
   }
 

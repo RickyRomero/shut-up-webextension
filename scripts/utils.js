@@ -41,25 +41,9 @@ class Utils { // eslint-disable-line no-unused-vars
   }
 }
 
-class Storage { // eslint-disable-line no-unused-vars
-  static get (keys) {
-    return new Promise((resolve, reject) => {
-      return chrome.storage.local.get(keys, (items) => {
-        return chrome.runtime.lastError ? reject(chrome.runtime.lastError) : resolve(items)
-      })
-    })
-  }
-
-  static set (items) {
-    return new Promise((resolve, reject) => {
-      return chrome.storage.local.set(items, () => {
-        return chrome.runtime.lastError ? reject(chrome.runtime.lastError) : resolve()
-      })
-    })
-  }
-}
-
 class WebRequest { // eslint-disable-line no-unused-vars
+  // I wanted to use the fetch API here, but it doesn't handle caching the
+  // way I need it to...
   static fetch (url, headers) {
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest()

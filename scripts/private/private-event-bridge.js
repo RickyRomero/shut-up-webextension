@@ -41,9 +41,19 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
   }
 
   async connectResponder (message, sender) {
-    this.sendMessage(sender, {
-      type: 'stylesheetContents',
-      payload: (await stylesheet.data())
+    // Run the stylesheet and whitelist queries in parallel
+    stylesheet.data().then((styles) => {
+      this.sendMessage(sender, {
+        type: 'stylesheetContents',
+        payload: styles
+      })
+    })
+
+    whitelist.data().then((domainList) => {
+      this.sendMessage(sender, {
+        type: 'whitelistContents',
+        payload: domainList
+      })
     })
   }
 

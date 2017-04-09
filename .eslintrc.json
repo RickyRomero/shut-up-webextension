@@ -16,6 +16,7 @@
     "Stylesheet": true,
     "UIBridge": true,
     "Utils": true,
-    "WebRequest": true
+    "WebRequest": true,
+    "Whitelist": true
   }
 }

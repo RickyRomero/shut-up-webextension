@@ -36,6 +36,7 @@
   "background": {
     "scripts": [
       "scripts/utils.js",
+      "scripts/storage.js",
       "scripts/private/stylesheet.js",
       "scripts/private/ui-bridge.js",
       "scripts/private/message-queue.js",
