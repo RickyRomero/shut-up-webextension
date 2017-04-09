@@ -4,13 +4,16 @@
     "browser": true
   },
   "globals": {
-    "chrome": true,
     "bridge": true,
+    "chrome": true,
+    "options": true,
     "stylesheet": true,
+    "whitelist": true,
     "EventBridge": true,
     "InjectedEventBridge": true,
     "InjectionManager": true,
     "MessageQueue": true,
+    "Options": true,
     "PrivateEventBridge": true,
     "Storage": true,
     "Stylesheet": true,

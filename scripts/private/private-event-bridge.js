@@ -42,10 +42,10 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
 
   async connectResponder (message, sender) {
     // Run the stylesheet and whitelist queries in parallel
-    stylesheet.data().then((styles) => {
+    stylesheet.data().then(({cache}) => {
       this.sendMessage(sender, {
         type: 'stylesheetContents',
-        payload: styles
+        payload: cache
       })
     })
 
@@ -58,7 +58,7 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
   }
 
   enableBrowserActionResponder (message, sender) {
-    this.uiBridge.connectToPage(sender.tab.id)
+    this.uiBridge.connectToPage(sender.tab)
   }
 
   // Synchronize all tabs under the same hostname.
@@ -73,7 +73,7 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
 
   updateBrowserActionStateResponder (message, sender) {
     console.dir(sender)
-    this.uiBridge.updateBrowserActionIcon(sender.tab.id, message.payload)
+    this.uiBridge.updateBrowserActionIcon(sender.tab, message.payload)
   }
 
   broadcastStylesheet (contents) {

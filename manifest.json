@@ -35,6 +35,7 @@
 
   "background": {
     "scripts": [
+      "scripts/libs/md5.min.js",
       "scripts/utils.js",
       "scripts/storage.js",
       "scripts/options.js",

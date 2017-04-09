@@ -8,7 +8,7 @@ class Whitelist extends Storage { // eslint-disable-line no-unused-vars
   }
 
   add (host) {
-    
+    let md5 = faultylabs.MD5(host)
   }
 
   async query (host) {}
