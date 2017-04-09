@@ -38,8 +38,7 @@ class Storage { // eslint-disable-line no-unused-vars
   }
 
   update (props) {
-    for (let key in props)
-    {
+    for (let key in props) {
       this._cache[key] = props[key]
     }
 

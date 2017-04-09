@@ -27,10 +27,7 @@ class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
   }
 
   async fetch (force) {
-console.log('Updating stylesheet...')
     let css = (await this.data())
-console.log(JSON.stringify(css))
-console.log(css.lastAttemptedUpdate)
 
     // Unless forced, wait 2 days between hitting the server.
     if (force || new Date() - css.lastAttemptedUpdate > 1000 * 60 * 60 * 24 * 2) {

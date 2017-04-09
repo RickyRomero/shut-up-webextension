@@ -25,9 +25,7 @@ class Whitelist extends Storage { // eslint-disable-line no-unused-vars
     }
   }
 
-  add (host) {
-    
-  }
+  add (host) {}
 
   async query (host) {}
 }
