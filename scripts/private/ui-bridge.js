@@ -6,19 +6,12 @@ class UIBridge { // eslint-disable-line no-unused-vars
     chrome.browserAction.onClicked.addListener(this.toggleInjectedState.bind(this))
   }
 
-  // FIXME: Not fired if the extension is killed. ugh
   newTabCreated (tab) {
-console.log('newTabCreated')
-    this.updateBrowserActionIcon(tab, true, () => {
-      chrome.browserAction.disable(tab.id)
-    alert('test')
-    })
+    this.updateBrowserActionIcon(tab, true, false)
   }
 
   connectToPage (tab) {
-    this.updateBrowserActionIcon(tab, true, () => {
-      chrome.browserAction.enable(tab.id)
-    })
+    this.updateBrowserActionIcon(tab, true, true)
   }
 
   toggleInjectedState (tab) {
@@ -27,8 +20,9 @@ console.log('newTabCreated')
     })
   }
 
-  updateBrowserActionIcon ({id, incognito}, state, callback) {
-console.log('updateBrowserActionIcon', 'id:', id, 'incog', incognito, state)
+  // FIXME: For some reason, we don't get the correct icon on the first incognito
+  // window opened. :-(
+  updateBrowserActionIcon ({id, incognito}, state, enable) {
     let iconStates = {
       'turnOff': {
         '16': 'images/browser-action/turn-off.png',
@@ -51,6 +45,8 @@ console.log('updateBrowserActionIcon', 'id:', id, 'incog', incognito, state)
     chrome.browserAction.setIcon({
       tabId: id,
       path: iconStates['turn' + (state ? 'Off' : 'On') + (incognito ? 'Incognito' : '')]
-    }, callback)
+    }, () => {
+      chrome.browserAction[enable ? 'enable' : 'disable'](id)
+    })
   }
 }

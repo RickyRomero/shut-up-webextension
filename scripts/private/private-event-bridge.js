@@ -72,8 +72,7 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
   }
 
   updateBrowserActionStateResponder (message, sender) {
-    console.dir(sender)
-    this.uiBridge.updateBrowserActionIcon(sender.tab, message.payload)
+    this.uiBridge.updateBrowserActionIcon(sender.tab, message.payload, true)
   }
 
   broadcastStylesheet (contents) {
