@@ -6,6 +6,7 @@
   "globals": {
     "bridge": true,
     "chrome": true,
+    "faultylabs": true,
     "options": true,
     "stylesheet": true,
     "whitelist": true,

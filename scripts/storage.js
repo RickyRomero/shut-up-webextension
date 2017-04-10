@@ -52,7 +52,6 @@ class Storage { // eslint-disable-line no-unused-vars
   // Listen for storage changes (for example, if updated outside of the current scope)
   storageUpdate (changes) {
     if (changes[this._rootKey] && changes[this._rootKey].newValue) {
-      console.log((Number(new Date())), 'Updating:', this._rootKey)
       this._cache = changes[this._rootKey].newValue
     }
   }
