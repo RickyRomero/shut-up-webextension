@@ -7,4 +7,12 @@ class Options extends Storage { // eslint-disable-line no-unused-vars
       }
     })
   }
+
+  async automaticWhitelist() {
+    return (await this.data()).automaticWhitelist
+  }
+
+  async contextMenu() {
+    return (await this.data()).contextMenu
+  }
 }

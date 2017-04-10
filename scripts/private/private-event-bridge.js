@@ -22,8 +22,6 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
         tabs = tabs.filter((tab) => {
           let location = Utils.parseURI(tab.url)
 
-          if (Utils.compareHosts(filter.byHost, location.hostname)) { console.log(filter.byHost, location.hostname, Utils.compareHosts(filter.byHost, location.hostname)) }
-
           return Utils.compareHosts(filter.byHost, location.hostname)
         })
       }
@@ -49,10 +47,10 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
       })
     })
 
-    whitelist.data().then((domainList) => {
+    whitelist.query(sender.tab).then((whitelisted) => {
       this.sendMessage(sender, {
-        type: 'whitelistContents',
-        payload: domainList
+        type: 'isWhitelisted',
+        payload: whitelisted
       })
     })
   }
@@ -63,6 +61,8 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
 
   // Synchronize all tabs under the same hostname.
   injectionStateResponder (message, sender) {
+    whitelist[message.payload ? 'remove' : 'add'](sender.tab)
+
     this.broadcastMessage({
       type: 'setStylesheetState',
       payload: message.payload

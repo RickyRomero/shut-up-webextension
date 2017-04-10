@@ -40,4 +40,13 @@ class InjectedEventBridge extends EventBridge { // eslint-disable-line no-unused
       payload: this.injector.enabled
     })
   }
+
+  isWhitelistedResponder (message) {
+    this.injector.enabled = !message.payload
+
+    this.sendMessage({
+      type: 'updateBrowserActionState',
+      payload: this.injector.enabled
+    })
+  }
 }

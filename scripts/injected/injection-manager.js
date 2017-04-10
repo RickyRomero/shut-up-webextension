@@ -13,10 +13,6 @@ class InjectionManager { // eslint-disable-line no-unused-vars
     this.enabled = true
     this.isTopFrame = (self === top)
 
-    console.log('Initializing:')
-    console.log('URL:', window.location.href)
-    console.log('Top frame:', this.isTopFrame)
-
     // window.addEventListener('load', this.injectIntoShadowDOM.bind(this), false)
   }
 
