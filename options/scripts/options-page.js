@@ -29,20 +29,24 @@ class OptionsPage {
     $('.context-menu').checked = (await this.options.contextMenu())
 
     window.clearTimeout(this.updateTimer)
-    this.updateTimer = window.setTimeout(this.updatePage.bind(this), 1000 * 15)
+    this.updateTimer = window.setTimeout(this.updatePage.bind(this), 1000 * 5)
   }
 
   internationalize (el) {
     let i18nMappings = {
       'keyboard_shortcut': this.setKeyboardShortcutStr,
-      'last_updated_period': this.setLastUpdatedStr
+      'last_updated_period': this.setLastUpdatedStr,
+      'name_version_copyright_ricky': this.setMainCopyrightStr,
+      'copyright_steven': this.setCSSCopyrightStr
     }
 
-    if (i18nMappings[el.dataset.i18n]) {
-      i18nMappings[el.dataset.i18n].call(this, el)
-    } else if (el.dataset.i18nLocked === undefined) {
-      el.innerHTML = chrome.i18n.getMessage(el.dataset.i18n)
-      el.dataset.i18nLocked = ''
+    if (el.dataset.i18nLocked !== '\ud83d\udd12') {
+      if (i18nMappings[el.dataset.i18n]) {
+        i18nMappings[el.dataset.i18n].call(this, el)
+      } else {
+        el.innerText = chrome.i18n.getMessage(el.dataset.i18n)
+        el.dataset.i18nLocked = '\ud83d\udd12'
+      }
     }
   }
 
@@ -69,12 +73,12 @@ class OptionsPage {
       let shortcut = commands[0].shortcut
 
       if (shortcut !== '') {
-        el.innerHTML = chrome.i18n.getMessage(
+        el.innerText = chrome.i18n.getMessage(
           el.dataset.i18n,
           (await Keyboard.conformToPlatform(commands[0].shortcut))
         )
       } else {
-        el.innerHTML = chrome.i18n.getMessage('keyboard_shortcut_disabled')
+        el.innerText = chrome.i18n.getMessage('keyboard_shortcut_disabled')
       }
     })
   }
@@ -115,7 +119,20 @@ class OptionsPage {
       }
     }
 
-    el.innerHTML = chrome.i18n.getMessage(i18nKey, [timeDelta])
+    el.innerText = chrome.i18n.getMessage(i18nKey, [timeDelta])
+  }
+
+  setMainCopyrightStr (el) {
+    let productName = chrome.i18n.getMessage('product_name')
+    let version = chrome.runtime.getManifest().version
+
+    el.innerHTML = chrome.i18n.getMessage('name_version_copyright_ricky', [productName, version])
+    el.dataset.i18nLocked = '\ud83d\udd12'
+  }
+
+  setCSSCopyrightStr (el) {
+    el.innerHTML = chrome.i18n.getMessage('copyright_steven')
+    el.dataset.i18nLocked = '\ud83d\udd12'
   }
 }
 

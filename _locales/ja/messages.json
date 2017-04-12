@@ -42,9 +42,6 @@
   "last_updated_period_moments": {
     "message": "最後に更新された瞬間"
   },
-  "last_updated_period_minute": {
-    "message": "最終更新：1分前"
-  },
   "last_updated_period_minutes": {
     "message": "最終更新$plural$分前",
     "placeholders": {
@@ -82,7 +79,7 @@
   "error_no_internet_connection": {
     "message": "stevenf.comに接続できませんでした。 インターネット接続を確認してください。"
   },
-  "error_no_internet_connection": {
+  "error_unexpected_response": {
     "message": "予期しない反応がありました。 あとでもう一度試してみてください。"
   },
 

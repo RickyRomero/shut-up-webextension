@@ -20,6 +20,7 @@ html {
 
 body {
   font: var(--fs-main) -apple-system, BlinkMacSystemFont, sans-serif;
+  width: 80rem;
 }
 
 a {
@@ -52,8 +53,9 @@ input:focus {
 input[type=checkbox] {
   -webkit-appearance: none;
 
-  width: 3rem;
+  width: 3.0rem;
   height: 1.3rem;
+  margin: 0 1.0rem 0 0;
 
   background: var(--c-text-secondary);
   border-radius: 0.65rem;
@@ -86,4 +88,44 @@ input[type=checkbox]:not(:checked):after {
 
 input[type=checkbox]:checked:after {
   right: 0;
+}
+
+ul {
+  padding: 0;
+  display: flex;
+  align-items: baseline; /* for non-uniform text sizes */
+  justify-content: center;
+}
+
+li {
+  display: block;
+}
+
+li:not(:first-child):before {
+  content: ' ';
+  display: inline-block;
+  margin: 0 1.2rem;
+}
+
+
+
+form > div {
+  display: flex;
+  align-items: baseline;
+}
+
+form > div.stack {
+  flex-direction: column;
+}
+
+form > div:not(:last-child) {
+  margin-bottom: 1.2rem;
+}
+
+form > div aside {
+  margin-left: 2.0rem;
+}
+
+form > div aside.note {
+  margin: 0.2rem 0 0 4.0rem;
 }

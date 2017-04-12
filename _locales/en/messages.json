@@ -54,10 +54,6 @@
     "message": "Last updated moments ago",
     "description": "Shown if the stylesheet was just refreshed."
   },
-  "last_updated_period_minute": {
-    "message": "Last updated a minute ago",
-    "description": "Shown if the stylesheet was refreshed 1 minute ago."
-  },
   "last_updated_period_minutes": {
     "message": "Last updated $plural$ minutes ago",
     "description": "Shown if the stylesheet was refreshed more than 1 minute ago.",
@@ -105,7 +101,7 @@
     "message": "Couldn’t connect to stevenf.com. Check your Internet connection.",
     "description": "This error is displayed if we can't reach the update server when manually forcing a stylesheet update."
   },
-  "error_no_internet_connection": {
+  "error_unexpected_response": {
     "message": "Got an unexpected response. Try again in a bit.",
     "description": "This error is displayed if we get an unexpected response when manually forcing a stylesheet update."
   },
