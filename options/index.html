@@ -21,7 +21,7 @@
           <label><input class="context-menu" type="checkbox"><span data-i18n="show_item_in_context_menu"></span></label>
         </div>
         <div>
-          <a class="change-shortcut" href="#" data-i18n="change_keyboard_shortcut"></a>
+          <a href="chrome://extensions/configureCommands" class="change-shortcut" href="#" data-i18n="change_keyboard_shortcut"></a>
           <aside data-i18n="keyboard_shortcut"></aside>
         </div>
         <div>
@@ -39,5 +39,16 @@
     </footer>
   </body>
 
-  <script src="scripts/options.js"></script>
+  <script src="../scripts/utils.js"></script>
+  <script src="../scripts/storage.js"></script>
+
+  <script src="../scripts/event-bridge.js"></script>
+  <script src="../scripts/private/message-queue.js"></script>
+  <script src="../scripts/private/ui-bridge.js"></script>
+  <script src="../scripts/private/private-event-bridge.js"></script>
+
+  <script src="../scripts/private/options.js"></script>
+  <script src="../scripts/private/stylesheet.js"></script>
+
+  <script src="scripts/options-page.js"></script>
 </html>

@@ -53,6 +53,10 @@ class Storage { // eslint-disable-line no-unused-vars
   storageUpdate (changes) {
     if (changes[this._rootKey] && changes[this._rootKey].newValue) {
       this._cache = changes[this._rootKey].newValue
+
+      if (this.onUpdate) {
+        this.onUpdate()
+      }
     }
   }
 

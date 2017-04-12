@@ -38,7 +38,7 @@
       "scripts/libs/md5.min.js",
       "scripts/utils.js",
       "scripts/storage.js",
-      "scripts/options.js",
+      "scripts/private/options.js",
       "scripts/private/whitelist.js",
       "scripts/private/stylesheet.js",
       "scripts/private/ui-bridge.js",

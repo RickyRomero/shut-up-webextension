@@ -6,8 +6,8 @@
   --c-accent-secondary: #862440;
   --c-switch:           var(--c-text);
 
-  --fs-main:            2.0rem;
-  --fs-small:           1.4rem;
+  --fs-main:            1.6rem;
+  --fs-small:           1.2rem;
 
   font-size: 62.5% !important;
   box-sizing: border-box;
@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  font: var(--fs-main) -apple-system, sans-serif;
+  font: var(--fs-main) -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 a {

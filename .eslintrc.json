@@ -13,6 +13,7 @@
     "EventBridge": true,
     "InjectedEventBridge": true,
     "InjectionManager": true,
+    "Keyboard": true,
     "MessageQueue": true,
     "Options": true,
     "PrivateEventBridge": true,
