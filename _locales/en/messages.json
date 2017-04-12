@@ -97,6 +97,11 @@
     "description": "Shown if the stylesheet was refreshed more than a week ago."
   },
 
+  "updating": {
+    "message": "Updating…",
+    "description": "Shown when the user forces a stylesheet update."
+  },
+
   "error_no_internet_connection": {
     "message": "Couldn’t connect to stevenf.com. Check your Internet connection.",
     "description": "This error is displayed if we can't reach the update server when manually forcing a stylesheet update."
