@@ -1,7 +1,5 @@
 let $ = document.querySelector.bind(document)
 
-let bridge = new PrivateEventBridge() // eslint-disable-line no-unused-vars
-
 class OptionsPage {
   constructor () {
     this.options = new Options()
@@ -11,6 +9,8 @@ class OptionsPage {
   }
 
   init () {
+    $('html').setAttribute('dir', chrome.i18n.getMessage('@@bidi_dir'))
+
     $('.whitelist').addEventListener('change', this.updateWhitelistOption.bind(this), false)
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
     $('.change-shortcut').addEventListener('click', this.openShortcutPane.bind(this), false)

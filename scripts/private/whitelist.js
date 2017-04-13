@@ -33,8 +33,10 @@ class Whitelist extends Storage { // eslint-disable-line no-unused-vars
 
   async query ({url}) {
     let md5 = this.urlToMD5(url)
+    let wlIncludesHost = (await this.data()).hosts.includes(md5)
+    let wlEnabled = (await options.automaticWhitelist())
 
-    return (await this.data()).hosts.includes(md5)
+    return (wlIncludesHost && wlEnabled)
   }
 
   urlToMD5 (url) {

@@ -94,6 +94,11 @@ class WebRequest { // eslint-disable-line no-unused-vars
 
 class Keyboard { // eslint-disable-line no-unused-vars
   static async conformToPlatform (str) {
+    // Some key names are localized, and I don't want to step into that nightmare
+    if (chrome.i18n.getUILanguage().substr(0, 2) !== 'en') {
+      return str
+    }
+
     let keys = str.split('+')
     let modifierOrder = {
       mac: ['Ctrl', 'Alt', 'Shift', 'Command'],

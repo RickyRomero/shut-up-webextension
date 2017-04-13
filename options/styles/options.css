@@ -78,19 +78,22 @@ form {
   justify-content: center;
 }
 
+input[type=checkbox], input[type=checkbox]:after {
+  transition: all 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+}
+
 input[type=checkbox] {
   -webkit-appearance: none;
 
   width: 3.0rem;
   height: 1.3rem;
-  margin: 0 1.0rem 0 0;
+  margin: 0;
+  margin-__MSG_@@bidi_end_edge__: 1.0rem;
 
   background: var(--c-text-secondary);
   border-radius: 0.65rem;
 
   position: relative;
-
-  transition: all 0.5s ease;
 }
 
 input[type=checkbox]:checked {
@@ -102,7 +105,7 @@ input[type=checkbox]:after {
   height: 1.3rem;
 
   background: var(--c-switch);
-  border-radius: 100%;
+  border-radius: 0.65rem;
 
   content: ' ';
   overflow: hidden;
@@ -110,12 +113,23 @@ input[type=checkbox]:after {
   top: 0;
 }
 
+input[type=checkbox]:not(:checked):active:after,
+input[type=checkbox]:checked:active:after {
+  transition-duration: 0.2s;
+  width: 1.7rem;
+}
+
+
 input[type=checkbox]:not(:checked):after {
-  left: 0;
+  __MSG_@@bidi_start_edge__: 0;
 }
 
 input[type=checkbox]:checked:after {
-  right: 0;
+  __MSG_@@bidi_start_edge__: 1.7rem;
+}
+
+input[type=checkbox]:checked:active:after {
+  __MSG_@@bidi_start_edge__: 1.4rem;
 }
 
 ul {
@@ -151,11 +165,12 @@ form > div:not(:last-child) {
 }
 
 form > div aside {
-  margin-left: 2.0rem;
+  margin-__MSG_@@bidi_start_edge__: 2.0rem;
 }
 
 form > div aside.note {
-  margin: 0.2rem 0 0 4.0rem;
+  margin-top: 0.2rem;
+  margin-__MSG_@@bidi_start_edge__: 4.0rem;
 }
 
 form > div.bottom-gap {

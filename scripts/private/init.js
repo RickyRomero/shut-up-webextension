@@ -15,8 +15,8 @@ chrome.runtime.onInstalled.addListener(() => {
 })
 
 /* eslint-disable no-unused-vars */
-let stylesheet = new Stylesheet()
-let whitelist = new Whitelist()
-let options = new Options()
-let bridge = new PrivateEventBridge()
+window.stylesheet = new Stylesheet()
+window.whitelist = new Whitelist()
+window.options = new Options()
+window.bridge = new PrivateEventBridge()
 /* eslint-enable no-unused-vars */

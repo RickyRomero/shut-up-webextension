@@ -53,7 +53,9 @@ class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
             storageUpdate.etag = response.headers['etag'] || null
             storageUpdate.lastSuccess = Number(new Date())
 
-            bridge.broadcastStylesheet(response.body)
+            if (window.bridge) {
+              bridge.broadcastStylesheet(response.body)
+            }
           } else {
             throw new Error('Stylesheet failed validation. Aborting.')
           }
