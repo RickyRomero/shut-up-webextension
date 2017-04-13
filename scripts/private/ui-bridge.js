@@ -49,4 +49,22 @@ class UIBridge { // eslint-disable-line no-unused-vars
       chrome.browserAction[enable ? 'enable' : 'disable'](id)
     })
   }
+
+  removeContextMenu () {
+    chrome.contextMenus.remove('toggle-comments-ctx')
+  }
+
+  async addContextMenu () {
+    if (await options.contextMenu()) {
+      chrome.contextMenus.create({
+        id: 'toggle-comments-ctx',
+        title: chrome.i18n.getMessage('toggle_comments_menu'),
+        contexts: ['page']
+      })
+
+      chrome.contextMenus.onClicked.addListener((info, tab) => {
+        bridge.uiBridge.toggleInjectedState(tab)
+      })
+    }
+  }
 }

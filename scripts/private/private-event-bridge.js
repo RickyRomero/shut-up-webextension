@@ -81,4 +81,12 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
       payload: contents
     })
   }
+
+  removeContextMenuResponder (message, sender) {
+    this.uiBridge.removeContextMenu()
+  }
+
+  addContextMenuResponder (message, sender) {
+    this.uiBridge.addContextMenu()
+  }
 }

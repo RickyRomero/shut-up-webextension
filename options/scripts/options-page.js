@@ -20,6 +20,14 @@ class OptionsPage {
     this.stylesheet.onUpdate = this.updatePage.bind(this)
 
     this.updatePage()
+
+    this.eggListener = this.easterEgg.bind(this)
+    this.eggCounter = 0
+    this.eggText = document.createElement('div')
+    this.eggText.classList.add('egg')
+    $('figure').insertBefore(this.eggText, $('img'))
+    $('img').addEventListener('mouseenter', this.eggListener, false)
+    this.easterEgg()
   }
 
   async updatePage () {
@@ -56,6 +64,9 @@ class OptionsPage {
 
   updateContextMenuOption (event) {
     this.options.update({contextMenu: event.target.checked})
+
+    console.log('sending message')
+    chrome.runtime.sendMessage({type: (event.target.checked ? 'add' : 'remove') + 'ContextMenu'})
   }
 
   openShortcutPane (event) {
@@ -133,6 +144,43 @@ class OptionsPage {
   setCSSCopyrightStr (el) {
     el.innerHTML = chrome.i18n.getMessage('copyright_steven')
     el.dataset.i18nLocked = '\ud83d\udd12'
+  }
+
+  easterEgg () {
+    let messages = [
+      'FIRST!!',
+      'F\u2013 First?',
+      'first :(',
+      'first',
+      ''
+    ]
+
+    this.eggText.classList.add('bye')
+    this.eggText.classList.remove('hi')
+
+    $('img').addEventListener('mouseleave', () => {
+      this.eggText.classList.add('hi')
+      this.eggText.classList.remove('bye')
+    }, {once: true})
+
+    this.eggCounter++
+
+    window.setTimeout(() => {
+      this.eggText.classList.remove(`step-${this.eggCounter - 1}`)
+      this.eggText.innerText = messages[this.eggCounter - 1]
+      this.eggText.classList.add(`step-${this.eggCounter}`)
+    }, 400)
+
+    if (this.eggCounter >= messages.length) {
+      $('img').removeEventListener('mouseenter', this.eggListener, false)
+    } else {
+      if (this.eggCounter === 1) {
+        window.setTimeout(() => {
+          this.eggText.classList.add('hi')
+          this.eggText.classList.remove('bye')
+        }, 2000)
+      }
+    }
   }
 }
 
