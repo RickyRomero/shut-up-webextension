@@ -9,6 +9,7 @@ class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
       }
     })
 
+    this.onUpdate = this.broadcastUpdate.bind(this)
     this.onInitFinished = this.readLocalCopy
   }
 
@@ -52,10 +53,6 @@ class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
             storageUpdate.cache = response.body
             storageUpdate.etag = response.headers['etag'] || null
             storageUpdate.lastSuccess = Number(new Date())
-
-            if (window.bridge) {
-              bridge.broadcastStylesheet(response.body)
-            }
           } else {
             throw new Error('Stylesheet failed validation. Aborting.')
           }
@@ -123,5 +120,11 @@ class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
     }
 
     return true
+  }
+
+  broadcastUpdate (updateData) {
+    if (window.bridge && updateData) {
+      bridge.broadcastStylesheet(updateData.cache)
+    }
   }
 }
