@@ -45,7 +45,8 @@ class OptionsPage {
       'keyboard_shortcut': this.setKeyboardShortcutStr,
       'last_updated_period': this.setLastUpdatedStr,
       'name_version_copyright_ricky': this.setMainCopyrightStr,
-      'copyright_steven': this.setCSSCopyrightStr
+      'copyright_steven': this.setCSSCopyrightStr,
+      'fetch_error': Utils.noop
     }
 
     if (el.dataset.i18nLocked !== '\ud83d\udd12') {
@@ -76,7 +77,25 @@ class OptionsPage {
 
   forceStylesheetUpdate (event) {
     event.preventDefault()
-    this.stylesheet.fetch(true)
+    this.stylesheet.fetch(true, (err) => {
+      if (err) {
+        this.showUpdateError(err)
+      } else {
+        // TODO: Add a success state
+      }
+    })
+  }
+
+  showUpdateError (err) {
+    let i18nString = 'error_unexpected_response'
+
+    if (err.status !== undefined) {
+      if (err.status === 0) {
+        i18nString = 'error_no_internet_connection'
+      }
+    }
+
+    $('aside.error').innerText = chrome.i18n.getMessage(i18nString)
   }
 
   async setKeyboardShortcutStr (el) {

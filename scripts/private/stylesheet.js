@@ -27,7 +27,13 @@ class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
     this.fetch()
   }
 
-  async fetch (force) {
+  async fetch (force, callback) {
+    let cbOnce = function (err) {
+      if (callback) {
+        callback(err)
+      }
+      cbOnce = Utils.noop
+    }
     let css = (await this.data())
 
     // Unless forced, wait 2 days between hitting the server.
@@ -62,11 +68,12 @@ class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
         }
       } catch (e) {
         // Generic error occured, so let's delay the next update.
-        console.dir(e)
+        cbOnce(e)
       }
 
       storageUpdate.lastAttemptedUpdate = Number(new Date())
       await this.update(storageUpdate)
+      cbOnce()
     }
   }
 

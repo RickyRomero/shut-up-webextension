@@ -39,6 +39,8 @@ class Utils { // eslint-disable-line no-unused-vars
 
     return true
   }
+
+  static noop () {}
 }
 
 class WebRequest { // eslint-disable-line no-unused-vars
@@ -48,6 +50,7 @@ class WebRequest { // eslint-disable-line no-unused-vars
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest()
       xhr.open('GET', url, true)
+      xhr.timeout = 10 * 1000
 
       for (let key in headers) {
         xhr.setRequestHeader(key, headers[key])
@@ -62,6 +65,10 @@ class WebRequest { // eslint-disable-line no-unused-vars
       }, false)
 
       xhr.addEventListener('error', () => {
+        reject(simplify(xhr))
+      })
+
+      xhr.addEventListener('timeout', () => {
         reject(simplify(xhr))
       })
 
