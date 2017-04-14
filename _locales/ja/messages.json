@@ -76,6 +76,9 @@
     "message": "最終更新日は1週間以上前"
   },
 
+  "updating": {
+    "message": "更新中..."
+  },
   "error_no_internet_connection": {
     "message": "stevenf.comに接続できませんでした。 インターネット接続を確認してください。"
   },

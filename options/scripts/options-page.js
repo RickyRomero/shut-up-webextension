@@ -113,7 +113,7 @@ class OptionsPage {
     $('body').classList.add('error')
     $('div.update-controls').classList.add('hidden')
     $('div.error').classList.remove('hidden')
-    $('div.error').innerText = chrome.i18n.getMessage(i18nString)
+    $('.error-msg').innerText = chrome.i18n.getMessage(i18nString)
 
     $('div.error').addEventListener('transitionend', () => {
       this.suppressUpdates = false

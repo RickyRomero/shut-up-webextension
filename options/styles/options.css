@@ -28,6 +28,10 @@ body {
   width: 80rem;
 }
 
+body > svg {
+  display: none;
+}
+
 a {
   text-decoration: none;
   color: var(--c-accent);
@@ -214,6 +218,16 @@ form > div.bottom-gap {
   color: var(--c-error);
   padding: 0.3rem 0;
   cursor: pointer;
+}
+
+.close-icon { fill-rule: evenodd; }
+.update-check .error svg {
+  position: relative;
+  margin-__MSG_@@bidi_end_edge__: 0.4rem;
+  top: 0.2rem;
+
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 .update-check aside {
