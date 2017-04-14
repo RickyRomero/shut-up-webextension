@@ -15,10 +15,12 @@ class OptionsPage {
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
     $('.change-shortcut').addEventListener('click', this.openShortcutPane.bind(this), false)
     $('.stylesheet-update').addEventListener('click', this.forceStylesheetUpdate.bind(this), false)
+    $('div.error').addEventListener('click', this.dismissError.bind(this), false)
 
     this.options.onUpdate = this.updatePage.bind(this)
     this.stylesheet.onUpdate = this.updatePage.bind(this)
 
+    this.suppressUpdates = false
     this.updatePage()
 
     this.eggListener = this.easterEgg.bind(this)
@@ -31,10 +33,13 @@ class OptionsPage {
   }
 
   async updatePage () {
-    document.querySelectorAll('[data-i18n]').forEach(this.internationalize.bind(this))
+    if (!this.suppressUpdates)
+    {
+      document.querySelectorAll('[data-i18n]').forEach(this.internationalize.bind(this))
 
-    $('.whitelist').checked = (await this.options.automaticWhitelist())
-    $('.context-menu').checked = (await this.options.contextMenu())
+      $('.whitelist').checked = (await this.options.automaticWhitelist())
+      $('.context-menu').checked = (await this.options.contextMenu())
+    }
 
     window.clearTimeout(this.updateTimer)
     this.updateTimer = window.setTimeout(this.updatePage.bind(this), 1000 * 5)
@@ -65,8 +70,6 @@ class OptionsPage {
 
   updateContextMenuOption (event) {
     this.options.update({contextMenu: event.target.checked})
-
-    console.log('sending message')
     chrome.runtime.sendMessage({type: (event.target.checked ? 'add' : 'remove') + 'ContextMenu'})
   }
 
@@ -77,13 +80,25 @@ class OptionsPage {
 
   forceStylesheetUpdate (event) {
     event.preventDefault()
+    this.suppressUpdates = true
+
+    $('.update-controls aside').innerText = chrome.i18n.getMessage('updating')
     this.stylesheet.fetch(true, (err) => {
       if (err) {
         this.showUpdateError(err)
       } else {
-        // TODO: Add a success state
+        this.showUpdateSuccess()
       }
     })
+  }
+
+  showUpdateSuccess () {
+    this.suppressUpdates = false
+    let statusMsg = $('.update-controls aside')
+    statusMsg.classList.add('success')
+    window.setTimeout(() => {
+      statusMsg.classList.remove('success')
+    }, 2000)
   }
 
   showUpdateError (err) {
@@ -95,7 +110,21 @@ class OptionsPage {
       }
     }
 
-    $('aside.error').innerText = chrome.i18n.getMessage(i18nString)
+    $('body').classList.add('error')
+    $('div.update-controls').classList.add('hidden')
+    $('div.error').classList.remove('hidden')
+    $('div.error').innerText = chrome.i18n.getMessage(i18nString)
+
+    $('div.error').addEventListener('transitionend', () => {
+      this.suppressUpdates = false
+      this.updatePage()
+    }, { once: true })
+  }
+
+  dismissError () {
+    $('body').classList.remove('error')
+    $('div.update-controls').classList.remove('hidden')
+    $('div.error').classList.add('hidden')
   }
 
   async setKeyboardShortcutStr (el) {

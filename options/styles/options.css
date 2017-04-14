@@ -4,10 +4,15 @@
   --c-text-secondary:   #5c6166;
   --c-accent:           #ff205f;
   --c-accent-secondary: #862440;
+  --c-error:            #ffb400;
+  --c-success:          #00ff7e;
   --c-switch:           var(--c-text);
 
   --fs-main:            1.6rem;
   --fs-small:           1.2rem;
+
+  --e-error-in:         cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  --e-error-out:        cubic-bezier(0.215, 0.610, 0.355, 1.000);
 
   font-size: 62.5% !important;
   box-sizing: border-box;
@@ -151,7 +156,7 @@ li:not(:first-child):before {
 
 
 
-form > div {
+form > div, .update-controls {
   display: flex;
   align-items: baseline;
 }
@@ -175,6 +180,49 @@ form > div aside.note {
 
 form > div.bottom-gap {
   margin-bottom: 3.0rem;
+}
+
+
+
+.update-check {
+  position: relative;
+}
+
+.update-check > div {
+  position: absolute;
+
+  transition-property: opacity, __MSG_@@bidi_start_edge__;
+  transition-duration: 500ms;
+  transition-timing-function: var(--e-error-out);
+  transition-delay: 300ms;
+
+  __MSG_@@bidi_start_edge__: 0;
+  opacity: 1.0;
+}
+
+.update-check > div.hidden {
+  transition-timing-function: var(--e-error-in);
+  transition-delay: 0s;
+  pointer-events: none;
+
+  __MSG_@@bidi_start_edge__: 5.0em;
+  opacity: 0.0;
+}
+
+.update-check .error {
+  font-size: var(--fs-small);
+  color: var(--c-error);
+  padding: 0.3rem 0;
+  cursor: pointer;
+}
+
+.update-check aside {
+  transition: color 4s linear;
+}
+
+.update-check aside.success {
+  transition-duration: 0s;
+  color: var(--c-success);
 }
 
 /* px used deliberately here, since icon size doesn't change */
