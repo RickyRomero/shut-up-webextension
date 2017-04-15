@@ -1,0 +1,116 @@
+{
+  "product_name": {
+    "message": "Shut Up"
+  },
+  "manifest_description": {
+    "message": "在许多热门网站上切换评论开关状态。"
+  },
+  "toggle_comments_menu": {
+    "message": "切换评论开关"
+  },
+  "automatic_whitelisting": {
+    "message": "记住我在何处启用了评论"
+  },
+  "incognito_note": {
+    "message": "这个选项在隐身标签页中忽略。"
+  },
+  "show_item_in_context_menu": {
+    "message": "显示在内容菜单"
+  },
+  "change_keyboard_shortcut": {
+    "message": "更改键盘快捷键"
+  },
+  "keyboard_shortcut": {
+    "message": "当前$shortcut$",
+    "placeholders": {
+      "shortcut": {
+        "content": "$1",
+        "example": "Ctrl+Shift+Z"
+      }
+    }
+  },
+  "keyboard_shortcut_disabled": {
+    "message": "当前未启用"
+  },
+  "force_stylesheet_update": {
+    "message": "强制样式表更新"
+  },
+  "last_updated_period_moments": {
+    "message": "最近更新于数秒前"
+  },
+  "last_updated_period_minutes": {
+    "message": "最近更新于$plural$分钟前",
+    "placeholders": {
+      "plural": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "last_updated_period_hour": {
+    "message": "最近更新于1小时前"
+  },
+  "last_updated_period_hours": {
+    "message": "最近更新于$plural$小时前",
+    "placeholders": {
+      "plural": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "last_updated_period_day": {
+    "message": "最近更新于昨天"
+  },
+  "last_updated_period_days": {
+    "message": "最近更新于$plural$天前",
+    "placeholders": {
+      "plural": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "last_updated_period_week": {
+    "message": "最近更新于一周以前"
+  },
+  "updating": {
+    "message": "更新中..."
+  },
+  "error_no_internet_connection": {
+    "message": "无法连接到stevenf.com。请检查您的互联网连接。"
+  },
+  "error_unexpected_response": {
+    "message": "得到了一个意外响应。请稍后再试。"
+  },
+  "name_version_copyright_ricky": {
+    "message": "$name$ $version$ ©2011 - 2017 $ricky_link$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Shut Up"
+      },
+      "version": {
+        "content": "$2",
+        "example": "3.0"
+      },
+      "ricky_link": {
+        "content": "<a href=\"https://rickyromero.com/\">Ricky Romero</a>"
+      }
+    }
+  },
+  "copyright_steven": {
+    "message": "shutup.css ©2011 - 2017 $steven_link$ 及 $contributors_link$",
+    "placeholders": {
+      "steven_link": {
+        "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"
+      },
+      "contributors_link": {
+        "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">contributors</a>"
+      }
+    }
+  },
+  "release_notes": {
+    "message": "发行说明"
+  }
+}
