@@ -1,8 +1,5 @@
 // Pre-3.0
 if (localStorage.length) {
-console.log('Migrating...')
-console.log(JSON.stringify(localStorage))
-
   options.update({
     automaticWhitelist: localStorage['automaticWhitelist'] === 'true'
   })
@@ -19,6 +16,4 @@ console.log(JSON.stringify(localStorage))
   })
 
   localStorage.clear()
-
-chrome.storage.local.get(null, console.dir)
 }
