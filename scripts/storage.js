@@ -4,7 +4,7 @@ class Storage { // eslint-disable-line no-unused-vars
     for (root in schema) {}
     this._rootKey = root
 
-    this._cache = schema
+    this._cache = schema[this._rootKey]
 
     this.init(schema)
 

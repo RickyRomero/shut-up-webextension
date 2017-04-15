@@ -45,7 +45,8 @@
       "scripts/private/message-queue.js",
       "scripts/event-bridge.js",
       "scripts/private/private-event-bridge.js",
-      "scripts/private/init.js"
+      "scripts/private/init.js",
+      "scripts/private/upgrade.js"
     ],
     "persistent": false
   },
