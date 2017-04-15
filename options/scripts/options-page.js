@@ -33,8 +33,7 @@ class OptionsPage {
   }
 
   async updatePage () {
-    if (!this.suppressUpdates)
-    {
+    if (!this.suppressUpdates) {
       document.querySelectorAll('[data-i18n]').forEach(this.internationalize.bind(this))
 
       $('.whitelist').checked = (await this.options.automaticWhitelist())
@@ -80,20 +79,25 @@ class OptionsPage {
 
   forceStylesheetUpdate (event) {
     event.preventDefault()
-    this.suppressUpdates = true
+    if (!$('.stylesheet-update').classList.contains('running')) {
+      this.suppressUpdates = true
 
-    $('.update-controls aside').innerText = chrome.i18n.getMessage('updating')
-    this.stylesheet.fetch(true, (err) => {
-      if (err) {
-        this.showUpdateError(err)
-      } else {
-        this.showUpdateSuccess()
-      }
-    })
+      $('.stylesheet-update').classList.add('running')
+      $('.update-controls aside').innerText = chrome.i18n.getMessage('updating')
+      this.stylesheet.fetch(true, (err) => {
+        if (err) {
+          this.showUpdateError(err)
+        } else {
+          this.showUpdateSuccess()
+        }
+      })
+    }
   }
 
   showUpdateSuccess () {
     this.suppressUpdates = false
+    $('.stylesheet-update').classList.remove('running')
+
     let statusMsg = $('.update-controls aside')
     statusMsg.classList.add('success')
     window.setTimeout(() => {
@@ -117,6 +121,8 @@ class OptionsPage {
 
     $('div.error').addEventListener('transitionend', () => {
       this.suppressUpdates = false
+      $('.stylesheet-update').classList.remove('running')
+
       this.updatePage()
     }, { once: true })
   }

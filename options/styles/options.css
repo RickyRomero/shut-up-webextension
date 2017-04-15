@@ -26,7 +26,8 @@ html {
   background: radial-gradient(circle 70rem
     at var(--p-gradient-x-__MSG_@@bidi_dir__) 50%,
     var(--c-bg-light) 0%, var(--c-bg) 100%);
-  color:      var(--c-text);
+  color: var(--c-text);
+  overflow-x: hidden;
 }
 
 body {
@@ -196,17 +197,19 @@ form > div.bottom-gap {
 
 .update-check {
   position: relative;
+  height: var(--fs-main);
 }
 
 .update-check > div {
   position: absolute;
 
-  transition-property: opacity, __MSG_@@bidi_start_edge__;
+  transition-property: opacity, left, right;
   transition-duration: 500ms;
   transition-timing-function: var(--e-error-out);
   transition-delay: 300ms;
 
   __MSG_@@bidi_start_edge__: 0;
+  __MSG_@@bidi_end_edge__: 0;
   opacity: 1.0;
 }
 
@@ -216,6 +219,7 @@ form > div.bottom-gap {
   pointer-events: none;
 
   __MSG_@@bidi_start_edge__: 5.0em;
+  __MSG_@@bidi_end_edge__: -5.0em;
   opacity: 0.0;
 }
 
@@ -243,6 +247,11 @@ form > div.bottom-gap {
 .update-check aside.success {
   transition-duration: 0s;
   color: var(--c-success);
+}
+
+.stylesheet-update.running {
+  color: var(--c-text-secondary);
+  cursor: default;
 }
 
 /* px used deliberately here, since icon size doesn't change */
