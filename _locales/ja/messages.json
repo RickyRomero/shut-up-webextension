@@ -101,7 +101,7 @@
     }
   },
   "copyright_steven": {
-    "message": "shutup.css ©2011 - 2017 $steven_link$と$contributors_link$",
+    "message": "shutup.css ©2010 - 2017 $steven_link$と$contributors_link$",
     "placeholders": {
       "steven_link": {
         "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"

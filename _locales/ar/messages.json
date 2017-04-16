@@ -1,38 +1,27 @@
 {
   "product_name": {
-    "message": "Shut Up",
-    "description": "Don't localize this."
+    "message": "Shut Up"
   },
   "manifest_description": {
-    "message": "لتعليق التعليقات على العديد من المواقع الشهيرة.",
-    "description": "This description appears in the list of installed extensions, as well as when the user is prompted to install it."
+    "message": "تتبع التعليقات على العديد من المواقع الشعبية."
   },
   "toggle_comments_menu": {
-    "message": "تبديل التعليقات",
-    "description": "The title for a menu item which lets users change the comment blocking state."
+    "message": "تتبع التعليقات"
   },
-
   "automatic_whitelisting": {
-    "message": "تذكر أين مكنت التعليقات",
-    "description": "This setting controls whether, when you click the icon, the extension remembers that you wanted to show comments on that site."
+    "message": "تذكر أين قمت بتمكين التعليقات"
   },
   "incognito_note": {
-    "message": "يتم تجاهل هذا الخيار في علامات تبويب التصفح المتخفي.",
-    "description": "The extension won't remember if you enable comments on a site in an incognito window."
+    "message": "يتم تجاهل هذا الخيار في علامات تبويب التصفح الخفي"
   },
-
   "show_item_in_context_menu": {
-    "message": "إظهار في قائمة السياق",
-    "description": "Adds the toggle_comments_menu key to the right-click menu on all pages."
+    "message": "اعرض في قائمة السياق"
   },
-
   "change_keyboard_shortcut": {
-    "message": "تغيير اختصار لوحة المفاتيح",
-    "description": "When clicked, lets users customize the keyboard shortcut used to activate the extension."
+    "message": "تغيير اختصار لوحة المفاتيح"
   },
   "keyboard_shortcut": {
     "message": "حاليا $shortcut$",
-    "description": "If there's a shortcut set, we display this to the right of change_keyboard_shortcut.",
     "placeholders": {
       "shortcut": {
         "content": "$1",
@@ -41,22 +30,16 @@
     }
   },
   "keyboard_shortcut_disabled": {
-    "message": "غير ممكن حاليا",
-    "description": "If there's no keyboard shortcut set, we show this to the right of change_keyboard_shortcut."
+    "message": "غير ممكنة حاليا"
   },
-
   "force_stylesheet_update": {
-    "message": "فرض تحديث ورقة الأنماط",
-    "description": "This link refreshes shutup.css from stevenf.com manually."
+    "message": "تحديث الأنماط بالقوة"
   },
-
   "last_updated_period_moments": {
-    "message": "آخر تحديث قبل لحظات",
-    "description": "Shown if the stylesheet was just refreshed."
+    "message": "آخر تحديث منذ لحظات"
   },
   "last_updated_period_minutes": {
-    "message": "آخر تحديث منذ $plural$ دقيقة",
-    "description": "Shown if the stylesheet was refreshed more than 1 minute ago.",
+    "message": "آخر تحديث منذ $plural$ دقائق",
     "placeholders": {
       "plural": {
         "content": "$1",
@@ -65,12 +48,10 @@
     }
   },
   "last_updated_period_hour": {
-    "message": "آخر تحديث قبل ساعة واحدة",
-    "description": "Shown if the stylesheet was refreshed 1 hour ago."
+    "message": "آخر تحديث منذ 1 ساعة"
   },
   "last_updated_period_hours": {
-    "message": "آخر تحديث منذ $plural$ ساعة",
-    "description": "Shown if the stylesheet was refreshed more than 1 hour ago.",
+    "message": "آخذ تحديث منذ $plural$ ساعات",
     "placeholders": {
       "plural": {
         "content": "$1",
@@ -79,12 +60,10 @@
     }
   },
   "last_updated_period_day": {
-    "message": "آخر تحديث أمس",
-    "description": "Shown if the stylesheet was refreshed yesterday."
+    "message": "آخر تحديث يوم أمس"
   },
   "last_updated_period_days": {
     "message": "آخر تحديث منذ $plural$ أيام",
-    "description": "Shown if the stylesheet was refreshed more than 1 day ago.",
     "placeholders": {
       "plural": {
         "content": "$1",
@@ -93,27 +72,19 @@
     }
   },
   "last_updated_period_week": {
-    "message": "آخر تحديث منذ أكثر من أسبوع",
-    "description": "Shown if the stylesheet was refreshed more than a week ago."
+    "message": "آخر تحديث منذ أكثر من أسبوع"
   },
-
   "updating": {
-    "message": "جار التحديث ...",
-    "description": "Shown when the user forces a stylesheet update."
+    "message": "جاري التحديث ..."
   },
-
   "error_no_internet_connection": {
-    "message": "تعذر الاتصال ب stevenf.com. تحقق من اتصالك بالإنترنت.",
-    "description": "This error is displayed if we can't reach the update server when manually forcing a stylesheet update."
+    "message": "تعذر الاتصال بـ stevenf.com. تفقد اتصال الإنترنت الخاص بك."
   },
   "error_unexpected_response": {
-    "message": "حصلت على استجابة غير متوقعة. حاول مرة أخرى.",
-    "description": "This error is displayed if we get an unexpected response when manually forcing a stylesheet update."
+    "message": "حصلت على رد غير متوقع. حاول ثانية في وقت لاحق."
   },
-
   "name_version_copyright_ricky": {
-    "message": "$name$ $version$ ©2011 - 2017 $ricky_link$",
-    "description": "For example: Shut Up 3.0, followed by the copyright notice",
+    "message": "$name$ $version$ © 2011-2017 $ricky_link$",
     "placeholders": {
       "name": {
         "content": "$1",
@@ -124,16 +95,15 @@
         "example": "3.0"
       },
       "ricky_link": {
-        "content": "<a href=\"https://rickyromero.com/\">ريكي روميرو</a>"
+        "content": "<a href=\"https://rickyromero.com/\">Ricky Romero</a>"
       }
     }
   },
   "copyright_steven": {
-    "message": "shutup.css © 2011 - 2017 $steven_link$ و $contributors_link$",
-    "description": "Copyright notice for shutup.css",
+    "message": "shutup.css ©2010 - 2017 $steven_link$ و $contributors_link$",
     "placeholders": {
       "steven_link": {
-        "content": "<a href=\"https://stevenf.com/\">ستيفن فرانك</a>"
+        "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"
       },
       "contributors_link": {
         "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">المساهمين</a>"
@@ -141,7 +111,6 @@
     }
   },
   "release_notes": {
-    "message": "ملاحظات الإصدار",
-    "description": "Links to the (English-only) release notes page detailing updates to the extension."
+    "message": "ملاحظات الإصدار"
   }
 }

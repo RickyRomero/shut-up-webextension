@@ -3,25 +3,25 @@
     "message": "Shut Up"
   },
   "manifest_description": {
-    "message": "在许多热门网站上切换评论开关状态。"
+    "message": "Oculta/muestra los comentarios en muchos sitios web populares."
   },
   "toggle_comments_menu": {
-    "message": "切换评论开关"
+    "message": "Cambiar visibilidad de comentarios"
   },
   "automatic_whitelisting": {
-    "message": "记住我在何处启用了评论"
+    "message": "Recordar los sitios en los que he activado los comentarios"
   },
   "incognito_note": {
-    "message": "这个选项在隐身标签页中忽略。"
+    "message": "Esta opción es ignorada en las pestañas de incógnito."
   },
   "show_item_in_context_menu": {
-    "message": "显示在内容菜单"
+    "message": "Mostrar en menú contextual"
   },
   "change_keyboard_shortcut": {
-    "message": "更改键盘快捷键"
+    "message": "Cambiar acceso directo del teclado"
   },
   "keyboard_shortcut": {
-    "message": "当前$shortcut$",
+    "message": "Actualmente $shortcut$",
     "placeholders": {
       "shortcut": {
         "content": "$1",
@@ -30,16 +30,16 @@
     }
   },
   "keyboard_shortcut_disabled": {
-    "message": "当前未启用"
+    "message": "No hay uno actualmente activado"
   },
   "force_stylesheet_update": {
-    "message": "强制样式表更新"
+    "message": "Forzar actualización de hoja de estilo"
   },
   "last_updated_period_moments": {
-    "message": "最近更新于数秒前"
+    "message": "Última actualización hace unos momentos"
   },
   "last_updated_period_minutes": {
-    "message": "最近更新于$plural$分钟前",
+    "message": "Última actualización hace $plural$ minutos",
     "placeholders": {
       "plural": {
         "content": "$1",
@@ -48,10 +48,10 @@
     }
   },
   "last_updated_period_hour": {
-    "message": "最近更新于1小时前"
+    "message": "Última actualización hace 1 hora"
   },
   "last_updated_period_hours": {
-    "message": "最近更新于$plural$小时前",
+    "message": "Última actualización hace $plural$ horas",
     "placeholders": {
       "plural": {
         "content": "$1",
@@ -60,10 +60,10 @@
     }
   },
   "last_updated_period_day": {
-    "message": "最近更新于昨天"
+    "message": "Última actualización hace 1 día"
   },
   "last_updated_period_days": {
-    "message": "最近更新于$plural$天前",
+    "message": "Última actualización hace $plural$ días",
     "placeholders": {
       "plural": {
         "content": "$1",
@@ -72,16 +72,16 @@
     }
   },
   "last_updated_period_week": {
-    "message": "最近更新于一周以前"
+    "message": "Última actualización hace más de una semana"
   },
   "updating": {
-    "message": "更新中..."
+    "message": "Actualizando..."
   },
   "error_no_internet_connection": {
-    "message": "无法连接到stevenf.com。请检查您的互联网连接。"
+    "message": "No se pudo conectar a stevenf.com. Verifica tu conexión a Internet."
   },
   "error_unexpected_response": {
-    "message": "得到了一个意外响应。请稍后再试。"
+    "message": "Se obtuvo una respuesta inesperada. Inténtalo de nuevo en un rato."
   },
   "name_version_copyright_ricky": {
     "message": "$name$ $version$ ©2011 - 2017 $ricky_link$",
@@ -100,17 +100,17 @@
     }
   },
   "copyright_steven": {
-    "message": "shutup.css ©2010 - 2017 $steven_link$ 及 $contributors_link$",
+    "message": "shutup.css ©2010 - 2017 $steven_link$ y $contributors_link$",
     "placeholders": {
       "steven_link": {
         "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"
       },
       "contributors_link": {
-        "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">合作者</a>"
+        "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">contribuidores</a>"
       }
     }
   },
   "release_notes": {
-    "message": "发行说明"
+    "message": "Notas de la versión"
   }
 }

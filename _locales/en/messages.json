@@ -129,7 +129,7 @@
     }
   },
   "copyright_steven": {
-    "message": "shutup.css ©2011 - 2017 $steven_link$ and $contributors_link$",
+    "message": "shutup.css ©2010 - 2017 $steven_link$ and $contributors_link$",
     "description": "Copyright notice for shutup.css",
     "placeholders": {
       "steven_link": {

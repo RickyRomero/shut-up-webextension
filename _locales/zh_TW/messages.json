@@ -100,13 +100,13 @@
     }
   },
   "copyright_steven": {
-    "message": "shutup.css ©2011 - 2017 $steven_link$ 和 $contributors_link$",
+    "message": "shutup.css ©2010 - 2017 $steven_link$ 和 $contributors_link$",
     "placeholders": {
       "steven_link": {
         "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"
       },
       "contributors_link": {
-        "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">contributors</a>"
+        "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">合作者</a>"
       }
     }
   },
