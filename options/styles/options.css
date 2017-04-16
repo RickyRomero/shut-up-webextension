@@ -32,7 +32,7 @@ html {
 
 body {
   font: var(--fs-main) -apple-system, BlinkMacSystemFont, sans-serif;
-  width: 80rem;
+  width: 800px; /* Font sizes act differently in Chinese */
 }
 
 body > svg {
@@ -68,7 +68,7 @@ input:focus {
 
 .main-container > div {
   display: flex;
-  height: 36rem;
+  height: 360px; /* Font sizes act differently in Chinese */
 }
 
 figure {
@@ -97,6 +97,11 @@ form {
 label {
   display: flex;
   align-items: center;
+  width: 100%;
+}
+
+label span {
+  width: 80%;
 }
 
 input[type=checkbox], input[type=checkbox]:after {
@@ -171,10 +176,15 @@ li:not(:first-child):before {
 }
 
 
+form > div {
+  width: 85%;
+}
 
 form > div, .update-controls {
+  position: relative;
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
 }
 
 form > div.stack {
@@ -183,10 +193,6 @@ form > div.stack {
 
 form > div:not(:last-child) {
   margin-bottom: 1.2rem;
-}
-
-form > div aside {
-  margin-__MSG_@@bidi_start_edge__: 2.0rem;
 }
 
 form > div aside.note {
@@ -198,16 +204,16 @@ form > div.bottom-gap {
   margin-bottom: 3.0rem;
 }
 
+form a {
+  margin-__MSG_@@bidi_end_edge__: 2.0rem;
+}
 
 
 .update-check {
   position: relative;
-  height: var(--fs-main);
 }
 
 .update-check > div {
-  position: absolute;
-
   transition-property: opacity, left, right;
   transition-duration: 500ms;
   transition-timing-function: var(--e-error-out);
@@ -229,6 +235,8 @@ form > div.bottom-gap {
 }
 
 .update-check .error {
+  position: absolute;
+
   font-size: var(--fs-small);
   color: var(--c-error);
   padding: 0.3rem 0;
