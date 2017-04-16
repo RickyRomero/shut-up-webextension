@@ -23,13 +23,7 @@ class OptionsPage {
     this.suppressUpdates = false
     this.updatePage()
 
-    this.eggListener = this.easterEgg.bind(this)
-    this.eggCounter = 0
-    this.eggText = document.createElement('div')
-    this.eggText.classList.add('egg')
-    $('figure').insertBefore(this.eggText, $('img'))
-    $('img').addEventListener('mouseenter', this.eggListener, false)
-    this.easterEgg()
+    let egg = new Egg() // eslint-disable-line no-unused-vars
   }
 
   async updatePage () {
@@ -199,42 +193,56 @@ class OptionsPage {
     el.innerHTML = chrome.i18n.getMessage('copyright_steven')
     el.dataset.i18nLocked = '\ud83d\udd12'
   }
+}
 
-  easterEgg () {
+class Egg {
+  constructor () {
+    this.eggText = document.createElement('div')
+    this.eggText.classList.add('egg')
+    $('figure').insertBefore(this.eggText, $('img'))
+
+    this.counter = 0
+
+    this.patientEgg = this.nextEgg.bind(this)
+    this.eggTimer = window.setTimeout(this.patientEgg, 4000)
+
+    this.restlessEgg = this.resetEggTimer.bind(this)
+    window.addEventListener('mousemove', this.restlessEgg, false)
+  }
+
+  nextEgg () {
     let messages = [
       'FIRST!!',
       'F\u2013 First?',
       'first :(',
-      'first',
-      ''
+      'first'
     ]
+
+    window.removeEventListener('mousemove', this.restlessEgg, false)
+    $('img').addEventListener('mouseenter', this.dismissEgg.bind(this), {once: true})
+
+    this.eggText.classList.remove(`step-${this.counter}`)
+    this.eggText.innerText = messages[this.counter]
+    this.eggText.classList.add(`step-${this.counter + 1}`)
+
+    this.eggText.classList.add('hi')
+    this.eggText.classList.remove('bye')
+
+    this.counter++
+  }
+
+  dismissEgg () {
+    if (this.counter < 4) {
+      window.addEventListener('mousemove', this.restlessEgg, false)
+    }
 
     this.eggText.classList.add('bye')
     this.eggText.classList.remove('hi')
+  }
 
-    $('img').addEventListener('mouseleave', () => {
-      this.eggText.classList.add('hi')
-      this.eggText.classList.remove('bye')
-    }, {once: true})
-
-    this.eggCounter++
-
-    window.setTimeout(() => {
-      this.eggText.classList.remove(`step-${this.eggCounter - 1}`)
-      this.eggText.innerText = messages[this.eggCounter - 1]
-      this.eggText.classList.add(`step-${this.eggCounter}`)
-    }, 400)
-
-    if (this.eggCounter >= messages.length) {
-      $('img').removeEventListener('mouseenter', this.eggListener, false)
-    } else {
-      if (this.eggCounter === 1) {
-        window.setTimeout(() => {
-          this.eggText.classList.add('hi')
-          this.eggText.classList.remove('bye')
-        }, 2000)
-      }
-    }
+  resetEggTimer () {
+    window.clearTimeout(this.eggTimer)
+    this.eggTimer = window.setTimeout(this.patientEgg, 4000)
   }
 }
 
