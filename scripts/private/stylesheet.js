@@ -41,8 +41,10 @@ class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
       let storageUpdate = {}
 
       try {
+        let cssURL = 'https://stevenf.com/shutup/shutup-latest.css'
+        let internalCacheBust = Number(new Date())
         let response = await WebRequest.fetch(
-          'https://stevenf.com/shutup/shutup-latest.css', !force ? {
+          `${cssURL}?cachebust=${internalCacheBust}`, !force ? {
             'If-None-Match': css.etag
           } : {}
         )
