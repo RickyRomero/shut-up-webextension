@@ -14,9 +14,10 @@ class OptionsPage {
 
     $('.whitelist').addEventListener('change', this.updateWhitelistOption.bind(this), false)
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
-    $('.change-shortcut').addEventListener('click', this.openShortcutPane.bind(this), false)
+    $('.change-shortcut').addEventListener('click', this.openLinkInFullTab.bind(this), false)
     $('.stylesheet-update').addEventListener('click', this.forceStylesheetUpdate.bind(this), false)
     $('div.error').addEventListener('click', this.dismissError.bind(this), false)
+    $('.release-notes').addEventListener('click', this.openLinkInFullTab.bind(this), false)
 
     this.options.onUpdate = this.updatePage.bind(this)
     this.stylesheet.onUpdate = this.updatePage.bind(this)
@@ -67,7 +68,7 @@ class OptionsPage {
     chrome.runtime.sendMessage({type: (event.target.checked ? 'add' : 'remove') + 'ContextMenu'})
   }
 
-  openShortcutPane (event) {
+  openLinkInFullTab (event) {
     event.preventDefault()
     chrome.tabs.update({url: event.target.href})
   }
