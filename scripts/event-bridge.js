@@ -4,7 +4,6 @@ class EventBridge { // eslint-disable-line no-unused-vars
   }
 
   receiveMessage (message, sender) {
-    console.log(`Calling ${typeof this}.${message.type}Responder`)
     this[`${message.type}Responder`](message, sender)
   }
 }

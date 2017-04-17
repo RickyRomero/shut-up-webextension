@@ -8,8 +8,9 @@ class OptionsPage {
     this.init()
   }
 
-  init () {
+  async init () {
     $('html').setAttribute('dir', chrome.i18n.getMessage('@@bidi_dir'))
+    $('html').classList.add((await PlatformInfo.get()).os)
 
     $('.whitelist').addEventListener('change', this.updateWhitelistOption.bind(this), false)
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
@@ -214,8 +215,8 @@ class Egg {
     let messages = [
       'FIRST!!',
       'F\u2013 First?',
-      'first :(',
-      'first'
+      '\ufb01rst :(',
+      '\ufb01rst'
     ]
 
     window.removeEventListener('mousemove', this.restlessEgg, false)

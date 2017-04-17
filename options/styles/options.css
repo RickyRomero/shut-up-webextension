@@ -1,9 +1,17 @@
+@font-face {
+  font-family: 'First Font';
+  src: url('../fonts/first-font.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --c-bg:               #131415;
   --c-bg-light:         #2a2630;
   --c-text:             white;
   --c-text-secondary:   #5c6166;
   --c-accent:           #ff205f;
+  --c-accent-hover:     #ff6893;
   --c-accent-secondary: #862440;
   --c-error:            #ffb400;
   --c-success:          #00ff7e;
@@ -42,6 +50,10 @@ body > svg {
 a {
   text-decoration: none;
   color: var(--c-accent);
+}
+
+a:hover {
+  color: var(--c-accent-hover);
 }
 
 footer, aside {
@@ -106,6 +118,7 @@ label span {
 
 input[type=checkbox], input[type=checkbox]:after {
   transition: all 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  cursor: pointer;
 }
 
 input[type=checkbox] {
@@ -262,25 +275,30 @@ form a {
   color: var(--c-success);
 }
 
-.stylesheet-update.running {
+.stylesheet-update.running, .stylesheet-update.running:hover {
   color: var(--c-text-secondary);
   cursor: default;
 }
 
 /* px used deliberately here, since icon size doesn't change */
 .egg {
-  font-family: "Comic Sans MS", cursive;
-  font-size: 14px;
+  font-family: "First Font", cursive;
+  font-size: 16px;
   font-weight: bold;
   text-align: center;
+  letter-spacing: 0.08rem;
 
   position: absolute;
   left: 0;
   right: 0;
-  top: 47%;
+  top: 47.5%;
 
   transform: translate(0px, 50px);
   opacity: 0.7;
+}
+
+.mac .egg {
+  top: 47%;
 }
 
 .egg.bye {

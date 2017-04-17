@@ -106,6 +106,12 @@ class Keyboard { // eslint-disable-line no-unused-vars
       return str
     }
 
+    // Don't try to conform to platforms we don't know anything about
+    let platform = (await PlatformInfo.get()).os
+    if (!['mac', 'win', 'linux'].includes(platform)) {
+      return str
+    }
+
     let keys = str.split('+')
     let modifierOrder = {
       mac: ['Ctrl', 'Alt', 'Shift', 'Command'],
@@ -118,9 +124,6 @@ class Keyboard { // eslint-disable-line no-unused-vars
       linux: '+'
     }
     let conformed = []
-
-    // "mac", "win", "android", "cros", "linux", or "openbsd"
-    let platform = (await PlatformInfo.get()).os
 
     modifierOrder[platform].forEach(key => {
       if (keys.includes(key)) {
