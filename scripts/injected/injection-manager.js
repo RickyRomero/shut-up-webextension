@@ -69,7 +69,7 @@ class InjectionManager { // eslint-disable-line no-unused-vars
       if (enable) {
         node.setAttribute('href', `data:text/css;base64,${this._stylesheet}`)
       } else {
-        node.removeAttribute('href')
+        node.setAttribute('href', 'data:text/css;base64,IA==')
       }
     })
   }
