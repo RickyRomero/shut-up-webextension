@@ -1,0 +1,116 @@
+{
+  "product_name": {
+    "message": "Shut Up"
+  },
+  "manifest_description": {
+    "message": "多くの人気ウェブサイトでコメント設定を切り替えられます。"
+  },
+  "toggle_comments_menu": {
+    "message": "コメント設定を切り替える"
+  },
+  "automatic_whitelisting": {
+    "message": "どこでコメントを有効化させたかお知ら\u2060せ\u2060す\u2060る"
+  },
+  "incognito_note": {
+    "message": "シークレットタブを使用中は、このオプションは無視されます。"
+  },
+  "show_item_in_context_menu": {
+    "message": "コンテキスト メニューに表示させる"
+  },
+  "change_keyboard_shortcut": {
+    "message": "キーボードショートカットを変更する"
+  },
+  "keyboard_shortcut": {
+    "message": "現在の $shortcut$",
+    "placeholders": {
+      "shortcut": {
+        "content": "$1",
+        "example": "Ctrl+Shift+Z"
+      }
+    }
+  },
+  "keyboard_shortcut_disabled": {
+    "message": "現在、有効化されていません"
+  },
+  "force_stylesheet_update": {
+    "message": "強制的にスタイルシートを更新する"
+  },
+  "last_updated_period_moments": {
+    "message": "更新されたばかりです"
+  },
+  "last_updated_period_minutes": {
+    "message": "最後に更新したのは $plural$ 分前です",
+    "placeholders": {
+      "plural": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "last_updated_period_hour": {
+    "message": "最後に更新したのは1時間前です"
+  },
+  "last_updated_period_hours": {
+    "message": "最後に更新したのは $plural$ 時間前です",
+    "placeholders": {
+      "plural": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "last_updated_period_day": {
+    "message": "最後に更新したのは昨日です"
+  },
+  "last_updated_period_days": {
+    "message": "最後に更新したのは $plural$ 日前です",
+    "placeholders": {
+      "plural": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "last_updated_period_week": {
+    "message": "最後に更新したのは1週間以上前です"
+  },
+  "updating": {
+    "message": "更新しています..."
+  },
+  "error_no_internet_connection": {
+    "message": "stevenf.com へ接続できませんでした。インターネットに接続されているかご確認ください。"
+  },
+  "error_unexpected_response": {
+    "message": "予期しない反応が返されました。少し後に、もう一度お試しください。"
+  },
+  "name_version_copyright_ricky": {
+    "message": "$name$ $version$ ©2011 - 2017 $ricky_link$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Shut Up"
+      },
+      "version": {
+        "content": "$2",
+        "example": "3.0"
+      },
+      "ricky_link": {
+        "content": "<a href=\"https://rickyromero.com/\">Ricky Romero</a>"
+      }
+    }
+  },
+  "copyright_steven": {
+    "message": "shutup.css ©2010 - 2017 $steven_link$ および $contributors_link$",
+    "placeholders": {
+      "steven_link": {
+        "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"
+      },
+      "contributors_link": {
+        "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">寄稿者</a>"
+      }
+    }
+  },
+  "release_notes": {
+    "message": "リリース ノート"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "product_name": {
+    "message": "Shut Up."
+  },
+  "manifest_description": {
+    "message": "Schaltet Kommentare aus vielen beliebten Websites ein/aus."
+  },
+  "toggle_comments_menu": {
+    "message": "Kommentare ein-/ausschalten"
+  },
+  "automatic_whitelisting": {
+    "message": "Erinnern, wo ich Kommentare aktiviert habe"
+  },
+  "incognito_note": {
+    "message": "Diese Option wird in Inkognito-Tabs ignoriert."
+  },
+  "show_item_in_context_menu": {
+    "message": "Im Kontextmenü anzeigen"
+  },
+  "change_keyboard_shortcut": {
+    "message": "Tastaturkürzel ändern"
+  },
+  "keyboard_shortcut": {
+    "message": "Aktuell $shortcut$",
+    "placeholders": {
+      "shortcut": {
+        "content": "$1",
+        "example": "Ctrl+Shift+Z"
+      }
+    }
+  },
+  "keyboard_shortcut_disabled": {
+    "message": "Aktuell nicht aktiviert"
+  },
+  "force_stylesheet_update": {
+    "message": "Stylesheet-Aktualisierung erzwingen"
+  },
+  "last_updated_period_moments": {
+    "message": "Letzte Aktualisierung vor wenigen Augenblicken"
+  },
+  "last_updated_period_minutes": {
+    "message": "Letzte Aktualisierung vor $plural$ Minuten",
+    "placeholders": {
+      "plural": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "last_updated_period_hour": {
+    "message": "Letzte Aktualisierung vor 1 Stunde"
+  },
+  "last_updated_period_hours": {
+    "message": "Letzte Aktualisierung vor $plural$ Stunden",
+    "placeholders": {
+      "plural": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "last_updated_period_day": {
+    "message": "Letzte Aktualisierung gestern"
+  },
+  "last_updated_period_days": {
+    "message": "Letzte Aktualisierung vor $plural$ Tagen",
+    "placeholders": {
+      "plural": {
+        "content": "$1",
+        "example": "15"
+      }
+    }
+  },
+  "last_updated_period_week": {
+    "message": "Letzte Aktualisierung vor mehr als einer Woche"
+  },
+  "updating": {
+    "message": "Wird aktualisiert..."
+  },
+  "error_no_internet_connection": {
+    "message": "Verbindung zu stevenf.com nicht möglich. Überprüfen Sie Ihre Internetverbindung."
+  },
+  "error_unexpected_response": {
+    "message": "Unerwartete Antwort erhalten. Versuchen Sie in einem Augenblick noch einmal."
+  },
+  "name_version_copyright_ricky": {
+    "message": "$name$ $version$ © 2011-2017 $ricky_link$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Shut Up"
+      },
+      "version": {
+        "content": "$2",
+        "example": "3.0"
+      },
+      "ricky_link": {
+        "content": "<a href=\"https://rickyromero.com/\">Ricky Romero</a>"
+      }
+    }
+  },
+  "copyright_steven": {
+    "message": "shutup.css © 2010 - 2017 $steven_link$ und $contributors_link$",
+    "placeholders": {
+      "steven_link": {
+        "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"
+      },
+      "contributors_link": {
+        "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">mitwirkende</a>"
+      }
+    }
+  },
+  "release_notes": {
+    "message": "Versionshinweise"
+  }
+}
