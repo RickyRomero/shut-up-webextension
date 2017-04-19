@@ -3,10 +3,10 @@
     "message": "Shut Up"
   },
   "manifest_description": {
-    "message": "Afficher les commentaires sur de nombreux sites populaires."
+    "message": "Cacher ou afficher les commentaires sur de nombreux sites populaires."
   },
   "toggle_comments_menu": {
-    "message": "Afficher les commentaires"
+    "message": "Cacher ou afficher les commentaires"
   },
   "automatic_whitelisting": {
     "message": "Se rappeler où j'ai activé les commentaires"
