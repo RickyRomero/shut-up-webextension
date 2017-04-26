@@ -170,7 +170,8 @@ class OptionsPage {
       'week': day * 7
     }
 
-    let timeDelta = (now - new Date((await this.stylesheet.data()).lastSuccess))
+    let lastSuccess = new Date((await this.stylesheet.data()).lastSuccess)
+    let timeDelta = (now - lastSuccess)
     let i18nKey = 'last_updated_period_'
     for (let threshold in deltaThresholds) {
       if (timeDelta < deltaThresholds[threshold]) {
@@ -181,6 +182,14 @@ class OptionsPage {
     }
 
     el.innerText = chrome.i18n.getMessage(i18nKey, [timeDelta])
+    el.setAttribute('title', lastSuccess.toLocaleTimeString(navigator.language, {
+      weekday: 'short',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit'
+    }))
   }
 
   setMainCopyrightStr (el) {

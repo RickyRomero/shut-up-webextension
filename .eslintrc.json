@@ -16,6 +16,7 @@
     "Keyboard": true,
     "MessageQueue": true,
     "Options": true,
+    "PlatformInfo": true,
     "PrivateEventBridge": true,
     "Storage": true,
     "Stylesheet": true,
