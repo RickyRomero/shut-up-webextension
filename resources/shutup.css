@@ -279,6 +279,7 @@ p.theme-comments,
 
 .fb-comments,
 .UFIComment,
+fb\:comments,
 
 /* buzzfeed */
 
@@ -287,6 +288,7 @@ p.theme-comments,
 #facebook_conversations,
 #fb_comments_wrapper,
 #fb_comments_control,
+.fb-comments-area,
 #respond,
 #badge_voting,
 
@@ -493,6 +495,7 @@ div.comments-bar,
 
 /* Medium */
 .responsesWrapper,
+.responsesStreamWrapper,
 
 /* G1 and Globo */
 #boxComentarios,
@@ -539,6 +542,12 @@ div.comments-bar,
 
 /* USgamer paragraph comment buttons */
 a.button.annotation-count,
+
+/* Twitch Chat */
+#right-column .chat-room,
+
+/* YouTube Live Chat */
+#watch-sidebar-live-chat,
 
 /* ...misc... */
 
