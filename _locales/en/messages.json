@@ -47,7 +47,7 @@
 
   "force_stylesheet_update": {
     "message": "Force stylesheet update",
-    "description": "This link refreshes shutup.css from stevenf.com manually."
+    "description": "This link refreshes shutup.css from rickyromero.com manually."
   },
 
   "last_updated_period_moments": {
@@ -103,7 +103,7 @@
   },
 
   "error_no_internet_connection": {
-    "message": "Couldn’t connect to stevenf.com. Check your Internet connection.",
+    "message": "Couldn’t connect to rickyromero.com. Check your Internet connection.",
     "description": "This error is displayed if we can't reach the update server when manually forcing a stylesheet update."
   },
   "error_unexpected_response": {

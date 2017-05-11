@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name":             "__MSG_product_name__",
-  "version":          "3.0.2",
+  "version":          "3.0.3",
   "description":      "__MSG_manifest_description__",
 
   "author":           "Ricky Romero",
@@ -13,7 +13,7 @@
   "offline_enabled":         true,
 
   "permissions":             ["tabs", "storage", "contextMenus"],
-  "content_security_policy": "default-src 'self' https://stevenf.com",
+  "content_security_policy": "default-src 'self' https://rickyromero.com",
   "incognito":               "split",
 
   "icons": {
