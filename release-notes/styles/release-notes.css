@@ -1,0 +1,87 @@
+:root {
+  --c-bg:               #131415;
+  --c-bg-light:         #2a2630;
+  --c-text:             white;
+  --c-text-secondary:   #5c6166;
+  --c-accent:           #ff205f;
+  --c-accent-hover:     #ff6893;
+  --c-accent-secondary: #862440;
+  --c-error:            #ffb400;
+  --c-success:          #00ff7e;
+  --c-switch:           var(--c-text);
+
+  --fs-main:            1.6rem;
+  --fs-small:           1.4rem;
+
+  --leading-factor:     1.48;
+
+  font-size: 62.5% !important;
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--c-bg);
+  color: var(--c-text);
+}
+
+body {
+  font: var(--fs-main)/calc(var(--fs-main) * var(--leading-factor)) -apple-system, BlinkMacSystemFont, sans-serif;
+  width: 800px;
+  margin: 0 auto;
+}
+
+h4 {
+  font-size: 3.2rem;
+  font-weight: 300;
+
+  border-bottom: 1px solid var(--c-accent);
+
+  padding-bottom: 1.0rem;
+  margin-top: 6.0rem;
+  margin-bottom: 0;
+}
+
+time {
+  color: var(--c-text-secondary);
+  margin-bottom: 1.0rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--c-accent);
+}
+
+a:hover {
+  color: var(--c-accent-hover);
+}
+
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+ul ul {
+  font-size: var(--fs-small);
+  line-height: calc(var(--fs-small) * var(--leading-factor));
+}
+
+html.chrome .safari {
+  display: none;
+}
+
+svg {
+  display: block;
+  margin: 10.0rem auto;
+  width: 39.64883424px;
+  height: 60px;
+  color: var(--c-bg-light);
+  fill: var(--c-bg-light);
+
+  transition-property: color, fill;
+  transition-timing-function: linear;
+  transition-duration: 200ms, 500ms;
+}
+
+a:hover svg {
+  color: var(--c-accent-hover);
+  fill: var(--c-accent);
+}

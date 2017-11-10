@@ -94,6 +94,10 @@
 
 .commentarea,
 
+/* Designer News */
+
+#story-comments,
+
 /* OregonLive and generic "comment" class */
 
 .comment,
@@ -545,9 +549,25 @@ a.button.annotation-count,
 
 /* Twitch Chat */
 #right-column .chat-room,
+.channel-page__right-column .chat__container,
+.chat-pane .chat-pane__chat-list,
 
 /* YouTube Live Chat */
 #watch-sidebar-live-chat,
+ytd-live-chat-frame,
+
+/* GoComics */
+.js-comments-thread-container,
+
+/* Patreon */
+[data-test-tag="comment-row"],
+
+/*
+ * Instagram.
+ * Professional driver, closed course. Do not attempt.
+ */
+span#react-root article section + div > ul > li > a.notranslate,
+span#react-root article section + div > ul > li > a.notranslate + span,
 
 /* ...misc... */
 
