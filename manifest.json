@@ -58,6 +58,7 @@
         "https://*/*"
       ],
       "js": [
+        "scripts/utils.js",
         "scripts/injected/injection-manager.js",
         "scripts/event-bridge.js",
         "scripts/injected/injected-event-bridge.js",

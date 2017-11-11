@@ -156,10 +156,11 @@ class Keyboard { // eslint-disable-line no-unused-vars
       'Down Arrow': {default: 'Down', mac: '\u21e3'},
       'Left Arrow': {default: 'Left', mac: '\u21e0'},
       'Right Arrow': {default: 'Right', mac: '\u21e2'},
-      'MediaNextTrack': {default: 'AAAAAAAAAAAAAAAA', mac: 'aaaaaaaaaaaaaa'},
-      'MediaPlayPause': {default: 'AAAAAAAAAAAAAAAA', mac: 'aaaaaaaaaaaaaa'},
-      'MediaPrevTrack': {default: 'AAAAAAAAAAAAAAAA', mac: 'aaaaaaaaaaaaaa'},
-      'MediaStop': {default: 'AAAAAAAAAAAAAAAA', mac: 'aaaaaaaaaaaaaa'}
+
+      'MediaNextTrack': {default: 'MediaNextTrack'},
+      'MediaPlayPause': {default: 'MediaPlayPause'},
+      'MediaPrevTrack': {default: 'MediaPrevTrack'},
+      'MediaStop': {default: 'MediaStop'}
     }
 
     if (translations[key] === undefined) {
@@ -180,4 +181,22 @@ class PlatformInfo {
       })
     })
   }
+}
+
+let webBrowser = {
+  name: (function () {
+    if ((!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) {
+      return 'Opera'
+    } else if (typeof InstallTrigger !== 'undefined') {
+      return 'Firefox'
+    } else if (/constructor/i.test(window.HTMLElement) ||
+        (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] ||
+        (typeof safari !== 'undefined' && safari.pushNotification))) {
+      return 'Safari'
+    } else if (!!window.StyleMedia) {
+      return 'Edge'
+    } else {
+      return 'Chrome'
+    }
+  })()
 }

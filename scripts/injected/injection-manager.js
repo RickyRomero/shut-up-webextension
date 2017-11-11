@@ -65,11 +65,10 @@ class InjectionManager { // eslint-disable-line no-unused-vars
   }
 
   updateAllLinkNodes (enable) {
-    let isFirefox = typeof InstallTrigger !== 'undefined'
     let activeURI
     let inactiveURI
 
-    if (isFirefox) {
+    if (webBrowser.name === 'Firefox') {
       activeURI = chrome.extension.getURL('/resources/shutup.css')
       inactiveURI = chrome.extension.getURL('/resources/null.css')
     } else {

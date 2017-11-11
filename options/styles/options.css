@@ -34,7 +34,6 @@ html {
   background: radial-gradient(circle 70rem
     at var(--p-gradient-x-__MSG_@@bidi_dir__) 50%,
     var(--c-bg-light) 0%, var(--c-bg) 100%);
-  color: var(--c-text);
   overflow-x: hidden;
 }
 
@@ -114,6 +113,7 @@ label {
 
 label span {
   width: 80%;
+  color: var(--c-text);
 }
 
 input[type=checkbox], input[type=checkbox]:after {
@@ -287,6 +287,7 @@ form a {
   font-weight: bold;
   text-align: center;
   letter-spacing: 0.08rem;
+  color: var(--c-text);
 
   position: absolute;
   left: 0;
@@ -315,4 +316,8 @@ form a {
   padding-top: 2px;
   color: var(--c-text-secondary);
   opacity: 1.0;
+}
+
+.firefox .change-shortcut, .firefox .update-check {
+  display: none;
 }
