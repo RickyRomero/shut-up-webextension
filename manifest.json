@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name":             "__MSG_product_name__",
-  "version":          "3.0.3",
+  "version":          "4.0",
   "description":      "__MSG_manifest_description__",
 
   "author":           "Ricky Romero",
@@ -27,8 +27,8 @@
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
-        "default":    "Ctrl+Shift+Z",
-        "mac":     "Command+Shift+Z"
+        "default":    "Ctrl+Shift+X",
+        "mac":     "Command+Shift+X"
       }
     }
   },
@@ -67,6 +67,11 @@
       "all_frames":        true,
       "match_about_blank": true
     }
+  ],
+
+  "web_accessible_resources": [
+    "resources/shutup.css",
+    "resources/null.css"
   ],
 
   "browser_action": {

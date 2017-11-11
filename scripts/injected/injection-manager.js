@@ -19,7 +19,7 @@ class InjectionManager { // eslint-disable-line no-unused-vars
   watchDocument (mutations) {
     mutations.forEach((mutation) => {
       for (let node of mutation.addedNodes) {
-        if (node.constructor === HTMLHeadElement) {
+        if (node.nodeName === 'HEAD') {
           this.head = node
           this.init()
 
@@ -65,12 +65,20 @@ class InjectionManager { // eslint-disable-line no-unused-vars
   }
 
   updateAllLinkNodes (enable) {
+    let isFirefox = typeof InstallTrigger !== 'undefined'
+    let activeURI
+    let inactiveURI
+
+    if (isFirefox) {
+      activeURI = chrome.extension.getURL('/resources/shutup.css')
+      inactiveURI = chrome.extension.getURL('/resources/null.css')
+    } else {
+      activeURI = `data:text/css;base64,${this._stylesheet}`
+      inactiveURI = 'data:text/css;base64,IA=='
+    }
+
     this.linkNodes.forEach((node) => {
-      if (enable) {
-        node.setAttribute('href', `data:text/css;base64,${this._stylesheet}`)
-      } else {
-        node.setAttribute('href', 'data:text/css;base64,IA==')
-      }
+      node.setAttribute('href', enable ? activeURI : inactiveURI)
     })
   }
 
