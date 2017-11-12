@@ -2,6 +2,8 @@
 
 <html>
   <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../styles/extension.css" />
     <link rel="stylesheet" href="styles/release-notes.css" />
     <link rel="shortcut icon" href="../images/favicon.png" />
 
@@ -13,10 +15,13 @@
     <article class="chrome firefox">
       <h4>Shut Up 4.0</h4>
       <time datetime="2017-11-14">Released November 14<sup>th</sup>, 2017</time>
-      <p>Shut Up is now available on Firefox.</p>
+      <p>Shut Up is now available on Firefox.*</p>
       <ul>
-        <li>Changed default keyboard shortcut to X.</li>
+        <li>Changed the default keyboard shortcut to <span class="default-shortcut-40">Command+Shift+X</span>.</li>
       </ul>
+      <aside>
+        <p>* I had to remove a couple of features in the Firefox version. It isn't possible to customize keyboard shortcuts in Firefox extensions. The stylesheet update feature is also disabled, <a href="https://developer.mozilla.org/en-US/Add-ons/AMO/Policy/Reviews#Policies">per <abbr title="addons.mozilla.org">AMO</abbr> policy</a>. Otherwise, it's identical to the Chrome version.</p>
+      </aside>
     </article>
 
     <!-- 3.0.3 -->
@@ -145,6 +150,7 @@
       </svg>
     </a>
 
+    <script type="text/javascript" charset="utf-8" src="../scripts/utils.js"></script>
     <script type="text/javascript" charset="utf-8" src="scripts/release-notes.js"></script>
   </body>
 </html>

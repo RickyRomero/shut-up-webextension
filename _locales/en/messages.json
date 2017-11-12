@@ -20,6 +20,10 @@
     "message": "This option is ignored in incognito tabs.",
     "description": "The extension won't remember if you enable comments on a site in an incognito window."
   },
+  "private_browsing_note": {
+    "message": "This option is ignored during Private Browsing.",
+    "description": "The extension won't remember if you enable comments on a site in Firefox's Private Browsing mode."
+  },
 
   "show_item_in_context_menu": {
     "message": "Show in context menu",
@@ -36,7 +40,17 @@
     "placeholders": {
       "shortcut": {
         "content": "$1",
-        "example": "Ctrl+Shift+Z"
+        "example": "Ctrl+Shift+X"
+      }
+    }
+  },
+  "keyboard_shortcut_not_configurable": {
+    "message": "You can also toggle comments by pressing $shortcut$.",
+    "description": "Firefox users can't change the keyboard shortcut, so this is displayed instead for those users.",
+    "placeholders": {
+      "shortcut": {
+        "content": "$1",
+        "example": "Ctrl+Shift+X"
       }
     }
   },

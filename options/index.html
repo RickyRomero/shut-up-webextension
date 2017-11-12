@@ -2,7 +2,9 @@
 
 <html>
   <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../styles/extension.css" />
     <link rel="stylesheet" href="styles/options.css" />
     <link id="favicon" rel="icon" type="image/png" href="../images/favicon.png" />
 
@@ -18,14 +20,16 @@
         <form>
           <div class="stack">
             <label><input class="whitelist" type="checkbox"><span data-i18n="automatic_whitelisting"></span></label>
-            <aside class="note" data-i18n="incognito_note"></aside>
+            <aside class="incognito note" data-i18n="incognito_note"></aside>
+            <aside class="private-browsing note" data-i18n="private_browsing_note"></aside>
           </div>
           <div class="bottom-gap">
             <label><input class="context-menu" type="checkbox"><span data-i18n="show_item_in_context_menu"></span></label>
           </div>
           <div>
             <a href="chrome://extensions/configureCommands" class="change-shortcut" href="#" data-i18n="change_keyboard_shortcut"></a>
-            <aside data-i18n="keyboard_shortcut"></aside>
+            <aside class="keyboard-shortcut" data-i18n="keyboard_shortcut"></aside>
+            <aside class="keyboard-shortcut-not-configurable" data-i18n="keyboard_shortcut_not_configurable"></aside>
           </div>
           <div class="update-check">
             <div class="update-controls">

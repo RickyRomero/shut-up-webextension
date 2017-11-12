@@ -44,6 +44,7 @@ class OptionsPage {
   internationalize (el) {
     let i18nMappings = {
       'keyboard_shortcut': this.setKeyboardShortcutStr,
+      'keyboard_shortcut_not_configurable': this.setKeyboardShortcutStr,
       'last_updated_period': this.setLastUpdatedStr,
       'name_version_copyright_ricky': this.setMainCopyrightStr,
       'copyright_steven': this.setCSSCopyrightStr,

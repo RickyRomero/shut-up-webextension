@@ -1,1 +1,21 @@
-document.querySelector('html').classList.add(navigator.vendor === 'Google Inc.' ? 'chrome' : 'safari')
+(async function () {
+  document.querySelector('html').classList.add(navigator.vendor === 'Google Inc.' ? 'chrome' : 'safari')
+
+  document.querySelector('.default-shortcut-40').innerText = (
+    await setKeyboardShortcutStr({
+      default: 'Ctrl+Shift+X',
+      mac: 'Command+Shift+X'
+    })
+  )
+})()
+
+
+
+async function setKeyboardShortcutStr (shortcut) {
+  let platform = (await PlatformInfo.get()).os
+  if (!shortcut[platform]) {
+    platform = 'default'
+  }
+
+  return (await Keyboard.conformToPlatform(shortcut[platform]))
+}
