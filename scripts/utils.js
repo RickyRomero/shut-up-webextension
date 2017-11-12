@@ -184,6 +184,7 @@ class PlatformInfo {
 }
 
 let webBrowser = {
+  // https://stackoverflow.com/a/9851769/362800
   name: (function () {
     if ((!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) {
       return 'Opera'

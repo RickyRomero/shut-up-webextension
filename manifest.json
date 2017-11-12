@@ -13,7 +13,7 @@
   "offline_enabled":         true,
 
   "permissions":             ["tabs", "storage", "contextMenus"],
-  "content_security_policy": "default-src 'self' https://rickyromero.com",
+  "content_security_policy": "default-src 'self'; connect-src https://rickyromero.com",
   "incognito":               "split",
 
   "icons": {

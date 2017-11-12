@@ -28,6 +28,10 @@ class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
   }
 
   async fetch (force, callback) {
+    if (webBrowser.name === 'Firefox') {
+      return false // Feature disabled per AMO policy
+    }
+
     let cbOnce = function (err) {
       if (callback) {
         callback(err)
