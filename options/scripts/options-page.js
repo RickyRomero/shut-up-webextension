@@ -157,8 +157,6 @@ class OptionsPage {
 
     return nodes
 
-
-
     function processTextNode (text) {
       return document.createTextNode(text[0])
     }
@@ -166,7 +164,7 @@ class OptionsPage {
     function processElement (matches) {
       let tagProperties = matches[1]
       let tagName = tagProperties.split(/\s+/)[0]
-      let tagAttributes = tagProperties.match(/[a-z\-]+="[^"]+"/g)
+      let tagAttributes = tagProperties.match(/[a-z-]+="[^"]+"/g)
       let tagContents = self.sanitizeHTML(matches[2])
       let node
 
@@ -258,7 +256,7 @@ class OptionsPage {
     this.sanitizeHTML(
       chrome.i18n.getMessage('name_version_copyright_ricky', [productName, version])
     ).forEach((child) => el.appendChild(child))
-    
+
     el.dataset.i18nLocked = '\ud83d\udd12'
   }
 

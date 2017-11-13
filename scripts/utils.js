@@ -183,18 +183,18 @@ class PlatformInfo {
   }
 }
 
-let webBrowser = {
+let webBrowser = { // eslint-disable-line no-unused-vars
   // https://stackoverflow.com/a/9851769/362800
   name: (function () {
-    if ((!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) {
+    if ((!!window.opr && !!window.opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) {
       return 'Opera'
     } else if (typeof InstallTrigger !== 'undefined') {
       return 'Firefox'
     } else if (/constructor/i.test(window.HTMLElement) ||
-        (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] ||
-        (typeof safari !== 'undefined' && safari.pushNotification))) {
+        (function (p) { return p.toString() === '[object SafariRemoteNotification]' })(!window['safari'] ||
+        (typeof window.safari !== 'undefined' && window.safari.pushNotification))) {
       return 'Safari'
-    } else if (!!window.StyleMedia) {
+    } else if (window.StyleMedia) {
       return 'Edge'
     } else {
       return 'Chrome'

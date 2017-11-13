@@ -26,13 +26,11 @@
   })
 })()
 
-
-
 async function setKeyboardShortcutStr (shortcut) {
   let platform = (await PlatformInfo.get()).os
   if (!shortcut[platform]) {
     platform = 'default'
   }
 
-  return (await Keyboard.conformToPlatform(shortcut[platform]))
+  return Keyboard.conformToPlatform(shortcut[platform])
 }

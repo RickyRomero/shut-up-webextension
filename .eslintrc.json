@@ -22,6 +22,7 @@
     "Stylesheet": true,
     "UIBridge": true,
     "Utils": true,
+    "webBrowser": true,
     "WebRequest": true,
     "Whitelist": true
   }
