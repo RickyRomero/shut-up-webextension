@@ -138,6 +138,56 @@ class OptionsPage {
     $('div.error').classList.add('hidden')
   }
 
+  sanitizeHTML (str) {
+    let self = this
+    let nodes = []
+    let processedStr = str
+    let textNodeMatch = /^[^<]+/
+    let elementMatch = /^<([^>]+)>([^<]+)<\/[^>]+>/
+
+    while (processedStr.length) {
+      if (textNodeMatch.test(processedStr)) {
+        nodes.push(processTextNode(processedStr.match(textNodeMatch)))
+        processedStr = processedStr.replace(textNodeMatch, '')
+      } else if (elementMatch.test(processedStr)) {
+        nodes.push(processElement(processedStr.match(elementMatch)))
+        processedStr = processedStr.replace(elementMatch, '')
+      }
+    }
+
+    return nodes
+
+
+
+    function processTextNode (text) {
+      return document.createTextNode(text[0])
+    }
+
+    function processElement (matches) {
+      let tagProperties = matches[1]
+      let tagName = tagProperties.split(/\s+/)[0]
+      let tagAttributes = tagProperties.match(/[a-z\-]+="[^"]+"/g)
+      let tagContents = self.sanitizeHTML(matches[2])
+      let node
+
+      if (tagName === 'a') {
+        node = document.createElement(tagName)
+        tagAttributes.forEach((attr) => {
+          let keyValue = attr.split('="')
+          let attrKey = keyValue[0]
+          let attrValue = keyValue[1].substr(0, keyValue[1].length - 1)
+          node.setAttribute(attrKey, attrValue)
+        })
+
+        tagContents.forEach(child => node.appendChild(child))
+      } else {
+        node = document.createTextNode('')
+      }
+
+      return node
+    }
+  }
+
   async setKeyboardShortcutStr (el) {
     chrome.commands.getAll(async function (commands) {
       let shortcut = commands[0].shortcut
@@ -205,12 +255,17 @@ class OptionsPage {
     let productName = chrome.i18n.getMessage('product_name')
     let version = chrome.runtime.getManifest().version
 
-    el.innerHTML = chrome.i18n.getMessage('name_version_copyright_ricky', [productName, version])
+    this.sanitizeHTML(
+      chrome.i18n.getMessage('name_version_copyright_ricky', [productName, version])
+    ).forEach((child) => el.appendChild(child))
+    
     el.dataset.i18nLocked = '\ud83d\udd12'
   }
 
   setCSSCopyrightStr (el) {
-    el.innerHTML = chrome.i18n.getMessage('copyright_steven')
+    this.sanitizeHTML(
+      chrome.i18n.getMessage('copyright_steven')
+    ).forEach((child) => el.appendChild(child))
     el.dataset.i18nLocked = '\ud83d\udd12'
   }
 }
