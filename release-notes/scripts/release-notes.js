@@ -1,5 +1,9 @@
 (async function () {
   document.querySelector('html').classList.add(webBrowser.name.toLowerCase())
+  document.querySelector('.insignia').addEventListener('click', (ev) => {
+    ev.preventDefault()
+    window.location.href = 'https://rickyromero.com/'
+  })
 
   document.querySelector('.default-shortcut-40').innerText = (
     await setKeyboardShortcutStr({

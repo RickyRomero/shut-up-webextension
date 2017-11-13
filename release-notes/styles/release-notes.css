@@ -58,6 +58,7 @@ html.chrome .safari {
 }
 
 svg {
+  cursor: pointer;
   display: block;
   margin: 10.0rem auto;
   width: 39.64883424px;
@@ -70,7 +71,7 @@ svg {
   transition-duration: 200ms, 500ms;
 }
 
-a:hover svg {
+svg:hover {
   color: var(--c-accent-hover);
   fill: var(--c-accent);
 }
