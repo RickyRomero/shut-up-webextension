@@ -26,6 +26,13 @@ class OptionsPage {
     this.suppressUpdates = false
     this.updatePage()
 
+    if (webBrowser.name === 'Firefox') {
+      document.querySelectorAll('input[type=checkbox]').forEach((el) => {
+        let span = document.createElement('span')
+        el.parentNode.insertBefore(span, el.nextSibling)
+      })
+    }
+
     let egg = new Egg() // eslint-disable-line no-unused-vars
   }
 

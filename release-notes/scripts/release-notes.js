@@ -1,5 +1,5 @@
 (async function () {
-  document.querySelector('html').classList.add(navigator.vendor === 'Google Inc.' ? 'chrome' : 'safari')
+  document.querySelector('html').classList.add(webBrowser.name.toLowerCase())
 
   document.querySelector('.default-shortcut-40').innerText = (
     await setKeyboardShortcutStr({
