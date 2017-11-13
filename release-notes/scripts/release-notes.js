@@ -11,6 +11,19 @@
       mac: 'Command+Shift+X'
     })
   )
+
+  document.querySelectorAll('article').forEach((el) => {
+    let releases = document.createElement('span')
+    releases.classList.add('release-tags')
+    el.className.split(/\s+/).forEach((browser) => {
+      let tag = document.createElement('span')
+      tag.classList.add('release-tag')
+      tag.innerText = browser
+
+      releases.appendChild(tag)
+    })
+    el.querySelector('h4').appendChild(releases)
+  })
 })()
 
 

@@ -10,6 +10,10 @@ body {
 }
 
 h4 {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+
   font-size: 3.2rem;
   font-weight: 300;
 
@@ -53,10 +57,6 @@ aside a {
   font-weight: bold;
 }
 
-html.chrome .safari {
-  display: none;
-}
-
 svg {
   cursor: pointer;
   display: block;
@@ -74,4 +74,25 @@ svg {
 svg:hover {
   color: var(--c-accent-hover);
   fill: var(--c-accent);
+}
+
+.release-tags {
+  display: flex;
+  flex-direction: row;
+
+  margin-left: 1.5rem;
+
+  text-transform: uppercase;
+  font-size: var(--fs-small);
+  font-weight: bold;
+  color: var(--c-text-secondary);
+}
+
+.release-tag {
+  display: block;
+  margin-right: 1.0rem;
+}
+
+.release-tag:last-child {
+  margin-right: 0;
 }
