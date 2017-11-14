@@ -14,6 +14,9 @@
   "incognito_note": {
     "message": "這個選項在隱身標籤頁中忽略。"
   },
+  "private_browsing_note": {
+    "message": "這個選項在私密瀏覽過程中忽略。"
+  },
   "show_item_in_context_menu": {
     "message": "顯示在內容菜單"
   },
@@ -25,7 +28,16 @@
     "placeholders": {
       "shortcut": {
         "content": "$1",
-        "example": "Ctrl+Shift+Z"
+        "example": "Ctrl+Shift+X"
+      }
+    }
+  },
+  "keyboard_shortcut_not_configurable": {
+    "message": "您也可以按$shortcut$切換評論。",
+    "placeholders": {
+      "shortcut": {
+        "content": "$1",
+        "example": "Ctrl+Shift+X"
       }
     }
   },

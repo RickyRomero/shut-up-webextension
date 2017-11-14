@@ -14,6 +14,9 @@
   "incognito_note": {
     "message": "يتم تجاهل هذا الخيار في علامات تبويب التصفح الخفي"
   },
+  "private_browsing_note": {
+    "message": "يتم تجاهل هذا الخيار أثناء التصفح الخاص."
+  },
   "show_item_in_context_menu": {
     "message": "اعرض في قائمة السياق"
   },
@@ -25,7 +28,16 @@
     "placeholders": {
       "shortcut": {
         "content": "$1",
-        "example": "Ctrl+Shift+Z"
+        "example": "Ctrl+Shift+X"
+      }
+    }
+  },
+  "keyboard_shortcut_not_configurable": {
+    "message": "يمكنك أيضًا التبديل بين المستندات بالضغط على $shortcut$.",
+    "placeholders": {
+      "shortcut": {
+        "content": "$1",
+        "example": "Ctrl+Shift+X"
       }
     }
   },
@@ -78,7 +90,7 @@
     "message": "جاري التحديث ..."
   },
   "error_no_internet_connection": {
-    "message": "تعذر الاتصال بـ rickyromero.com. تفقد اتصال الإنترنت الخاص بك."
+    "message": "تعذر الاتصال بـ rickyromero.com. تحقق من اتصالك بالإنترنت."
   },
   "error_unexpected_response": {
     "message": "حصلت على رد غير متوقع. حاول ثانية في وقت لاحق."

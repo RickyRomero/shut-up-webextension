@@ -14,6 +14,9 @@
   "incognito_note": {
     "message": "Cette option est ignorée dans les onglets de navigation privée."
   },
+  "private_browsing_note": {
+    "message": "Cette option est ignorée lors de la navigation privée."
+  },
   "show_item_in_context_menu": {
     "message": "Afficher dans le menu contextuel"
   },
@@ -25,7 +28,16 @@
     "placeholders": {
       "shortcut": {
         "content": "$1",
-        "example": "Ctrl+Shift+Z"
+        "example": "Ctrl+Shift+X"
+      }
+    }
+  },
+  "keyboard_shortcut_not_configurable": {
+    "message": "Vous pouvez également basculer sur les commentaires en appuyant sur $shortcut$.",
+    "placeholders": {
+      "shortcut": {
+        "content": "$1",
+        "example": "Ctrl+Shift+X"
       }
     }
   },
