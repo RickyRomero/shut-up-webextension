@@ -14,6 +14,9 @@
   "incognito_note": {
     "message": "Diese Option wird in Inkognito-Tabs ignoriert."
   },
+  "private_browsing_note": {
+    "message": "Diese Option wird beim Privaten Browsing ignoriert."
+  },
   "show_item_in_context_menu": {
     "message": "Im Kontextmenü anzeigen"
   },
@@ -22,6 +25,15 @@
   },
   "keyboard_shortcut": {
     "message": "Aktuell $shortcut$",
+    "placeholders": {
+      "shortcut": {
+        "content": "$1",
+        "example": "Ctrl+Shift+X"
+      }
+    }
+  },
+  "keyboard_shortcut_not_configurable": {
+    "message": "Sie können auch Kommentare umschalten, indem Sie die Schaltfläche $shortcut$ drücken.",
     "placeholders": {
       "shortcut": {
         "content": "$1",
@@ -78,7 +90,7 @@
     "message": "Wird aktualisiert..."
   },
   "error_no_internet_connection": {
-    "message": "Verbindung zu rickyromero.com nicht möglich. Überprüfen Sie Ihre Internetverbindung."
+    "message": "Kann mit rickyromero.com nicht verbinden. Prüfen Sie Ihre Internetverbindung."
   },
   "error_unexpected_response": {
     "message": "Unerwartete Antwort erhalten. Versuchen Sie in einem Augenblick noch einmal."
