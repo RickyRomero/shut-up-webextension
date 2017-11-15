@@ -12,7 +12,10 @@
     "message": "Recordar los sitios en los que he activado los comentarios"
   },
   "incognito_note": {
-    "message": "Esta opción es ignorada en las pestañas de incógnito."
+    "message": "Esta opción se ignora en las pestañas de incógnito."
+  },
+  "private_browsing_note": {
+    "message": "Esta opción se ignora durante la navegación privada."
   },
   "show_item_in_context_menu": {
     "message": "Mostrar en menú contextual"
@@ -29,8 +32,17 @@
       }
     }
   },
+  "keyboard_shortcut_not_configurable": {
+    "message": "También puedes activar los comentarios pulsando $shortcut$.",
+    "placeholders": {
+      "shortcut": {
+        "content": "$1",
+        "example": "Ctrl+Shift+X"
+      }
+    }
+  },
   "keyboard_shortcut_disabled": {
-    "message": "No hay uno actualmente activado"
+    "message": "Actualmente no habilitado"
   },
   "force_stylesheet_update": {
     "message": "Forzar actualización de hoja de estilo"
@@ -60,7 +72,7 @@
     }
   },
   "last_updated_period_day": {
-    "message": "Última actualización hace 1 día"
+    "message": "Última actualización realizada ayer"
   },
   "last_updated_period_days": {
     "message": "Última actualización hace $plural$ días",
