@@ -14,6 +14,9 @@
   "incognito_note": {
     "message": "シークレットタブを使用中は、このオプションは無視されます。"
   },
+  "private_browsing_note": {
+    "message": "このオプションは、シークレット ウィンドウを使用中の際には適用されません。"
+  },
   "show_item_in_context_menu": {
     "message": "コンテキスト メニューに表示させる"
   },
@@ -22,6 +25,15 @@
   },
   "keyboard_shortcut": {
     "message": "現在の $shortcut$",
+    "placeholders": {
+      "shortcut": {
+        "content": "$1",
+        "example": "Ctrl+Shift+X"
+      }
+    }
+  },
+  "keyboard_shortcut_not_configurable": {
+    "message": "$shortcut$ を押すと、コメントを切り替えることができます。",
     "placeholders": {
       "shortcut": {
         "content": "$1",
