@@ -1,42 +1,30 @@
 {
   "product_name": {
-    "message": "Shut Up",
-    "description": "Don't localize this."
+    "message": "Shut Up"
   },
   "manifest_description": {
-    "message": "Toggles comments on many popular websites.",
-    "description": "This description appears in the list of installed extensions, as well as when the user is prompted to install it."
+    "message": "Toggles comments on many popular websites."
   },
   "toggle_comments_menu": {
-    "message": "Toggle Comments",
-    "description": "The title for a menu item which lets users change the comment blocking state."
+    "message": "Toggle Comments"
   },
-
   "automatic_whitelisting": {
-    "message": "Remember where I’ve enabled comments",
-    "description": "This setting controls whether, when you click the icon, the extension remembers that you wanted to show comments on that site."
+    "message": "Remember where I’ve enabled comments"
   },
   "incognito_note": {
-    "message": "This option is ignored in incognito tabs.",
-    "description": "The extension won't remember if you enable comments on a site in an incognito window."
+    "message": "This option is ignored in incognito tabs."
   },
   "private_browsing_note": {
-    "message": "This option is ignored during Private Browsing.",
-    "description": "The extension won't remember if you enable comments on a site in Firefox's Private Browsing mode."
+    "message": "This option is ignored during Private Browsing."
   },
-
   "show_item_in_context_menu": {
-    "message": "Show in context menu",
-    "description": "Adds the toggle_comments_menu key to the right-click menu on all pages."
+    "message": "Show in context menu"
   },
-
   "change_keyboard_shortcut": {
-    "message": "Change keyboard shortcut",
-    "description": "When clicked, lets users customize the keyboard shortcut used to activate the extension."
+    "message": "Change keyboard shortcut"
   },
   "keyboard_shortcut": {
     "message": "Currently $shortcut$",
-    "description": "If there's a shortcut set, we display this to the right of change_keyboard_shortcut.",
     "placeholders": {
       "shortcut": {
         "content": "$1",
@@ -46,7 +34,6 @@
   },
   "keyboard_shortcut_not_configurable": {
     "message": "You can also toggle comments by pressing $shortcut$.",
-    "description": "Firefox users can't change the keyboard shortcut, so this is displayed instead for those users.",
     "placeholders": {
       "shortcut": {
         "content": "$1",
@@ -55,22 +42,16 @@
     }
   },
   "keyboard_shortcut_disabled": {
-    "message": "Not currently enabled",
-    "description": "If there's no keyboard shortcut set, we show this to the right of change_keyboard_shortcut."
+    "message": "Not currently enabled"
   },
-
   "force_stylesheet_update": {
-    "message": "Force stylesheet update",
-    "description": "This link refreshes shutup.css from rickyromero.com manually."
+    "message": "Force stylesheet update"
   },
-
   "last_updated_period_moments": {
-    "message": "Last updated moments ago",
-    "description": "Shown if the stylesheet was just refreshed."
+    "message": "Last updated moments ago"
   },
   "last_updated_period_minutes": {
     "message": "Last updated $plural$ minutes ago",
-    "description": "Shown if the stylesheet was refreshed more than 1 minute ago.",
     "placeholders": {
       "plural": {
         "content": "$1",
@@ -79,12 +60,10 @@
     }
   },
   "last_updated_period_hour": {
-    "message": "Last updated 1 hour ago",
-    "description": "Shown if the stylesheet was refreshed 1 hour ago."
+    "message": "Last updated 1 hour ago"
   },
   "last_updated_period_hours": {
     "message": "Last updated $plural$ hours ago",
-    "description": "Shown if the stylesheet was refreshed more than 1 hour ago.",
     "placeholders": {
       "plural": {
         "content": "$1",
@@ -93,12 +72,10 @@
     }
   },
   "last_updated_period_day": {
-    "message": "Last updated yesterday",
-    "description": "Shown if the stylesheet was refreshed yesterday."
+    "message": "Last updated yesterday"
   },
   "last_updated_period_days": {
     "message": "Last updated $plural$ days ago",
-    "description": "Shown if the stylesheet was refreshed more than 1 day ago.",
     "placeholders": {
       "plural": {
         "content": "$1",
@@ -107,27 +84,19 @@
     }
   },
   "last_updated_period_week": {
-    "message": "Last updated more than a week ago",
-    "description": "Shown if the stylesheet was refreshed more than a week ago."
+    "message": "Last updated more than a week ago"
   },
-
   "updating": {
-    "message": "Updating…",
-    "description": "Shown when the user forces a stylesheet update."
+    "message": "Updating…"
   },
-
   "error_no_internet_connection": {
-    "message": "Couldn’t connect to rickyromero.com. Check your Internet connection.",
-    "description": "This error is displayed if we can't reach the update server when manually forcing a stylesheet update."
+    "message": "Couldn’t connect to rickyromero.com. Check your Internet connection."
   },
   "error_unexpected_response": {
-    "message": "Got an unexpected response. Try again in a bit.",
-    "description": "This error is displayed if we get an unexpected response when manually forcing a stylesheet update."
+    "message": "Got an unexpected response. Try again in a bit."
   },
-
   "name_version_copyright_ricky": {
-    "message": "$name$ $version$ ©2011 - 2017 $ricky_link$",
-    "description": "For example: Shut Up 3.0, followed by the copyright notice",
+    "message": "$name$ $version$ ©2011 - 2018 $ricky_link$",
     "placeholders": {
       "name": {
         "content": "$1",
@@ -143,8 +112,7 @@
     }
   },
   "copyright_steven": {
-    "message": "shutup.css ©2010 - 2017 $steven_link$ and $contributors_link$",
-    "description": "Copyright notice for shutup.css",
+    "message": "shutup.css ©2010 - 2018 $steven_link$ and $contributors_link$",
     "placeholders": {
       "steven_link": {
         "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"
@@ -155,7 +123,6 @@
     }
   },
   "release_notes": {
-    "message": "Release Notes",
-    "description": "Links to the (English-only) release notes page detailing updates to the extension."
+    "message": "Release Notes"
   }
 }
