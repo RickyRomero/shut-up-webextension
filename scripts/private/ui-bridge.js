@@ -7,11 +7,11 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   newTabCreated (tab) {
-    this.updateBrowserActionIcon(tab, true, false)
+    this.updateBrowserActionIcon(tab, null, false)
   }
 
   connectToPage (tab) {
-    this.updateBrowserActionIcon(tab, true, true)
+    this.updateBrowserActionIcon(tab, null, true)
   }
 
   toggleInjectedState (tab) {
@@ -20,31 +20,27 @@ class UIBridge { // eslint-disable-line no-unused-vars
     })
   }
 
-  // FIXME: For some reason, we don't get the correct icon on the first incognito
-  // window opened. :-(
-  updateBrowserActionIcon ({id, incognito}, state, enable) {
+  updateBrowserActionIcon ({id}, state, enable) {
+    let prefix = webBrowser.name.toLowerCase()
+    let nextState = (state === null ? 'default' : 'turn' + (state ? 'Off' : 'On'))
     let iconStates = {
+      'default': {
+        '16': 'images/browser-action/default-state.png',
+        '32': 'images/browser-action/default-state@2x.png'
+      },
       'turnOff': {
-        '16': 'images/browser-action/turn-off.png',
-        '32': 'images/browser-action/turn-off@2x.png'
+        '16': `images/browser-action/${prefix}-turn-off.png`,
+        '32': `images/browser-action/${prefix}-turn-off@2x.png`
       },
       'turnOn': {
-        '16': 'images/browser-action/turn-on.png',
-        '32': 'images/browser-action/turn-on@2x.png'
-      },
-      'turnOffIncognito': {
-        '16': 'images/browser-action/incognito-turn-off.png',
-        '32': 'images/browser-action/incognito-turn-off@2x.png'
-      },
-      'turnOnIncognito': {
-        '16': 'images/browser-action/incognito-turn-on.png',
-        '32': 'images/browser-action/incognito-turn-on@2x.png'
+        '16': `images/browser-action/${prefix}-turn-on.png`,
+        '32': `images/browser-action/${prefix}-turn-on@2x.png`
       }
     }
 
     chrome.browserAction.setIcon({
       tabId: id,
-      path: iconStates['turn' + (state ? 'Off' : 'On') + (incognito ? 'Incognito' : '')]
+      path: iconStates['turn' + (state ? 'Off' : 'On')]
     }, () => {
       chrome.browserAction[enable ? 'enable' : 'disable'](id)
     })

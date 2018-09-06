@@ -4,7 +4,7 @@
   "name":             "Shut Up: Comment Blocker",
   "short_name":       "__MSG_product_name__",
 
-  "version":          "4.0.1",
+  "version":          "4.1",
   "description":      "__MSG_manifest_description__",
 
   "author":           "Ricky Romero",
@@ -79,8 +79,8 @@
 
   "browser_action": {
     "default_icon": {
-      "16": "images/browser-action/turn-off.png",
-      "32": "images/browser-action/turn-off@2x.png"
+      "16": "images/browser-action/default-state.png",
+      "32": "images/browser-action/default-state@2x.png"
     },
     "default_title": "__MSG_product_name__"
   },
