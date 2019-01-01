@@ -96,7 +96,7 @@
     "message": "得到了一个意外响应。请稍后再试。"
   },
   "name_version_copyright_ricky": {
-    "message": "$name$ $version$ ©2011 - 2018 $ricky_link$",
+    "message": "$name$ $version$ ©2011 - 2019 $ricky_link$",
     "placeholders": {
       "name": {
         "content": "$1",
@@ -112,7 +112,7 @@
     }
   },
   "copyright_steven": {
-    "message": "shutup.css ©2010 - 2018 $steven_link$ 及 $contributors_link$",
+    "message": "shutup.css ©2010 - 2019 $steven_link$ 及 $contributors_link$",
     "placeholders": {
       "steven_link": {
         "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"

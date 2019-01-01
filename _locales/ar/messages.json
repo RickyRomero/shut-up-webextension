@@ -96,7 +96,7 @@
     "message": "حصلت على رد غير متوقع. حاول ثانية في وقت لاحق."
   },
   "name_version_copyright_ricky": {
-    "message": "$name$ $version$ © 2011-2018 $ricky_link$",
+    "message": "$name$ $version$ © 2011-2019 $ricky_link$",
     "placeholders": {
       "name": {
         "content": "$1",
@@ -112,7 +112,7 @@
     }
   },
   "copyright_steven": {
-    "message": "shutup.css ©2010 - 2018 $steven_link$ و $contributors_link$",
+    "message": "shutup.css ©2010 - 2019 $steven_link$ و $contributors_link$",
     "placeholders": {
       "steven_link": {
         "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"
