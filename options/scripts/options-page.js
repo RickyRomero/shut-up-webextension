@@ -1,4 +1,4 @@
-let $ = document.querySelector.bind(document)
+const $ = document.querySelector.bind(document)
 
 class OptionsPage {
   constructor () {
@@ -9,6 +9,19 @@ class OptionsPage {
   }
 
   async init () {
+    // HACK: Firefox 64+ doesn't respect wide options panels.
+    // Also, Chrome tries to shrink the panel as small as it'll get.
+    // To work around this, we need to listen to a transition event
+    // so we know when the CSS has been applied, then set the width
+    // to whatever the browser determined was "correct".
+    $('body').addEventListener('transitionend', () => {
+      const w = Math.max($('html').clientWidth, window.innerWidth || 0)
+
+      if (w < 800) {
+        $('body').style.width = `${w}px`
+      }
+    })
+
     $('html').setAttribute('dir', chrome.i18n.getMessage('@@bidi_dir'))
     $('html').classList.add((await PlatformInfo.get()).os)
     $('html').classList.add(webBrowser.name.toLowerCase())

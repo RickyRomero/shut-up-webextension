@@ -12,9 +12,20 @@ html {
   overflow-x: hidden;
 }
 
+html * {
+  box-sizing: border-box;
+}
+
 body {
   font: var(--fs-main) -apple-system, BlinkMacSystemFont, sans-serif;
   width: 800px; /* Font sizes act differently in Chinese */
+  margin: 0;
+  opacity: 0.9;
+  transition: opacity 0.1s linear; /* See hack in options-page.js */
+}
+
+.chrome body, .firefox body {
+  opacity: 1.0; /* See hack in options-page.js */
 }
 
 body > svg {
@@ -309,4 +320,41 @@ form a {
 .chrome .note.private-browsing,
 .chrome .keyboard-shortcut-not-configurable {
   display: none;
+}
+
+@media (max-width: 750px) {
+  .main-container > div {
+    flex-direction: column;
+    align-items: center;
+    height: initial;
+  }
+
+  figure {
+    height: 280px;
+    width: 240px;
+  }
+
+  form {
+    width: 360px;
+    margin-bottom: 2.4rem;
+  }
+
+  footer {
+    padding-bottom: 2.0rem;
+  }
+
+  footer ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer li {
+    width: 360px;
+  }
+
+  li:not(:first-child):before {
+    display: block;
+    margin: 0 0 0.8rem;
+  }
 }
