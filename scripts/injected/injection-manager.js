@@ -1,19 +1,31 @@
+const blacklist = [
+  'read.amazon.com'
+]
+
 class InjectionManager { // eslint-disable-line no-unused-vars
   constructor () {
-    this._stylesheet = ''
+    const { hostname } = Utils.parseURI(window.location.href)
+    const isBlacklisted = !!blacklist.find(blocked => Utils.compareHosts(hostname, blocked))
 
-    this.linkNodes = [document.createElement('link')]
-    this.linkNodes[0].setAttribute('id', 'shut-up-css')
-    this.linkNodes[0].setAttribute('rel', 'stylesheet')
+    if (isBlacklisted) {
+      this.linkNodes = []
+      this.enabled = false
+    } else {
+      this._stylesheet = ''
 
-    this.watchForHeadElement = new MutationObserver(this.watchDocument.bind(this))
-    // This only watches the document element, so the changes we see should be very few.
-    this.watchForHeadElement.observe(document.documentElement, { childList: true })
+      this.linkNodes = [document.createElement('link')]
+      this.linkNodes[0].setAttribute('id', 'shut-up-css')
+      this.linkNodes[0].setAttribute('rel', 'stylesheet')
 
-    this.enabled = true
-    this.isTopFrame = (self === top)
+      this.watchForHeadElement = new MutationObserver(this.watchDocument.bind(this))
+      // This only watches the document element, so the changes we see should be very few.
+      this.watchForHeadElement.observe(document.documentElement, { childList: true })
 
-    // window.addEventListener('load', this.injectIntoShadowDOM.bind(this), false)
+      this.enabled = true
+      this.isTopFrame = (self === top)
+
+      // window.addEventListener('load', this.injectIntoShadowDOM.bind(this), false)
+    }
   }
 
   watchDocument (mutations) {
