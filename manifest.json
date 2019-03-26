@@ -4,7 +4,7 @@
   "name":             "Shut Up: Comment Blocker",
   "short_name":       "__MSG_product_name__",
 
-  "version":          "4.2",
+  "version":          "4.2.1",
   "description":      "__MSG_manifest_description__",
 
   "author":           "Ricky Romero",
@@ -37,7 +37,7 @@
 
   "background": {
     "scripts": [
-      "scripts/libs/md5.min.js",
+      "scripts/libs/md5.js",
       "scripts/utils.js",
       "scripts/storage.js",
       "scripts/private/options.js",
