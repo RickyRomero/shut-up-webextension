@@ -4,7 +4,7 @@
   "name":             "Shut Up: Comment Blocker",
   "short_name":       "__MSG_product_name__",
 
-  "version":          "4.2.2.2",
+  "version":          "4.2.2.3",
   "description":      "__MSG_manifest_description__",
 
   "author":           "Ricky Romero",
