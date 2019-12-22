@@ -185,7 +185,7 @@ class PlatformInfo {
 
 let webBrowser = { // eslint-disable-line no-unused-vars
   // https://stackoverflow.com/a/9851769/362800
-  name: (function () {
+  name: (() => {
     if ((!!window.opr && !!window.opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) {
       return 'Opera'
     } else if (typeof InstallTrigger !== 'undefined') {
@@ -201,3 +201,13 @@ let webBrowser = { // eslint-disable-line no-unused-vars
     }
   })()
 }
+
+webBrowser.engine = (() => {
+  if (webBrowser.name === 'Firefox') {
+    return 'Quantum'
+  } else if (webBrowser.name === 'Safari') {
+    return 'WebKit'
+  } else {
+    return 'Blink'
+  }
+})()

@@ -21,7 +21,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   updateBrowserActionIcon ({id}, state, enable) {
-    let prefix = webBrowser.name.toLowerCase()
+    let prefix = webBrowser.engine.toLowerCase()
     let nextState = (state === null ? 'default' : 'turn' + (state ? 'Off' : 'On'))
     let iconStates = {
       'default': {

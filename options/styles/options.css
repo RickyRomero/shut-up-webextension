@@ -24,7 +24,7 @@ body {
   transition: opacity 0.1s linear; /* See hack in options-page.js */
 }
 
-.chrome body, .firefox body, .edge body {
+.blink body, .quantum body {
   opacity: 1.0; /* See hack in options-page.js */
 }
 
@@ -93,24 +93,21 @@ label span {
   color: var(--c-text);
 }
 
-.firefox input[type=checkbox],
-.firefox input[type=checkbox]:after {
+.quantum input[type=checkbox],
+.quantum input[type=checkbox]:after {
   display: none;
 }
 
-.chrome input[type=checkbox],
-.chrome input[type=checkbox]:after,
-.edge input[type=checkbox],
-.edge input[type=checkbox]:after,
-.firefox input[type=checkbox] + span,
-.firefox input[type=checkbox] + span:after {
+.blink input[type=checkbox],
+.blink input[type=checkbox]:after,
+.quantum input[type=checkbox] + span,
+.quantum input[type=checkbox] + span:after {
   transition: all 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000);
   cursor: pointer;
 }
 
-.chrome input[type=checkbox],
-.edge input[type=checkbox],
-.firefox input[type=checkbox] + span {
+.blink input[type=checkbox],
+.quantum input[type=checkbox] + span {
   -webkit-appearance: none;
 
   width: 3.0rem;
@@ -124,15 +121,13 @@ label span {
   position: relative;
 }
 
-.chrome input[type=checkbox]:checked,
-.edge input[type=checkbox]:checked,
-.firefox input[type=checkbox]:checked + span {
+.blink input[type=checkbox]:checked,
+.quantum input[type=checkbox]:checked + span {
   background: var(--c-accent);
 }
 
-.chrome input[type=checkbox]:after,
-.edge input[type=checkbox]:after,
-.firefox input[type=checkbox] + span:after {
+.blink input[type=checkbox]:after,
+.quantum input[type=checkbox] + span:after {
   width: 1.3rem;
   height: 1.3rem;
 
@@ -145,32 +140,27 @@ label span {
   top: 0;
 }
 
-.chrome input[type=checkbox]:not(:checked):active:after,
-.chrome input[type=checkbox]:checked:active:after,
-.edge input[type=checkbox]:not(:checked):active:after,
-.edge input[type=checkbox]:checked:active:after,
-.firefox input[type=checkbox]:not(:checked):active + span:after,
-.firefox input[type=checkbox]:checked:active + span:after {
+.blink input[type=checkbox]:not(:checked):active:after,
+.blink input[type=checkbox]:checked:active:after,
+.quantum input[type=checkbox]:not(:checked):active + span:after,
+.quantum input[type=checkbox]:checked:active + span:after {
   transition-duration: 0.2s;
   width: 1.7rem;
 }
 
 
-.chrome input[type=checkbox]:not(:checked):after,
-.edge input[type=checkbox]:not(:checked):after,
-.firefox input[type=checkbox]:not(:checked) + span:after {
+.blink input[type=checkbox]:not(:checked):after,
+.quantum input[type=checkbox]:not(:checked) + span:after {
   __MSG_@@bidi_start_edge__: 0;
 }
 
-.chrome input[type=checkbox]:checked:after,
-.edge input[type=checkbox]:checked:after,
-.firefox input[type=checkbox]:checked + span:after {
+.blink input[type=checkbox]:checked:after,
+.quantum input[type=checkbox]:checked + span:after {
   __MSG_@@bidi_start_edge__: 1.7rem;
 }
 
-.chrome input[type=checkbox]:checked:active:after,
-.edge input[type=checkbox]:checked:active:after,
-.firefox input[type=checkbox]:checked:active + span:after {
+.blink input[type=checkbox]:checked:active:after,
+.quantum input[type=checkbox]:checked:active + span:after {
   __MSG_@@bidi_start_edge__: 1.4rem;
 }
 
@@ -323,17 +313,17 @@ form a {
 
 
 
-.firefox .change-shortcut,
-.firefox .update-check,
-.firefox .keyboard-shortcut,
+.quantum .change-shortcut,
+.quantum .update-check,
+.quantum .keyboard-shortcut,
+.blink .keyboard-shortcut-not-configurable,
+
 .firefox .note.incognito,
-.firefox .note.inprivate,
-.chrome .note.private-browsing,
-.chrome .note.inprivate,
-.chrome .keyboard-shortcut-not-configurable,
 .edge .note.incognito,
+.chrome .note.private-browsing,
 .edge .note.private-browsing,
-.edge .keyboard-shortcut-not-configurable {
+.firefox .note.inprivate,
+.chrome .note.inprivate {
   display: none;
 }
 

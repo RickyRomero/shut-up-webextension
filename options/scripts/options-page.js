@@ -25,6 +25,7 @@ class OptionsPage {
     $('html').setAttribute('dir', chrome.i18n.getMessage('@@bidi_dir'))
     $('html').classList.add((await PlatformInfo.get()).os)
     $('html').classList.add(webBrowser.name.toLowerCase())
+    $('html').classList.add(webBrowser.engine.toLowerCase())
 
     $('.whitelist').addEventListener('change', this.updateWhitelistOption.bind(this), false)
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
