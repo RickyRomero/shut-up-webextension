@@ -27,6 +27,8 @@ class OptionsPage {
     $('html').classList.add(webBrowser.name.toLowerCase())
     $('html').classList.add(webBrowser.engine.toLowerCase())
 
+    $('.private').dataset.i18n = `private_${webBrowser.name.toLowerCase()}_note`
+
     $('.whitelist').addEventListener('change', this.updateWhitelistOption.bind(this), false)
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
     $('.change-shortcut').addEventListener('click', this.openLinkInFullTab.bind(this), false)

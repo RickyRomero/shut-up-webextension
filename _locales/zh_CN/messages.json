@@ -11,13 +11,16 @@
   "automatic_whitelisting": {
     "message": "记住我在何处启用了评论"
   },
-  "incognito_note": {
+  "private_chrome_note": {
     "message": "这个选项在隐身标签页中忽略。"
   },
-  "inprivate_note": {
+  "private_edge_note": {
     "message": "这个选项在私密浏览过程期间忽略。"
   },
-  "private_browsing_note": {
+  "private_firefox_note": {
+    "message": "这个选项在私密浏览过程期间忽略。"
+  },
+  "private_opera_note": {
     "message": "这个选项在私密浏览过程期间忽略。"
   },
   "show_item_in_context_menu": {

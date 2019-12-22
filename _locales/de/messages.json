@@ -11,13 +11,16 @@
   "automatic_whitelisting": {
     "message": "Erinnern, wo ich Kommentare aktiviert\u00A0habe"
   },
-  "incognito_note": {
+  "private_chrome_note": {
     "message": "Diese Option wird in Inkognito-Tabs ignoriert."
   },
-  "inprivate_note": {
+  "private_edge_note": {
     "message": "Diese Option wird beim Privaten Browsing ignoriert."
   },
-  "private_browsing_note": {
+  "private_firefox_note": {
+    "message": "Diese Option wird beim Privaten Browsing ignoriert."
+  },
+  "private_opera_note": {
     "message": "Diese Option wird beim Privaten Browsing ignoriert."
   },
   "show_item_in_context_menu": {

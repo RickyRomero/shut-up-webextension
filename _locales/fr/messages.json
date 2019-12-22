@@ -11,13 +11,16 @@
   "automatic_whitelisting": {
     "message": "Se rappeler où j'ai activé les commentaires"
   },
-  "incognito_note": {
+  "private_chrome_note": {
     "message": "Cette option est ignorée dans les onglets de navigation privée."
   },
-  "inprivate_note": {
+  "private_edge_note": {
     "message": "Cette option est ignorée lors de la navigation privée."
   },
-  "private_browsing_note": {
+  "private_firefox_note": {
+    "message": "Cette option est ignorée lors de la navigation privée."
+  },
+  "private_opera_note": {
     "message": "Cette option est ignorée lors de la navigation privée."
   },
   "show_item_in_context_menu": {

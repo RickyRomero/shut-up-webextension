@@ -11,14 +11,17 @@
   "automatic_whitelisting": {
     "message": "Remember where I’ve enabled comments"
   },
-  "incognito_note": {
+  "private_chrome_note": {
     "message": "This option is ignored in incognito tabs."
   },
-  "inprivate_note": {
+  "private_edge_note": {
     "message": "This option is ignored in InPrivate Mode."
   },
-  "private_browsing_note": {
+  "private_firefox_note": {
     "message": "This option is ignored during Private Browsing."
+  },
+  "private_opera_note": {
+    "message": "This option is ignored in Private Mode."
   },
   "show_item_in_context_menu": {
     "message": "Show in context menu"

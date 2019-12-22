@@ -11,13 +11,16 @@
   "automatic_whitelisting": {
     "message": "記住我在何處啟用了評論"
   },
-  "incognito_note": {
+  "private_chrome_note": {
     "message": "這個選項在隱身標籤頁中忽略。"
   },
-  "inprivate_note": {
+  "private_edge_note": {
     "message": "這個選項在私密瀏覽過程中忽略。"
   },
-  "private_browsing_note": {
+  "private_firefox_note": {
+    "message": "這個選項在私密瀏覽過程中忽略。"
+  },
+  "private_opera_note": {
     "message": "這個選項在私密瀏覽過程中忽略。"
   },
   "show_item_in_context_menu": {

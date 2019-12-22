@@ -11,13 +11,16 @@
   "automatic_whitelisting": {
     "message": "تذكر أين قمت بتمكين التعليقات"
   },
-  "incognito_note": {
+  "private_chrome_note": {
     "message": "يتم تجاهل هذا الخيار في علامات تبويب التصفح الخفي"
   },
-  "inprivate_note": {
+  "private_edge_note": {
     "message": "يتم تجاهل هذا الخيار أثناء التصفح الخاص."
   },
-  "private_browsing_note": {
+  "private_firefox_note": {
+    "message": "يتم تجاهل هذا الخيار أثناء التصفح الخاص."
+  },
+  "private_opera_note": {
     "message": "يتم تجاهل هذا الخيار أثناء التصفح الخاص."
   },
   "show_item_in_context_menu": {

@@ -11,13 +11,16 @@
   "automatic_whitelisting": {
     "message": "どこでコメントを有効化させたかお知ら\u2060せ\u2060す\u2060る"
   },
-  "incognito_note": {
+  "private_chrome_note": {
     "message": "シークレットタブを使用中は、このオプションは無視されます。"
   },
-  "inprivate_note": {
+  "private_edge_note": {
     "message": "このオプションは、シークレット ウィンドウを使用中の際には適用されません。"
   },
-  "private_browsing_note": {
+  "private_firefox_note": {
+    "message": "このオプションは、シークレット ウィンドウを使用中の際には適用されません。"
+  },
+  "private_opera_note": {
     "message": "このオプションは、シークレット ウィンドウを使用中の際には適用されません。"
   },
   "show_item_in_context_menu": {

@@ -316,14 +316,7 @@ form a {
 .quantum .change-shortcut,
 .quantum .update-check,
 .quantum .keyboard-shortcut,
-.blink .keyboard-shortcut-not-configurable,
-
-.firefox .note.incognito,
-.edge .note.incognito,
-.chrome .note.private-browsing,
-.edge .note.private-browsing,
-.firefox .note.inprivate,
-.chrome .note.inprivate {
+.blink .keyboard-shortcut-not-configurable {
   display: none;
 }
 
