@@ -9,11 +9,11 @@ class Whitelist extends Storage { // eslint-disable-line no-unused-vars
 
   async add ({incognito, url}) {
     if ((await options.automaticWhitelist()) && !incognito) {
-      let md5 = this.urlToMD5(url)
+      let digest = await this.urlToDigest(url)
       let hostList = (await this.data()).hosts
 
-      if (!hostList.includes(md5)) {
-        hostList.push(md5)
+      if (!hostList.includes(digest)) {
+        hostList.push(digest)
         this.update({
           hosts: hostList
         })
@@ -23,23 +23,30 @@ class Whitelist extends Storage { // eslint-disable-line no-unused-vars
 
   async remove ({incognito, url}) {
     if ((await options.automaticWhitelist()) && !incognito) {
-      let md5 = this.urlToMD5(url)
+      let digest = await this.urlToDigest(url)
 
       this.update({
-        hosts: (await this.data()).hosts.filter(wlHost => wlHost !== md5)
+        hosts: (await this.data()).hosts.filter(wlHost => wlHost !== digest)
       })
     }
   }
 
   async query ({url}) {
-    let md5 = this.urlToMD5(url)
-    let wlIncludesHost = (await this.data()).hosts.includes(md5)
+    let digest = await this.urlToDigest(url)
+    let wlIncludesHost = (await this.data()).hosts.includes(digest)
     let wlEnabled = (await options.automaticWhitelist())
 
     return (wlIncludesHost && wlEnabled)
   }
 
-  urlToMD5 (url) {
-    return faultylabs.MD5(Utils.parseURI(url).hostname)
+  async urlToDigest (url) {
+    let stretchCount = 0
+    let opBuffer = new TextEncoder().encode(Utils.parseURI(url).hostname)
+    while (stretchCount++ < 500) {
+      opBuffer = new Uint8Array(
+        await crypto.subtle.digest('SHA-256', opBuffer)
+      )
+    }
+    return Array.from(opBuffer).map(b => b.toString(16).padStart(2, '0')).join('')
   }
 }
