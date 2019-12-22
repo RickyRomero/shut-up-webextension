@@ -61,7 +61,7 @@ class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
           }
 
           if (validStylesheet) {
-            storageUpdate.cache = response.body
+            storageUpdate.cache = Stylesheet.sanitize(response.body)
             storageUpdate.etag = response.headers['etag'] || null
             storageUpdate.lastSuccess = Number(new Date())
           } else {
@@ -82,6 +82,15 @@ class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
     }
   }
 
+  static sanitize (css) {
+    css = css.replace(/\/\*(?:.|\n)+?\*\//g, '') // Strip comments (heh)
+    css = css.replace(/\n+/g, ' ') // Extra whitespace
+    css = css.replace(/,\s+/g, ', ') // Extra whitespace
+    css = css.trim()
+
+    return css
+  }
+
   // Just a simple validation step to make sure we're not getting anything
   // out of the ordinary.
   //
@@ -95,10 +104,7 @@ class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
     }
 
     // Normalize input
-    css = css.replace(/\/\*(?:.|\n)+?\*\//g, '') // Strip comments (heh)
-    css = css.replace(/\n+/g, ' ') // Extra whitespace
-    css = css.replace(/,\s+/g, ', ') // Extra whitespace
-    css = css.trim()
+    css = Stylesheet.sanitize(css)
 
     let displayNoneFound = false
     css.split('}').forEach(selectorRulePair => {
