@@ -14,6 +14,9 @@
   "incognito_note": {
     "message": "这个选项在隐身标签页中忽略。"
   },
+  "inprivate_note": {
+    "message": "这个选项在私密浏览过程期间忽略。"
+  },
   "private_browsing_note": {
     "message": "这个选项在私密浏览过程期间忽略。"
   },

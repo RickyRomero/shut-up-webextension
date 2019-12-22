@@ -24,7 +24,7 @@ body {
   transition: opacity 0.1s linear; /* See hack in options-page.js */
 }
 
-.chrome body, .firefox body {
+.chrome body, .firefox body, .edge body {
   opacity: 1.0; /* See hack in options-page.js */
 }
 
@@ -100,6 +100,8 @@ label span {
 
 .chrome input[type=checkbox],
 .chrome input[type=checkbox]:after,
+.edge input[type=checkbox],
+.edge input[type=checkbox]:after,
 .firefox input[type=checkbox] + span,
 .firefox input[type=checkbox] + span:after {
   transition: all 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000);
@@ -107,6 +109,7 @@ label span {
 }
 
 .chrome input[type=checkbox],
+.edge input[type=checkbox],
 .firefox input[type=checkbox] + span {
   -webkit-appearance: none;
 
@@ -122,11 +125,13 @@ label span {
 }
 
 .chrome input[type=checkbox]:checked,
+.edge input[type=checkbox]:checked,
 .firefox input[type=checkbox]:checked + span {
   background: var(--c-accent);
 }
 
 .chrome input[type=checkbox]:after,
+.edge input[type=checkbox]:after,
 .firefox input[type=checkbox] + span:after {
   width: 1.3rem;
   height: 1.3rem;
@@ -142,6 +147,8 @@ label span {
 
 .chrome input[type=checkbox]:not(:checked):active:after,
 .chrome input[type=checkbox]:checked:active:after,
+.edge input[type=checkbox]:not(:checked):active:after,
+.edge input[type=checkbox]:checked:active:after,
 .firefox input[type=checkbox]:not(:checked):active + span:after,
 .firefox input[type=checkbox]:checked:active + span:after {
   transition-duration: 0.2s;
@@ -150,16 +157,19 @@ label span {
 
 
 .chrome input[type=checkbox]:not(:checked):after,
+.edge input[type=checkbox]:not(:checked):after,
 .firefox input[type=checkbox]:not(:checked) + span:after {
   __MSG_@@bidi_start_edge__: 0;
 }
 
 .chrome input[type=checkbox]:checked:after,
+.edge input[type=checkbox]:checked:after,
 .firefox input[type=checkbox]:checked + span:after {
   __MSG_@@bidi_start_edge__: 1.7rem;
 }
 
 .chrome input[type=checkbox]:checked:active:after,
+.edge input[type=checkbox]:checked:active:after,
 .firefox input[type=checkbox]:checked:active + span:after {
   __MSG_@@bidi_start_edge__: 1.4rem;
 }
@@ -317,8 +327,13 @@ form a {
 .firefox .update-check,
 .firefox .keyboard-shortcut,
 .firefox .note.incognito,
+.firefox .note.inprivate,
 .chrome .note.private-browsing,
-.chrome .keyboard-shortcut-not-configurable {
+.chrome .note.inprivate,
+.chrome .keyboard-shortcut-not-configurable,
+.edge .note.incognito,
+.edge .note.private-browsing,
+.edge .keyboard-shortcut-not-configurable {
   display: none;
 }
 

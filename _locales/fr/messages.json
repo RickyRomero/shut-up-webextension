@@ -14,6 +14,9 @@
   "incognito_note": {
     "message": "Cette option est ignorée dans les onglets de navigation privée."
   },
+  "inprivate_note": {
+    "message": "Cette option est ignorée lors de la navigation privée."
+  },
   "private_browsing_note": {
     "message": "Cette option est ignorée lors de la navigation privée."
   },

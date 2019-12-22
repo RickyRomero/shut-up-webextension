@@ -499,6 +499,7 @@ ytd-live-chat-frame,
 
 /* Patreon */
 [data-test-tag="comment-row"],
+[data-tag="comment-row"],
 
 /* Instagram */
 li.gElp9:not(:first-child),
@@ -626,6 +627,18 @@ body[ng-app="pdaily"] a.discussions,
 #comments_content,
 #comm_show_more,
 a[name="komentarze"],
+
+/* Thrillist */
+.comments__spotim,
+
+/* Comments.app */
+iframe[src*="comments.app"],
+
+/* IGN */
+iframe[src*="comments.ign.com"],
+
+/* Product Hunt */
+[class^=main] div[class^=content] div[data-test^=thread],
 
 /* ...misc and generic... */
 

@@ -4,7 +4,7 @@
   "name":             "Shut Up: Comment Blocker",
   "short_name":       "__MSG_product_name__",
 
-  "version":          "4.2.2.4",
+  "version":          "5.0",
   "description":      "__MSG_manifest_description__",
 
   "author":           "Ricky Romero",
@@ -15,8 +15,8 @@
   "offline_enabled":         true,
 
   "permissions":             ["tabs", "storage", "contextMenus"],
-  "content_security_policy": "default-src 'self'; connect-src https://rickyromero.com",
   "incognito":               "split",
+  "content_security_policy": "script-src 'self'; object-src 'none'",
 
   "icons": {
     "16": "images/main-icon/16.png",
@@ -47,8 +47,8 @@
       "scripts/private/message-queue.js",
       "scripts/event-bridge.js",
       "scripts/private/private-event-bridge.js",
-      "scripts/private/init.js",
-      "scripts/private/upgrade.js"
+      "scripts/private/upgrade.js",
+      "scripts/private/init.js"
     ],
     "persistent": false
   },

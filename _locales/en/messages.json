@@ -14,6 +14,9 @@
   "incognito_note": {
     "message": "This option is ignored in incognito tabs."
   },
+  "inprivate_note": {
+    "message": "This option is ignored in InPrivate Mode."
+  },
   "private_browsing_note": {
     "message": "This option is ignored during Private Browsing."
   },

@@ -24,21 +24,16 @@ class InjectionManager { // eslint-disable-line no-unused-vars
       this.enabled = true
       this.isTopFrame = (self === top)
 
-      // window.addEventListener('load', this.injectIntoShadowDOM.bind(this), false)
+      this.watchDocument() // Initial check, in case <head /> is ready now
     }
   }
 
-  watchDocument (mutations) {
-    mutations.forEach((mutation) => {
-      for (let node of mutation.addedNodes) {
-        if (node.nodeName === 'HEAD') {
-          this.head = node
-          this.init()
-
-          break
-        }
-      }
-    })
+  watchDocument () {
+    let node = document.querySelector('head')
+    if (node && node.nodeName === 'HEAD') {
+      this.head = node
+      this.init()
+    }
   }
 
   init () {
@@ -91,28 +86,5 @@ class InjectionManager { // eslint-disable-line no-unused-vars
     this.linkNodes.forEach((node) => {
       node.setAttribute('href', enable ? activeURI : inactiveURI)
     })
-  }
-
-  // Disabled for now, until this becomes a problem.
-  injectIntoShadowDOM () {
-    // Boy, this is getting complicated.
-    // http://stackoverflow.com/a/34321926/362800
-    let allElems = document.querySelectorAll('html /deep/ *')
-    let customElements = [].map.call(allElems, el => el.nodeName.toLowerCase())
-      .filter((value, index, self) => self.indexOf(value) === index)
-      .filter(name => document.createElement(name).constructor === window.HTMLUnknownElement)
-      .filter(name => !['svg', 'path', 'time', 'menuitem'].includes(name))
-
-    if (customElements.length > 0) {
-      let targetElements = document.querySelectorAll(customElements.join(', '))
-
-      for (let el of targetElements) {
-        if (el.shadowRoot) {
-          let shadowLink = this.linkNodes[0].cloneNode()
-          this.linkNodes.push(shadowLink)
-          el.shadowRoot.appendChild(shadowLink)
-        }
-      }
-    }
   }
 }

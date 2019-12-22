@@ -10,7 +10,6 @@ class Stylesheet extends Storage { // eslint-disable-line no-unused-vars
     })
 
     this.onUpdate = this.broadcastUpdate.bind(this)
-    this.onInitFinished = this.readLocalCopy
   }
 
   async readLocalCopy () {

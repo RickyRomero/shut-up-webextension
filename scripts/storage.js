@@ -1,5 +1,6 @@
 class Storage { // eslint-disable-line no-unused-vars
   constructor (schema) {
+    Storage.instances.push(this)
     let root
     for (root in schema) {}
     this._rootKey = root
@@ -25,10 +26,7 @@ class Storage { // eslint-disable-line no-unused-vars
       this._cache = result[this._rootKey]
     }
 
-    if (this.onInitFinished) {
-      this.onInitFinished()
-      delete this.onInitFinished
-    }
+    await Storage.runInitedQueueIfFinished()
   }
 
   async data () {
@@ -75,4 +73,27 @@ class Storage { // eslint-disable-line no-unused-vars
       })
     })
   }
+
+  static isInitFinished () {
+    return Storage.instances.filter(
+      subclass => !subclass._cache._initialized
+    ).length === 0
+  }
+  static async queueOperation (op) {
+    Storage.onInitedQueue.push(op)
+    await Storage.runInitedQueueIfFinished()
+  }
+  static async runInitedQueueIfFinished () {
+    if (Storage.isInitFinished()) {
+      await Storage.runInitedQueue()
+    }
+  }
+  static async runInitedQueue() {
+    while (Storage.onInitedQueue.length) {
+      await (Storage.onInitedQueue.shift())()
+    }
+  }
 }
+
+Storage.instances = []
+Storage.onInitedQueue = []

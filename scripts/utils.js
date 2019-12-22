@@ -194,7 +194,7 @@ let webBrowser = { // eslint-disable-line no-unused-vars
         (function (p) { return p.toString() === '[object SafariRemoteNotification]' })(!window['safari'] ||
         (typeof window.safari !== 'undefined' && window.safari.pushNotification))) {
       return 'Safari'
-    } else if (window.StyleMedia) {
+    } else if (/\sedg\/(\d+(\.?_?\d+)+)/i.test(navigator.userAgent)) {
       return 'Edge'
     } else {
       return 'Chrome'

@@ -7,12 +7,20 @@ chrome.runtime.onInstalled.addListener(() => {
 window.stylesheet = new Stylesheet()
 window.whitelist = new Whitelist()
 window.options = new Options()
-window.bridge = new PrivateEventBridge()
 /* eslint-enable no-unused-vars */
 
-// Init context menus
-chrome.contextMenus.onClicked.addListener((info, tab) => {
-  bridge.uiBridge.toggleInjectedState(tab)
-})
+;(async () => {
+  await Storage.queueOperation((async function (window) {
+    window.bridge = new PrivateEventBridge()
+    await window.bridge.uiBridge.addContextMenu.bind(window.bridge.uiBridge)()
+    await window.stylesheet.readLocalCopy.bind(window.stylesheet)()
+    await window.runUpgrade()
+  }).bind(this, window))
 
-bridge.uiBridge.addContextMenu()
+  await Storage.queueOperation(() => {
+    // Init context menus
+    chrome.contextMenus.onClicked.addListener((info, tab) => {
+      bridge.uiBridge.toggleInjectedState(tab)
+    })
+  })
+})()
