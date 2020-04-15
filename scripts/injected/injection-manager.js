@@ -1,5 +1,6 @@
 const blacklist = [
-  'read.amazon.com'
+  'read.amazon.com',
+  'icloud.com'
 ]
 
 class InjectionManager { // eslint-disable-line no-unused-vars
