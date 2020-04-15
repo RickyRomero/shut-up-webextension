@@ -4,7 +4,7 @@
   "name":             "Shut Up: Comment Blocker",
   "short_name":       "__MSG_product_name__",
 
-  "version":          "5.0",
+  "version":          "5.0.1",
   "description":      "__MSG_manifest_description__",
 
   "author":           "Ricky Romero",
@@ -85,7 +85,8 @@
   },
 
   "options_ui": {
-    "page":         "options/index.html",
+    "page":         "options/index-wrapper.html",
+    "open_in_tab":  true,
     "chrome_style": false
   }
 }
