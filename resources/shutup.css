@@ -670,6 +670,18 @@ div.pod-body.review,
 /* MyAnimeList */
 div.detail-characters-list ~ div.borderDark,
 
+/* rule34.xxx */
+.content form ~ a#ci ~ div[id^=c0],
+.content form ~ a#ci ~ div[id^=c1],
+.content form ~ a#ci ~ div[id^=c2],
+.content form ~ a#ci ~ div[id^=c3],
+.content form ~ a#ci ~ div[id^=c4],
+.content form ~ a#ci ~ div[id^=c5],
+.content form ~ a#ci ~ div[id^=c6],
+.content form ~ a#ci ~ div[id^=c7],
+.content form ~ a#ci ~ div[id^=c8],
+.content form ~ a#ci ~ div[id^=c9],
+
 /* ...misc and generic... */
 
 .comments-list,
@@ -680,6 +692,7 @@ div.detail-characters-list ~ div.borderDark,
 #comment_entries,
 #comment_form,
 #commentlist,
+#user-comments,
 .comments_area,
 .comments-area,
 .discussionContainer,
@@ -690,6 +703,7 @@ div.detail-characters-list ~ div.borderDark,
 .commenttxt,
 .post-comments,
 .post-comment-list,
+.user_comment,
 #cmtWrapper
 {
 	display: none !important;
