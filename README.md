@@ -4,7 +4,7 @@
 
 This is the [WebExtension][webextension-mdn] version of Shut Up which supports Chrome, Firefox, Edge, and Opera. Versions for Safari on [macOS][shut-up-native], [iOS, and iPadOS][shut-up-ios] are also available.
 
-This app leverages [shutup.css][shutup-css] by [Steven Frank][site-steven] and contributors, which is used with permission.
+This extension leverages [shutup.css][shutup-css] by [Steven Frank][site-steven] and contributors, which is used with permission.
 
 ## Installation
 
