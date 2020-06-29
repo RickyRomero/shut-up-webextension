@@ -6,6 +6,16 @@ This is the [WebExtension][webextension-mdn] version of Shut Up which supports C
 
 It leverages [shutup.css][shutup-css] by Steven Frank and contributors, which is used with permission.
 
+## Installation
+
+If you're simply looking to *install* Shut Up, these are the links you're looking for:
+
+* [Shut Up for Chrome][ext-chrome]
+* [Shut Up for Safari][ext-safari] (Shared link for macOS, iOS, and iPadOS)
+* [Shut Up for Firefox][ext-firefox]
+* [Shut Up for Edge][ext-edge]
+* [Shut Up for Opera][ext-opera]
+
 ## Minimum Requirements
 
 This version of Shut Up is known to work in the following browser releases:
@@ -27,3 +37,9 @@ Shut Up is available under the terms of the [MIT License][license].
 [license]: LICENSE.md  (MIT License)
 [shutup-css]: https://github.com/panicsteve/shutup-css  (shutup-css on GitHub)
 [webextension-mdn]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions  (WebExtension documentation on MDN)
+
+[ext-chrome]: https://chrome.google.com/webstore/detail/oklfoejikkmejobodofaimigojomlfim?hl=en-US&amp;gl=US  (Shut Up on the Chrome Web Store)
+[ext-safari]: https://apps.apple.com/app/id1015043880  (Shut Up on the App Store)
+[ext-firefox]: https://addons.mozilla.org/en-US/firefox/addon/shut-up-comment-blocker/  (Shut Up at Firefox Add-ons)
+[ext-edge]: https://microsoftedge.microsoft.com/addons/detail/giifliakcgfijgkejmenachfdncbpalp  (Shut Up at Edge Add-ons)
+[ext-opera]: https://github.com/panicsteve/shutup-css#installation-on-opera  (Installation on Opera)
