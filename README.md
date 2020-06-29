@@ -21,9 +21,9 @@ Shut Up is available under the terms of the [MIT License][license].
 
 
 
-[homepage] https://rickyromero.com/shutup/  (Shut Up Homepage)
-[shut-up-native] https://github.com/RickyRomero/shut-up-native  (macOS version of Shut Up)
-[shut-up-ios] https://github.com/RickyRomero/shut-up-ios  (iOS/iPadOS version of Shut Up)
-[license] LICENSE.md  (MIT License)
-[shutup-css] https://github.com/panicsteve/shutup-css  (shutup-css on GitHub)
-[webextension-mdn] https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions  (WebExtension documentation on MDN)
+[homepage]: https://rickyromero.com/shutup/  (Shut Up Homepage)
+[shut-up-native]: https://github.com/RickyRomero/shut-up-native  (macOS version of Shut Up)
+[shut-up-ios]: https://github.com/RickyRomero/shut-up-ios  (iOS/iPadOS version of Shut Up)
+[license]: LICENSE.md  (MIT License)
+[shutup-css]: https://github.com/panicsteve/shutup-css  (shutup-css on GitHub)
+[webextension-mdn]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions  (WebExtension documentation on MDN)
