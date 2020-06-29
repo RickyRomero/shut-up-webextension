@@ -4,7 +4,7 @@
 
 This is the [WebExtension][webextension-mdn] version of Shut Up which supports Chrome, Firefox, Edge, and Opera. Versions for Safari on [macOS][shut-up-native], [iOS, and iPadOS][shut-up-ios] are also available.
 
-It leverages [shutup.css][shutup-css] by Steven Frank and contributors, which is used with permission.
+This app leverages [shutup.css][shutup-css] by [Steven Frank][site-steven] and contributors, which is used with permission.
 
 ## Installation
 
@@ -37,6 +37,7 @@ Shut Up is available under the terms of the [MIT License][license].
 [license]: LICENSE.md  (MIT License)
 [shutup-css]: https://github.com/panicsteve/shutup-css  (shutup-css on GitHub)
 [webextension-mdn]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions  (WebExtension documentation on MDN)
+[site-steven]: https://stevenf.com  (Steven Frank's personal website)
 
 [ext-chrome]: https://chrome.google.com/webstore/detail/oklfoejikkmejobodofaimigojomlfim?hl=en-US&amp;gl=US  (Shut Up on the Chrome Web Store)
 [ext-safari]: https://apps.apple.com/app/id1015043880  (Shut Up on the App Store)
