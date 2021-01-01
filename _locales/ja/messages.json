@@ -102,7 +102,7 @@
     "message": "予期しない反応が返されました。少し後に、もう一度お試しください。"
   },
   "name_version_copyright_ricky": {
-    "message": "$name$ $version$ ©2011 - 2020 $ricky_link$",
+    "message": "$name$ $version$ ©2011 - 2021 $ricky_link$",
     "placeholders": {
       "name": {
         "content": "$1",
@@ -118,7 +118,7 @@
     }
   },
   "copyright_steven": {
-    "message": "shutup.css ©2010 - 2020 $steven_link$ および $contributors_link$",
+    "message": "shutup.css ©2010 - 2021 $steven_link$ および $contributors_link$",
     "placeholders": {
       "steven_link": {
         "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"
