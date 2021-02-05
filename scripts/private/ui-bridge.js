@@ -1,12 +1,14 @@
 class UIBridge { // eslint-disable-line no-unused-vars
   constructor (eventBridge) {
+    console.log('hey')
     this.eventBridge = eventBridge
 
     chrome.tabs.onCreated.addListener(this.newTabCreated.bind(this))
-    chrome.browserAction.onClicked.addListener(this.toggleInjectedState.bind(this))
+    chrome.action.onClicked.addListener(this.toggleInjectedState.bind(this))
   }
 
   newTabCreated (tab) {
+    console.log('new tabe')
     this.updateBrowserActionIcon(tab, null, false)
   }
 
@@ -15,6 +17,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   toggleInjectedState (tab) {
+    console.log('tongle')
     this.eventBridge.sendMessage({tab}, {
       type: 'toggle'
     })
@@ -22,7 +25,6 @@ class UIBridge { // eslint-disable-line no-unused-vars
 
   updateBrowserActionIcon ({id}, state, enable) {
     let prefix = webBrowser.engine.toLowerCase()
-    let nextState = (state === null ? 'default' : 'turn' + (state ? 'Off' : 'On'))
     let iconStates = {
       'default': {
         '16': 'images/browser-action/default-state.png',
@@ -38,11 +40,11 @@ class UIBridge { // eslint-disable-line no-unused-vars
       }
     }
 
-    chrome.browserAction.setIcon({
+    chrome.action.setIcon({
       tabId: id,
       path: iconStates['turn' + (state ? 'Off' : 'On')]
     }, () => {
-      chrome.browserAction[enable ? 'enable' : 'disable'](id)
+      chrome.action[enable ? 'enable' : 'disable'](id)
     })
   }
 
@@ -55,7 +57,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
       if (await options.contextMenu()) {
         chrome.contextMenus.create({
           id: 'toggle-comments-ctx',
-          title: chrome.i18n.getMessage('toggle_comments_menu'),
+          title: "Toggle Comments", // FIXME: Localization APIs not supported in this context
           contexts: ['page']
         })
       }

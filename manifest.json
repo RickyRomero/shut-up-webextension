@@ -4,19 +4,18 @@
   "name":             "Shut Up: Comment Blocker",
   "short_name":       "__MSG_product_name__",
 
-  "version":          "7.0.1.1",
+  "version":          "8.0",
   "description":      "__MSG_manifest_description__",
 
   "author":           "Ricky Romero",
   "homepage_url":     "https://rickyromero.com/shutup/",
 
-  "minimum_chrome_version":  "55.0.2883.75",
+  "minimum_chrome_version":  "88.0.4324.150",
   "default_locale":          "en",
   "offline_enabled":         true,
 
   "permissions":             ["tabs", "storage", "contextMenus"],
   "incognito":               "split",
-  "content_security_policy": "script-src 'self'; object-src 'none'",
 
   "icons": {
     "16": "images/main-icon/16.png",
@@ -36,20 +35,7 @@
   },
 
   "background": {
-    "scripts": [
-      "scripts/utils.js",
-      "scripts/storage.js",
-      "scripts/private/options.js",
-      "scripts/private/whitelist.js",
-      "scripts/private/stylesheet.js",
-      "scripts/private/ui-bridge.js",
-      "scripts/private/message-queue.js",
-      "scripts/event-bridge.js",
-      "scripts/private/private-event-bridge.js",
-      "scripts/private/upgrade.js",
-      "scripts/private/init.js"
-    ],
-    "persistent": false
+    "service_worker": "init.js"
   },
 
   "content_scripts": [
@@ -71,12 +57,7 @@
     }
   ],
 
-  "web_accessible_resources": [
-    "resources/shutup.css",
-    "resources/null.css"
-  ],
-
-  "browser_action": {
+  "action": {
     "default_icon": {
       "16": "images/browser-action/default-state.png",
       "32": "images/browser-action/default-state@2x.png"
@@ -86,7 +67,6 @@
 
   "options_ui": {
     "page":         "options/index-wrapper.html",
-    "open_in_tab":  true,
-    "chrome_style": false
+    "open_in_tab":  true
   }
 }

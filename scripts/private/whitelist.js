@@ -41,7 +41,7 @@ class Whitelist extends Storage { // eslint-disable-line no-unused-vars
 
   async urlToDigest (url) {
     let stretchCount = 0
-    let opBuffer = new TextEncoder().encode(Utils.parseURI(url).hostname)
+    let opBuffer = new TextEncoder().encode(new URL(url).hostname)
     while (stretchCount++ < 500) {
       opBuffer = new Uint8Array(
         await crypto.subtle.digest('SHA-384', opBuffer)

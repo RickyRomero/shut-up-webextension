@@ -1,22 +1,4 @@
 class Utils { // eslint-disable-line no-unused-vars
-  // http://stackoverflow.com/a/736970
-  static parseURI (href) {
-    let parser = document.createElement('a')
-    parser.setAttribute('href', href)
-
-    return {
-      protocol: parser.protocol,
-      username: parser.username,
-      password: parser.password,
-      host: parser.host,
-      hostname: parser.hostname,
-      port: parser.port,
-      pathname: parser.pathname,
-      search: parser.search,
-      hash: parser.hash
-    }
-  }
-
   static compareHosts (match, inside) {
     if (match === inside) {
       return true
@@ -184,17 +166,12 @@ class PlatformInfo {
 }
 
 let webBrowser = { // eslint-disable-line no-unused-vars
-  // https://stackoverflow.com/a/9851769/362800
   name: (() => {
-    if ((!!window.opr && !!window.opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) {
+    if (navigator.userAgent.includes(' OPR/')) {
       return 'Opera'
-    } else if (typeof InstallTrigger !== 'undefined') {
+    } else if (navigator.userAgent.includes(' Firefox/')) {
       return 'Firefox'
-    } else if (/constructor/i.test(window.HTMLElement) ||
-        (function (p) { return p.toString() === '[object SafariRemoteNotification]' })(!window['safari'] ||
-        (typeof window.safari !== 'undefined' && window.safari.pushNotification))) {
-      return 'Safari'
-    } else if (/\sedg\/(\d+(\.?_?\d+)+)/i.test(navigator.userAgent)) {
+    } else if (navigator.userAgent.includes(' Edg/')) {
       return 'Edge'
     } else {
       return 'Chrome'

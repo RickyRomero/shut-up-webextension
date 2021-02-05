@@ -20,7 +20,7 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
     chrome.tabs.query({}, (tabs) => {
       if (filter.byHost) {
         tabs = tabs.filter((tab) => {
-          let location = Utils.parseURI(tab.url)
+          let location = new URL(tab.url)
 
           return Utils.compareHosts(filter.byHost, location.hostname)
         })

@@ -6,7 +6,7 @@ const blacklist = [
 
 class InjectionManager { // eslint-disable-line no-unused-vars
   constructor () {
-    const { hostname } = Utils.parseURI(window.location.href)
+    const { hostname } = new URL(window.location.href)
     const isBlacklisted = !!blacklist.find(blocked => Utils.compareHosts(hostname, blocked))
 
     if (isBlacklisted) {
