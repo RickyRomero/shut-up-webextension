@@ -182,6 +182,10 @@ li:not(:first-child):before {
 
 form > div {
   width: 85%;
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
 form > div.stack {

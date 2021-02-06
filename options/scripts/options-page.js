@@ -17,8 +17,6 @@ class OptionsPage {
 
     $('.whitelist').addEventListener('change', this.updateWhitelistOption.bind(this), false)
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
-    $('.change-shortcut').addEventListener('click', this.openLinkInFullTab.bind(this), false)
-    $('.release-notes').addEventListener('click', this.openLinkInFullTab.bind(this), false)
 
     this.options.onUpdate = this.updatePage.bind(this)
 
@@ -69,11 +67,6 @@ class OptionsPage {
   updateContextMenuOption (event) {
     this.options.update({contextMenu: event.target.checked})
     chrome.runtime.sendMessage({type: (event.target.checked ? 'add' : 'remove') + 'ContextMenu'})
-  }
-
-  openLinkInFullTab (event) {
-    event.preventDefault()
-    chrome.tabs.update({url: event.target.href})
   }
 
   sanitizeHTML (str) {
