@@ -1,6 +1,5 @@
 class UIBridge { // eslint-disable-line no-unused-vars
   constructor (eventBridge) {
-    console.log('hey')
     this.eventBridge = eventBridge
 
     chrome.tabs.onCreated.addListener(this.newTabCreated.bind(this))
@@ -8,8 +7,13 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   newTabCreated (tab) {
-    console.log('new tabe')
     this.updateBrowserActionIcon(tab, null, false)
+    chrome.tabs.insertCSS(tab.id, {
+      allFrames: true,
+      cssOrigin: 'user',
+      file: 'resources/shutup.css',
+      runAt: 'document_start'
+    })
   }
 
   connectToPage (tab) {
@@ -17,7 +21,6 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   toggleInjectedState (tab) {
-    console.log('tongle')
     this.eventBridge.sendMessage({tab}, {
       type: 'toggle'
     })

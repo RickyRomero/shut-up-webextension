@@ -3,7 +3,6 @@ importScripts(
   "scripts/storage.js",
   "scripts/private/options.js",
   "scripts/private/whitelist.js",
-  "scripts/private/stylesheet.js",
   "scripts/private/ui-bridge.js",
   "scripts/private/message-queue.js",
   "scripts/event-bridge.js",
@@ -17,7 +16,6 @@ chrome.runtime.onInstalled.addListener(() => {
 })
 
 /* eslint-disable no-unused-vars */
-const stylesheet = new Stylesheet()
 const whitelist = new Whitelist()
 const options = new Options()
 /* eslint-enable no-unused-vars */
@@ -26,7 +24,6 @@ const options = new Options()
   await Storage.queueOperation((async function () {
     bridge = new PrivateEventBridge()
     await bridge.uiBridge.addContextMenu.bind(bridge.uiBridge)()
-    await stylesheet.readLocalCopy.bind(stylesheet)()
     await runUpgrade()
   }).bind(this))
 

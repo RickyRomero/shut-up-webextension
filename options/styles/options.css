@@ -6,10 +6,12 @@
 }
 
 html {
-  background: radial-gradient(circle 70rem
-    at var(--p-gradient-x-__MSG_@@bidi_dir__) 50%,
-    var(--c-bg-light) 0%, var(--c-bg) 100%);
+  background-color: var(--c-bg);
   overflow-x: hidden;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 html * {
@@ -17,19 +19,15 @@ html * {
 }
 
 body {
+  background: radial-gradient(circle 70rem
+    at var(--p-gradient-x-__MSG_@@bidi_dir__) 50%,
+    var(--c-bg-light) 0%, var(--c-bg) 100%);
   font: var(--fs-main) -apple-system, BlinkMacSystemFont, sans-serif;
-  width: 800px; /* Font sizes act differently in Chinese */
+  width: 800px;
+  height: 400px;
   margin: 0;
-  opacity: 0.9;
-  transition: opacity 0.1s linear; /* See hack in options-page.js */
-}
-
-.blink body, .quantum body {
-  opacity: 1.0; /* See hack in options-page.js */
-}
-
-body > svg {
-  display: none;
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
 footer, aside {
@@ -54,7 +52,7 @@ input:focus {
   outline: none;
 }
 
-.main-container > div {
+main > div {
   display: flex;
   height: 360px; /* Font sizes act differently in Chinese */
 }
@@ -186,13 +184,6 @@ form > div {
   width: 85%;
 }
 
-form > div, .update-controls {
-  position: relative;
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-}
-
 form > div.stack {
   flex-direction: column;
 }
@@ -212,65 +203,6 @@ form > div.bottom-gap {
 
 form a {
   margin-__MSG_@@bidi_end_edge__: 2.0rem;
-}
-
-
-.update-check {
-  position: relative;
-}
-
-.update-check > div {
-  transition-property: opacity, left, right;
-  transition-duration: 500ms;
-  transition-timing-function: var(--e-error-out);
-  transition-delay: 300ms;
-
-  __MSG_@@bidi_start_edge__: 0;
-  __MSG_@@bidi_end_edge__: 0;
-  opacity: 1.0;
-}
-
-.update-check > div.hidden {
-  transition-timing-function: var(--e-error-in);
-  transition-delay: 0s;
-  pointer-events: none;
-
-  __MSG_@@bidi_start_edge__: 5.0em;
-  __MSG_@@bidi_end_edge__: -5.0em;
-  opacity: 0.0;
-}
-
-.update-check .error {
-  position: absolute;
-
-  font-size: var(--fs-small);
-  color: var(--c-error);
-  padding: 0.3rem 0;
-  cursor: pointer;
-}
-
-.close-icon { fill-rule: evenodd; }
-.update-check .error svg {
-  position: relative;
-  margin-__MSG_@@bidi_end_edge__: 0.4rem;
-  top: 0.2rem;
-
-  width: 1.2rem;
-  height: 1.2rem;
-}
-
-.update-check aside {
-  transition: color 4s linear;
-}
-
-.update-check aside.success {
-  transition-duration: 0s;
-  color: var(--c-success);
-}
-
-.stylesheet-update.running, .stylesheet-update.running:hover {
-  color: var(--c-text-secondary);
-  cursor: default;
 }
 
 /* px used deliberately here, since icon size doesn't change */
@@ -314,14 +246,13 @@ form a {
 
 
 .quantum .change-shortcut,
-.quantum .update-check,
 .quantum .keyboard-shortcut,
 .blink .keyboard-shortcut-not-configurable {
   display: none;
 }
 
 @media (max-width: 750px) {
-  .main-container > div {
+  main > div {
     flex-direction: column;
     align-items: center;
     height: initial;

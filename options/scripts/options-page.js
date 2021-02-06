@@ -3,25 +3,11 @@ const $ = document.querySelector.bind(document)
 class OptionsPage {
   constructor () {
     this.options = new Options()
-    this.stylesheet = new Stylesheet()
 
     this.init()
   }
 
   async init () {
-    // HACK: Firefox 64+ doesn't respect wide options panels.
-    // Also, Chrome tries to shrink the panel as small as it'll get.
-    // To work around this, we need to listen to a transition event
-    // so we know when the CSS has been applied, then set the width
-    // to whatever the browser determined was "correct".
-    $('body').addEventListener('transitionend', () => {
-      const w = Math.max($('html').clientWidth, window.innerWidth || 0)
-
-      if (w < 800) {
-        $('body').style.width = `${w}px`
-      }
-    })
-
     $('html').setAttribute('dir', chrome.i18n.getMessage('@@bidi_dir'))
     $('html').classList.add((await PlatformInfo.get()).os)
     $('html').classList.add(webBrowser.name.toLowerCase())
@@ -32,14 +18,10 @@ class OptionsPage {
     $('.whitelist').addEventListener('change', this.updateWhitelistOption.bind(this), false)
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
     $('.change-shortcut').addEventListener('click', this.openLinkInFullTab.bind(this), false)
-    $('.stylesheet-update').addEventListener('click', this.forceStylesheetUpdate.bind(this), false)
-    $('div.error').addEventListener('click', this.dismissError.bind(this), false)
     $('.release-notes').addEventListener('click', this.openLinkInFullTab.bind(this), false)
 
     this.options.onUpdate = this.updatePage.bind(this)
-    this.stylesheet.onUpdate = this.updatePage.bind(this)
 
-    this.suppressUpdates = false
     this.updatePage()
 
     if (webBrowser.name === 'Firefox') {
@@ -53,12 +35,10 @@ class OptionsPage {
   }
 
   async updatePage () {
-    if (!this.suppressUpdates) {
-      document.querySelectorAll('[data-i18n]').forEach(this.internationalize.bind(this))
+    document.querySelectorAll('[data-i18n]').forEach(this.internationalize.bind(this))
 
-      $('.whitelist').checked = (await this.options.automaticWhitelist())
-      $('.context-menu').checked = (await this.options.contextMenu())
-    }
+    $('.whitelist').checked = (await this.options.automaticWhitelist())
+    $('.context-menu').checked = (await this.options.contextMenu())
 
     window.clearTimeout(this.updateTimer)
     this.updateTimer = window.setTimeout(this.updatePage.bind(this), 1000 * 5)
@@ -68,10 +48,8 @@ class OptionsPage {
     let i18nMappings = {
       'keyboard_shortcut': this.setKeyboardShortcutStr,
       'keyboard_shortcut_not_configurable': this.setKeyboardShortcutStr,
-      'last_updated_period': this.setLastUpdatedStr,
       'name_version_copyright_ricky': this.setMainCopyrightStr,
-      'copyright_steven': this.setCSSCopyrightStr,
-      'fetch_error': Utils.noop
+      'copyright_steven': this.setCSSCopyrightStr
     }
 
     if (el.dataset.i18nLocked !== '\ud83d\udd12') {
@@ -96,62 +74,6 @@ class OptionsPage {
   openLinkInFullTab (event) {
     event.preventDefault()
     chrome.tabs.update({url: event.target.href})
-  }
-
-  forceStylesheetUpdate (event) {
-    event.preventDefault()
-    if (!$('.stylesheet-update').classList.contains('running')) {
-      this.suppressUpdates = true
-
-      $('.stylesheet-update').classList.add('running')
-      $('.update-controls aside').innerText = chrome.i18n.getMessage('updating')
-      this.stylesheet.fetch(true, (err) => {
-        if (err) {
-          this.showUpdateError(err)
-        } else {
-          this.showUpdateSuccess()
-        }
-      })
-    }
-  }
-
-  showUpdateSuccess () {
-    this.suppressUpdates = false
-    $('.stylesheet-update').classList.remove('running')
-
-    let statusMsg = $('.update-controls aside')
-    statusMsg.classList.add('success')
-    window.setTimeout(() => {
-      statusMsg.classList.remove('success')
-    }, 2000)
-  }
-
-  showUpdateError (err) {
-    let i18nString = 'error_unexpected_response'
-
-    if (err.status !== undefined) {
-      if (err.status === 0) {
-        i18nString = 'error_no_internet_connection'
-      }
-    }
-
-    $('body').classList.add('error')
-    $('div.update-controls').classList.add('hidden')
-    $('div.error').classList.remove('hidden')
-    $('.error-msg').innerText = chrome.i18n.getMessage(i18nString)
-
-    $('div.error').addEventListener('transitionend', () => {
-      this.suppressUpdates = false
-      $('.stylesheet-update').classList.remove('running')
-
-      this.updatePage()
-    }, { once: true })
-  }
-
-  dismissError () {
-    $('body').classList.remove('error')
-    $('div.update-controls').classList.remove('hidden')
-    $('div.error').classList.add('hidden')
   }
 
   sanitizeHTML (str) {
@@ -215,54 +137,6 @@ class OptionsPage {
         el.innerText = chrome.i18n.getMessage('keyboard_shortcut_disabled')
       }
     })
-  }
-
-  async setLastUpdatedStr (el) {
-    let now = new Date()
-    let minute = (1000 * 60)
-    let hour = (minute * 60)
-    let day = (hour * 24)
-
-    let deltaThresholds = {
-      'moments': minute * 2,
-      'minutes': hour,
-      'hour': hour * 2,
-      'hours': now - new Date((Math.floor(now / day) * day) + (now.getTimezoneOffset() * minute)),
-      'day': day * 2,
-      'days': day * 7,
-      'week': Number.MAX_VALUE
-    }
-
-    let divisors = {
-      'moments': minute,
-      'minutes': minute,
-      'hour': hour,
-      'hours': hour,
-      'day': day,
-      'days': day,
-      'week': day * 7
-    }
-
-    let lastSuccess = new Date((await this.stylesheet.data()).lastSuccess)
-    let timeDelta = (now - lastSuccess)
-    let i18nKey = 'last_updated_period_'
-    for (let threshold in deltaThresholds) {
-      if (timeDelta < deltaThresholds[threshold]) {
-        i18nKey += threshold
-        timeDelta = Math.round(timeDelta / divisors[threshold])
-        break
-      }
-    }
-
-    el.innerText = chrome.i18n.getMessage(i18nKey, [timeDelta])
-    el.setAttribute('title', lastSuccess.toLocaleTimeString(navigator.language, {
-      weekday: 'short',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: '2-digit'
-    }))
   }
 
   setMainCopyrightStr (el) {

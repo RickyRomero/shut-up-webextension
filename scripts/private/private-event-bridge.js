@@ -39,14 +39,6 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
   }
 
   async connectResponder (message, sender) {
-    // Run the stylesheet and whitelist queries in parallel
-    stylesheet.data().then(({cache}) => {
-      this.sendMessage(sender, {
-        type: 'stylesheetContents',
-        payload: cache
-      })
-    })
-
     whitelist.query(sender.tab).then((whitelisted) => {
       this.sendMessage(sender, {
         type: 'isWhitelisted',
@@ -73,13 +65,6 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
 
   updateBrowserActionStateResponder (message, sender) {
     this.uiBridge.updateBrowserActionIcon(sender.tab, message.payload, true)
-  }
-
-  broadcastStylesheet (contents) {
-    this.broadcastMessage({
-      type: 'stylesheetContents',
-      payload: contents
-    })
   }
 
   removeContextMenuResponder (message, sender) {

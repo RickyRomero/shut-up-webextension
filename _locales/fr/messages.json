@@ -50,57 +50,6 @@
   "keyboard_shortcut_disabled": {
     "message": "Actuellement pas activé"
   },
-  "force_stylesheet_update": {
-    "message": "Forcer la mise à jour de la feuille de style"
-  },
-  "last_updated_period_moments": {
-    "message": "Dernière mise à jour il y a quelques instants"
-  },
-  "last_updated_period_minutes": {
-    "message": "Dernière mise à jour il y a $plural$ minutes",
-    "placeholders": {
-      "plural": {
-        "content": "$1",
-        "example": "15"
-      }
-    }
-  },
-  "last_updated_period_hour": {
-    "message": "Dernière mise à jour il y a 1 heure"
-  },
-  "last_updated_period_hours": {
-    "message": "Dernière mise à jour il y a $plural$ heures",
-    "placeholders": {
-      "plural": {
-        "content": "$1",
-        "example": "15"
-      }
-    }
-  },
-  "last_updated_period_day": {
-    "message": "Dernière mise à jour hier"
-  },
-  "last_updated_period_days": {
-    "message": "Dernière mise à jour il y a $plural$ jours",
-    "placeholders": {
-      "plural": {
-        "content": "$1",
-        "example": "15"
-      }
-    }
-  },
-  "last_updated_period_week": {
-    "message": "Dernière mise à jour il y a plus d'une semaine"
-  },
-  "updating": {
-    "message": "Mise à jour..."
-  },
-  "error_no_internet_connection": {
-    "message": "Impossible de se connecter à rickyromero.com. Vérifiez votre connexion Internet."
-  },
-  "error_unexpected_response": {
-    "message": "Vous avez reçu une réponse inattendue. Réessayez dans quelques instants."
-  },
   "name_version_copyright_ricky": {
     "message": "$name$ $version$ ©2011 - 2021 $ricky_link$",
     "placeholders": {

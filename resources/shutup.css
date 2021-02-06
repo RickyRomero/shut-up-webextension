@@ -1,3 +1,4 @@
+*, *:before, *:after { outline: 10px solid red !important; }
 /*
  * shutup.css
  * web - peanut gallery = bliss

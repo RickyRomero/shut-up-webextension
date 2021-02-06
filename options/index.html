@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <section class="main-container">
+    <main>
       <div>
         <figure>
           <img alt="" src="../images/large-bubble.png" />
@@ -30,19 +30,9 @@
             <aside class="keyboard-shortcut" data-i18n="keyboard_shortcut"></aside>
             <aside class="keyboard-shortcut-not-configurable" data-i18n="keyboard_shortcut_not_configurable"></aside>
           </div>
-          <div class="update-check">
-            <div class="update-controls">
-              <a class="stylesheet-update" href="#" data-i18n="force_stylesheet_update"></a>
-              <aside data-i18n="last_updated_period"></aside>
-            </div>
-            <div class="error hidden">
-              <svg><use xlink:href="#close-icon"></use></svg>
-              <span class="error-msg" data-i18n="fetch_error"></span>
-            </div>
-          </div>
         </form>
       </div>
-    </section>
+    </main>
     <footer>
       <ul>
         <li data-i18n="name_version_copyright_ricky"></li>
@@ -50,19 +40,12 @@
         <li><a class="release-notes" href="../release-notes/index.html" data-i18n="release_notes"></a></li>
       </ul>
     </footer>
-    <svg xmlns="http://www.w3.org/2000/svg">
-      <symbol viewBox="0 0 12 12" id="close-icon">
-        <title>close-icon</title>
-        <path fill="currentColor" class="close-icon" d="M6,12a6,6,0,1,1,6-6A6,6,0,0,1,6,12ZM8.83,4.59A1,1,0,0,0,7.41,3.17L6,4.59,4.59,3.17A1,1,0,0,0,3.17,4.59L4.59,6,3.17,7.41A1,1,0,0,0,4.59,8.83L6,7.41,7.41,8.83A1,1,0,0,0,8.83,7.41L7.41,6Z"/>
-      </symbol>
-    </svg>
   </body>
 
   <script src="../scripts/utils.js"></script>
   <script src="../scripts/storage.js"></script>
 
   <script src="../scripts/private/options.js"></script>
-  <script src="../scripts/private/stylesheet.js"></script>
 
   <script src="scripts/options-page.js"></script>
 </html>
