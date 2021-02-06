@@ -7,7 +7,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   newTabCreated (tab) {
-    this.updateBrowserActionIcon(tab, null, false)
+    this.updateActionIcon(tab, null, false)
     chrome.tabs.insertCSS(tab.id, {
       allFrames: true,
       cssOrigin: 'user',
@@ -17,7 +17,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   connectToPage (tab) {
-    this.updateBrowserActionIcon(tab, null, true)
+    this.updateActionIcon(tab, null, true)
   }
 
   toggleInjectedState (tab) {
@@ -26,20 +26,20 @@ class UIBridge { // eslint-disable-line no-unused-vars
     })
   }
 
-  updateBrowserActionIcon ({id}, state, enable) {
+  updateActionIcon ({id}, state, enable) {
     let prefix = webBrowser.engine.toLowerCase()
     let iconStates = {
       'default': {
-        '16': 'images/browser-action/default-state.png',
-        '32': 'images/browser-action/default-state@2x.png'
+        '16': 'images/action/default-state.png',
+        '32': 'images/action/default-state@2x.png'
       },
       'turnOff': {
-        '16': `images/browser-action/${prefix}-turn-off.png`,
-        '32': `images/browser-action/${prefix}-turn-off@2x.png`
+        '16': `images/action/${prefix}-turn-off.png`,
+        '32': `images/action/${prefix}-turn-off@2x.png`
       },
       'turnOn': {
-        '16': `images/browser-action/${prefix}-turn-on.png`,
-        '32': `images/browser-action/${prefix}-turn-on@2x.png`
+        '16': `images/action/${prefix}-turn-on.png`,
+        '32': `images/action/${prefix}-turn-on@2x.png`
       }
     }
 

@@ -17,6 +17,7 @@ class OptionsPage {
 
     $('.whitelist').addEventListener('change', this.updateWhitelistOption.bind(this), false)
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
+    $('.change-shortcut').addEventListener('click', this.openLinkInFullTab.bind(this), false)
 
     this.options.onUpdate = this.updatePage.bind(this)
 
@@ -69,6 +70,11 @@ class OptionsPage {
     chrome.runtime.sendMessage({type: (event.target.checked ? 'add' : 'remove') + 'ContextMenu'})
   }
 
+  openLinkInFullTab (event) {
+    event.preventDefault()
+    chrome.tabs.update({url: event.target.href})
+  }
+
   sanitizeHTML (str) {
     let self = this
     let nodes = []
@@ -119,12 +125,13 @@ class OptionsPage {
 
   async setKeyboardShortcutStr (el) {
     chrome.commands.getAll(async function (commands) {
+      console.dir(commands)
       let shortcut = commands[0].shortcut
 
       if (shortcut !== '') {
         el.innerText = chrome.i18n.getMessage(
           el.dataset.i18n,
-          (await Keyboard.conformToPlatform(commands[0].shortcut))
+          (await Keyboard.conformToPlatform(shortcut))
         )
       } else {
         el.innerText = chrome.i18n.getMessage('keyboard_shortcut_disabled')

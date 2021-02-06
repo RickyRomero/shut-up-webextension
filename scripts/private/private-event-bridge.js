@@ -47,7 +47,7 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
     })
   }
 
-  enableBrowserActionResponder (message, sender) {
+  enableActionResponder (message, sender) {
     this.uiBridge.connectToPage(sender.tab)
   }
 
@@ -63,8 +63,8 @@ class PrivateEventBridge extends EventBridge { // eslint-disable-line no-unused-
     })
   }
 
-  updateBrowserActionStateResponder (message, sender) {
-    this.uiBridge.updateBrowserActionIcon(sender.tab, message.payload, true)
+  updateActionStateResponder (message, sender) {
+    this.uiBridge.updateActionIcon(sender.tab, message.payload, true)
   }
 
   removeContextMenuResponder (message, sender) {

@@ -41,8 +41,8 @@
 
   "action": {
     "default_icon": {
-      "16": "images/browser-action/default-state.png",
-      "32": "images/browser-action/default-state@2x.png"
+      "16": "images/action/default-state.png",
+      "32": "images/action/default-state@2x.png"
     },
     "default_title": "__MSG_product_name__"
   },
