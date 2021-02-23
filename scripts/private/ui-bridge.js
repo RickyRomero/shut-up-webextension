@@ -1,29 +1,84 @@
 class UIBridge { // eslint-disable-line no-unused-vars
-  constructor (eventBridge) {
-    this.eventBridge = eventBridge
-
-    chrome.tabs.onCreated.addListener(this.newTabCreated.bind(this))
+  constructor () {
+    this.cssTaskQueue = new TaskQueue()
+    // chrome.tabs.onCreated.addListener(this.newTabCreated.bind(this))
+    chrome.tabs.onUpdated.addListener(this.tabUpdated.bind(this))
     chrome.action.onClicked.addListener(this.toggleInjectedState.bind(this))
   }
 
-  newTabCreated (tab) {
-    this.updateActionIcon(tab, null, false)
-    chrome.tabs.insertCSS(tab.id, {
-      allFrames: true,
-      cssOrigin: 'user',
-      file: 'resources/shutup.css',
-      runAt: 'document_start'
-    })
+  tabEligible (tab) {
+    const denyList = ['chrome.google.com']
+    const { url } = tab
+    const parsedUrl = new URL(url)
+    if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
+      return false
+    }
+    return !denyList.includes(parsedUrl.hostname)
+  }
+
+  async tabUpdated (_, changeInfo, tab) {
+    const { status } = changeInfo
+    const { id, url } = tab
+    console.log(url, this.tabEligible(tab))
+    if (status === 'loading' && url && this.tabEligible(tab)) {
+      if (!(await whitelist.query(tab))) {
+        this.cssTaskQueue.add(id, done => {
+          const cssInjection = {
+            allFrames: true,
+            cssOrigin: 'user',
+            file: 'resources/shutup.css'
+          }
+  
+          chrome.tabs.removeCSS(id, cssInjection, () => {
+            chrome.tabs.insertCSS(id, {
+              ...cssInjection,
+              runAt: 'document_start'
+            }, () => {
+              done()
+            })
+          })
+        }, 'reinject')
+      }
+    }
   }
 
   connectToPage (tab) {
     this.updateActionIcon(tab, null, true)
   }
 
-  toggleInjectedState (tab) {
-    this.eventBridge.sendMessage({tab}, {
-      type: 'toggle'
-    })
+  async toggleInjectedState (tab) {
+    const { id } = tab
+
+    if (!this.tabEligible(tab)) {
+      return
+    }
+
+    if (await whitelist.query(tab)) {
+      whitelist.remove(tab)
+      this.cssTaskQueue.add(id, done => {
+        const cssInjection = {
+          allFrames: true,
+          cssOrigin: 'user',
+          file: 'resources/shutup.css'
+        }
+
+        chrome.tabs.removeCSS(id, cssInjection, () => {
+          chrome.tabs.insertCSS(id, {
+            ...cssInjection,
+            runAt: 'document_start'
+          }, done)
+        })
+      }, 'reinject')
+    } else {
+      whitelist.add(tab)
+      this.cssTaskQueue.add(id, done => {
+        chrome.tabs.removeCSS(id, {
+          allFrames: true,
+          cssOrigin: 'user',
+          file: 'resources/shutup.css'
+        }, done)
+      })
+    }
   }
 
   updateActionIcon ({id}, state, enable) {
@@ -60,7 +115,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
       if (await options.contextMenu()) {
         chrome.contextMenus.create({
           id: 'toggle-comments-ctx',
-          title: "Toggle Comments", // FIXME: Localization APIs not supported in this context
+          title: chrome.i18n.getMessage('toggle_comments_menu'), // FIXME: Localization APIs not supported in this context
           contexts: ['page']
         })
       }

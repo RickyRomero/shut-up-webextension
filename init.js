@@ -4,9 +4,7 @@ importScripts(
   "scripts/private/options.js",
   "scripts/private/whitelist.js",
   "scripts/private/ui-bridge.js",
-  "scripts/private/message-queue.js",
-  "scripts/event-bridge.js",
-  "scripts/private/private-event-bridge.js",
+  "scripts/private/task-queue.js",
   "scripts/private/upgrade.js"
 )
 
@@ -18,19 +16,19 @@ chrome.runtime.onInstalled.addListener(() => {
 /* eslint-disable no-unused-vars */
 const whitelist = new Whitelist()
 const options = new Options()
+const uiBridge = new UIBridge()
 /* eslint-enable no-unused-vars */
 
 ;(async () => {
   await Storage.queueOperation((async function () {
-    bridge = new PrivateEventBridge()
-    await bridge.uiBridge.addContextMenu.bind(bridge.uiBridge)()
+    await uiBridge.addContextMenu.bind(uiBridge)()
     await runUpgrade()
   }).bind(this))
 
   await Storage.queueOperation(() => {
     // Init context menus
     chrome.contextMenus.onClicked.addListener((info, tab) => {
-      bridge.uiBridge.toggleInjectedState(tab)
+      uiBridge.toggleInjectedState(tab)
     })
   })
 })()

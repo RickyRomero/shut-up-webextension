@@ -67,7 +67,9 @@ class OptionsPage {
 
   updateContextMenuOption (event) {
     this.options.update({contextMenu: event.target.checked})
-    chrome.runtime.sendMessage({type: (event.target.checked ? 'add' : 'remove') + 'ContextMenu'})
+    chrome.runtime.sendMessage({
+      type: (event.target.checked ? 'add' : 'remove') + 'ContextMenu'
+    })
   }
 
   openLinkInFullTab (event) {
