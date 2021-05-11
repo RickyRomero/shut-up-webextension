@@ -12,11 +12,6 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@v2
-      - name: Copy source files
-        run: |
-          sudo mkdir -p /amo/extension
-          sudo cp -R $GITHUB_WORKSPACE/* /amo/extension/
-          ls -la /amo/extension/
       - name: Deploy update
         uses: RickyRomero/shut-up-amo@main
         env:
