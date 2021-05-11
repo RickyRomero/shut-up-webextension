@@ -15,7 +15,7 @@ jobs:
       - name: Copy source files
         run: |
           sudo mkdir -p /amo/extension
-          cp -R $GITHUB_WORKSPACE/* /amo/extension/
+          sudo cp -R $GITHUB_WORKSPACE/* /amo/extension/
       - name: Deploy update
         uses: RickyRomero/shut-up-amo@main
         env:
