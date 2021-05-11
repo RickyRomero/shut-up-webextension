@@ -1,23 +1,21 @@
 {
   "manifest_version": 2,
-
-  "name":             "Shut Up: Comment Blocker",
-  "short_name":       "__MSG_product_name__",
-
-  "version":          "7.0.2.8",
-  "description":      "__MSG_manifest_description__",
-
-  "author":           "Ricky Romero",
-  "homepage_url":     "https://rickyromero.com/shutup/",
-
-  "minimum_chrome_version":  "55.0.2883.75",
-  "default_locale":          "en",
-  "offline_enabled":         true,
-
-  "permissions":             ["tabs", "storage", "contextMenus"],
-  "incognito":               "split",
+  "name": "Shut Up: Comment Blocker",
+  "short_name": "__MSG_product_name__",
+  "version": "7.0.2.9",
+  "description": "__MSG_manifest_description__",
+  "author": "Ricky Romero",
+  "homepage_url": "https://rickyromero.com/shutup/",
+  "minimum_chrome_version": "55.0.2883.75",
+  "default_locale": "en",
+  "offline_enabled": true,
+  "permissions": [
+    "tabs",
+    "storage",
+    "contextMenus"
+  ],
+  "incognito": "split",
   "content_security_policy": "script-src 'self'; object-src 'none'",
-
   "icons": {
     "16": "images/main-icon/16.png",
     "32": "images/main-icon/32.png",
@@ -25,16 +23,14 @@
     "128": "images/main-icon/128.png",
     "256": "images/main-icon/256.png"
   },
-
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
-        "default":    "Ctrl+Shift+X",
-        "mac":     "Command+Shift+X"
+        "default": "Ctrl+Shift+X",
+        "mac": "Command+Shift+X"
       }
     }
   },
-
   "background": {
     "scripts": [
       "scripts/utils.js",
@@ -51,7 +47,6 @@
     ],
     "persistent": false
   },
-
   "content_scripts": [
     {
       "matches": [
@@ -65,17 +60,15 @@
         "scripts/injected/injected-event-bridge.js",
         "scripts/injected/controller.js"
       ],
-      "run_at":            "document_start",
-      "all_frames":        true,
+      "run_at": "document_start",
+      "all_frames": true,
       "match_about_blank": true
     }
   ],
-
   "web_accessible_resources": [
     "resources/shutup.css",
     "resources/null.css"
   ],
-
   "browser_action": {
     "default_icon": {
       "16": "images/browser-action/default-state.png",
@@ -83,10 +76,9 @@
     },
     "default_title": "__MSG_product_name__"
   },
-
   "options_ui": {
-    "page":         "options/index-wrapper.html",
-    "open_in_tab":  true,
+    "page": "options/index-wrapper.html",
+    "open_in_tab": true,
     "chrome_style": false
   }
 }
