@@ -1,0 +1,25 @@
+name: deploy
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'manifest.json'
+  workflow_dispatch:
+jobs:
+  prepare-and-deploy-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v2
+      - name: Copy source files
+        run: |
+          mkdir -p /amo/extension
+          cp -R $GITHUB_WORKSPACE/* /amo/extension/
+      - name: Deploy update
+        uses: RickyRomero/shut-up-amo@v1
+        env:
+          AMO_ISSUER: ${{ secrets.AMO_ISSUER }}
+          AMO_SECRET: ${{ secrets.AMO_SECRET }}
+          AMO_ADDON_GUID: ${{ secrets.AMO_ADDON_GUID }}
+          AMO_BUILD_NAME: ${{ secrets.AMO_BUILD_NAME }}
