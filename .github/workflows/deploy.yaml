@@ -17,7 +17,7 @@ jobs:
           mkdir -p /amo/extension
           cp -R $GITHUB_WORKSPACE/* /amo/extension/
       - name: Deploy update
-        uses: RickyRomero/shut-up-amo@v1
+        uses: RickyRomero/shut-up-amo@v1.0
         env:
           AMO_ISSUER: ${{ secrets.AMO_ISSUER }}
           AMO_SECRET: ${{ secrets.AMO_SECRET }}
