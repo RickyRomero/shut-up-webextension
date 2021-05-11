@@ -14,7 +14,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Copy source files
         run: |
-          mkdir -p /amo/extension
           cp -R $GITHUB_WORKSPACE/* /amo/extension/
       - name: Deploy update
         uses: RickyRomero/shut-up-amo@main
