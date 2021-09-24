@@ -58,10 +58,12 @@ body [id*=spotim i],
 body [id*=spot-im i],
 body [class*=spotim i],
 body [class*=spot-im i],
+[data-spot-im-shadow-host],
 
 /* Coral */
 div#coral_talk_stream,    /* v4 */
 div#coral_thread,         /* v5 */
+#coral-container,         /* as seen on WSJ */
 
 /*
  * Digg and other sites that use "comments" divs
@@ -197,11 +199,22 @@ span.postMetaHeaderCommentCount.commentCount,
 button.comments-button,
 a.commentCountLink,
 p.theme-comments,
+#comments-speech-bubble-top,
+#comments-speech-bubble-bottom,
+
+/* Wall Street Journal */
+#comments_sector,
+#article-comments-tool,
+[class*="comment-count"],
 
 /* BBC News */
 .comments-button,
 .dna-comment,
 .nw-c-comment,
+
+/* thetimes.co.uk */
+[class*="CommentContainer" i],
+#comments-container,
 
 /* ZDNet */
 .view-6,
