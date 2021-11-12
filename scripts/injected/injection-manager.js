@@ -116,7 +116,7 @@ class InjectionManager { // eslint-disable-line no-unused-vars
       const sum = intervals.reduce((prev, cur) => prev + cur, 0)
   
       if (sum < 500 && events.length > 10) {
-        this.linkNodeAnchors.push(hash)
+        this.linkNodeAnchors.unshift(hash)
       }
     })
   }
