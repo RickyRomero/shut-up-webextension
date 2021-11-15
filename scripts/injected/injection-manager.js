@@ -38,6 +38,7 @@ class InjectionManager { // eslint-disable-line no-unused-vars
     // Make a unique-enough hash of the sibling that we can check against
     return [
       el.nodeName,
+      // FIXME: el.attributes isn't iterable in Chrome
       [...el.attributes].map(
         attr => `${attr.name}=${attr.value}`.length
       ),
@@ -60,42 +61,51 @@ class InjectionManager { // eslint-disable-line no-unused-vars
     this.injectStyles()
   }
 
-  injectStyles (target) {
-    this.head.insertBefore(this.linkNodes[0], target)
+  injectStyles () {
+    this.head.insertBefore(this.linkNodes[0], null)
   }
 
-  respondToHeadChange (mutations) {
+  // Shut Up always wants to be as close to the end of the <head> as possible
+  // to ensure that it can't be overridden by the page's stylesheet. However,
+  // some pages or extensions can conflict with Shut Up if they use the same
+  // technique as we do to get in front of the CSS cascade. So, to get around
+  // this, we log every time we see an element get added in front of us.
+  // Then, if we see the same element in front of us enough times, we'll
+  // add it to a list of anchors we shouldn't get in front of. This approach
+  // should still work even if that element disappears and reappears on the
+  // DOM. It will repeat this routine each time we're pushed off of an anchor.
+  //
+  // This specifically addresses a conflict with Dark Reader, but may help
+  // us not lock up on certain websites too.
+  // https://github.com/RickyRomero/shut-up-webextension/issues/17
+  respondToHeadChange () {
     const sibling = this.linkNodes[0].nextSibling
     const siblingHash = InjectionManager.hashEl(sibling)
-    const anchoredCorrectly = siblingHash === this.currentAnchor
-    const withinHead = this.linkNodes[0].parentElement === this.head
-    const linkNodeMisplaced = !anchoredCorrectly || !withinHead
+    const isWithinHead = this.linkNodes[0].parentElement === this.head
+    const isAtEndOfHead = this.linkNodes[0].nextSibling === null
+    const isAnchoredCorrectly = (
+      (isWithinHead && isAtEndOfHead) ||
+      this.linkNodeAnchors.includes(siblingHash)
+    )
 
-    // Shut Up always wants to be as close to the end of the <head> as possible
-    // to ensure that it can't be overridden by the page's stylesheet. However,
-    // some pages or extensions can conflict with Shut Up if they use the same
-    // technique as we do to get in front of the CSS cascade. So, to get around
-    // this, we log every time we see an element get added in front of us.
-    // Then, if we see the same element in front of us enough times, we'll
-    // anchor ourselves against it instead of the end of the <head>. This
-    // approach should still work even if that element disappears and reappears
-    // on the DOM.
-    //
-    // This specifically addresses a conflict with Dark Reader, but may help
-    // us not lock up on certain websites too.
-    // https://github.com/RickyRomero/shut-up-webextension/issues/17
-    if (linkNodeMisplaced) {
-      if (!anchoredCorrectly) {
-        if (!this.rivalries[siblingHash]) { this.rivalries[siblingHash] = [] }
-  
-        // Log the event
-        this.rivalries[siblingHash].push(Number(new Date()))
+    if (!isAnchoredCorrectly) {
+      if (!this.rivalries[siblingHash]) { this.rivalries[siblingHash] = [] }
 
-        // Refresh anchors
-        this.updateLinkNodeAnchors()
-      }
+      // Log the event
+      const now = Number(new Date())
+      this.rivalries[siblingHash].push(now)
 
-      this.injectStyles(this.currentAnchor)
+      // Remove all but the last 500ms of records
+      this.rivalries[siblingHash] = this.rivalries[siblingHash].filter(
+        timestamp => timestamp > now - 500
+      )
+
+      // Refresh anchors
+      this.updateLinkNodeAnchors()
+
+      // Put us back at the end of the head. If this routine runs again, it'll
+      // check the next mutation and see if we got pushed against a new anchor.
+      this.injectStyles()
     }
   }
 
@@ -104,24 +114,13 @@ class InjectionManager { // eslint-disable-line no-unused-vars
       const events = this.rivalries[hash]
       if (!events) { return }
       if (this.linkNodeAnchors.includes(hash)) { return }
-
-      // Figure out how long it takes between each occurrence
-      const intervals = events.map((num, idx) => {
-        return num - events[Math.max(0, idx - 1)]
-      })
   
-      // Sum the events
-      const sum = intervals.reduce((prev, cur) => prev + cur, 0)
-  
-      if (sum < 500 && events.length > 10) {
-        this.linkNodeAnchors.unshift(hash)
+      // If more than 10 events happened in the last half second,
+      // add the element as an anchor
+      if (events.length > 10) {
+        this.linkNodeAnchors.push(hash)
       }
     })
-  }
-
-  get currentAnchor () {
-    const headHashes = [...this.head.children].map(InjectionManager.hashEl)
-    return headHashes.find(hash => this.linkNodeAnchors.includes(hash))
   }
 
   get stylesheet () { return this._stylesheet }
