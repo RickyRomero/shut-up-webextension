@@ -123,7 +123,7 @@ class InjectionManager { // eslint-disable-line no-unused-vars
 
   get currentAnchor () {
     const headHashes = [...this.head.children].map(InjectionManager.hashEl)
-    return this.linkNodeAnchors.find(hash => headHashes.includes(hash))
+    return headHashes.find(hash => this.linkNodeAnchors.includes(hash))
   }
 
   get stylesheet () { return this._stylesheet }
