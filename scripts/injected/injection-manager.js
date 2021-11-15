@@ -84,8 +84,6 @@ class InjectionManager { // eslint-disable-line no-unused-vars
     // This specifically addresses a conflict with Dark Reader, but may help
     // us not lock up on certain websites too.
     // https://github.com/RickyRomero/shut-up-webextension/issues/17
-    console.log('Head changed', Number(new Date()), { anchoredCorrectly, withinHead })
-    console.log({ siblingHash, currentAnchor: this.currentAnchor, linkNodeAnchors: this.linkNodeAnchors.join() })
     if (linkNodeMisplaced) {
       if (!anchoredCorrectly) {
         if (!this.rivalries[siblingHash]) { this.rivalries[siblingHash] = [] }
