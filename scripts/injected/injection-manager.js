@@ -1,49 +1,41 @@
-const blacklist = [
-  'read.amazon.com',
-  'icloud.com',
-  'apps.oregon.gov'
-]
-
 class InjectionManager { // eslint-disable-line no-unused-vars
   constructor () {
-    const { hostname } = Utils.parseURI(window.location.href)
-    const isBlacklisted = !!blacklist.find(blocked => Utils.compareHosts(hostname, blocked))
     this.rivalries = {}
     this.linkNodeAnchors = []
+    this._stylesheet = ''
 
-    if (isBlacklisted) {
-      this.linkNodes = []
-      this.enabled = false
-    } else {
-      this._stylesheet = ''
+    this.linkNodes = [document.createElement('link')]
+    this.linkNodes[0].setAttribute('id', 'shut-up-css')
+    this.linkNodes[0].setAttribute('rel', 'stylesheet')
 
-      this.linkNodes = [document.createElement('link')]
-      this.linkNodes[0].setAttribute('id', 'shut-up-css')
-      this.linkNodes[0].setAttribute('rel', 'stylesheet')
+    this.watchForHeadElement = new MutationObserver(this.watchDocument.bind(this))
+    // This only watches the document element, so the changes we see should be very few.
+    this.watchForHeadElement.observe(document.documentElement, { childList: true })
 
-      this.watchForHeadElement = new MutationObserver(this.watchDocument.bind(this))
-      // This only watches the document element, so the changes we see should be very few.
-      this.watchForHeadElement.observe(document.documentElement, { childList: true })
+    this.enabled = true
+    this.isTopFrame = (self === top)
 
-      this.enabled = true
-      this.isTopFrame = (self === top)
-
-      this.watchDocument() // Initial check, in case <head /> is ready now
-    }
+    this.watchDocument() // Initial check, in case <head /> is ready now
   }
 
   static hashEl (el) {
     if (!el) { return }
 
     // Make a unique-enough hash of the sibling that we can check against
-    return [
-      el.nodeName,
-      // FIXME: el.attributes isn't iterable in Chrome
-      [...el.attributes].map(
-        attr => `${attr.name}=${attr.value}`.length
-      ),
-      el.innerText.length
-    ].flat().join('/')
+    if (el.nodeName === '#text') {
+      return [el.nodeName, el.wholeText.length].join('/')
+    } else if (el.nodeName === '#comment') {
+      return [el.nodeName, el.textContent.length].join('/')
+    } else {
+      return [
+        el.nodeName,
+        // FIXME: el.attributes isn't iterable in Chrome
+        [...el.attributes].map(
+          attr => `${attr.name}=${attr.value}`.length
+        ),
+        el.innerText.length
+      ].flat().join('/')
+    }
   }
 
   watchDocument () {
