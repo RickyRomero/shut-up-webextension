@@ -2,6 +2,7 @@ const $ = document.querySelector.bind(document)
 
 class OptionsPage {
   constructor () {
+    this.latestCopyrightYear = 2022
     this.options = new Options()
     this.stylesheet = new Stylesheet()
 
@@ -270,7 +271,7 @@ class OptionsPage {
     let version = chrome.runtime.getManifest().version
 
     this.sanitizeHTML(
-      chrome.i18n.getMessage('name_version_copyright_ricky', [productName, version])
+      chrome.i18n.getMessage('name_version_copyright_ricky', [productName, version, this.latestCopyrightYear])
     ).forEach((child) => el.appendChild(child))
 
     el.dataset.i18nLocked = '\ud83d\udd12'
@@ -278,7 +279,7 @@ class OptionsPage {
 
   setCSSCopyrightStr (el) {
     this.sanitizeHTML(
-      chrome.i18n.getMessage('copyright_steven')
+      chrome.i18n.getMessage('copyright_steven', [this.latestCopyrightYear])
     ).forEach((child) => el.appendChild(child))
     el.dataset.i18nLocked = '\ud83d\udd12'
   }

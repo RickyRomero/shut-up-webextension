@@ -102,7 +102,7 @@
     "message": "得到了一个意外响应。请稍后再试。"
   },
   "name_version_copyright_ricky": {
-    "message": "$name$ $version$ ©2011 - 2021 $ricky_link$",
+    "message": "$name$ $version$ ©2011 - $latest_year$ $ricky_link$",
     "placeholders": {
       "name": {
         "content": "$1",
@@ -112,14 +112,22 @@
         "content": "$2",
         "example": "3.0"
       },
+      "latest_year": {
+        "content": "$3",
+        "example": "2022"
+      },
       "ricky_link": {
         "content": "<a href=\"https://rickyromero.com/\">Ricky Romero</a>"
       }
     }
   },
   "copyright_steven": {
-    "message": "shutup.css ©2010 - 2021 $steven_link$ 及 $contributors_link$",
+    "message": "shutup.css ©2010 - $latest_year$ $steven_link$ 及 $contributors_link$",
     "placeholders": {
+      "latest_year": {
+        "content": "$1",
+        "example": "2022"
+      },
       "steven_link": {
         "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"
       },
