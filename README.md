@@ -2,7 +2,7 @@
 
 [Shut Up][homepage] is an open source project for blocking comment sections in all mainstream web browsers.
 
-This is the [WebExtension][webextension-mdn] version of Shut Up which supports Chrome, Firefox, Edge, and Opera. Versions for Safari on [macOS][shut-up-native], [iOS, and iPadOS][shut-up-ios] are also available.
+This is the [WebExtension][webextensions-mdn] version of Shut Up which supports Chrome, Firefox, Edge, and Opera. Versions for Safari on [macOS][shut-up-native], [iOS, and iPadOS][shut-up-ios] are also available.
 
 This extension leverages [shutup.css][shutup-css] by [Steven Frank][site-steven] and contributors, which is used with permission.
 
@@ -36,7 +36,7 @@ Shut Up is available under the terms of the [MIT License][license].
 [shut-up-ios]: https://github.com/RickyRomero/shut-up-ios  (iOS/iPadOS version of Shut Up)
 [license]: LICENSE.md  (MIT License)
 [shutup-css]: https://github.com/panicsteve/shutup-css  (shutup-css on GitHub)
-[webextension-mdn]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions  (WebExtension documentation on MDN)
+[webextensions-mdn]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions  (WebExtensions documentation on MDN)
 [site-steven]: https://stevenf.com  (Steven Frank's personal website)
 
 [ext-chrome]: https://chrome.google.com/webstore/detail/oklfoejikkmejobodofaimigojomlfim?hl=en-US&amp;gl=US  (Shut Up on the Chrome Web Store)

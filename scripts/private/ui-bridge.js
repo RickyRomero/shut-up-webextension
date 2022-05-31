@@ -102,7 +102,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
       if (await options.contextMenu()) {
         chrome.contextMenus.create({
           id: 'toggle-comments-ctx',
-          title: chrome.i18n.getMessage('toggle_comments_menu'), // FIXME: Localization APIs not supported in this context
+          title: chrome.i18n.getMessage('toggle_comments_menu'),
           contexts: ['page']
         })
       }
