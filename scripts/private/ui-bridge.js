@@ -1,9 +1,18 @@
 class UIBridge { // eslint-disable-line no-unused-vars
   constructor () {
     this.cssTaskQueue = new TaskQueue()
+
     // chrome.tabs.onCreated.addListener(this.newTabCreated.bind(this))
     chrome.tabs.onUpdated.addListener(this.tabUpdated.bind(this))
     chrome.action.onClicked.addListener(this.toggleInjectedState.bind(this))
+  }
+
+  injection (tabId) {
+    return {
+      files: ['resources/shutup.css'],
+      target: { allFrames: true, tabId },
+      origin: 'USER'
+    }
   }
 
   tabEligible (tab) {
@@ -22,18 +31,9 @@ class UIBridge { // eslint-disable-line no-unused-vars
     console.log(url, this.tabEligible(tab))
     if (status === 'loading' && url && this.tabEligible(tab)) {
       if (!(await whitelist.query(tab))) {
-        this.cssTaskQueue.add(id, done => {
-          const cssInjection = {
-            allFrames: true,
-            cssOrigin: 'user',
-            file: 'resources/shutup.css'
-          }
-  
-          chrome.tabs.removeCSS(id, cssInjection, () => {
-            chrome.tabs.insertCSS(id, {
-              ...cssInjection,
-              runAt: 'document_start'
-            }, () => {
+        this.cssTaskQueue.add(id, done => {  
+          chrome.scripting.removeCSS(this.injection(id), () => {
+            chrome.scripting.insertCSS(this.injection(id), () => {
               done()
             })
           })
@@ -56,27 +56,14 @@ class UIBridge { // eslint-disable-line no-unused-vars
     if (await whitelist.query(tab)) {
       whitelist.remove(tab)
       this.cssTaskQueue.add(id, done => {
-        const cssInjection = {
-          allFrames: true,
-          cssOrigin: 'user',
-          file: 'resources/shutup.css'
-        }
-
-        chrome.tabs.removeCSS(id, cssInjection, () => {
-          chrome.tabs.insertCSS(id, {
-            ...cssInjection,
-            runAt: 'document_start'
-          }, done)
+        chrome.scripting.removeCSS(this.injection(id), () => {
+          chrome.scripting.insertCSS(this.injection(id), done)
         })
       }, 'reinject')
     } else {
       whitelist.add(tab)
       this.cssTaskQueue.add(id, done => {
-        chrome.tabs.removeCSS(id, {
-          allFrames: true,
-          cssOrigin: 'user',
-          file: 'resources/shutup.css'
-        }, done)
+        chrome.scripting.removeCSS(this.injection(id), done)
       })
     }
   }

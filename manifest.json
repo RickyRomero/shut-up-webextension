@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
 
   "name":             "Shut Up: Comment Blocker",
   "short_name":       "__MSG_product_name__",
@@ -10,11 +10,12 @@
   "author":           "Ricky Romero",
   "homepage_url":     "https://rickyromero.com/shutup/",
 
-  "minimum_chrome_version":  "88.0.4324.150",
+  "minimum_chrome_version":  "90",
   "default_locale":          "en",
   "offline_enabled":         true,
 
-  "permissions":             ["tabs", "storage", "contextMenus", "http://*/*", "https://*/*"],
+  "permissions":             ["contextMenus", "tabs", "scripting", "storage"],
+  "host_permissions":        ["http://*/*", "https://*/*"],
   "incognito":               "split",
 
   "icons": {

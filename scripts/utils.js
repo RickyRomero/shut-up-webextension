@@ -25,62 +25,6 @@ class Utils { // eslint-disable-line no-unused-vars
   static noop () {}
 }
 
-class WebRequest { // eslint-disable-line no-unused-vars
-  // I wanted to use the fetch API here, but it doesn't handle caching the
-  // way I need it to...
-  static fetch (url, headers) {
-    return new Promise((resolve, reject) => {
-      let xhr = new XMLHttpRequest()
-      xhr.open('GET', url, true)
-      xhr.timeout = 10 * 1000
-
-      for (let key in headers) {
-        xhr.setRequestHeader(key, headers[key])
-      }
-
-      xhr.addEventListener('load', () => {
-        if (xhr.status >= 200 && xhr.status < 400) {
-          resolve(simplify(xhr))
-        } else {
-          reject(simplify(xhr))
-        }
-      }, false)
-
-      xhr.addEventListener('error', () => {
-        reject(simplify(xhr))
-      })
-
-      xhr.addEventListener('timeout', () => {
-        reject(simplify(xhr))
-      })
-
-      xhr.send()
-    })
-
-    function simplify (xhr) {
-      let headers = {}
-
-      xhr.getAllResponseHeaders()
-        .split('\u000d\u000a')
-        .forEach((line) => {
-          if (line.length > 0) {
-            let delimiter = '\u003a\u0020'
-            let header = line.split(delimiter)
-
-            headers[header.shift().toLowerCase()] = header.join(delimiter)
-          }
-        })
-
-      return {
-        body: xhr.responseText,
-        status: xhr.status,
-        statusText: xhr.statusText,
-        headers
-      }
-    }
-  }
-}
-
 class Keyboard { // eslint-disable-line no-unused-vars
   static async conformToPlatform (str) {
     // Some key names are localized, and I don't want to step into that nightmare
