@@ -2,7 +2,7 @@ importScripts(
   "scripts/utils.js",
   "scripts/storage.js",
   "scripts/private/options.js",
-  "scripts/private/whitelist.js",
+  "scripts/private/allowlist.js",
   "scripts/private/ui-bridge.js",
   "scripts/private/task-queue.js",
   "scripts/private/upgrade.js"
@@ -14,7 +14,7 @@ chrome.runtime.onInstalled.addListener(() => {
 })
 
 /* eslint-disable no-unused-vars */
-const whitelist = new Whitelist()
+const allowlist = new Allowlist()
 const options = new Options()
 const uiBridge = new UIBridge()
 /* eslint-enable no-unused-vars */

@@ -1,14 +1,14 @@
-class Whitelist extends Storage { // eslint-disable-line no-unused-vars
+class Allowlist extends Storage { // eslint-disable-line no-unused-vars
   constructor () {
     super({
-      whitelist: {
+      allowlist: {
         hosts: []
       }
     })
   }
 
   async add ({incognito, url}) {
-    if ((await options.automaticWhitelist()) && !incognito) {
+    if ((await options.automaticAllowlist()) && !incognito) {
       let digest = await this.urlToDigest(url)
       let hostList = (await this.data()).hosts
 
@@ -22,7 +22,7 @@ class Whitelist extends Storage { // eslint-disable-line no-unused-vars
   }
 
   async remove ({incognito, url}) {
-    if ((await options.automaticWhitelist()) && !incognito) {
+    if ((await options.automaticAllowlist()) && !incognito) {
       let digest = await this.urlToDigest(url)
 
       this.update({
@@ -34,7 +34,7 @@ class Whitelist extends Storage { // eslint-disable-line no-unused-vars
   async query ({url}) {
     let digest = await this.urlToDigest(url)
     let wlIncludesHost = (await this.data()).hosts.includes(digest)
-    let wlEnabled = (await options.automaticWhitelist())
+    let wlEnabled = (await options.automaticAllowlist())
 
     return (wlIncludesHost && wlEnabled)
   }

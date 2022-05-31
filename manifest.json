@@ -10,14 +10,13 @@
   "author":           "Ricky Romero",
   "homepage_url":     "https://rickyromero.com/shutup/",
 
-  "minimum_chrome_version":    "90",
-  "browser_specific_settings": { "gecko": { "strict_min_version": "200.0" } },
-  "default_locale":            "en",
-  "offline_enabled":           true,
+  "minimum_chrome_version":  "90",
+  "default_locale":          "en",
+  "offline_enabled":         true,
 
-  "permissions":               ["contextMenus", "tabs", "scripting", "storage"],
-  "host_permissions":          ["http://*/*", "https://*/*"],
-  "incognito":                 "split",
+  "permissions":             ["contextMenus", "tabs", "scripting", "storage"],
+  "host_permissions":        ["http://*/*", "https://*/*"],
+  "incognito":               "split",
 
   "icons": {
     "16": "images/main-icon/16.png",

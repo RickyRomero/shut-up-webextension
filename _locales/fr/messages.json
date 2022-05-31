@@ -8,7 +8,7 @@
   "toggle_comments_menu": {
     "message": "Cacher ou afficher les commentaires"
   },
-  "automatic_whitelisting": {
+  "automatic_allowlisting": {
     "message": "Se rappeler où j'ai activé les commentaires"
   },
   "private_chrome_note": {

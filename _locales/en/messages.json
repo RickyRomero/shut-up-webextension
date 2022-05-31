@@ -8,7 +8,7 @@
   "toggle_comments_menu": {
     "message": "Toggle Comments"
   },
-  "automatic_whitelisting": {
+  "automatic_allowlisting": {
     "message": "Remember where I’ve enabled comments"
   },
   "private_chrome_note": {

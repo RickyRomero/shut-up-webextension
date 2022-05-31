@@ -16,7 +16,7 @@ class OptionsPage {
 
     $('.private').dataset.i18n = `private_${webBrowser.name.toLowerCase()}_note`
 
-    $('.whitelist').addEventListener('change', this.updateWhitelistOption.bind(this), false)
+    $('.allowlist').addEventListener('change', this.updateAllowlistOption.bind(this), false)
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
     $('.change-shortcut').addEventListener('click', this.openLinkInFullTab.bind(this), false)
 
@@ -37,7 +37,7 @@ class OptionsPage {
   async updatePage () {
     document.querySelectorAll('[data-i18n]').forEach(this.internationalize.bind(this))
 
-    $('.whitelist').checked = (await this.options.automaticWhitelist())
+    $('.allowlist').checked = (await this.options.automaticAllowlist())
     $('.context-menu').checked = (await this.options.contextMenu())
 
     window.clearTimeout(this.updateTimer)
@@ -62,8 +62,8 @@ class OptionsPage {
     }
   }
 
-  updateWhitelistOption (event) {
-    this.options.update({automaticWhitelist: event.target.checked})
+  updateAllowlistOption (event) {
+    this.options.update({automaticAllowlist: event.target.checked})
   }
 
   updateContextMenuOption (event) {

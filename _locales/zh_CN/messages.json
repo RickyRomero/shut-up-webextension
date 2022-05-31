@@ -8,7 +8,7 @@
   "toggle_comments_menu": {
     "message": "切换评论开关"
   },
-  "automatic_whitelisting": {
+  "automatic_allowlisting": {
     "message": "记住我在何处启用了评论"
   },
   "private_chrome_note": {

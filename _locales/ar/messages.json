@@ -8,7 +8,7 @@
   "toggle_comments_menu": {
     "message": "تتبع التعليقات"
   },
-  "automatic_whitelisting": {
+  "automatic_allowlisting": {
     "message": "تذكر أين قمت بتمكين التعليقات"
   },
   "private_chrome_note": {

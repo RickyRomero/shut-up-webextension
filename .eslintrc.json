@@ -7,7 +7,7 @@
     "bridge": true,
     "chrome": true,
     "options": true,
-    "whitelist": true,
+    "allowlist": true,
     "Keyboard": true,
     "Options": true,
     "PlatformInfo": true,
@@ -16,6 +16,6 @@
     "UIBridge": true,
     "Utils": true,
     "webBrowser": true,
-    "Whitelist": true
+    "Allowlist": true
   }
 }

@@ -8,7 +8,7 @@
   "toggle_comments_menu": {
     "message": "コメント設定を切り替える"
   },
-  "automatic_whitelisting": {
+  "automatic_allowlisting": {
     "message": "どこでコメントを有効化させたかお知ら\u2060せ\u2060す\u2060る"
   },
   "private_chrome_note": {

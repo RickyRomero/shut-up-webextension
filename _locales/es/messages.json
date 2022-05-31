@@ -8,7 +8,7 @@
   "toggle_comments_menu": {
     "message": "Cambiar visibilidad de comentarios"
   },
-  "automatic_whitelisting": {
+  "automatic_allowlisting": {
     "message": "Recordar los sitios en los que he activado los comentarios"
   },
   "private_chrome_note": {

@@ -30,7 +30,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
     const { id, url } = tab
     console.log(url, this.tabEligible(tab))
     if (status === 'loading' && url && this.tabEligible(tab)) {
-      if (!(await whitelist.query(tab))) {
+      if (!(await allowlist.query(tab))) {
         this.cssTaskQueue.add(id, done => {  
           chrome.scripting.removeCSS(this.injection(id), () => {
             chrome.scripting.insertCSS(this.injection(id), () => {
@@ -53,15 +53,15 @@ class UIBridge { // eslint-disable-line no-unused-vars
       return
     }
 
-    if (await whitelist.query(tab)) {
-      whitelist.remove(tab)
+    if (await allowlist.query(tab)) {
+      allowlist.remove(tab)
       this.cssTaskQueue.add(id, done => {
         chrome.scripting.removeCSS(this.injection(id), () => {
           chrome.scripting.insertCSS(this.injection(id), done)
         })
       }, 'reinject')
     } else {
-      whitelist.add(tab)
+      allowlist.add(tab)
       this.cssTaskQueue.add(id, done => {
         chrome.scripting.removeCSS(this.injection(id), done)
       })
