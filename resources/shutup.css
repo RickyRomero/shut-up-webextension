@@ -35,11 +35,16 @@
 
 /* YouTube */
 #watch-comment-panel,
-#cm,
 #watch-comments-core,
 #watch-discussion,
 #comments-test-iframe,
 ytm-comment-section-renderer,
+ytm-comments-entry-point-header-renderer,
+ytm-engagement-panel,
+ytd-comments,
+ytd-comment-thread-renderer,
+ytd-comment-renderer,
+ytd-comments-entry-point-header-renderer,
 
 /* Disqus */
 a[data-disqus-identifier],
@@ -53,10 +58,12 @@ body [id*=spotim i],
 body [id*=spot-im i],
 body [class*=spotim i],
 body [class*=spot-im i],
+[data-spot-im-shadow-host],
 
 /* Coral */
 div#coral_talk_stream,    /* v4 */
 div#coral_thread,         /* v5 */
+#coral-container,         /* as seen on WSJ */
 
 /*
  * Digg and other sites that use "comments" divs
@@ -93,6 +100,11 @@ div#coral_thread,         /* v5 */
 
 /* Reddit */
 .commentarea,
+shreddit-comment-tree,
+shreddit-comment,
+comment-body-header,
+shreddit-comments-page-ad,
+faceplate-batch[target="#comment-tree"],
 
 /* Designer News */
 #story-comments,
@@ -190,11 +202,29 @@ span.postMetaHeaderCommentCount.commentCount,
 button.comments-button,
 a.commentCountLink,
 p.theme-comments,
+#comments-speech-bubble-top,
+#comments-speech-bubble-bottom,
+#comments-speech-bubble-header,
+#comments-speech-bubble-footer,
+#comments-speech-bubble-bigBottom,
+#comments-speech-bubble-inStoryMasthead,
+
+/* cooking.nytimes.com */
+#userNotesMount,
+
+/* Wall Street Journal */
+#comments_sector,
+#article-comments-tool,
+[class*="comment-count"],
 
 /* BBC News */
 .comments-button,
 .dna-comment,
 .nw-c-comment,
+
+/* thetimes.co.uk */
+[class*="CommentContainer" i],
+#comments-container,
 
 /* ZDNet */
 .view-6,
@@ -236,14 +266,60 @@ p.theme-comments,
 /* dilbert.com */
 .CMT_CommentList,
 
-/* Facebook feedback */
+/* Facebook comments */
+html#facebook [aria-label^="Comment"],                                                  /* English, French, Italian */
+html#facebook [aria-label^="B\EC nh\ lu\1EAD n"],                                       /* Vietnamese */
+html#facebook [aria-label^="Coment"],                                                   /* Portuguese, Romanian, Spanish */
+html#facebook [aria-label*="hozz\E1 sz\F3 l\E1 sa"],                                    /* Hungarian */
+html#facebook [aria-label^="Koment"],                                                   /* Croatian, Malay, Slovak, Slovene */
+html#facebook [aria-label*="komment" i],                                                /* Danish, Finnish, German, Norwegian, Swedish */
+html#facebook [aria-label^="Opmerking"],                                                /* Dutch */
+html#facebook [aria-label*="yorumu"],                                                   /* Turkish */
+html#facebook [aria-label^="\41A \43E \43C \435 \43D \442 \430 \440 "],                 /* Ukrainian */
+html#facebook [aria-label^="\41A \43E \43C \43C \435 \43D \442 \430 \440 \438 \439 "],  /* Russian */
+html#facebook [aria-label*="\E04 \E34 \E14 \E40 \E2B \E47 \E19 "],                      /* Thai */
+html#facebook [aria-label*="\B313 \AE00 "],                                             /* Korean */
+html#facebook [aria-label*="\30B3 \30E1 \30F3 \30C8 "],                                 /* Japanese */
+html#facebook [aria-label*="\7684 \7559 \8A00 "],                                       /* Traditional Chinese */
+html#facebook [aria-label*="\8BC4 \8BBA "],                                             /* Simplified Chinese */
+
+/* Facebook replies (where not hidden by the above) */
+html#facebook [aria-label^="Reply"],                                          /* English */
+html#facebook [aria-label^="Antwo"],                                          /* Dutch, German */
+html#facebook [aria-label^="Balasan"],                                        /* Malay */
+html#facebook [aria-label^="Odgovor"],                                        /* Croatian, Slovene */
+html#facebook [aria-label^="Odpo"],                                           /* Polish, Slovak */
+html#facebook [aria-label^="R\103 spuns"],                                    /* Romanian */
+html#facebook [aria-label^="R\E9 ponse"],                                     /* French */
+html#facebook [aria-label^="Resposta"],                                       /* Portuguese */
+html#facebook [aria-label^="Respuesta"],                                      /* Spanish */
+html#facebook [aria-label^="Risposta"],                                       /* Italian */
+html#facebook [aria-label^="Svar"],                                           /* Danish, Norwegian, Swedish */
+html#facebook [aria-label^="Tr\1EA3 \ l\1EDD i"],                             /* Vietnamese */
+html#facebook [aria-label*="v\E1 lasza"],                                     /* Hungarian */
+html#facebook [aria-label^="\412 \456 \434 \43F \43E \432 \456 \434 \44C "],  /* Ukrainian */
+html#facebook [aria-label^="\41E \442 \432 \435 \442 "],                      /* Russian */
+
+/* Facebook (mobile site) */
+[data-sigil="comments-token"],
+[data-sigil^="comment"],
+[data-sigil="replies-see-more"],
+[data-sigil*="inline-reply"],
+[id^="comment_replies"],
+
+/* Facebook (previously-known selectors) */
 .fb-comments,
 .UFIComment,
 fb\:comments,
 div[data-testid^=UFI2CommentsList],
-/* new facebook beta look */
-[data-pagelet="page"] [aria-label^="Comment"],
-[data-pagelet="page"] [aria-label^="Reply"],
+
+/* LinkedIn */
+.comments-comment-item,
+.comments-comments-list,
+.comments-comments-list__comment-item,
+.feed-shared-update-v2__comments-container,
+.social-details-first-prompt-block,
+.social-details-social-counts__comments,
 
 /* buzzfeed */
 #responses,
@@ -353,8 +429,7 @@ section#story-community.story-community,
 #QuickRegCon,
 
 /* tagesschau.de */
-.inpagecomments,
-.modCon.modConComments,
+.user-kommentar-block,
 
 /* taz.de */
 .full.community.page.last.even,
@@ -406,7 +481,7 @@ div.comments-bar,
 .liste_reactions,
 
 /* lefigaro.fr */
-#reagir,
+.fig-comments,
 
 /* huffingtonpost.fr */
 #conversations-huffpost-web,
@@ -483,8 +558,11 @@ div#root > div.a.b.c article ~ div div + div + button,
 .is-comments-widget,
 #comments-list,
 
-/* MacRumors mobile site comments link */
-.teaser .teaser_footer > a,
+/* MacRumors */
+div[class^="footer"] a[href*="forums.macrumors.com/threads"],
+div#root > div[class^="app"] > div[class^="contentWrap"] > div[class^="trending"],
+div#root > div[class^="app"] > div[class^="contentWrap"] .glide .post--thread,
+div#root > div[class^="app"] > div[class^="contentWrap"] div[class^="sidebar"] div[class^="widget"][class*="secondary--"],
 
 /* USgamer paragraph comment buttons */
 a.button.annotation-count,
@@ -495,22 +573,30 @@ a.button.annotation-count,
 .channel-page__right-column .chat__container,
 .chat-pane .chat-pane__chat-list,
 div[data-a-target="right-column-chat-bar"],
+.stream-chat,
 
 /* YouTube Live Chat */
 #watch-sidebar-live-chat,
 ytd-live-chat-frame,
+
+/* Hopin Chat */
+nav[aria-label="Hopin main menu"] ~ div.test-id-panel#side-panel,
 
 /* GoComics */
 .js-comments-thread-container,
 
 /* Patreon */
 [data-test-tag="comment-row"],
-[data-tag="comment-row"],
+[data-tag="post-details"] ~ :last-child,
 
 /* Instagram */
 ul.Mr508, /* Detail page, all comments except OP */
 article._8Rm4L div.ybXk5, /* Feed, all comments except OP */
 article._8Rm4L a.r8ZrO, /* Feed, show comments link */
+
+/* Instagram (mobile site) */
+div.rBNOH.ybXk5, /* Detail page, all comments except OP */
+div.EtaWk > div > div:nth-child(2), /* Replies container */
 
 /* Pixiv */
 div#root > div#gtm-var-theme-kind ~ div main > section > div > div >
@@ -700,7 +786,35 @@ div.detail-characters-list ~ div.borderDark,
 /* opennet.ru */
 table.ttxt2 td.ctxt,
 
-/* Adult */
+/* AniList */
+#app .page-content .activity-feed-wrap + div > .recent-threads,
+#app .page-content .media .threads,
+
+/* Crunchyroll */
+.c-comments-count,
+
+/* 1plus1.video */
+._opo_-playlist-comments,
+
+/* Stack Exchange sites (e.g., Stack Overflow) */
+[itemprop="commentCount"],
+.js-post-comments-component,
+
+/* LeagueofComicGeeks.com */
+#comic-details #reviews,
+#comic-details #discussion,
+
+/* theage.com.au */
+[data-testid="comments-cta"],
+
+/* formel1.de */
+.fa-comments,
+.btn-comments,
+
+/* golem.de */
+.icon-comments,
+
+/* Various shady sites */
 .content form ~ a#ci ~ div[id^=c0],
 .content form ~ a#ci ~ div[id^=c1],
 .content form ~ a#ci ~ div[id^=c2],
@@ -711,41 +825,49 @@ table.ttxt2 td.ctxt,
 .content form ~ a#ci ~ div[id^=c7],
 .content form ~ a#ci ~ div[id^=c8],
 .content form ~ a#ci ~ div[id^=c9],
+.ncomments_container,
 #cdiv.gm,
 #ws > #content > table#details ~ table,
 
 /* *** Generic *** */
 body [id*=commentaires i],
 body [class*=commentaires i],
-.comments-list,
 #blogComments,
-#comments_pane,
-#commentcontainer,
-#commentsDiv,
+#cmtWrapper,
+#comment-list,
 #comment_entries,
 #comment_form,
+#commentcontainer,
 #commentlist,
-#comments-panel,
 #comments-app-container,
+#comments-panel,
+#comments-wrapper,
+#commentsDiv,
+#comments_box,
+#comments_pane,
+#post-comments,
 #user-comments,
 #user_commeent_section,
-.comments_area,
-.comments-area,
-.discussionContainer,
+.all-comments,
+.com_text,
+.comment-list,
+.commentBox,
 .commentBoxStyle,
+.commentText,
+.commenting-wrapper,
+.comments-area,
+.comments-list,
+.comments-pane,
+.comments-wrap,
+.comments_area,
+.commenttxt,
+.discussionContainer,
 .pagecomment,
 .pagecommentheader,
-.com_text,
-.commenttxt,
-.post-comments,
 .post-comment-list,
+.post-comments,
 .user_comment,
-.widget-comments,
-.commentBox,
-.commentText,
-.comments-wrap,
-#comments-wrapper,
-#cmtWrapper
+.widget-comments
 {
 	display: none !important;
 }
@@ -792,7 +914,12 @@ body > div#dimmers + .quote_container .comment
 
 
 /* GitHub - Pull Request comments */
-.repository-content .comment
+.repository-content .comment,
+
+/* WordPress admin panel comment view */
+#wpcom main.comments,
+#wpcom main.comments .comment-list,
+#wpcom main.comments .comment-list .comment
 {
 	display: block !important;
 }

@@ -1,0 +1,33 @@
+name: deploy
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'manifest.json'
+  workflow_dispatch:
+jobs:
+  deploy-to-amo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v2
+      - name: Deploy update
+        uses: RickyRomero/shut-up-amo@main
+        env:
+          AMO_ISSUER: ${{ secrets.AMO_ISSUER }}
+          AMO_SECRET: ${{ secrets.AMO_SECRET }}
+          AMO_ADDON_GUID: ${{ secrets.AMO_ADDON_GUID }}
+          AMO_BUILD_NAME: ${{ secrets.AMO_BUILD_NAME }}
+  deploy-to-cws:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v2
+      - name: Deploy update
+        uses: RickyRomero/shut-up-cws@main
+        env:
+          CWS_CLIENT_ID: ${{ secrets.CWS_CLIENT_ID }}
+          CWS_CLIENT_SECRET: ${{ secrets.CWS_CLIENT_SECRET }}
+          CWS_REFRESH_TOKEN: ${{ secrets.CWS_REFRESH_TOKEN }}
+          CWS_ITEM_ID: ${{ secrets.CWS_ITEM_ID }}
