@@ -1,21 +1,36 @@
+const denylist = [
+  "apps.oregon.gov",
+  "icloud.com",
+  "portal.edd.ca.gov",
+  "read.amazon.com"
+]
+
 class InjectionManager { // eslint-disable-line no-unused-vars
   constructor () {
-    this.rivalries = {}
-    this.linkNodeAnchors = []
-    this._stylesheet = ''
+    const { hostname } = Utils.parseURI(window.location.href)
+    const isDenylisted = !!denylist.find(blocked => Utils.compareHosts(blocked, hostname))
 
-    this.linkNodes = [document.createElement('link')]
-    this.linkNodes[0].setAttribute('id', 'shut-up-css')
-    this.linkNodes[0].setAttribute('rel', 'stylesheet')
-
-    this.watchForHeadElement = new MutationObserver(this.watchDocument.bind(this))
-    // This only watches the document element, so the changes we see should be very few.
-    this.watchForHeadElement.observe(document.documentElement, { childList: true })
-
-    this.enabled = true
-    this.isTopFrame = (self === top)
-
-    this.watchDocument() // Initial check, in case <head /> is ready now
+    if (isDenylisted) {
+      this.linkNodes = []
+      this.enabled = false
+    } else {
+      this.rivalries = {}
+      this.linkNodeAnchors = []
+      this._stylesheet = ''
+  
+      this.linkNodes = [document.createElement('link')]
+      this.linkNodes[0].setAttribute('id', 'shut-up-css')
+      this.linkNodes[0].setAttribute('rel', 'stylesheet')
+  
+      this.watchForHeadElement = new MutationObserver(this.watchDocument.bind(this))
+      // This only watches the document element, so the changes we see should be very few.
+      this.watchForHeadElement.observe(document.documentElement, { childList: true })
+  
+      this.enabled = true
+      this.isTopFrame = (self === top)
+  
+      this.watchDocument() // Initial check, in case <head /> is ready now
+    }
   }
 
   static hashEl (el) {
