@@ -34,8 +34,11 @@ class UIBridge { // eslint-disable-line no-unused-vars
   async tabUpdated (_, changeInfo, tab) {
     const { status } = changeInfo
     const { id, url } = tab
-    console.log(url, this.tabEligible(tab))
-    if (status === 'loading' && url && this.tabEligible(tab)) {
+    const eligible = this.tabEligible(tab)
+    console.log(url, eligible)
+
+    this.updateActionIcon(tab, null, eligible)
+    if (status === 'loading' && url && eligible) {
       if (!(await allowlist.query(tab))) {
         this.cssTaskQueue.add(id, done => {  
           chrome.scripting.removeCSS(this.injection(id), () => {
@@ -48,29 +51,29 @@ class UIBridge { // eslint-disable-line no-unused-vars
     }
   }
 
-  connectToPage (tab) {
-    this.updateActionIcon(tab, null, true)
-  }
-
   async toggleInjectedState (tab) {
     const { id } = tab
+    const eligible = this.tabEligible(tab)
 
-    if (!this.tabEligible(tab)) {
-      return
-    }
+    if (!eligible) { return }
 
-    if (await allowlist.query(tab)) {
+    let allowed = await allowlist.query(tab)
+    allowed = !allowed // Toggle the state
+
+    if (allowed) {
+      allowlist.add(tab)
+      this.cssTaskQueue.add(id, done => {
+        this.updateActionIcon(tab, allowed, eligible)
+        chrome.scripting.removeCSS(this.injection(id), done)
+      })
+    } else {
       allowlist.remove(tab)
       this.cssTaskQueue.add(id, done => {
         chrome.scripting.removeCSS(this.injection(id), () => {
+          this.updateActionIcon(tab, allowed, eligible)
           chrome.scripting.insertCSS(this.injection(id), done)
         })
       }, 'reinject')
-    } else {
-      allowlist.add(tab)
-      this.cssTaskQueue.add(id, done => {
-        chrome.scripting.removeCSS(this.injection(id), done)
-      })
     }
   }
 
@@ -95,6 +98,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
       tabId: id,
       path: iconStates['turn' + (state ? 'Off' : 'On')]
     }, () => {
+      console.log('Setting icon...', enable)
       chrome.action[enable ? 'enable' : 'disable'](id)
     })
   }
