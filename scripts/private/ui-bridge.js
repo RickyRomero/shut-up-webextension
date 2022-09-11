@@ -16,7 +16,13 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   tabEligible (tab) {
-    const denyList = ['chrome.google.com']
+    const denyList = [
+      'apps.oregon.gov',
+      'chrome.google.com',
+      'icloud.com',
+      'portal.edd.ca.gov',
+      'read.amazon.com'
+    ]
     const { url } = tab
     const parsedUrl = new URL(url)
     if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
