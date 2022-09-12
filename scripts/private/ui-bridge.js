@@ -35,9 +35,9 @@ class UIBridge { // eslint-disable-line no-unused-vars
     const { status } = changeInfo
     const { id, url } = tab
     const eligible = this.tabEligible(tab)
-    console.log(url, eligible)
+    let allowed = await allowlist.query(tab)
 
-    this.updateActionIcon(tab, null, eligible)
+    this.updateActionIcon(tab, allowed, eligible)
     if (status === 'loading' && url && eligible) {
       if (!(await allowlist.query(tab))) {
         this.cssTaskQueue.add(id, done => {  
@@ -96,11 +96,8 @@ class UIBridge { // eslint-disable-line no-unused-vars
 
     chrome.action.setIcon({
       tabId: id,
-      path: iconStates['turn' + (state ? 'Off' : 'On')]
-    }, () => {
-      console.log('Setting icon...', enable)
-      chrome.action[enable ? 'enable' : 'disable'](id)
-    })
+      path: iconStates[`turn${state ? 'On' : 'Off'}`]
+    }, () => chrome.action[enable ? 'enable' : 'disable'](id))
   }
 
   removeContextMenu () {
