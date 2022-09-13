@@ -12,7 +12,6 @@
 
   "minimum_chrome_version":  "90",
   "default_locale":          "en",
-  "offline_enabled":         true,
 
   "permissions":             ["contextMenus", "tabs", "scripting", "storage"],
   "host_permissions":        ["http://*/*", "https://*/*"],
