@@ -1,25 +1,17 @@
 class Utils { // eslint-disable-line no-unused-vars
-  static compareHosts (match, inside) {
-    if (match === inside) {
-      return true
-    }
-
-    let matchComponents = match.split('.')
-    let insideComponents = inside.split('.')
-    let delta, i
-
-    if (matchComponents.length > insideComponents.length) {
+  static urlEligible (url) {
+    const denylist = [
+      'apps.oregon.gov',
+      'chrome.google.com',
+      'icloud.com',
+      'portal.edd.ca.gov',
+      'read.amazon.com'
+    ]
+    const parsedUrl = new URL(url)
+    if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
       return false
     }
-
-    delta = insideComponents.length - matchComponents.length
-    for (i = matchComponents.length - 1; i >= 0; i--) {
-      if (matchComponents[i] !== insideComponents[i + delta]) {
-        return false
-      }
-    }
-
-    return true
+    return !denylist.includes(parsedUrl.hostname)
   }
 
   static noop () {}

@@ -4,6 +4,7 @@ class OptionsPage {
   constructor () {
     this.latestCopyrightYear = 2022
     this.options = new Options()
+    this.uiBridge = new UIBridge()
 
     this.init()
   }
@@ -67,10 +68,14 @@ class OptionsPage {
   }
 
   updateContextMenuOption (event) {
-    this.options.update({contextMenu: event.target.checked})
-    chrome.runtime.sendMessage({
-      type: (event.target.checked ? 'add' : 'remove') + 'ContextMenu'
-    })
+    const isEnabled = event.target.checked
+    this.options.update({ contextMenu: isEnabled })
+
+    if (isEnabled) {
+      this.uiBridge.addContextMenu(this.options)
+    } else {
+      this.uiBridge.removeContextMenu()
+    }
   }
 
   openLinkInFullTab (event) {

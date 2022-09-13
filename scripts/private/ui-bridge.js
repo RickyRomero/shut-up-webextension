@@ -1,30 +1,23 @@
 class UIBridge { // eslint-disable-line no-unused-vars
   constructor () {
-    // chrome.tabs.onCreated.addListener(this.newTabCreated.bind(this))
-    chrome.tabs.onUpdated.addListener(this.tabUpdated.bind(this))
-    chrome.tabs.onRemoved.addListener(this.tabClosed.bind(this))
-    chrome.action.onClicked.addListener(this.toggleBlockerStates.bind(this))
+    this.tabClosed = this.tabClosed.bind(this)
+    this.tabUpdated = this.tabUpdated.bind(this)
+    this.addListeners = this.addListeners.bind(this)
+    this.addContextMenu = this.addContextMenu.bind(this)
+    this.updateActionIcon = this.updateActionIcon.bind(this)
+    this.removeContextMenu = this.removeContextMenu.bind(this)
+    this.toggleBlockerStates = this.toggleBlockerStates.bind(this)
   }
 
-  tabEligible (tab) {
-    const denyList = [
-      'apps.oregon.gov',
-      'chrome.google.com',
-      'icloud.com',
-      'portal.edd.ca.gov',
-      'read.amazon.com'
-    ]
-    const { url } = tab
-    const parsedUrl = new URL(url)
-    if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
-      return false
-    }
-    return !denyList.includes(parsedUrl.hostname)
+  addListeners () {
+    chrome.tabs.onRemoved.addListener(this.tabClosed)
+    chrome.tabs.onUpdated.addListener(this.tabUpdated)
+    chrome.action.onClicked.addListener(this.toggleBlockerStates)
   }
 
   async tabUpdated (_, changeInfo, tab) {
     await blocker.sync(tab, changeInfo)
-    const isEligible = this.tabEligible(tab)
+    const isEligible = Utils.urlEligible(tab.url)
     const nextState = !blocker.query(tab)
 
     this.updateActionIcon(tab, nextState, isEligible)
@@ -35,11 +28,10 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   async toggleBlockerStates (tab) {
-    const eligible = this.tabEligible(tab)
-    if (!eligible) { return }
+    const isEligible = Utils.urlEligible(tab.url)
+    if (!isEligible) { return }
 
     const blockerActive = blocker.query(tab)
-    const nextState = blockerActive // Because we'd be returning to this state
 
     if (blockerActive) {
       await allowlist.add(tab)
@@ -49,7 +41,8 @@ class UIBridge { // eslint-disable-line no-unused-vars
       await blocker.add(tab)
     }
 
-    this.updateActionIcon(tab, nextState, eligible)
+    const nextState = blockerActive // Because we'd be returning to this state
+    this.updateActionIcon(tab, nextState, isEligible)
   }
 
   updateActionIcon ({ id }, state, enable) {
@@ -79,15 +72,14 @@ class UIBridge { // eslint-disable-line no-unused-vars
     chrome.contextMenus.removeAll()
   }
 
-  async addContextMenu () {
-    chrome.contextMenus.removeAll(async function () {
-      if (await options.contextMenu()) {
-        chrome.contextMenus.create({
-          id: 'toggle-comments-ctx',
-          title: chrome.i18n.getMessage('toggle_comments_menu'),
-          contexts: ['page']
-        })
-      }
-    })
+  async addContextMenu (options) {
+    await chrome.contextMenus.removeAll()
+    if (await options.contextMenu()) {
+      chrome.contextMenus.create({
+        id: 'toggle-comments-ctx',
+        title: chrome.i18n.getMessage('toggle_comments_menu'),
+        contexts: ['page']
+      })
+    }
   }
 }

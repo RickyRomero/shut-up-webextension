@@ -21,7 +21,7 @@ class Blocker {
 
   async sync (tab, changeInfo) {
     if (tab.id === chrome.tabs.TAB_ID_NONE) { return }
-    if (changeInfo.url?.match(/^chrome:/)) { return }
+    if (!Utils.urlEligible(tab.url)) { return }
     if (changeInfo.status !== 'loading') { return }
 
     const blockerActive = !(await allowlist.query(tab))
