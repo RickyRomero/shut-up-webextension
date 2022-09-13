@@ -26,17 +26,17 @@ class Allowlist extends Storage { // eslint-disable-line no-unused-vars
       let digest = await this.urlToDigest(url)
 
       this.update({
-        hosts: (await this.data()).hosts.filter(wlHost => wlHost !== digest)
+        hosts: (await this.data()).hosts.filter(alHost => alHost !== digest)
       })
     }
   }
 
   async query ({url}) {
     let digest = await this.urlToDigest(url)
-    let wlIncludesHost = (await this.data()).hosts.includes(digest)
-    let wlEnabled = (await options.automaticAllowlist())
+    let alIncludesHost = (await this.data()).hosts.includes(digest)
+    let alEnabled = (await options.automaticAllowlist())
 
-    return (wlIncludesHost && wlEnabled)
+    return (alIncludesHost && alEnabled)
   }
 
   async urlToDigest (url) {

@@ -4,18 +4,20 @@
     "browser": true
   },
   "globals": {
+    "Allowlist": true,
+    "allowlist": true,
+    "Blocker": true,
+    "blocker": true,
     "bridge": true,
     "chrome": true,
-    "options": true,
-    "allowlist": true,
     "Keyboard": true,
+    "options": true,
     "Options": true,
     "PlatformInfo": true,
     "Storage": true,
     "TaskQueue": true,
     "UIBridge": true,
     "Utils": true,
-    "webBrowser": true,
-    "Allowlist": true
+    "webBrowser": true
   }
 }

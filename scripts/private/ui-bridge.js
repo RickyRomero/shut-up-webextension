@@ -1,18 +1,9 @@
 class UIBridge { // eslint-disable-line no-unused-vars
   constructor () {
-    this.cssTaskQueue = new TaskQueue()
-
     // chrome.tabs.onCreated.addListener(this.newTabCreated.bind(this))
     chrome.tabs.onUpdated.addListener(this.tabUpdated.bind(this))
-    chrome.action.onClicked.addListener(this.toggleInjectedState.bind(this))
-  }
-
-  injection (tabId) {
-    return {
-      files: ['resources/shutup.css'],
-      target: { allFrames: true, tabId },
-      origin: 'USER'
-    }
+    chrome.tabs.onRemoved.addListener(this.tabClosed.bind(this))
+    chrome.action.onClicked.addListener(this.toggleBlockerStates.bind(this))
   }
 
   tabEligible (tab) {
@@ -32,52 +23,36 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   async tabUpdated (_, changeInfo, tab) {
-    const { status } = changeInfo
-    const { id, url } = tab
-    const eligible = this.tabEligible(tab)
-    let allowed = await allowlist.query(tab)
+    await blocker.sync(tab, changeInfo)
+    const isEligible = this.tabEligible(tab)
+    const nextState = !blocker.query(tab)
 
-    this.updateActionIcon(tab, allowed, eligible)
-    if (status === 'loading' && url && eligible) {
-      if (!(await allowlist.query(tab))) {
-        this.cssTaskQueue.add(id, done => {  
-          chrome.scripting.removeCSS(this.injection(id), () => {
-            chrome.scripting.insertCSS(this.injection(id), () => {
-              done()
-            })
-          })
-        }, 'reinject')
-      }
-    }
+    this.updateActionIcon(tab, nextState, isEligible)
   }
 
-  async toggleInjectedState (tab) {
-    const { id } = tab
-    const eligible = this.tabEligible(tab)
+  tabClosed (tabId) {
+    blocker.detach(tabId)
+  }
 
+  async toggleBlockerStates (tab) {
+    const eligible = this.tabEligible(tab)
     if (!eligible) { return }
 
-    let allowed = await allowlist.query(tab)
-    allowed = !allowed // Toggle the state
+    const blockerActive = blocker.query(tab)
+    const nextState = blockerActive // Because we'd be returning to this state
 
-    if (allowed) {
-      allowlist.add(tab)
-      this.cssTaskQueue.add(id, done => {
-        this.updateActionIcon(tab, allowed, eligible)
-        chrome.scripting.removeCSS(this.injection(id), done)
-      })
+    if (blockerActive) {
+      await allowlist.add(tab)
+      await blocker.remove(tab)
     } else {
-      allowlist.remove(tab)
-      this.cssTaskQueue.add(id, done => {
-        chrome.scripting.removeCSS(this.injection(id), () => {
-          this.updateActionIcon(tab, allowed, eligible)
-          chrome.scripting.insertCSS(this.injection(id), done)
-        })
-      }, 'reinject')
+      await allowlist.remove(tab)
+      await blocker.add(tab)
     }
+
+    this.updateActionIcon(tab, nextState, eligible)
   }
 
-  updateActionIcon ({id}, state, enable) {
+  updateActionIcon ({ id }, state, enable) {
     let prefix = webBrowser.engine.toLowerCase()
     let iconStates = {
       'default': {

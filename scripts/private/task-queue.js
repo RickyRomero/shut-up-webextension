@@ -24,7 +24,7 @@ class TaskQueue { // eslint-disable-line no-unused-vars
     this.taskRunning = this.taskRunning.bind(this)
   }
 
-  add (tabId, task, type) {
+  async add (tabId, task, type) {
     const reinjectQueued = this.tasksFor(tabId)
       .filter(task => task.type === 'reinject')
       .length > 0
@@ -32,7 +32,7 @@ class TaskQueue { // eslint-disable-line no-unused-vars
       this.spool.push({ tabId, task, type })
     }
     if (!this.taskRunning(tabId)) {
-      this.nextTask(tabId)
+      await this.nextTask(tabId)
     }
   }
 
@@ -40,14 +40,13 @@ class TaskQueue { // eslint-disable-line no-unused-vars
     this.spool = this.spool.filter(spoolTask => spoolTask !== task)
   }
 
-  nextTask (tabId) {
+  async nextTask (tabId) {
     if (this.tasksExist(tabId)) {
       const task = this.tasksFor(tabId)[0]
       task.status = 'running'
-      task.task(() => {
-        this.remove(task)
-        this.nextTask(tabId, true)
-      })
+      await task.task()
+      this.remove(task)
+      await this.nextTask(tabId, true)
     }
   }
 

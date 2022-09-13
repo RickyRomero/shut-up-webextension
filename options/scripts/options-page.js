@@ -128,7 +128,6 @@ class OptionsPage {
 
   async setKeyboardShortcutStr (el) {
     chrome.commands.getAll(async function (commands) {
-      console.dir(commands)
       let shortcut = commands[0].shortcut
 
       if (shortcut !== '') {
