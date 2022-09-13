@@ -46,6 +46,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   updateActionIcon ({ id }, state, enable) {
+    let displayedState = 'default'
     let prefix = webBrowser.engine.toLowerCase()
     let iconStates = {
       'default': {
@@ -62,9 +63,13 @@ class UIBridge { // eslint-disable-line no-unused-vars
       }
     }
 
+    if (enable) {
+      displayedState = `turn${state ? 'On' : 'Off'}`
+    }
+
     chrome.action.setIcon({
       tabId: id,
-      path: iconStates[`turn${state ? 'On' : 'Off'}`]
+      path: iconStates[displayedState]
     }, () => chrome.action[enable ? 'enable' : 'disable'](id))
   }
 
