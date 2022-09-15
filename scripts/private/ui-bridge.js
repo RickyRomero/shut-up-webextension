@@ -31,15 +31,35 @@ class UIBridge { // eslint-disable-line no-unused-vars
     const isEligible = Utils.urlEligible(tab.url)
     if (!isEligible) { return }
 
+    const allowlistActive = await allowlist.isActive(tab)
     const blockerActive = blocker.query(tab)
 
+    let tabs = []
+    if (allowlistActive) {
+      // Query all tabs and update ones on the same domain
+      const targetHost = new URL(tab.url).hostname
+      tabs = await chrome.tabs.query({})
+      tabs = tabs.filter(t => {
+        const host = new URL(t.url).hostname
+        return host === targetHost
+      })
+    } else {
+      tabs = [tab]
+    }
+
+    let blockerTasks = []
     if (blockerActive) {
       await allowlist.add(tab)
-      await blocker.remove(tab)
+      blockerTasks = tabs.map(async tab => {
+        await blocker.remove(tab)
+      })
     } else {
       await allowlist.remove(tab)
-      await blocker.add(tab)
+      blockerTasks = tabs.map(async tab => {
+        await blocker.add(tab)
+      })
     }
+    await Promise.all(blockerTasks)
 
     const nextState = blockerActive // Because we'd be returning to this state
     this.updateActionIcon(tab, nextState, isEligible)

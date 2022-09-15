@@ -5,10 +5,20 @@ class Allowlist extends Storage { // eslint-disable-line no-unused-vars
         hosts: []
       }
     })
+
+    this.add = this.add.bind(this)
+    this.query = this.query.bind(this)
+    this.remove = this.remove.bind(this)
+    this.isActive = this.isActive.bind(this)
+    this.urlToDigest = this.urlToDigest.bind(this)
+  }
+
+  async isActive ({incognito}) {
+    return (await options.automaticAllowlist()) && !incognito
   }
 
   async add ({incognito, url}) {
-    if ((await options.automaticAllowlist()) && !incognito) {
+    if (this.isActive({ incognito })) {
       let digest = await this.urlToDigest(url)
       let hostList = (await this.data()).hosts
 
@@ -22,7 +32,7 @@ class Allowlist extends Storage { // eslint-disable-line no-unused-vars
   }
 
   async remove ({incognito, url}) {
-    if ((await options.automaticAllowlist()) && !incognito) {
+    if (this.isActive({ incognito })) {
       let digest = await this.urlToDigest(url)
 
       this.update({

@@ -10,9 +10,8 @@ const runUpgrade = async () => {
   // Pre-5.0 migration
   let hosts = (await allowlist.data()).hosts || []
   if (hosts.length) {
-    hosts = hosts.filter(hash => {
-      return hash.length > 32 // MD5 hashes are 32 characters long in Base16
-    })
+    // MD5 hashes are 32 characters long in Base16
+    hosts = hosts.filter(hash => hash.length > 32)
 
     await allowlist.update({ hosts })
   }
