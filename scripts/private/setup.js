@@ -1,6 +1,6 @@
 chrome.runtime.onInstalled.addListener(() => {
   // Disable action on all tabs... at first.
-  chrome.action.disable()
+  action.disable()
 })
 
 /* eslint-disable no-unused-vars */

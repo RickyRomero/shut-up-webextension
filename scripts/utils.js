@@ -124,3 +124,13 @@ webBrowser.engine = (() => {
     return 'Blink'
   }
 })()
+
+/*
+  Below is a basic abstraction layer to bridge the absence of chrome.action for
+  Manifest v2 extensions. Because of complications introduced by Mozilla for
+  Manifest v3 extensions, I'm planning to wait a bit longer before making the
+  switch on Firefox, so I'll need a split manifest strategy for the time being.
+*/
+const action = (() => ( // eslint-disable-line no-unused-vars
+  webBrowser.name === 'Firefox' ? chrome.browserAction : chrome.action
+))()

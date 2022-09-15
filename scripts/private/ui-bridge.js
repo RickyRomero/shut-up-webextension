@@ -12,7 +12,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
   addListeners () {
     chrome.tabs.onRemoved.addListener(this.tabClosed)
     chrome.tabs.onUpdated.addListener(this.tabUpdated)
-    chrome.action.onClicked.addListener(this.toggleBlockerStates)
+    action.onClicked.addListener(this.toggleBlockerStates)
   }
 
   async tabUpdated (_, changeInfo, tab) {
@@ -67,10 +67,10 @@ class UIBridge { // eslint-disable-line no-unused-vars
       displayedState = `turn${state ? 'On' : 'Off'}`
     }
 
-    chrome.action.setIcon({
+    action.setIcon({
       tabId: id,
       path: iconStates[displayedState]
-    }, () => chrome.action[enable ? 'enable' : 'disable'](id))
+    }, () => action[enable ? 'enable' : 'disable'](id))
   }
 
   removeContextMenu () {

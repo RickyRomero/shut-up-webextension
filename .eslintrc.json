@@ -4,6 +4,7 @@
     "browser": true
   },
   "globals": {
+    "action": true,
     "Allowlist": true,
     "allowlist": true,
     "Blocker": true,
