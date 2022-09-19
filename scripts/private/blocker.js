@@ -94,7 +94,7 @@ class Blocker {
 
   async defrostStates () {
     this._states = new Map(
-      ((await chrome.storage.local.get('blockerFreeze')).blockerFreeze) || []
+      ((await chrome.storage.local.get('blockerFreeze'))?.blockerFreeze) || []
     )
   }
 }
