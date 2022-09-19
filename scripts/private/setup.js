@@ -12,6 +12,7 @@ uiBridge.addListeners()
 /* eslint-enable no-unused-vars */
 
 ;(async () => {
+  await blocker.defrostStates()
   await Storage.queueOperation((async function () {
     await uiBridge.addContextMenu(options)
     await runUpgrade()

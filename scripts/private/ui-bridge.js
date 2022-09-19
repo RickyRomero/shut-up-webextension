@@ -10,6 +10,8 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   addListeners () {
+    chrome.runtime.onStartup.addListener(blocker.resetFreeze)
+    chrome.runtime.onSuspend.addListener(blocker.freezeStates)
     chrome.tabs.onRemoved.addListener(this.tabClosed)
     chrome.tabs.onUpdated.addListener(this.tabUpdated)
     action.onClicked.addListener(this.toggleBlockerStates)
