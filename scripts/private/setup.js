@@ -1,4 +1,4 @@
-chrome.runtime.onInstalled.addListener(() => {
+browser.runtime.onInstalled.addListener(() => {
   // Disable action on all tabs... at first.
   action.disable()
 })
@@ -20,7 +20,7 @@ uiBridge.addListeners()
 
   await Storage.queueOperation(() => {
     // Init context menus
-    chrome.contextMenus.onClicked.addListener((_, tab) => {
+    browser.contextMenus.onClicked.addListener((_, tab) => {
       uiBridge.toggleBlockerStates(tab)
     })
   })

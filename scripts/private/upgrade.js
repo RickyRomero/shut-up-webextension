@@ -1,10 +1,10 @@
 const runUpgrade = async () => {
   // Pre-8.0 migration
   const oldKey = 'whitelist'
-  const oldStructure = await chrome.storage.local.get(oldKey)
+  const oldStructure = await browser.storage.local.get(oldKey)
   if (oldStructure) {
     allowlist.update(oldStructure[oldKey])
-    await chrome.storage.local.remove(oldKey)
+    await browser.storage.local.remove(oldKey)
   }
 
   // Pre-5.0 migration

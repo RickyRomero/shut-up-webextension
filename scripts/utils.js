@@ -20,7 +20,7 @@ class Utils { // eslint-disable-line no-unused-vars
 class Keyboard { // eslint-disable-line no-unused-vars
   static async conformToPlatform (str) {
     // Some key names are localized, and I don't want to step into that nightmare
-    if (chrome.i18n.getUILanguage().substr(0, 2) !== 'en') {
+    if (browser.i18n.getUILanguage().substr(0, 2) !== 'en') {
       return str
     }
 
@@ -92,16 +92,12 @@ class Keyboard { // eslint-disable-line no-unused-vars
 }
 
 class PlatformInfo {
-  static get (keys) {
-    return new Promise((resolve, reject) => {
-      return chrome.runtime.getPlatformInfo((platformInfo) => {
-        return chrome.runtime.lastError ? reject(chrome.runtime.lastError) : resolve(platformInfo)
-      })
-    })
+  static async get () {
+    return await browser.runtime.getPlatformInfo()
   }
 }
 
-let webBrowser = { // eslint-disable-line no-unused-vars
+let platform = { // eslint-disable-line no-unused-vars
   name: (() => {
     if (navigator.userAgent.includes(' OPR/')) {
       return 'Opera'
@@ -115,15 +111,26 @@ let webBrowser = { // eslint-disable-line no-unused-vars
   })()
 }
 
-webBrowser.engine = (() => {
-  if (webBrowser.name === 'Firefox') {
+platform.engine = (() => {
+  if (platform.name === 'Firefox') {
     return 'Quantum'
-  } else if (webBrowser.name === 'Safari') {
+  } else if (platform.name === 'Safari') {
     return 'WebKit'
   } else {
     return 'Blink'
   }
 })()
+
+/*
+  `browser` is specified as the main namespace in the WebExtensions API.
+  `chrome` is available as a bridge for Firefox, however if you use
+  `chrome.tabs.query({})` in Firefox, it always returns nothing in cases where
+  `browser.tabs.query({})` will return all the tabs. So, we need to use the
+  `browser` namespace now. (I last observed this behavior in Firefox 104.)
+*/
+if (typeof globalThis.browser === 'undefined') {
+  globalThis.browser = chrome
+}
 
 /*
   Below is a basic abstraction layer to bridge the absence of chrome.action for
@@ -132,5 +139,5 @@ webBrowser.engine = (() => {
   switch on Firefox, so I'll need a split manifest strategy for the time being.
 */
 const action = (() => ( // eslint-disable-line no-unused-vars
-  webBrowser.name === 'Firefox' ? chrome.browserAction : chrome.action
+  platform.name === 'Firefox' ? browser.browserAction : browser.action
 ))()

@@ -24,7 +24,7 @@ class Blocker {
   }
 
   async sync (tab, changeInfo) {
-    if (tab.id === chrome.tabs.TAB_ID_NONE) { return }
+    if (tab.id === browser.tabs.TAB_ID_NONE) { return }
     if (!Utils.urlEligible(tab.url)) { return }
     if (changeInfo.status !== 'loading') { return }
 
@@ -39,7 +39,7 @@ class Blocker {
   }
 
   async detach (tabId) {
-    if (tabId === chrome.tabs.TAB_ID_NONE) { return }
+    if (tabId === browser.tabs.TAB_ID_NONE) { return }
 
     this._states.delete(tabId)
     this.freezeStates()
@@ -47,15 +47,15 @@ class Blocker {
 
   async add ({ id }) {
     await this.cssTaskQueue.add(id, async () => {  
-      await chrome.scripting.removeCSS(this.injection(id))
-      await chrome.scripting.insertCSS(this.injection(id))
+      await browser.scripting.removeCSS(this.injection(id))
+      await browser.scripting.insertCSS(this.injection(id))
       this.setState(id, true)
     }, 'reinject')
   }
 
   async remove ({ id }) {
     await this.cssTaskQueue.add(id, async () => {
-      await chrome.scripting.removeCSS(this.injection(id))
+      await browser.scripting.removeCSS(this.injection(id))
       this.setState(id, false)
     })
 }
@@ -70,7 +70,7 @@ class Blocker {
   }
 
   async resetFreeze () {
-    await chrome.storage.local.remove('blockerFreeze')
+    await browser.storage.local.remove('blockerFreeze')
   }
 
   async freezeStates () {
@@ -80,7 +80,7 @@ class Blocker {
     // tab IDs that are no longer present in the current session.
     const validTabs = (await Promise.allSettled(
       Array.from(this._states).map(async ([key, val]) => {
-        await chrome.tabs.get(key)
+        await browser.tabs.get(key)
         return [key, val]
       })
     )).filter(
@@ -89,12 +89,12 @@ class Blocker {
       ({ value }) => value
     )
 
-    await chrome.storage.local.set({ blockerFreeze: validTabs })
+    await browser.storage.local.set({ blockerFreeze: validTabs })
   }
 
   async defrostStates () {
     this._states = new Map(
-      ((await chrome.storage.local.get('blockerFreeze'))?.blockerFreeze) || []
+      ((await browser.storage.local.get('blockerFreeze'))?.blockerFreeze) || []
     )
   }
 }

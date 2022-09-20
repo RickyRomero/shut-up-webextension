@@ -1,5 +1,5 @@
 (async function () {
-  document.querySelector('html').classList.add(webBrowser.name.toLowerCase())
+  document.querySelector('html').classList.add(platform.name.toLowerCase())
   document.querySelector('.insignia').addEventListener('click', (ev) => {
     ev.preventDefault()
     window.location.href = 'https://rickyromero.com/'
@@ -15,10 +15,10 @@
   document.querySelectorAll('article').forEach((el) => {
     let releases = document.createElement('span')
     releases.classList.add('release-tags')
-    el.className.split(/\s+/).forEach((browser) => {
+    el.className.split(/\s+/).forEach((app) => {
       let tag = document.createElement('span')
       tag.classList.add('release-tag')
-      tag.innerText = browser
+      tag.innerText = app
 
       releases.appendChild(tag)
     })

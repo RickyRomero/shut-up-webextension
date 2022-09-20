@@ -9,7 +9,7 @@ class Storage { // eslint-disable-line no-unused-vars
 
     this.init(schema)
 
-    chrome.storage.onChanged.addListener(this.storageUpdate.bind(this))
+    browser.storage.onChanged.addListener(this.storageUpdate.bind(this))
   }
 
   async init (schema) {
@@ -60,16 +60,16 @@ class Storage { // eslint-disable-line no-unused-vars
 
   static get (keys) {
     return new Promise((resolve, reject) => {
-      return chrome.storage.local.get(keys, (items) => {
-        return chrome.runtime.lastError ? reject(chrome.runtime.lastError) : resolve(items)
+      return browser.storage.local.get(keys, (items) => {
+        return browser.runtime.lastError ? reject(browser.runtime.lastError) : resolve(items)
       })
     })
   }
 
   static set (items) {
     return new Promise((resolve, reject) => {
-      return chrome.storage.local.set(items, () => {
-        return chrome.runtime.lastError ? reject(chrome.runtime.lastError) : resolve()
+      return browser.storage.local.set(items, () => {
+        return browser.runtime.lastError ? reject(browser.runtime.lastError) : resolve()
       })
     })
   }

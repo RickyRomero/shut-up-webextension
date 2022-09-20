@@ -10,10 +10,10 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   addListeners () {
-    chrome.runtime.onStartup.addListener(blocker.resetFreeze)
-    chrome.runtime.onSuspend.addListener(blocker.freezeStates)
-    chrome.tabs.onRemoved.addListener(this.tabClosed)
-    chrome.tabs.onUpdated.addListener(this.tabUpdated)
+    browser.runtime.onStartup.addListener(blocker.resetFreeze)
+    browser.runtime.onSuspend.addListener(blocker.freezeStates)
+    browser.tabs.onRemoved.addListener(this.tabClosed)
+    browser.tabs.onUpdated.addListener(this.tabUpdated)
     action.onClicked.addListener(this.toggleBlockerStates)
   }
 
@@ -40,7 +40,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
     if (allowlistActive) {
       // Query all tabs and update ones on the same domain
       const targetHost = new URL(tab.url).hostname
-      tabs = await chrome.tabs.query({})
+      tabs = await browser.tabs.query({})
       tabs = tabs.filter(t => {
         const host = new URL(t.url).hostname
         return host === targetHost
@@ -69,7 +69,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
 
   updateActionIcon ({ id }, state, enable) {
     let displayedState = 'default'
-    let prefix = webBrowser.engine.toLowerCase()
+    let prefix = platform.engine.toLowerCase()
     let iconStates = {
       'default': {
         '16': 'images/action/default-state.png',
@@ -96,15 +96,15 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   removeContextMenu () {
-    chrome.contextMenus.removeAll()
+    browser.contextMenus.removeAll()
   }
 
   async addContextMenu (options) {
-    await chrome.contextMenus.removeAll()
+    await browser.contextMenus.removeAll()
     if (await options.contextMenu()) {
-      chrome.contextMenus.create({
+      browser.contextMenus.create({
         id: 'toggle-comments-ctx',
-        title: chrome.i18n.getMessage('toggle_comments_menu'),
+        title: browser.i18n.getMessage('toggle_comments_menu'),
         contexts: ['page']
       })
     }

@@ -50,7 +50,8 @@
       "scripts/private/task-queue.js",
       "scripts/private/upgrade.js",
       "scripts/private/setup.js"
-    ]
+    ],
+    "persistent": true
   },
 
   "browser_action": {

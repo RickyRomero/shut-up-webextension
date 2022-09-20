@@ -10,12 +10,12 @@ class OptionsPage {
   }
 
   async init () {
-    $('html').setAttribute('dir', chrome.i18n.getMessage('@@bidi_dir'))
+    $('html').setAttribute('dir', browser.i18n.getMessage('@@bidi_dir'))
     $('html').classList.add((await PlatformInfo.get()).os)
-    $('html').classList.add(webBrowser.name.toLowerCase())
-    $('html').classList.add(webBrowser.engine.toLowerCase())
+    $('html').classList.add(platform.name.toLowerCase())
+    $('html').classList.add(platform.engine.toLowerCase())
 
-    $('.private').dataset.i18n = `private_${webBrowser.name.toLowerCase()}_note`
+    $('.private').dataset.i18n = `private_${platform.name.toLowerCase()}_note`
 
     $('.allowlist').addEventListener('change', this.updateAllowlistOption.bind(this), false)
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
@@ -25,7 +25,7 @@ class OptionsPage {
 
     this.updatePage()
 
-    if (webBrowser.name === 'Firefox') {
+    if (platform.name === 'Firefox') {
       document.querySelectorAll('input[type=checkbox]').forEach((el) => {
         let span = document.createElement('span')
         el.parentNode.insertBefore(span, el.nextSibling)
@@ -57,7 +57,7 @@ class OptionsPage {
       if (i18nMappings[el.dataset.i18n]) {
         i18nMappings[el.dataset.i18n].call(this, el)
       } else {
-        el.innerText = chrome.i18n.getMessage(el.dataset.i18n)
+        el.innerText = browser.i18n.getMessage(el.dataset.i18n)
         el.dataset.i18nLocked = '\ud83d\udd12'
       }
     }
@@ -80,7 +80,7 @@ class OptionsPage {
 
   openLinkInFullTab (event) {
     event.preventDefault()
-    chrome.tabs.update({url: event.target.href})
+    browser.tabs.update({url: event.target.href})
   }
 
   sanitizeHTML (str) {
@@ -132,28 +132,28 @@ class OptionsPage {
   }
 
   async setKeyboardShortcutStr (el) {
-    chrome.commands.getAll(async function (commands) {
+    browser.commands.getAll(async function (commands) {
       if (commands.length === 0) { return }
 
       let shortcut = commands[0].shortcut
 
       if (shortcut !== '') {
-        el.innerText = chrome.i18n.getMessage(
+        el.innerText = browser.i18n.getMessage(
           el.dataset.i18n,
           (await Keyboard.conformToPlatform(shortcut))
         )
       } else {
-        el.innerText = chrome.i18n.getMessage('keyboard_shortcut_disabled')
+        el.innerText = browser.i18n.getMessage('keyboard_shortcut_disabled')
       }
     })
   }
 
   setMainCopyrightStr (el) {
-    let productName = chrome.i18n.getMessage('product_name')
-    let version = chrome.runtime.getManifest().version
+    let productName = browser.i18n.getMessage('product_name')
+    let version = browser.runtime.getManifest().version
 
     this.sanitizeHTML(
-      chrome.i18n.getMessage('name_version_copyright_ricky', [productName, version, this.latestCopyrightYear])
+      browser.i18n.getMessage('name_version_copyright_ricky', [productName, version, this.latestCopyrightYear])
     ).forEach((child) => el.appendChild(child))
 
     el.dataset.i18nLocked = '\ud83d\udd12'
@@ -161,7 +161,7 @@ class OptionsPage {
 
   setCSSCopyrightStr (el) {
     this.sanitizeHTML(
-      chrome.i18n.getMessage('copyright_steven', [this.latestCopyrightYear])
+      browser.i18n.getMessage('copyright_steven', [this.latestCopyrightYear])
     ).forEach((child) => el.appendChild(child))
     el.dataset.i18nLocked = '\ud83d\udd12'
   }
