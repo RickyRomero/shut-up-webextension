@@ -58,20 +58,12 @@ class Storage { // eslint-disable-line no-unused-vars
     }
   }
 
-  static get (keys) {
-    return new Promise((resolve, reject) => {
-      return browser.storage.local.get(keys, (items) => {
-        return browser.runtime.lastError ? reject(browser.runtime.lastError) : resolve(items)
-      })
-    })
+  static async get (keys) {
+    return await browser.storage.local.get(keys)
   }
 
-  static set (items) {
-    return new Promise((resolve, reject) => {
-      return browser.storage.local.set(items, () => {
-        return browser.runtime.lastError ? reject(browser.runtime.lastError) : resolve()
-      })
-    })
+  static async set (items) {
+    return await browser.storage.local.set(items)
   }
 
   static isInitFinished () {
