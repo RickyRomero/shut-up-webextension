@@ -9,6 +9,7 @@ html {
   background-color: var(--c-bg);
   overflow-x: hidden;
   height: 80vh;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +25,7 @@ body {
     var(--c-bg-light) 0%, var(--c-bg) 100%);
   font: var(--fs-main) -apple-system, BlinkMacSystemFont, sans-serif;
   width: 800px;
-  height: 400px;
+  min-height: 400px;
   margin: 0;
   border-radius: 20px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
