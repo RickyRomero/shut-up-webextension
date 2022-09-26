@@ -10,11 +10,25 @@ class UIBridge { // eslint-disable-line no-unused-vars
   }
 
   addListeners () {
-    browser.runtime.onStartup.addListener(blocker.resetFreeze)
-    browser.runtime.onSuspend.addListener(blocker.freezeStates)
-    browser.tabs.onRemoved.addListener(this.tabClosed)
-    browser.tabs.onUpdated.addListener(this.tabUpdated)
-    action.onClicked.addListener(this.toggleBlockerStates)
+    browser.runtime.onStartup.addListener(() => taskQueue.add({
+      task: blocker.resetFreeze
+    }))
+
+    browser.runtime.onSuspend.addListener(() => taskQueue.add({
+      task: blocker.freezeStates
+    }))
+
+    browser.tabs.onRemoved.addListener(tabId => taskQueue.add({
+      task: () => this.tabClosed(tabId)
+    }))
+
+    browser.tabs.onUpdated.addListener((_, changeInfo, tab) => taskQueue.add({
+      task: async () => await this.tabUpdated(_, changeInfo, tab)
+    }))
+
+    action.onClicked.addListener(tab => taskQueue.add({
+      task: async () => await this.toggleBlockerStates(tab)
+    }))
   }
 
   async tabUpdated (_, changeInfo, tab) {
@@ -53,12 +67,12 @@ class UIBridge { // eslint-disable-line no-unused-vars
     if (blockerActive) {
       await allowlist.add(tab)
       blockerTasks = tabs.map(async tab => {
-        await blocker.remove(tab)
+        blocker.remove(tab)
       })
     } else {
       await allowlist.remove(tab)
       blockerTasks = tabs.map(async tab => {
-        await blocker.add(tab)
+        blocker.add(tab)
       })
     }
     await Promise.all(blockerTasks)

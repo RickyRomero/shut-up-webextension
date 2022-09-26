@@ -1,7 +1,6 @@
 class Blocker {
   constructor () {
     this._states = new Map()
-    this.cssTaskQueue = new TaskQueue()
 
     this.add = this.add.bind(this)
     this.sync = this.sync.bind(this)
@@ -32,7 +31,7 @@ class Blocker {
     this.setState(tab.id, blockerActive)
 
     if (blockerActive) {
-      await this.add(tab)
+      this.add(tab)
     } else {
       this.setState(tab.id, false)
     }
@@ -45,20 +44,27 @@ class Blocker {
     this.freezeStates()
   }
 
-  async add ({ id }) {
-    await this.cssTaskQueue.add(id, async () => {  
-      await browser.scripting.removeCSS(this.injection(id))
-      await browser.scripting.insertCSS(this.injection(id))
-      this.setState(id, true)
-    }, 'reinject')
+  add ({ id }) {
+    taskQueue.add({
+      id,
+      type: 'reinject',
+      task: async () => {  
+        await browser.scripting.removeCSS(this.injection(id))
+        await browser.scripting.insertCSS(this.injection(id))
+        this.setState(id, true)
+      },
+    })
   }
 
-  async remove ({ id }) {
-    await this.cssTaskQueue.add(id, async () => {
-      await browser.scripting.removeCSS(this.injection(id))
-      this.setState(id, false)
+  remove ({ id }) {
+    taskQueue.add({
+      id,
+      task: async () => {
+        await browser.scripting.removeCSS(this.injection(id))
+        this.setState(id, false)
+      }
     })
-}
+  }
 
   query (tab) {
     return this._states.get(tab.id)

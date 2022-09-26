@@ -18,6 +18,7 @@
     "platform": true,
     "PlatformInfo": true,
     "Storage": true,
+    "taskQueue": true,
     "TaskQueue": true,
     "UIBridge": true,
     "Utils": true

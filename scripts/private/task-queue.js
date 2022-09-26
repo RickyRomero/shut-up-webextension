@@ -1,16 +1,12 @@
 /*
- * Tab update events can come in faster than we can process them,
- * because they come in for both full page loads as well as
- * history.pushState() events. The latter can fire multiple times
- * in a row without giving us a chance to run our code. This can
- * cause us to reinject multiple times at once in parallel, specifically
- * in a sequence like this on a site like SoundCloud:
- *
- *    remove, remove, add, add
- *
- * This leads to multiple copies of the CSS being injected, which
- * is no bueno because we can't get the injected state of the CSS
- * from the browser. We prevent that situation with this task queue.
+ * This class is meant to resolve multiple events which do not arrive in
+ * sequence. One is during startup, when initialization may not have completed
+ * before events start arriving from the UI bridge. Another is for script
+ * injection, as many pages rely on history.pushState() and we can't respond
+ * fast enough to those events.
+ * 
+ * No mechanism exists in the WebExtensions API for this functionality, so
+ * that's why this is here.
  */
 
 class TaskQueue { // eslint-disable-line no-unused-vars
@@ -20,33 +16,46 @@ class TaskQueue { // eslint-disable-line no-unused-vars
     this.add = this.add.bind(this)
     this.nextTask = this.nextTask.bind(this)
     this.tasksFor = this.tasksFor.bind(this)
-    this.tasksExist = this.tasksExist.bind(this)
     this.taskRunning = this.taskRunning.bind(this)
   }
 
-  async add (tabId, task, type) {
-    const reinjectQueued = this.tasksFor(tabId)
-      .filter(task => task.type === 'reinject')
-      .length > 0
-    if (!reinjectQueued) {
+  add ({ tabId = null, task, type }) {
+    if (type === 'init') {
+      // Initialization tasks *always* come first
+      const initTasks = this.spool.filter(task => task.type === 'init')
+      const otherTasks = this.spool.filter(task => task.type !== 'init')
+      initTasks.push({ tabId, task, type })
+
+      this.spool = [initTasks, otherTasks].flat()
+    } else if (type === 'reinject') {
+      const reinjectQueued = this.tasksFor(tabId)
+        .filter(task => task.type === 'reinject')
+        .length > 0
+
+      if (!reinjectQueued) {
+        this.spool.push({ tabId, task, type })
+      }
+    } else {
       this.spool.push({ tabId, task, type })
     }
-    if (!this.taskRunning(tabId)) {
-      await this.nextTask(tabId)
+
+    if (!this.taskRunning()) {
+      this.nextTask()
     }
   }
 
-  remove (task) {
-    this.spool = this.spool.filter(spoolTask => spoolTask !== task)
+  remove (taskFunc) {
+    this.spool = this.spool.filter(spoolTask => spoolTask !== taskFunc)
   }
 
-  async nextTask (tabId) {
-    if (this.tasksExist(tabId)) {
-      const task = this.tasksFor(tabId)[0]
+  async nextTask () {
+    if (this.spool.length > 0) {
+      const task = this.spool[0]
       task.status = 'running'
       await task.task()
+
       this.remove(task)
-      await this.nextTask(tabId, true)
+      await this.nextTask()
     }
   }
 
@@ -54,12 +63,8 @@ class TaskQueue { // eslint-disable-line no-unused-vars
     return this.spool.filter(task => task.tabId === tabId)
   }
 
-  tasksExist (tabId) {
-    return this.tasksFor(tabId).length > 0
-  }
-
-  taskRunning (tabId) {
-    return this.tasksFor(tabId)
+  taskRunning () {
+    return this.spool
       .filter(task => task.status === 'running')
       .length > 0
   }

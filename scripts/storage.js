@@ -1,18 +1,17 @@
 class Storage { // eslint-disable-line no-unused-vars
   constructor (schema) {
-    Storage.instances.push(this)
     let root
     for (root in schema) {}
     this._rootKey = root
 
     this._cache = schema[this._rootKey]
 
-    this.init(schema)
+    this.init = async () => await this._init(schema)
 
     browser.storage.onChanged.addListener(this.storageUpdate.bind(this))
   }
 
-  async init (schema) {
+  async _init (schema) {
     let result = await Storage.get(this._rootKey)
 
     if (result[this._rootKey] === undefined) {
@@ -25,8 +24,6 @@ class Storage { // eslint-disable-line no-unused-vars
     } else {
       this._cache = result[this._rootKey]
     }
-
-    await Storage.runInitedQueueIfFinished()
   }
 
   async data () {
@@ -65,27 +62,4 @@ class Storage { // eslint-disable-line no-unused-vars
   static async set (items) {
     return await browser.storage.local.set(items)
   }
-
-  static isInitFinished () {
-    return Storage.instances.filter(
-      subclass => !subclass._cache._initialized
-    ).length === 0
-  }
-  static async queueOperation (op) {
-    Storage.onInitedQueue.push(op)
-    await Storage.runInitedQueueIfFinished()
-  }
-  static async runInitedQueueIfFinished () {
-    if (Storage.isInitFinished()) {
-      await Storage.runInitedQueue()
-    }
-  }
-  static async runInitedQueue() {
-    while (Storage.onInitedQueue.length) {
-      await (Storage.onInitedQueue.shift())()
-    }
-  }
 }
-
-Storage.instances = []
-Storage.onInitedQueue = []
