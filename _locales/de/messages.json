@@ -63,7 +63,7 @@
       },
       "latest_year": {
         "content": "$3",
-        "example": "2022"
+        "example": "2023"
       },
       "ricky_link": {
         "content": "<a href=\"https://rickyromero.com/\">Ricky Romero</a>"
@@ -75,7 +75,7 @@
     "placeholders": {
       "latest_year": {
         "content": "$1",
-        "example": "2022"
+        "example": "2023"
       },
       "steven_link": {
         "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"

@@ -2,7 +2,7 @@ const $ = document.querySelector.bind(document)
 
 class OptionsPage {
   constructor () {
-    this.latestCopyrightYear = 2022
+    this.latestCopyrightYear = 2023
     this.options = new Options()
     this.uiBridge = new UIBridge()
 
