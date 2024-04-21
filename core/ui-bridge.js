@@ -1,4 +1,9 @@
-class UIBridge { // eslint-disable-line no-unused-vars
+import { allowlist } from './allowlist.js'
+import { blocker } from './blocker.js'
+import { taskQueue } from './task-queue.js'
+import { browser, platform, Utils } from './utils.js'
+
+class UIBridge {
   constructor () {
     this.tabClosed = this.tabClosed.bind(this)
     this.tabUpdated = this.tabUpdated.bind(this)
@@ -26,7 +31,7 @@ class UIBridge { // eslint-disable-line no-unused-vars
       task: async () => await this.tabUpdated(_, changeInfo, tab)
     }))
 
-    action.onClicked.addListener(tab => taskQueue.add({
+    browser.action.onClicked.addListener(tab => taskQueue.add({
       task: async () => await this.toggleBlockerStates(tab)
     }))
   }
@@ -83,19 +88,19 @@ class UIBridge { // eslint-disable-line no-unused-vars
 
   updateActionIcon ({ id }, state, enable) {
     let displayedState = 'default'
-    let prefix = platform.engine.toLowerCase()
-    let iconStates = {
-      'default': {
-        '16': 'images/action/default-state.png',
-        '32': 'images/action/default-state@2x.png'
+    const prefix = platform.engine.toLowerCase()
+    const iconStates = {
+      default: {
+        16: 'images/action/default-state.png',
+        32: 'images/action/default-state@2x.png'
       },
-      'turnOff': {
-        '16': `images/action/${prefix}-turn-off.png`,
-        '32': `images/action/${prefix}-turn-off@2x.png`
+      turnOff: {
+        16: `images/action/${prefix}-turn-off.png`,
+        32: `images/action/${prefix}-turn-off@2x.png`
       },
-      'turnOn': {
-        '16': `images/action/${prefix}-turn-on.png`,
-        '32': `images/action/${prefix}-turn-on@2x.png`
+      turnOn: {
+        16: `images/action/${prefix}-turn-on.png`,
+        32: `images/action/${prefix}-turn-on@2x.png`
       }
     }
 
@@ -103,10 +108,10 @@ class UIBridge { // eslint-disable-line no-unused-vars
       displayedState = `turn${state ? 'On' : 'Off'}`
     }
 
-    action.setIcon({
+    browser.action.setIcon({
       tabId: id,
       path: iconStates[displayedState]
-    }, () => action[enable ? 'enable' : 'disable'](id))
+    }, () => browser.action[enable ? 'enable' : 'disable'](id))
   }
 
   removeContextMenu () {
@@ -124,3 +129,5 @@ class UIBridge { // eslint-disable-line no-unused-vars
     }
   }
 }
+
+export const uiBridge = new UIBridge()

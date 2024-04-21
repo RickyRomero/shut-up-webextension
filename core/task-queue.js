@@ -4,12 +4,12 @@
  * before events start arriving from the UI bridge. Another is for script
  * injection, as many pages rely on history.pushState() and we can't respond
  * fast enough to those events.
- * 
+ *
  * No mechanism exists in the WebExtensions API for this functionality, so
  * that's why this is here.
  */
 
-class TaskQueue { // eslint-disable-line no-unused-vars
+class TaskQueue {
   constructor () {
     this.spool = []
 
@@ -69,3 +69,5 @@ class TaskQueue { // eslint-disable-line no-unused-vars
       .length > 0
   }
 }
+
+export const taskQueue = new TaskQueue()

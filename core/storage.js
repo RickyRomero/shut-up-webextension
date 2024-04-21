@@ -1,8 +1,8 @@
-class Storage { // eslint-disable-line no-unused-vars
+import { browser } from './utils.js'
+
+export class Storage {
   constructor (schema) {
-    let root
-    for (root in schema) {}
-    this._rootKey = root
+    this._rootKey = Object.keys(schema).pop()
 
     this._cache = schema[this._rootKey]
 
@@ -12,10 +12,10 @@ class Storage { // eslint-disable-line no-unused-vars
   }
 
   async _init (schema) {
-    let result = await Storage.get(this._rootKey)
+    const result = await Storage.get(this._rootKey)
 
     if (result[this._rootKey] === undefined) {
-      let schemaClone = JSON.parse(JSON.stringify(schema))
+      const schemaClone = JSON.parse(JSON.stringify(schema))
 
       schemaClone[this._rootKey]._initialized = true
       await Storage.set(schemaClone)
@@ -35,11 +35,11 @@ class Storage { // eslint-disable-line no-unused-vars
   }
 
   update (props) {
-    for (let key in props) {
+    for (const key in props) {
       this._cache[key] = props[key]
     }
 
-    let toSet = {}
+    const toSet = {}
     toSet[this._rootKey] = this._cache
     Storage.set(toSet) // Asynchronous, but fine since we don't access directly
   }

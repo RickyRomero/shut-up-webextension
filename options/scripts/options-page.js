@@ -1,10 +1,12 @@
+import { options } from '../../scripts/options.js'
+import { uiBridge } from '../../scripts/ui-bridge.js'
+import { Keyboard, PlatformInfo, browser, platform } from '../../scripts/utils.js'
+
 const $ = document.querySelector.bind(document)
 
 class OptionsPage {
   constructor () {
-    this.latestCopyrightYear = 2023
-    this.options = new Options()
-    this.uiBridge = new UIBridge()
+    this.latestCopyrightYear = 2024
 
     this.init()
   }
@@ -21,36 +23,36 @@ class OptionsPage {
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
     $('.change-shortcut').addEventListener('click', this.openLinkInFullTab.bind(this), false)
 
-    this.options.onUpdate = this.updatePage.bind(this)
+    options.onUpdate = this.updatePage.bind(this)
 
     this.updatePage()
 
     if (platform.name === 'Firefox') {
       document.querySelectorAll('input[type=checkbox]').forEach((el) => {
-        let span = document.createElement('span')
+        const span = document.createElement('span')
         el.parentNode.insertBefore(span, el.nextSibling)
       })
     }
 
-    let egg = new Egg() // eslint-disable-line no-unused-vars
+    Egg()
   }
 
   async updatePage () {
     document.querySelectorAll('[data-i18n]').forEach(this.internationalize.bind(this))
 
-    $('.allowlist').checked = (await this.options.automaticAllowlist())
-    $('.context-menu').checked = (await this.options.contextMenu())
+    $('.allowlist').checked = (await options.automaticAllowlist())
+    $('.context-menu').checked = (await options.contextMenu())
 
     window.clearTimeout(this.updateTimer)
     this.updateTimer = window.setTimeout(this.updatePage.bind(this), 1000 * 5)
   }
 
   internationalize (el) {
-    let i18nMappings = {
-      'keyboard_shortcut': this.setKeyboardShortcutStr,
-      'keyboard_shortcut_not_configurable': this.setKeyboardShortcutStr,
-      'name_version_copyright_ricky': this.setMainCopyrightStr,
-      'copyright_steven': this.setCSSCopyrightStr
+    const i18nMappings = {
+      keyboard_shortcut: this.setKeyboardShortcutStr,
+      keyboard_shortcut_not_configurable: this.setKeyboardShortcutStr,
+      name_version_copyright_ricky: this.setMainCopyrightStr,
+      copyright_steven: this.setCSSCopyrightStr
     }
 
     if (el.dataset.i18nLocked !== '\ud83d\udd12') {
@@ -64,31 +66,31 @@ class OptionsPage {
   }
 
   updateAllowlistOption (event) {
-    this.options.update({automaticAllowlist: event.target.checked})
+    options.update({ automaticAllowlist: event.target.checked })
   }
 
   updateContextMenuOption (event) {
     const isEnabled = event.target.checked
-    this.options.update({ contextMenu: isEnabled })
+    options.update({ contextMenu: isEnabled })
 
     if (isEnabled) {
-      this.uiBridge.addContextMenu(this.options)
+      uiBridge.addContextMenu(options)
     } else {
-      this.uiBridge.removeContextMenu()
+      uiBridge.removeContextMenu()
     }
   }
 
   openLinkInFullTab (event) {
     event.preventDefault()
-    browser.tabs.update({url: event.target.href})
+    browser.tabs.update({ url: event.target.href })
   }
 
   sanitizeHTML (str) {
-    let self = this
-    let nodes = []
+    const self = this
+    const nodes = []
     let processedStr = str
-    let textNodeMatch = /^[^<]+/
-    let elementMatch = /^<([^>]+)>([^<]+)<\/[^>]+>/
+    const textNodeMatch = /^[^<]+/
+    const elementMatch = /^<([^>]+)>([^<]+)<\/[^>]+>/
 
     while (processedStr.length) {
       if (textNodeMatch.test(processedStr)) {
@@ -107,18 +109,18 @@ class OptionsPage {
     }
 
     function processElement (matches) {
-      let tagProperties = matches[1]
-      let tagName = tagProperties.split(/\s+/)[0]
-      let tagAttributes = tagProperties.match(/[a-z-]+="[^"]+"/g)
-      let tagContents = self.sanitizeHTML(matches[2])
+      const tagProperties = matches[1]
+      const tagName = tagProperties.split(/\s+/)[0]
+      const tagAttributes = tagProperties.match(/[a-z-]+="[^"]+"/g)
+      const tagContents = self.sanitizeHTML(matches[2])
       let node
 
       if (tagName === 'a') {
         node = document.createElement(tagName)
         tagAttributes.forEach((attr) => {
-          let keyValue = attr.split('="')
-          let attrKey = keyValue[0]
-          let attrValue = keyValue[1].substr(0, keyValue[1].length - 1)
+          const keyValue = attr.split('="')
+          const attrKey = keyValue[0]
+          const attrValue = keyValue[1].substr(0, keyValue[1].length - 1)
           node.setAttribute(attrKey, attrValue)
         })
 
@@ -135,7 +137,7 @@ class OptionsPage {
     browser.commands.getAll(async function (commands) {
       if (commands.length === 0) { return }
 
-      let shortcut = commands[0].shortcut
+      const shortcut = commands[0].shortcut
 
       if (shortcut !== '') {
         el.innerText = browser.i18n.getMessage(
@@ -149,8 +151,8 @@ class OptionsPage {
   }
 
   setMainCopyrightStr (el) {
-    let productName = browser.i18n.getMessage('product_name')
-    let version = browser.runtime.getManifest().version
+    const productName = browser.i18n.getMessage('product_name')
+    const version = browser.runtime.getManifest().version
 
     this.sanitizeHTML(
       browser.i18n.getMessage('name_version_copyright_ricky', [productName, version, this.latestCopyrightYear])
@@ -183,7 +185,7 @@ class Egg {
   }
 
   nextEgg () {
-    let messages = [
+    const messages = [
       'FIRST!!',
       'F\u2013 First?',
       '\ufb01rst :(',
@@ -191,7 +193,7 @@ class Egg {
     ]
 
     window.removeEventListener('mousemove', this.restlessEgg, false)
-    $('img').addEventListener('mouseenter', this.dismissEgg.bind(this), {once: true})
+    $('img').addEventListener('mouseenter', this.dismissEgg.bind(this), { once: true })
 
     this.eggText.classList.remove(`step-${this.counter}`)
     this.eggText.innerText = messages[this.counter]
@@ -218,4 +220,4 @@ class Egg {
   }
 }
 
-let page = new OptionsPage() // eslint-disable-line no-unused-vars
+OptionsPage()

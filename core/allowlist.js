@@ -1,4 +1,7 @@
-class Allowlist extends Storage { // eslint-disable-line no-unused-vars
+import { options } from './options.js'
+import { Storage } from './storage.js'
+
+class Allowlist extends Storage {
   constructor () {
     super({
       allowlist: {
@@ -13,14 +16,14 @@ class Allowlist extends Storage { // eslint-disable-line no-unused-vars
     this.urlToDigest = this.urlToDigest.bind(this)
   }
 
-  async isActive ({incognito}) {
+  async isActive ({ incognito }) {
     return (await options.automaticAllowlist()) && !incognito
   }
 
-  async add ({incognito, url}) {
+  async add ({ incognito, url }) {
     if (this.isActive({ incognito })) {
-      let digest = await this.urlToDigest(url)
-      let hostList = (await this.data()).hosts
+      const digest = await this.urlToDigest(url)
+      const hostList = (await this.data()).hosts
 
       if (!hostList.includes(digest)) {
         hostList.push(digest)
@@ -31,9 +34,9 @@ class Allowlist extends Storage { // eslint-disable-line no-unused-vars
     }
   }
 
-  async remove ({incognito, url}) {
+  async remove ({ incognito, url }) {
     if (this.isActive({ incognito })) {
-      let digest = await this.urlToDigest(url)
+      const digest = await this.urlToDigest(url)
 
       this.update({
         hosts: (await this.data()).hosts.filter(alHost => alHost !== digest)
@@ -41,10 +44,10 @@ class Allowlist extends Storage { // eslint-disable-line no-unused-vars
     }
   }
 
-  async query ({url}) {
-    let digest = await this.urlToDigest(url)
-    let alIncludesHost = (await this.data()).hosts.includes(digest)
-    let alEnabled = (await options.automaticAllowlist())
+  async query ({ url }) {
+    const digest = await this.urlToDigest(url)
+    const alIncludesHost = (await this.data()).hosts.includes(digest)
+    const alEnabled = (await options.automaticAllowlist())
 
     return (alIncludesHost && alEnabled)
   }
@@ -60,3 +63,5 @@ class Allowlist extends Storage { // eslint-disable-line no-unused-vars
     return Array.from(opBuffer).map(b => b.toString(16).padStart(2, '0')).join('')
   }
 }
+
+export const allowlist = new Allowlist()

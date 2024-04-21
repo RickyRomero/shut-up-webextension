@@ -1,3 +1,5 @@
+import { Keyboard, PlatformInfo, platform } from '../../scripts/utils.js'
+
 (async function () {
   document.querySelector('html').classList.add(platform.name.toLowerCase())
   document.querySelector('.insignia').addEventListener('click', (ev) => {
@@ -13,10 +15,10 @@
   )
 
   document.querySelectorAll('article').forEach((el) => {
-    let releases = document.createElement('span')
+    const releases = document.createElement('span')
     releases.classList.add('release-tags')
     el.className.split(/\s+/).forEach((app) => {
-      let tag = document.createElement('span')
+      const tag = document.createElement('span')
       tag.classList.add('release-tag')
       tag.innerText = app
 

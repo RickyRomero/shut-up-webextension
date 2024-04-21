@@ -1,4 +1,6 @@
-class Options extends Storage { // eslint-disable-line no-unused-vars
+import { Storage } from './storage.js'
+
+class Options extends Storage {
   constructor () {
     super({
       options: {
@@ -16,3 +18,5 @@ class Options extends Storage { // eslint-disable-line no-unused-vars
     return (await this.data()).contextMenu
   }
 }
+
+export const options = new Options()

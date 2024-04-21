@@ -1,4 +1,7 @@
-const runUpgrade = async () => {
+import { allowlist } from './allowlist.js'
+import { browser } from './utils.js'
+
+export const runUpgrade = async () => {
   // Pre-8.0 migration
   const oldKey = 'whitelist'
   const oldStructure = await browser.storage.local.get(oldKey)

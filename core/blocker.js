@@ -1,3 +1,7 @@
+import { allowlist } from './allowlist.js'
+import { taskQueue } from './task-queue.js'
+import { browser, Utils } from './utils.js'
+
 class Blocker {
   constructor () {
     this._states = new Map()
@@ -48,11 +52,11 @@ class Blocker {
     taskQueue.add({
       id,
       type: 'reinject',
-      task: async () => {  
+      task: async () => {
         await browser.scripting.removeCSS(this.injection(id))
         await browser.scripting.insertCSS(this.injection(id))
         this.setState(id, true)
-      },
+      }
     })
   }
 
@@ -70,7 +74,7 @@ class Blocker {
     return this._states.get(tab.id)
   }
 
-  setState(id, isActive) {
+  setState (id, isActive) {
     this._states.set(id, isActive)
     this.freezeStates()
   }
@@ -104,3 +108,5 @@ class Blocker {
     )
   }
 }
+
+export const blocker = new Blocker()
