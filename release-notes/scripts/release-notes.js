@@ -1,4 +1,4 @@
-import { Keyboard, PlatformInfo, platform } from '../../scripts/utils.js'
+import { Keyboard, PlatformInfo, platform } from '../../core/utils.js'
 
 (async function () {
   document.querySelector('html').classList.add(platform.name.toLowerCase())

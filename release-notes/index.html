@@ -1,352 +1,388 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="../styles/extension.css" />
-    <link rel="stylesheet" href="styles/release-notes.css" />
-    <link rel="shortcut icon" href="../images/favicon.png" />
 
-    <title>Shut Up - Release Notes</title>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../core/extension.css" />
+  <link rel="stylesheet" href="styles/release-notes.css" />
+  <link rel="shortcut icon" href="../images/favicon.png" />
 
-  <body>
-    <!-- 8.1 -->
-    <article class="chrome firefox edge opera">
-      <h4><span>Shut Up 8.1</span></h4>
-      <time datetime="xxxx-xx-xx">Released xx xx<sup>xx</sup>, xxxx</time>
-      <ul>
-        <li>Restored the changes from the 8.0 update, following closer scrutiny and validation.</li>
-        <li>Added an operation queue to address bugs caused by race conditions.</li>
-        <li>Optimized various image files. Thanks to Frazer Smith for the contribution.</li>
-      </ul>
-      <p>This update changes how comments are blocked across many sites. Please report any issues anonymously using <a href="https://forms.gle/6VRtsTimywd4Lbcj6">this form</a>. Thank you!</p>
-    </article>
+  <title>Shut Up - Release Notes</title>
+</head>
 
-    <!-- 8.0.2 -->
-    <article class="firefox">
-      <h4><span>Shut Up 8.0.2</span></h4>
-      <time datetime="2022-10-31">Released October 31<sup>st</sup>, 2022</time>
-      <p>This update, still based on version 7.1.2, works around a recently-introduced incompatibility with Firefox 106. It restores the ability to show and hide comments on demand.</p>
-    </article>
-    
-    <!-- 8.0.1 -->
-    <article class="chrome firefox edge opera">
-      <h4><span>Shut Up 8.0.1</span></h4>
-      <time datetime="2022-09-21">Released September 21<sup>st</sup>, 2022</time>
-      <p>This release temporarily rolls back the changes from the 8.0 update while I investigate the cause of some unexpected bugs.</p>
-    </article>
+<body>
+  <!-- 8.1 -->
+  <article class="chrome firefox edge opera">
+    <h4><span>Shut Up 8.1</span></h4>
+    <time datetime="xxxx-xx-xx">Released xx xx<sup>xx</sup>, xxxx</time>
+    <ul>
+      <li>Restored the changes from the 8.0 update, following closer scrutiny and validation.</li>
+      <li>Added an operation queue to address bugs caused by race conditions.</li>
+      <li>Optimized various image files. Thanks to Frazer Smith for the contribution.</li>
+    </ul>
+    <p>This update changes how comments are blocked across many sites. Please report any issues anonymously using <a
+        href="https://forms.gle/6VRtsTimywd4Lbcj6">this form</a>. Thank you!</p>
+  </article>
 
-    <!-- 8.0 -->
-    <article class="chrome firefox edge opera">
-      <h4><span>Shut Up 8.0</span></h4>
-      <time datetime="2022-09-21">Released September 21<sup>st</sup>, 2022</time>
-      <p>This release ensures compatibility with future browser releases and further strengthens security.</p>
-      <p>Due to new browser requirements, Shut Up no longer includes a stylesheet update component. Your browser is now responsible for these updates, and will automatically install them through extension updates.</p>
-      <ul>
-        <li>Upgraded to Manifest v3 for future browser compatibility. (Firefox support TBD)</li>
-        <li>Switched to new native WebExtensions APIs for adding blocking rules to pages.</li>
-        <li>Updated the Options page to support narrow window widths.</li>
-        <li>Fixed an issue in the Options page that prevented links from opening in a full tab.</li>
-        <li>Removed the ability to force stylesheet updates in browsers based on Chrome.</li>
-      </ul>
-      <p>This update changes how comments are blocked across many sites. Please report any issues anonymously using <a href="https://forms.gle/6VRtsTimywd4Lbcj6">this form</a>. Thank you!</p>
-    </article>
+  <!-- 8.0.2 -->
+  <article class="firefox">
+    <h4><span>Shut Up 8.0.2</span></h4>
+    <time datetime="2022-10-31">Released October 31<sup>st</sup>, 2022</time>
+    <p>This update, still based on version 7.1.2, works around a recently-introduced incompatibility with Firefox 106.
+      It restores the ability to show and hide comments on demand.</p>
+  </article>
 
-    <!-- 7.1.2 -->
-    <article class="chrome firefox edge opera">
-      <h4><span>Shut Up 7.1.2</span></h4>
-      <time datetime="2022-07-06">Released July 6<sup>th</sup>, 2022</time>
-      <p>Prevented Shut Up from accidentally hiding important controls on California's EDD website.</p>
-    </article>
+  <!-- 8.0.1 -->
+  <article class="chrome firefox edge opera">
+    <h4><span>Shut Up 8.0.1</span></h4>
+    <time datetime="2022-09-21">Released September 21<sup>st</sup>, 2022</time>
+    <p>This release temporarily rolls back the changes from the 8.0 update while I investigate the cause of some
+      unexpected bugs.</p>
+  </article>
 
-    <!-- 7.1.1 -->
-    <article class="chrome firefox edge opera">
-      <h4><span>Shut Up 7.1.1</span></h4>
-      <time datetime="2022-01-02">Released January 2<sup>nd</sup>, 2022</time>
-      <p>Small fix to make the copyright year easier to update.</p>
-    </article>
+  <!-- 8.0 -->
+  <article class="chrome firefox edge opera">
+    <h4><span>Shut Up 8.0</span></h4>
+    <time datetime="2022-09-21">Released September 21<sup>st</sup>, 2022</time>
+    <p>This release ensures compatibility with future browser releases and further strengthens security.</p>
+    <p>Due to new browser requirements, Shut Up no longer includes a stylesheet update component. Your browser is now
+      responsible for these updates, and will automatically install them through extension updates.</p>
+    <ul>
+      <li>Upgraded to Manifest v3 for future browser compatibility. (Firefox support TBD)</li>
+      <li>Switched to new native WebExtensions APIs for adding blocking rules to pages.</li>
+      <li>Updated the Options page to support narrow window widths.</li>
+      <li>Fixed an issue in the Options page that prevented links from opening in a full tab.</li>
+      <li>Removed the ability to force stylesheet updates in browsers based on Chrome.</li>
+    </ul>
+    <p>This update changes how comments are blocked across many sites. Please report any issues anonymously using <a
+        href="https://forms.gle/6VRtsTimywd4Lbcj6">this form</a>. Thank you!</p>
+  </article>
 
-    <!-- 7.1 -->
-    <article class="chrome firefox edge opera">
-      <h4><span>Shut Up 7.1</span></h4>
-      <time datetime="2021-11-15">Released November 15<sup>th</sup>, 2021</time>
-      <p>Improved injection logic to better cooperate with other extensions and websites.</p>
-    </article>
+  <!-- 7.1.2 -->
+  <article class="chrome firefox edge opera">
+    <h4><span>Shut Up 7.1.2</span></h4>
+    <time datetime="2022-07-06">Released July 6<sup>th</sup>, 2022</time>
+    <p>Prevented Shut Up from accidentally hiding important controls on California's EDD website.</p>
+  </article>
 
-    <!-- 7.0.2 -->
-    <article class="chrome firefox edge opera">
-      <h4><span>Shut Up 7.0.2</span></h4>
-      <time datetime="2021-02-23">Released February 23<sup>rd</sup>, 2021</time>
-      <ul>
-        <li>Fixed comment blocking on Le Figaro.</li>
-        <li>Removed IP address logging for the stylesheet update feature. (This was a server-side change and also affects previous versions.)</li>
-      </ul>
-    </article>
+  <!-- 7.1.1 -->
+  <article class="chrome firefox edge opera">
+    <h4><span>Shut Up 7.1.1</span></h4>
+    <time datetime="2022-01-02">Released January 2<sup>nd</sup>, 2022</time>
+    <p>Small fix to make the copyright year easier to update.</p>
+  </article>
 
-    <!-- 7.0.1 -->
-    <article class="chrome firefox edge opera">
-      <h4><span>Shut Up 7.0.1</span></h4>
-      <time datetime="2021-01-14">Released January 14<sup>th</sup>, 2021</time>
-      <ul>
-        <li>Blocked comments on sites which use the Coral comments system.</li>
-        <li>Improved comment blocking on Pixiv.</li>
-        <li>Updated copyright date.</li>
-      </ul>
-    </article>
+  <!-- 7.1 -->
+  <article class="chrome firefox edge opera">
+    <h4><span>Shut Up 7.1</span></h4>
+    <time datetime="2021-11-15">Released November 15<sup>th</sup>, 2021</time>
+    <p>Improved injection logic to better cooperate with other extensions and websites.</p>
+  </article>
 
-    <!-- 7.0 -->
-    <article class="chrome firefox edge opera">
-      <h4><span>Shut Up 7.0</span></h4>
-      <time datetime="2020-10-12">Released October 12<sup>th</sup>, 2020</time>
-      <p>Thank you for all of your feedback on the previous release.</p>
-      <p>I've reverted the changes from Shut Up 6. It improved comment blocking by using more general CSS selectors. However, it also blocked a lot of things that aren't comments. This broke many sites in lots of unexpected ways.</p>
-      <p>Future releases will continue to use the old, targeted blocking approach. This will miss comments sometimes, so please continue to report any issues anonymously using <a href="https://forms.gle/6VRtsTimywd4Lbcj6">this form</a>.</p>
-    </article>
+  <!-- 7.0.2 -->
+  <article class="chrome firefox edge opera">
+    <h4><span>Shut Up 7.0.2</span></h4>
+    <time datetime="2021-02-23">Released February 23<sup>rd</sup>, 2021</time>
+    <ul>
+      <li>Fixed comment blocking on Le Figaro.</li>
+      <li>Removed IP address logging for the stylesheet update feature. (This was a server-side change and also affects
+        previous versions.)</li>
+    </ul>
+  </article>
 
-    <!-- 6.0 -->
-    <article class="chrome firefox edge opera" style="text-decoration: line-through">
-      <h4><span>Shut Up 6.0</span></h4>
-      <time datetime="2020-10-10">Released October 10<sup>th</sup>, 2020</time>
-      <p>Substantially improved comment blocking, with simpler code to boot. This release also fixes comment blocking on the following sites and services:</p>
-      <ul>
-        <li>Washington Post</li>
-        <li>Coding Horror</li>
-        <li>National Post</li>
-        <li>AppleInsider</li>
-        <li>Cracked.com</li>
-        <li>imgur</li>
-        <li>Steam Community</li>
-        <li>Medium</li>
-        <li>Many news websites that use spot.im comment systems</li>
-      </ul>
-      <p>This update changes how comments are blocked across many sites. Please report any issues anonymously using <a href="https://forms.gle/6VRtsTimywd4Lbcj6">this form</a>. Thank you!</p>
-    </article>
+  <!-- 7.0.1 -->
+  <article class="chrome firefox edge opera">
+    <h4><span>Shut Up 7.0.1</span></h4>
+    <time datetime="2021-01-14">Released January 14<sup>th</sup>, 2021</time>
+    <ul>
+      <li>Blocked comments on sites which use the Coral comments system.</li>
+      <li>Improved comment blocking on Pixiv.</li>
+      <li>Updated copyright date.</li>
+    </ul>
+  </article>
 
-    <!-- 5.0.2 -->
-    <article class="chrome firefox edge opera">
-      <h4><span>Shut Up 5.0.2</span></h4>
-      <time datetime="2020-10-09">Released October 9<sup>th</sup>, 2020</time>
-      <p>Improved compatibility with apps.oregon.gov.</p>
-    </article>
+  <!-- 7.0 -->
+  <article class="chrome firefox edge opera">
+    <h4><span>Shut Up 7.0</span></h4>
+    <time datetime="2020-10-12">Released October 12<sup>th</sup>, 2020</time>
+    <p>Thank you for all of your feedback on the previous release.</p>
+    <p>I've reverted the changes from Shut Up 6. It improved comment blocking by using more general CSS selectors.
+      However, it also blocked a lot of things that aren't comments. This broke many sites in lots of unexpected ways.
+    </p>
+    <p>Future releases will continue to use the old, targeted blocking approach. This will miss comments sometimes, so
+      please continue to report any issues anonymously using <a href="https://forms.gle/6VRtsTimywd4Lbcj6">this
+        form</a>.</p>
+  </article>
 
-    <!-- 5.0.1 -->
-    <article class="chrome firefox edge opera">
-      <h4><span>Shut Up 5.0.1</span></h4>
-      <time datetime="2020-04-14">Released April 14<sup>th</sup>, 2020</time>
-      <ul>
-        <li>Returned to the use of a standalone options page.</li>
-        <li>Improved compatibility with <a href="https://www.icloud.com/">iCloud's web interface</a>.</li>
-      </ul>
-    </article>
+  <!-- 6.0 -->
+  <article class="chrome firefox edge opera" style="text-decoration: line-through">
+    <h4><span>Shut Up 6.0</span></h4>
+    <time datetime="2020-10-10">Released October 10<sup>th</sup>, 2020</time>
+    <p>Substantially improved comment blocking, with simpler code to boot. This release also fixes comment blocking on
+      the following sites and services:</p>
+    <ul>
+      <li>Washington Post</li>
+      <li>Coding Horror</li>
+      <li>National Post</li>
+      <li>AppleInsider</li>
+      <li>Cracked.com</li>
+      <li>imgur</li>
+      <li>Steam Community</li>
+      <li>Medium</li>
+      <li>Many news websites that use spot.im comment systems</li>
+    </ul>
+    <p>This update changes how comments are blocked across many sites. Please report any issues anonymously using <a
+        href="https://forms.gle/6VRtsTimywd4Lbcj6">this form</a>. Thank you!</p>
+  </article>
 
-    <!-- 5.0 -->
-    <article class="chrome firefox edge opera">
-      <h4><span>Shut Up 5.0</span></h4>
-      <time datetime="2019-12-21">Released December 21<sup>st</sup>, 2019</time>
-      <p>Shut Up is now available on Microsoft Edge 76 and newer, and unofficially on Opera 65 and newer through the Chrome Web Store.</p>
-      <ul>
-        <li>Fixed comment blocking on Firefox 72 and newer.</li>
-        <li>Resolved various race conditions using improved initialization logic. This fixed an issue where the context menu item wouldn't install correctly.</li>
-        <li>Strengthened allowlist encryption using the Web Crypto API.</li>
-        <li>Improved stylesheet update logic to handle (some) Unicode characters.</li>
-        <li>Strengthened Content Security Policy to prepare for <a href="https://developer.chrome.com/extensions/migrating_to_manifest_v3">upcoming Manifest v3 changes</a>.</li>
-      </ul>
-      <p>An all-new version of Shut Up for Safari 12 and 13 on macOS is in the works. <a href="https://twitter.com/RickyRomero">Follow me for updates!</a></p>
-    </article>
+  <!-- 5.0.2 -->
+  <article class="chrome firefox edge opera">
+    <h4><span>Shut Up 5.0.2</span></h4>
+    <time datetime="2020-10-09">Released October 9<sup>th</sup>, 2020</time>
+    <p>Improved compatibility with apps.oregon.gov.</p>
+  </article>
 
-    <!-- 4.2.2 -->
-    <article class="chrome firefox">
-      <h4><span>Shut Up 4.2.2</span></h4>
-      <time datetime="2019-08-19">Released August 19<sup>th</sup>, 2019</time>
-      <p>Updated the included <a href="https://citizentwice.nl/_legacy_www/files/md5.js">MD5 library</a> to the current release version.</p>
-    </article>
+  <!-- 5.0.1 -->
+  <article class="chrome firefox edge opera">
+    <h4><span>Shut Up 5.0.1</span></h4>
+    <time datetime="2020-04-14">Released April 14<sup>th</sup>, 2020</time>
+    <ul>
+      <li>Returned to the use of a standalone options page.</li>
+      <li>Improved compatibility with <a href="https://www.icloud.com/">iCloud's web interface</a>.</li>
+    </ul>
+  </article>
 
-    <!-- 4.2.1 -->
-    <article class="chrome firefox">
-      <h4><span>Shut Up 4.2.1</span></h4>
-      <time datetime="2019-03-26">Released March 26<sup>th</sup>, 2019</time>
-      <p>Updated the included <a href="https://thlg.nl/p/FL/MD5.html">MD5 library</a> to the current release version.</p>
-    </article>
+  <!-- 5.0 -->
+  <article class="chrome firefox edge opera">
+    <h4><span>Shut Up 5.0</span></h4>
+    <time datetime="2019-12-21">Released December 21<sup>st</sup>, 2019</time>
+    <p>Shut Up is now available on Microsoft Edge 76 and newer, and unofficially on Opera 65 and newer through the
+      Chrome Web Store.</p>
+    <ul>
+      <li>Fixed comment blocking on Firefox 72 and newer.</li>
+      <li>Resolved various race conditions using improved initialization logic. This fixed an issue where the context
+        menu item wouldn't install correctly.</li>
+      <li>Strengthened allowlist encryption using the Web Crypto API.</li>
+      <li>Improved stylesheet update logic to handle (some) Unicode characters.</li>
+      <li>Strengthened Content Security Policy to prepare for <a
+          href="https://developer.chrome.com/extensions/migrating_to_manifest_v3">upcoming Manifest v3 changes</a>.</li>
+    </ul>
+    <p>An all-new version of Shut Up for Safari 12 and 13 on macOS is in the works. <a
+        href="https://twitter.com/RickyRomero">Follow me for updates!</a></p>
+  </article>
 
-    <!-- 4.2 -->
-    <article class="chrome firefox">
-      <h4><span>Shut Up 4.2</span></h4>
-      <time datetime="2019-03-17">Released March 17<sup>th</sup>, 2019</time>
-      <ul>
-        <li>Corrected the appearance of the options page on Firefox 64 and newer.</li>
-        <li>Improved compatibility with <a href="https://read.amazon.com/">Kindle Cloud Reader</a>.</li>
-      </ul>
-    </article>
+  <!-- 4.2.2 -->
+  <article class="chrome firefox">
+    <h4><span>Shut Up 4.2.2</span></h4>
+    <time datetime="2019-08-19">Released August 19<sup>th</sup>, 2019</time>
+    <p>Updated the included <a href="https://citizentwice.nl/_legacy_www/files/md5.js">MD5 library</a> to the current
+      release version.</p>
+  </article>
 
-    <!-- 4.1.1 -->
-    <article class="chrome firefox">
-      <h4><span>Shut Up 4.1.1</span></h4>
-      <time datetime="2019-01-01">Released January 1<sup>st</sup>, 2019</time>
-      <p>Improved comment blocking on <a href="https://timesofindia.indiatimes.com/">The Times of India</a>.</p>
-    </article>
+  <!-- 4.2.1 -->
+  <article class="chrome firefox">
+    <h4><span>Shut Up 4.2.1</span></h4>
+    <time datetime="2019-03-26">Released March 26<sup>th</sup>, 2019</time>
+    <p>Updated the included <a href="https://thlg.nl/p/FL/MD5.html">MD5 library</a> to the current release version.</p>
+  </article>
 
-    <!-- 4.1 -->
-    <article class="chrome firefox">
-      <h4><span>Shut Up 4.1</span></h4>
-      <time datetime="2018-09-06">Released September 6<sup>th</sup>, 2018</time>
-      <p>Adjusted the toolbar icon to better adapt to browser themes, as well as Dark Mode in macOS Mojave.</p>
-    </article>
+  <!-- 4.2 -->
+  <article class="chrome firefox">
+    <h4><span>Shut Up 4.2</span></h4>
+    <time datetime="2019-03-17">Released March 17<sup>th</sup>, 2019</time>
+    <ul>
+      <li>Corrected the appearance of the options page on Firefox 64 and newer.</li>
+      <li>Improved compatibility with <a href="https://read.amazon.com/">Kindle Cloud Reader</a>.</li>
+    </ul>
+  </article>
 
-    <!-- 4.0.1 -->
-    <article class="chrome firefox">
-      <h4><span>Shut Up 4.0.1</span></h4>
-      <time datetime="2018-08-23">Released August 23<sup>rd</sup>, 2018</time>
-      <p>Updated the copyright year. (Finally!)</p>
-    </article>
+  <!-- 4.1.1 -->
+  <article class="chrome firefox">
+    <h4><span>Shut Up 4.1.1</span></h4>
+    <time datetime="2019-01-01">Released January 1<sup>st</sup>, 2019</time>
+    <p>Improved comment blocking on <a href="https://timesofindia.indiatimes.com/">The Times of India</a>.</p>
+  </article>
 
-    <!-- 4.0 -->
-    <article class="chrome firefox">
-      <h4><span>Shut Up 4.0</span></h4>
-      <time datetime="2017-11-17">Released November 17<sup>th</sup>, 2017</time>
-      <p>Shut Up is now available on Firefox.*</p>
-      <ul>
-        <li>Changed the default keyboard shortcut to <span class="default-shortcut-40">Command+Shift+X</span> to prevent conflicting with the shortcut for Redo.</li>
-      </ul>
-      <aside>
-        <p>* I had to remove a couple of features in the Firefox version. It isn't possible to customize keyboard shortcuts in Firefox extensions. The stylesheet update feature is also disabled, <a href="https://developer.mozilla.org/en-US/Add-ons/AMO/Policy/Reviews#Policies">per <abbr title="addons.mozilla.org">AMO</abbr> policy</a>. Otherwise, it's identical to the Chrome version.</p>
-        <p>New versions which only update the internal stylesheet are denoted with a fourth version number (ex: x.x.x.1) and won't be listed here. Those changes are documented <a href="https://github.com/panicsteve/shutup-css/commits/master/shutup.css">on GitHub</a>.</p>
-      </aside>
-    </article>
+  <!-- 4.1 -->
+  <article class="chrome firefox">
+    <h4><span>Shut Up 4.1</span></h4>
+    <time datetime="2018-09-06">Released September 6<sup>th</sup>, 2018</time>
+    <p>Adjusted the toolbar icon to better adapt to browser themes, as well as Dark Mode in macOS Mojave.</p>
+  </article>
 
-    <!-- 3.0.3 -->
-    <article class="chrome">
-      <h4><span>Shut Up 3.0.3</span></h4>
-      <time datetime="2017-05-11">Released May 11<sup>th</sup>, 2017</time>
-      <p>Changed the stylesheet update server from <a href="https://stevenf.com/">stevenf.com</a> to <a href="https://rickyromero.com/">rickyromero.com</a>.</p>
-    </article>
+  <!-- 4.0.1 -->
+  <article class="chrome firefox">
+    <h4><span>Shut Up 4.0.1</span></h4>
+    <time datetime="2018-08-23">Released August 23<sup>rd</sup>, 2018</time>
+    <p>Updated the copyright year. (Finally!)</p>
+  </article>
 
-    <!-- 3.0.2 -->
-    <article class="chrome">
-      <h4><span>Shut Up 3.0.2</span></h4>
-      <time datetime="2017-04-26">Released April 26<sup>th</sup>, 2017</time>
-      <p>You can now mouse over the "Last Updated" text in the options panel to see the exact time when the last stylesheet update happened.</p>
-    </article>
+  <!-- 4.0 -->
+  <article class="chrome firefox">
+    <h4><span>Shut Up 4.0</span></h4>
+    <time datetime="2017-11-17">Released November 17<sup>th</sup>, 2017</time>
+    <p>Shut Up is now available on Firefox.*</p>
+    <ul>
+      <li>Changed the default keyboard shortcut to <span class="default-shortcut-40">Command+Shift+X</span> to prevent
+        conflicting with the shortcut for Redo.</li>
+    </ul>
+    <aside>
+      <p>* I had to remove a couple of features in the Firefox version. It isn't possible to customize keyboard
+        shortcuts in Firefox extensions. The stylesheet update feature is also disabled, <a
+          href="https://developer.mozilla.org/en-US/Add-ons/AMO/Policy/Reviews#Policies">per <abbr
+            title="addons.mozilla.org">AMO</abbr> policy</a>. Otherwise, it's identical to the Chrome version.</p>
+      <p>New versions which only update the internal stylesheet are denoted with a fourth version number (ex: x.x.x.1)
+        and won't be listed here. Those changes are documented <a
+          href="https://github.com/panicsteve/shutup-css/commits/master/shutup.css">on GitHub</a>.</p>
+    </aside>
+  </article>
 
-    <!-- 3.0.1 -->
-    <article class="chrome">
-      <h4><span>Shut Up 3.0.1</span></h4>
-      <time datetime="2017-04-19">Released April 19<sup>th</sup>, 2017</time>
-      <ul>
-        <li>Fixed allowlisting comments on <a href="https://derstandard.at/">Der Standard</a>.</li>
-        <li>
-          Added more translations. <a href="https://github.com/RickyRomero/shutup-extension-i18n">Contributions are welcome!</a>
-          <ul>
-            <li>Japanese</li>
-            <li>German</li>
-            <li>French</li>
-          </ul>
-        </li>
-      </ul>
-    </article>
+  <!-- 3.0.3 -->
+  <article class="chrome">
+    <h4><span>Shut Up 3.0.3</span></h4>
+    <time datetime="2017-05-11">Released May 11<sup>th</sup>, 2017</time>
+    <p>Changed the stylesheet update server from <a href="https://stevenf.com/">stevenf.com</a> to <a
+        href="https://rickyromero.com/">rickyromero.com</a>.</p>
+  </article>
 
-    <!-- 3.0 -->
-    <article class="chrome">
-      <h4><span>Shut Up 3.0</span></h4>
-      <time datetime="2017-04-17">Released April 17<sup>th</sup>, 2017</time>
-      <p>You can finally hide Shut Up's toolbar icon without giving up any control. This update also contains several important security fixes.</p>
-      <ul>
-        <li>Rewrote the extension from scratch.</li>
-        <li>Added a customizable keyboard shortcut.</li>
-        <li>Added a context menu.</li>
-        <li>Added a way to force an update for <a href="https://github.com/panicsteve/shutup-css/">shutup.css</a>.</li>
-        <li>
-          Translated the extension to several new languages. <a href="https://github.com/RickyRomero/shutup-extension-i18n">Contributions are welcome!</a>
-          <ul>
-            <li>Traditional and Simplified Chinese</li>
-            <li>Spanish</li>
-            <li>Arabic</li>
-          </ul>
-        </li>
-        <li>Dramatically improved reliability when hiding and showing comments.</li>
-        <li>Fixed an issue where the icon could incorrectly become disabled on Facebook, SoundCloud, and other sites which use the <code>history.pushState()</code> API.</li>
-        <li>Increased the security of the stylesheet updater and allowlist.</li>
-        <li>Fixed how the toolbar icon shows up in incognito tabs.</li>
-        <li>Refined the design of the Options screen.</li>
-        <li>Fixed typose in release notes.</li>
-      </ul>
-    </article>
+  <!-- 3.0.2 -->
+  <article class="chrome">
+    <h4><span>Shut Up 3.0.2</span></h4>
+    <time datetime="2017-04-26">Released April 26<sup>th</sup>, 2017</time>
+    <p>You can now mouse over the "Last Updated" text in the options panel to see the exact time when the last
+      stylesheet update happened.</p>
+  </article>
 
-    <!-- 2.7 -->
-    <article class="safari">
-      <h4><span>Shut Up 2.7</span></h4>
-      <time datetime="2017-05-11">Released May 11<sup>th</sup>, 2017</time>
-      <p>Changed the stylesheet update server from <a href="https://stevenf.com/">stevenf.com</a> to <a href="https://rickyromero.com/">rickyromero.com</a>.</p>
-    </article>
+  <!-- 3.0.1 -->
+  <article class="chrome">
+    <h4><span>Shut Up 3.0.1</span></h4>
+    <time datetime="2017-04-19">Released April 19<sup>th</sup>, 2017</time>
+    <ul>
+      <li>Fixed allowlisting comments on <a href="https://derstandard.at/">Der Standard</a>.</li>
+      <li>
+        Added more translations. <a href="https://github.com/RickyRomero/shutup-extension-i18n">Contributions are
+          welcome!</a>
+        <ul>
+          <li>Japanese</li>
+          <li>German</li>
+          <li>French</li>
+        </ul>
+      </li>
+    </ul>
+  </article>
 
-    <!-- 2.6 -->
-    <article class="safari">
-      <h4><span>Shut Up 2.6</span></h4>
-      <time datetime="2016-03-29">Released March 29<sup>th</sup>, 2016</time>
-      <ul>
-        <li>Migrated the stylesheet updater to HTTPS.</li>
-        <li>Updated the icon.</li>
-      </ul>
-    </article>
+  <!-- 3.0 -->
+  <article class="chrome">
+    <h4><span>Shut Up 3.0</span></h4>
+    <time datetime="2017-04-17">Released April 17<sup>th</sup>, 2017</time>
+    <p>You can finally hide Shut Up's toolbar icon without giving up any control. This update also contains several
+      important security fixes.</p>
+    <ul>
+      <li>Rewrote the extension from scratch.</li>
+      <li>Added a customizable keyboard shortcut.</li>
+      <li>Added a context menu.</li>
+      <li>Added a way to force an update for <a href="https://github.com/panicsteve/shutup-css/">shutup.css</a>.</li>
+      <li>
+        Translated the extension to several new languages. <a
+          href="https://github.com/RickyRomero/shutup-extension-i18n">Contributions are welcome!</a>
+        <ul>
+          <li>Traditional and Simplified Chinese</li>
+          <li>Spanish</li>
+          <li>Arabic</li>
+        </ul>
+      </li>
+      <li>Dramatically improved reliability when hiding and showing comments.</li>
+      <li>Fixed an issue where the icon could incorrectly become disabled on Facebook, SoundCloud, and other sites which
+        use the <code>history.pushState()</code> API.</li>
+      <li>Increased the security of the stylesheet updater and allowlist.</li>
+      <li>Fixed how the toolbar icon shows up in incognito tabs.</li>
+      <li>Refined the design of the Options screen.</li>
+      <li>Fixed typose in release notes.</li>
+    </ul>
+  </article>
 
-    <!-- 2.5 -->
-    <article class="chrome safari">
-      <h4><span>Shut Up 2.5</span></h4>
-      <time datetime="2013-05-28">Released May 28<sup>th</sup>, 2013</time>
-      <ul>
-        <li>New graphics for Retina displays.</li>
-        <li class="chrome">New options screen with release notes.</li>
-        <li>Changed behavior to hide comments on the page sooner.</li>
-        <li>Updated URL for <a href="https://github.com/panicsteve/shutup-css/">shutup.css</a>.</li>
-        <li class="chrome">Migrated to a version 2 manifest for Chrome.</li>
-        <li class="safari">Fixed a problem in older versions of Safari where the extension would stop working after resetting the browser.</li>
-      </ul>
-    </article>
+  <!-- 2.7 -->
+  <article class="safari">
+    <h4><span>Shut Up 2.7</span></h4>
+    <time datetime="2017-05-11">Released May 11<sup>th</sup>, 2017</time>
+    <p>Changed the stylesheet update server from <a href="https://stevenf.com/">stevenf.com</a> to <a
+        href="https://rickyromero.com/">rickyromero.com</a>.</p>
+  </article>
 
-    <!-- 2.1.1 -->
-    <article class="chrome">
-      <h4><span>Shut Up 2.1.1</span></h4>
-      <time datetime="2011-12-19">Released December 19<sup>th</sup>, 2011</time>
-      <p>Fixed a problem where the extension couldn't install on case-sensitive filesystems.</p>
-    </article>
+  <!-- 2.6 -->
+  <article class="safari">
+    <h4><span>Shut Up 2.6</span></h4>
+    <time datetime="2016-03-29">Released March 29<sup>th</sup>, 2016</time>
+    <ul>
+      <li>Migrated the stylesheet updater to HTTPS.</li>
+      <li>Updated the icon.</li>
+    </ul>
+  </article>
 
-    <!-- 2.1 -->
-    <article class="chrome">
-      <h4><span>Shut Up 2.1</span></h4>
-      <time datetime="2011-12-15">Released December 15<sup>th</sup>, 2011</time>
-      <p>Initial Release (for Chrome).</p>
-    </article>
+  <!-- 2.5 -->
+  <article class="chrome safari">
+    <h4><span>Shut Up 2.5</span></h4>
+    <time datetime="2013-05-28">Released May 28<sup>th</sup>, 2013</time>
+    <ul>
+      <li>New graphics for Retina displays.</li>
+      <li class="chrome">New options screen with release notes.</li>
+      <li>Changed behavior to hide comments on the page sooner.</li>
+      <li>Updated URL for <a href="https://github.com/panicsteve/shutup-css/">shutup.css</a>.</li>
+      <li class="chrome">Migrated to a version 2 manifest for Chrome.</li>
+      <li class="safari">Fixed a problem in older versions of Safari where the extension would stop working after
+        resetting the browser.</li>
+    </ul>
+  </article>
 
-    <!-- 2.0 -->
-    <article class="safari">
-      <h4><span>Shut Up 2.0</span></h4>
-      <time datetime="2010-10-01">Released October 1<sup>st</sup>, 2010</time>
-      <ul>
-        <li>Added auto-updating CSS.</li>
-        <li>Added automatic comment allowlisting.</li>
-      </ul>
-    </article>
+  <!-- 2.1.1 -->
+  <article class="chrome">
+    <h4><span>Shut Up 2.1.1</span></h4>
+    <time datetime="2011-12-19">Released December 19<sup>th</sup>, 2011</time>
+    <p>Fixed a problem where the extension couldn't install on case-sensitive filesystems.</p>
+  </article>
 
-    <!-- 1.1 -->
-    <article class="safari">
-      <h4><span>Shut Up 1.1</span></h4>
-      <time datetime="2010-06-18">Released June 18<sup>th</sup>, 2010</time>
-      <p>Updated <a href="https://github.com/panicsteve/shutup-css/">shutup.css</a> to version 1.5.</p>
-    </article>
+  <!-- 2.1 -->
+  <article class="chrome">
+    <h4><span>Shut Up 2.1</span></h4>
+    <time datetime="2011-12-15">Released December 15<sup>th</sup>, 2011</time>
+    <p>Initial Release (for Chrome).</p>
+  </article>
 
-    <!-- 1.0 -->
-    <article class="safari">
-      <h4><span>Shut Up 1.0</span></h4>
-      <time datetime="2010-06-09">Released June 9<sup>th</sup>, 2010</time>
-      <p>Initial Release.</p>
-    </article>
+  <!-- 2.0 -->
+  <article class="safari">
+    <h4><span>Shut Up 2.0</span></h4>
+    <time datetime="2010-10-01">Released October 1<sup>st</sup>, 2010</time>
+    <ul>
+      <li>Added auto-updating CSS.</li>
+      <li>Added automatic comment allowlisting.</li>
+    </ul>
+  </article>
 
-    <svg class="insignia" viewBox="0 0 66.0813904 100">
-      <path d="M29.8 10.215c17.31 0 23.593 13.795 23.593 23.068 0 11.65-5.996 19.758-16.957 23.065L52.718 100H66.08L50.64 62.37c6.596-3.75 14.99-12.295 14.99-29.087C65.63 14.843 52.738 0 32.05 0H0l3.55 10.215H29.8z"></path>
-      <path fill="currentColor" d="M30.706 53.312l2.406-.543c10.45-2.357 15.973-9.095 15.973-19.487 0-6.488-4.03-18.76-19.286-18.76H5.047l3.55 10.214H27.55c5.097 0 9.295 3 9.295 8.996s-4.198 9.145-9.295 9.145H14.903L34.758 100H48.12L30.706 53.312z"></path>
-    </svg>
+  <!-- 1.1 -->
+  <article class="safari">
+    <h4><span>Shut Up 1.1</span></h4>
+    <time datetime="2010-06-18">Released June 18<sup>th</sup>, 2010</time>
+    <p>Updated <a href="https://github.com/panicsteve/shutup-css/">shutup.css</a> to version 1.5.</p>
+  </article>
 
-    <script type="text/javascript" charset="utf-8" src="../scripts/utils.js"></script>
-    <script type="text/javascript" charset="utf-8" src="scripts/release-notes.js"></script>
-  </body>
+  <!-- 1.0 -->
+  <article class="safari">
+    <h4><span>Shut Up 1.0</span></h4>
+    <time datetime="2010-06-09">Released June 9<sup>th</sup>, 2010</time>
+    <p>Initial Release.</p>
+  </article>
+
+  <svg class="insignia" viewBox="0 0 66.0813904 100">
+    <path
+      d="M29.8 10.215c17.31 0 23.593 13.795 23.593 23.068 0 11.65-5.996 19.758-16.957 23.065L52.718 100H66.08L50.64 62.37c6.596-3.75 14.99-12.295 14.99-29.087C65.63 14.843 52.738 0 32.05 0H0l3.55 10.215H29.8z">
+    </path>
+    <path fill="currentColor"
+      d="M30.706 53.312l2.406-.543c10.45-2.357 15.973-9.095 15.973-19.487 0-6.488-4.03-18.76-19.286-18.76H5.047l3.55 10.214H27.55c5.097 0 9.295 3 9.295 8.996s-4.198 9.145-9.295 9.145H14.903L34.758 100H48.12L30.706 53.312z">
+    </path>
+  </svg>
+
+  <script src="scripts/release-notes.js" type="module"></script>
+</body>
+
 </html>

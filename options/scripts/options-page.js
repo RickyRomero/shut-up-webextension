@@ -1,6 +1,6 @@
-import { options } from '../../scripts/options.js'
-import { uiBridge } from '../../scripts/ui-bridge.js'
-import { Keyboard, PlatformInfo, browser, platform } from '../../scripts/utils.js'
+import { options } from '../../core/options.js'
+import { uiBridge } from '../../core/ui-bridge.js'
+import { Keyboard, PlatformInfo, browser, platform } from '../../core/utils.js'
 
 const $ = document.querySelector.bind(document)
 
@@ -34,7 +34,7 @@ class OptionsPage {
       })
     }
 
-    Egg()
+    return new Egg()
   }
 
   async updatePage () {
@@ -220,4 +220,4 @@ class Egg {
   }
 }
 
-OptionsPage()
+export const optionsPage = new OptionsPage()
