@@ -14,6 +14,7 @@ browser.runtime.onInstalled.addListener(() => {
 uiBridge.addListeners()
 
 const type = 'init'
+taskQueue.add({ type, task: uiBridge.verifyPermissions })
 taskQueue.add({ type, task: blocker.defrostStates })
 taskQueue.add({ type, task: allowlist.init })
 taskQueue.add({ type, task: options.init })

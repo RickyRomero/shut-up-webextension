@@ -1,6 +1,15 @@
 import { Keyboard, PlatformInfo, platform } from '../../core/utils.js'
 
-(async function () {
+const setKeyboardShortcutStr = async (shortcut) => {
+  let platform = (await PlatformInfo.get()).os
+  if (!shortcut[platform]) {
+    platform = 'default'
+  }
+
+  return Keyboard.conformToPlatform(shortcut[platform])
+}
+
+(async () => {
   document.querySelector('html').classList.add(platform.name.toLowerCase())
   document.querySelector('.insignia').addEventListener('click', (ev) => {
     ev.preventDefault()
@@ -27,12 +36,3 @@ import { Keyboard, PlatformInfo, platform } from '../../core/utils.js'
     el.querySelector('h4').appendChild(releases)
   })
 })()
-
-async function setKeyboardShortcutStr (shortcut) {
-  let platform = (await PlatformInfo.get()).os
-  if (!shortcut[platform]) {
-    platform = 'default'
-  }
-
-  return Keyboard.conformToPlatform(shortcut[platform])
-}

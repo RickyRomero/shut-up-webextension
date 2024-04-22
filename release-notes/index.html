@@ -13,11 +13,15 @@
 
 <body>
   <!-- 8.1 -->
-  <article class="chrome firefox edge opera">
+  <article id="version-8-1" class="chrome firefox edge opera">
     <h4><span>Shut Up 8.1</span></h4>
-    <time datetime="xxxx-xx-xx">Released xx xx<sup>xx</sup>, xxxx</time>
+    <time datetime="2024-xx-xx">Released xx xx<sup>xx</sup>, 2024</time>
+    <p>This release ensures compatibility with future browser releases and further strengthens security.</p>
+    <p>Due to new browser requirements, Shut Up no longer includes a stylesheet update component. Your browser is now
+      responsible for these updates, automatically installing them when updating the extension.</p>
     <ul>
-      <li>Restored the changes from the 8.0 update, following closer scrutiny and validation.</li>
+      <li>Restored the changes from <a href="#version-8-0">the 8.0 update</a>, following closer scrutiny and validation.
+      </li>
       <li>Added an operation queue to address bugs caused by race conditions.</li>
       <li>Optimized various image files. Thanks to Frazer Smith for the contribution.</li>
     </ul>
@@ -26,7 +30,7 @@
   </article>
 
   <!-- 8.0.2 -->
-  <article class="firefox">
+  <article id="version-8-0-2" class="firefox">
     <h4><span>Shut Up 8.0.2</span></h4>
     <time datetime="2022-10-31">Released October 31<sup>st</sup>, 2022</time>
     <p>This update, still based on version 7.1.2, works around a recently-introduced incompatibility with Firefox 106.
@@ -34,7 +38,7 @@
   </article>
 
   <!-- 8.0.1 -->
-  <article class="chrome firefox edge opera">
+  <article id="version-8-0-1" class="chrome firefox edge opera">
     <h4><span>Shut Up 8.0.1</span></h4>
     <time datetime="2022-09-21">Released September 21<sup>st</sup>, 2022</time>
     <p>This release temporarily rolls back the changes from the 8.0 update while I investigate the cause of some
@@ -42,12 +46,12 @@
   </article>
 
   <!-- 8.0 -->
-  <article class="chrome firefox edge opera">
+  <article id="version-8-0" class="chrome firefox edge opera">
     <h4><span>Shut Up 8.0</span></h4>
     <time datetime="2022-09-21">Released September 21<sup>st</sup>, 2022</time>
     <p>This release ensures compatibility with future browser releases and further strengthens security.</p>
     <p>Due to new browser requirements, Shut Up no longer includes a stylesheet update component. Your browser is now
-      responsible for these updates, and will automatically install them through extension updates.</p>
+      responsible for these updates, automatically installing them when updating the extension.</p>
     <ul>
       <li>Upgraded to Manifest v3 for future browser compatibility. (Firefox support TBD)</li>
       <li>Switched to new native WebExtensions APIs for adding blocking rules to pages.</li>
@@ -60,28 +64,28 @@
   </article>
 
   <!-- 7.1.2 -->
-  <article class="chrome firefox edge opera">
+  <article id="version-7-1-2" class="chrome firefox edge opera">
     <h4><span>Shut Up 7.1.2</span></h4>
     <time datetime="2022-07-06">Released July 6<sup>th</sup>, 2022</time>
     <p>Prevented Shut Up from accidentally hiding important controls on California's EDD website.</p>
   </article>
 
   <!-- 7.1.1 -->
-  <article class="chrome firefox edge opera">
+  <article id="version-7-1-1" class="chrome firefox edge opera">
     <h4><span>Shut Up 7.1.1</span></h4>
     <time datetime="2022-01-02">Released January 2<sup>nd</sup>, 2022</time>
     <p>Small fix to make the copyright year easier to update.</p>
   </article>
 
   <!-- 7.1 -->
-  <article class="chrome firefox edge opera">
+  <article id="version-7-1" class="chrome firefox edge opera">
     <h4><span>Shut Up 7.1</span></h4>
     <time datetime="2021-11-15">Released November 15<sup>th</sup>, 2021</time>
     <p>Improved injection logic to better cooperate with other extensions and websites.</p>
   </article>
 
   <!-- 7.0.2 -->
-  <article class="chrome firefox edge opera">
+  <article id="version-7-0-2" class="chrome firefox edge opera">
     <h4><span>Shut Up 7.0.2</span></h4>
     <time datetime="2021-02-23">Released February 23<sup>rd</sup>, 2021</time>
     <ul>
@@ -92,7 +96,7 @@
   </article>
 
   <!-- 7.0.1 -->
-  <article class="chrome firefox edge opera">
+  <article id="version-7-0-1" class="chrome firefox edge opera">
     <h4><span>Shut Up 7.0.1</span></h4>
     <time datetime="2021-01-14">Released January 14<sup>th</sup>, 2021</time>
     <ul>
@@ -103,7 +107,7 @@
   </article>
 
   <!-- 7.0 -->
-  <article class="chrome firefox edge opera">
+  <article id="version-7-0" class="chrome firefox edge opera">
     <h4><span>Shut Up 7.0</span></h4>
     <time datetime="2020-10-12">Released October 12<sup>th</sup>, 2020</time>
     <p>Thank you for all of your feedback on the previous release.</p>
@@ -116,7 +120,7 @@
   </article>
 
   <!-- 6.0 -->
-  <article class="chrome firefox edge opera" style="text-decoration: line-through">
+  <article id="version-6-0" class="chrome firefox edge opera">
     <h4><span>Shut Up 6.0</span></h4>
     <time datetime="2020-10-10">Released October 10<sup>th</sup>, 2020</time>
     <p>Substantially improved comment blocking, with simpler code to boot. This release also fixes comment blocking on
@@ -137,14 +141,14 @@
   </article>
 
   <!-- 5.0.2 -->
-  <article class="chrome firefox edge opera">
+  <article id="version-5-0-2" class="chrome firefox edge opera">
     <h4><span>Shut Up 5.0.2</span></h4>
     <time datetime="2020-10-09">Released October 9<sup>th</sup>, 2020</time>
     <p>Improved compatibility with apps.oregon.gov.</p>
   </article>
 
   <!-- 5.0.1 -->
-  <article class="chrome firefox edge opera">
+  <article id="version-5-0-1" class="chrome firefox edge opera">
     <h4><span>Shut Up 5.0.1</span></h4>
     <time datetime="2020-04-14">Released April 14<sup>th</sup>, 2020</time>
     <ul>
@@ -154,7 +158,7 @@
   </article>
 
   <!-- 5.0 -->
-  <article class="chrome firefox edge opera">
+  <article id="version-5-0" class="chrome firefox edge opera">
     <h4><span>Shut Up 5.0</span></h4>
     <time datetime="2019-12-21">Released December 21<sup>st</sup>, 2019</time>
     <p>Shut Up is now available on Microsoft Edge 76 and newer, and unofficially on Opera 65 and newer through the
@@ -173,7 +177,7 @@
   </article>
 
   <!-- 4.2.2 -->
-  <article class="chrome firefox">
+  <article id="version-4-2-2" class="chrome firefox">
     <h4><span>Shut Up 4.2.2</span></h4>
     <time datetime="2019-08-19">Released August 19<sup>th</sup>, 2019</time>
     <p>Updated the included <a href="https://citizentwice.nl/_legacy_www/files/md5.js">MD5 library</a> to the current
@@ -181,14 +185,14 @@
   </article>
 
   <!-- 4.2.1 -->
-  <article class="chrome firefox">
+  <article id="version-4-2-1" class="chrome firefox">
     <h4><span>Shut Up 4.2.1</span></h4>
     <time datetime="2019-03-26">Released March 26<sup>th</sup>, 2019</time>
     <p>Updated the included <a href="https://thlg.nl/p/FL/MD5.html">MD5 library</a> to the current release version.</p>
   </article>
 
   <!-- 4.2 -->
-  <article class="chrome firefox">
+  <article id="version-4-2" class="chrome firefox">
     <h4><span>Shut Up 4.2</span></h4>
     <time datetime="2019-03-17">Released March 17<sup>th</sup>, 2019</time>
     <ul>
@@ -198,28 +202,28 @@
   </article>
 
   <!-- 4.1.1 -->
-  <article class="chrome firefox">
+  <article id="version-4-1-1" class="chrome firefox">
     <h4><span>Shut Up 4.1.1</span></h4>
     <time datetime="2019-01-01">Released January 1<sup>st</sup>, 2019</time>
     <p>Improved comment blocking on <a href="https://timesofindia.indiatimes.com/">The Times of India</a>.</p>
   </article>
 
   <!-- 4.1 -->
-  <article class="chrome firefox">
+  <article id="version-4-1" class="chrome firefox">
     <h4><span>Shut Up 4.1</span></h4>
     <time datetime="2018-09-06">Released September 6<sup>th</sup>, 2018</time>
     <p>Adjusted the toolbar icon to better adapt to browser themes, as well as Dark Mode in macOS Mojave.</p>
   </article>
 
   <!-- 4.0.1 -->
-  <article class="chrome firefox">
+  <article id="version-4-0-1" class="chrome firefox">
     <h4><span>Shut Up 4.0.1</span></h4>
     <time datetime="2018-08-23">Released August 23<sup>rd</sup>, 2018</time>
     <p>Updated the copyright year. (Finally!)</p>
   </article>
 
   <!-- 4.0 -->
-  <article class="chrome firefox">
+  <article id="version-4-0" class="chrome firefox">
     <h4><span>Shut Up 4.0</span></h4>
     <time datetime="2017-11-17">Released November 17<sup>th</sup>, 2017</time>
     <p>Shut Up is now available on Firefox.*</p>
@@ -239,7 +243,7 @@
   </article>
 
   <!-- 3.0.3 -->
-  <article class="chrome">
+  <article id="version-3-0-3" class="chrome">
     <h4><span>Shut Up 3.0.3</span></h4>
     <time datetime="2017-05-11">Released May 11<sup>th</sup>, 2017</time>
     <p>Changed the stylesheet update server from <a href="https://stevenf.com/">stevenf.com</a> to <a
@@ -247,7 +251,7 @@
   </article>
 
   <!-- 3.0.2 -->
-  <article class="chrome">
+  <article id="version-3-0-2" class="chrome">
     <h4><span>Shut Up 3.0.2</span></h4>
     <time datetime="2017-04-26">Released April 26<sup>th</sup>, 2017</time>
     <p>You can now mouse over the "Last Updated" text in the options panel to see the exact time when the last
@@ -255,7 +259,7 @@
   </article>
 
   <!-- 3.0.1 -->
-  <article class="chrome">
+  <article id="version-3-0-1" class="chrome">
     <h4><span>Shut Up 3.0.1</span></h4>
     <time datetime="2017-04-19">Released April 19<sup>th</sup>, 2017</time>
     <ul>
@@ -273,7 +277,7 @@
   </article>
 
   <!-- 3.0 -->
-  <article class="chrome">
+  <article id="version-3-0" class="chrome">
     <h4><span>Shut Up 3.0</span></h4>
     <time datetime="2017-04-17">Released April 17<sup>th</sup>, 2017</time>
     <p>You can finally hide Shut Up's toolbar icon without giving up any control. This update also contains several
@@ -303,7 +307,7 @@
   </article>
 
   <!-- 2.7 -->
-  <article class="safari">
+  <article id="version-2-7" class="safari">
     <h4><span>Shut Up 2.7</span></h4>
     <time datetime="2017-05-11">Released May 11<sup>th</sup>, 2017</time>
     <p>Changed the stylesheet update server from <a href="https://stevenf.com/">stevenf.com</a> to <a
@@ -311,7 +315,7 @@
   </article>
 
   <!-- 2.6 -->
-  <article class="safari">
+  <article id="version-2-6" class="safari">
     <h4><span>Shut Up 2.6</span></h4>
     <time datetime="2016-03-29">Released March 29<sup>th</sup>, 2016</time>
     <ul>
@@ -321,7 +325,7 @@
   </article>
 
   <!-- 2.5 -->
-  <article class="chrome safari">
+  <article id="version-2-5" class="chrome safari">
     <h4><span>Shut Up 2.5</span></h4>
     <time datetime="2013-05-28">Released May 28<sup>th</sup>, 2013</time>
     <ul>
@@ -336,21 +340,21 @@
   </article>
 
   <!-- 2.1.1 -->
-  <article class="chrome">
+  <article id="version-2-1-1" class="chrome">
     <h4><span>Shut Up 2.1.1</span></h4>
     <time datetime="2011-12-19">Released December 19<sup>th</sup>, 2011</time>
     <p>Fixed a problem where the extension couldn't install on case-sensitive filesystems.</p>
   </article>
 
   <!-- 2.1 -->
-  <article class="chrome">
+  <article id="version-2-1" class="chrome">
     <h4><span>Shut Up 2.1</span></h4>
     <time datetime="2011-12-15">Released December 15<sup>th</sup>, 2011</time>
     <p>Initial Release (for Chrome).</p>
   </article>
 
   <!-- 2.0 -->
-  <article class="safari">
+  <article id="version-2-0" class="safari">
     <h4><span>Shut Up 2.0</span></h4>
     <time datetime="2010-10-01">Released October 1<sup>st</sup>, 2010</time>
     <ul>
@@ -360,14 +364,14 @@
   </article>
 
   <!-- 1.1 -->
-  <article class="safari">
+  <article id="version-1-1" class="safari">
     <h4><span>Shut Up 1.1</span></h4>
     <time datetime="2010-06-18">Released June 18<sup>th</sup>, 2010</time>
     <p>Updated <a href="https://github.com/panicsteve/shutup-css/">shutup.css</a> to version 1.5.</p>
   </article>
 
   <!-- 1.0 -->
-  <article class="safari">
+  <article id="version-1-0" class="safari">
     <h4><span>Shut Up 1.0</span></h4>
     <time datetime="2010-06-09">Released June 9<sup>th</sup>, 2010</time>
     <p>Initial Release.</p>

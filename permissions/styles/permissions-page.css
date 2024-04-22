@@ -1,0 +1,12 @@
+.page-1,
+.page-2 {
+  display: none;
+}
+
+.page-1-active .page-1 {
+  display: block;
+}
+
+.page-2-active .page-2 {
+  display: block;
+}

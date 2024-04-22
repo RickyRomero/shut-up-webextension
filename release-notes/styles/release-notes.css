@@ -96,3 +96,8 @@ svg:hover {
 .release-tag:last-child {
   margin-right: 0;
 }
+
+#version-6-0 {
+  text-decoration: line-through;
+  opacity: 0.4;
+}

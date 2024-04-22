@@ -36,6 +36,16 @@ class UIBridge {
     }))
   }
 
+  async verifyPermissions () {
+    const { origins } = await browser.permissions.getAll()
+
+    if (!origins.includes('http://*/*') || !origins.includes('https://*/*')) {
+      await browser.action.setBadgeBackgroundColor({ color: '#ffcc00' })
+      await browser.action.setBadgeTextColor({ color: '#000000' })
+      await browser.action.setBadgeText({ text: '!' })
+    }
+  }
+
   async tabUpdated (_, changeInfo, tab) {
     await blocker.sync(tab, changeInfo)
     const isEligible = Utils.urlEligible(tab.url)

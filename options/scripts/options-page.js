@@ -32,6 +32,8 @@ class OptionsPage {
         const span = document.createElement('span')
         el.parentNode.insertBefore(span, el.nextSibling)
       })
+
+      browser.commands.onChanged.addListener(options.onUpdate)
     }
 
     return new Egg()
