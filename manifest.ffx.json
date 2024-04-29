@@ -19,7 +19,6 @@
     "http://*/*",
     "https://*/*"
   ],
-  "incognito": "split",
   "icons": {
     "16": "images/main-icon/16.png",
     "32": "images/main-icon/32.png",
@@ -37,7 +36,6 @@
   },
   "background": {
     "type": "module",
-    "service_worker": "init.js",
     "scripts": [
       "init.js"
     ]
