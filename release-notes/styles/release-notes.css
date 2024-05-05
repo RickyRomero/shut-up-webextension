@@ -14,19 +14,19 @@ h4 {
   flex-direction: row;
   align-items: baseline;
 
-  font-size: 3.2rem;
+  font-size: 2.0rem;
   font-weight: 300;
 
   border-bottom: 1px solid var(--c-accent);
 
-  padding-bottom: 0.5rem;
-  margin-top: 6.0rem;
+  padding-bottom: 0.3125rem;
+  margin-top: 3.75rem;
   margin-bottom: 0;
 }
 
 time {
   color: var(--c-text-secondary);
-  margin-bottom: 1.0rem;
+  margin-bottom: 0.625rem;
 }
 
 code {
@@ -60,9 +60,9 @@ aside a {
 svg {
   cursor: pointer;
   display: block;
-  margin: 10.0rem auto;
-  width: 39.64883424px;
-  height: 60px;
+  margin: 6.25rem auto;
+  height: 3.75rem;
+  aspect-ratio: 1/1.51329;
   color: var(--c-bg-light);
   fill: var(--c-bg-light);
 
@@ -80,7 +80,7 @@ svg:hover {
   display: flex;
   flex-direction: row;
 
-  margin-left: 1.5rem;
+  margin-left: 0.9375rem;
 
   text-transform: uppercase;
   font-size: var(--fs-small);
@@ -90,7 +90,7 @@ svg:hover {
 
 .release-tag {
   display: block;
-  margin-right: 1.0rem;
+  margin-right: 0.625rem;
 }
 
 .release-tag:last-child {

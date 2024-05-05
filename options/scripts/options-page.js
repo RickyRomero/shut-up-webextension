@@ -7,6 +7,7 @@ const $ = document.querySelector.bind(document)
 class OptionsPage {
   constructor () {
     this.latestCopyrightYear = 2024
+    this.permissionsModal = null
 
     this.init()
   }
@@ -23,9 +24,20 @@ class OptionsPage {
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
     $('.change-shortcut').addEventListener('click', this.openLinkInFullTab.bind(this), false)
 
+    $('.open-review-modal').addEventListener('click', this.presentModal.bind(this, 'review'), false)
+    $('.open-fix-modal').addEventListener('click', this.presentModal.bind(this, 'fix'), false)
+
+    $('.review-modal-request-permission').addEventListener('click', this.requestPermission.bind(this, 'review'), false)
+    $('.review-modal-dismiss').addEventListener('click', this.presentModal.bind(this, null), false)
+    $('.fix-modal-request-permission').addEventListener('click', this.requestPermission.bind(this, 'fix'), false)
+    $('.fix-modal-manage').addEventListener('click', this.openExtensionSettings.bind(this), false)
+
+    $('.review-modal').addEventListener('cancel', this.presentModal.bind(this, null), false)
+    $('.fix-modal').addEventListener('cancel', this.presentModal.bind(this, null), false)
+
     options.onUpdate = this.updatePage.bind(this)
 
-    this.updatePage()
+    this.permittedOrigins = await uiBridge.verifyPermissions()
 
     if (platform.name === 'Firefox') {
       document.querySelectorAll('input[type=checkbox]').forEach((el) => {
@@ -36,6 +48,8 @@ class OptionsPage {
       browser.commands.onChanged.addListener(options.onUpdate)
     }
 
+    this.updatePage()
+
     return new Egg()
   }
 
@@ -45,8 +59,44 @@ class OptionsPage {
     $('.allowlist').checked = (await options.automaticAllowlist())
     $('.context-menu').checked = (await options.contextMenu())
 
+    // Update permissions banners
+    if (this.permittedOrigins.length === 0) {
+      $('.limited-access').classList.remove('banner')
+      $('.no-access').classList.add('banner')
+    } else if (
+      !this.permittedOrigins.includes('http://*/*') ||
+      !this.permittedOrigins.includes('https://*/*')
+    ) {
+      $('.limited-access').classList.add('banner')
+      $('.no-access').classList.remove('banner')
+    } else {
+      $('.limited-access').classList.remove('banner')
+      $('.no-access').classList.remove('banner')
+    }
+
+    // Set modal visibility
+    switch (this.permissionsModal) {
+      case 'review':
+        $('.review-modal').showModal()
+        $('.fix-modal').close()
+        break
+      case 'fix':
+        $('.review-modal').close()
+        $('.fix-modal').showModal()
+        break
+      default:
+        $('.review-modal').close()
+        $('.fix-modal').close()
+        break
+    }
+
     window.clearTimeout(this.updateTimer)
     this.updateTimer = window.setTimeout(this.updatePage.bind(this), 1000 * 5)
+  }
+
+  presentModal (modal) {
+    this.permissionsModal = modal
+    this.updatePage()
   }
 
   internationalize (el) {
@@ -168,6 +218,39 @@ class OptionsPage {
       browser.i18n.getMessage('copyright_steven', [this.latestCopyrightYear])
     ).forEach((child) => el.appendChild(child))
     el.dataset.i18nLocked = '\ud83d\udd12'
+  }
+
+  async requestPermission (from) {
+    const granted = await browser.permissions.request({
+      origins: ['http://*/*', 'https://*/*']
+    })
+
+    if (!granted && from === 'fix') {
+      $('.fix-modal-details').open = true
+    } else if (granted) {
+      this.permissionsModal = null
+      this.permittedOrigins = await uiBridge.verifyPermissions()
+      this.updatePage()
+    }
+  }
+
+  openExtensionSettings () {
+    let destination
+    switch (platform.name) {
+      case 'Chrome':
+      case 'Edge':
+      case 'Opera':
+        destination = `${platform.name.toLowerCase()}://extensions`
+        break
+      case 'Firefox':
+        destination = 'about:addons'
+        break
+      default:
+        destination = 'chrome://extensions'
+        break
+    }
+
+    browser.tabs.update({ url: destination })
   }
 }
 

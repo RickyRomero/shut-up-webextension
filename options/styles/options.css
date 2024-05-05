@@ -38,6 +38,21 @@ body {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
+header .no-access,
+header .limited-access {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--c-error);
+  block-size: 2.5rem;
+}
+
+header .banner {
+  display: flex;
+}
+
+
 footer,
 aside {
   font-size: var(--fs-small);
@@ -73,7 +88,7 @@ figure {
   position: relative;
 }
 
-img {
+.bubble {
   position: absolute;
   block-size: auto;
   inline-size: 100%;
@@ -119,11 +134,11 @@ label span {
 .quantum input[type=checkbox]+span {
   position: relative;
   background: var(--c-text-secondary);
-  inline-size: 3.0rem;
-  block-size: 1.3rem;
+  inline-size: 1.875rem;
+  block-size: 0.8125rem;
   margin: 0;
-  margin-inline-end: 1.0rem;
-  border-radius: 0.65rem;
+  margin-inline-end: 0.625rem;
+  border-radius: 0.40625rem;
   -webkit-appearance: none;
 }
 
@@ -139,9 +154,9 @@ label span {
   background: var(--c-switch);
   content: ' ';
   inset-block-start: 0;
-  inline-size: 1.3rem;
+  inline-size: 0.8125rem;
   aspect-ratio: 1/1;
-  border-radius: 0.65rem;
+  border-radius: 0.40625rem;
 }
 
 .blink input[type=checkbox]:not(:checked):active:after,
@@ -149,7 +164,7 @@ label span {
 .quantum input[type=checkbox]:not(:checked):active+span:after,
 .quantum input[type=checkbox]:checked:active+span:after {
   transition-duration: 0.2s;
-  inline-size: 1.7rem;
+  inline-size: 1.0625rem;
 }
 
 
@@ -160,12 +175,12 @@ label span {
 
 .blink input[type=checkbox]:checked:after,
 .quantum input[type=checkbox]:checked+span:after {
-  inset-inline-start: 1.7rem;
+  inset-inline-start: 1.0625rem;
 }
 
 .blink input[type=checkbox]:checked:active:after,
 .quantum input[type=checkbox]:checked:active+span:after {
-  inset-inline-start: 1.4rem;
+  inset-inline-start: 0.875rem;
 }
 
 ul {
@@ -184,7 +199,7 @@ li:not(:first-child):before {
   display: inline-block;
   content: ' ';
   margin-block: 0;
-  margin-inline: 1.2rem;
+  margin-inline: 0.75rem;
 }
 
 
@@ -201,20 +216,20 @@ form>div.stack {
 }
 
 form>div:not(:last-child) {
-  margin-block-end: 1.2rem;
+  margin-block-end: 0.75rem;
 }
 
 form>div aside.note {
-  margin-block-start: 0.2rem;
-  padding-inline-start: 4.0rem;
+  margin-block-start: 0.125rem;
+  padding-inline-start: 0.25rem;
 }
 
 form>div.trailing-gap {
-  margin-block-end: 3.0rem;
+  margin-block-end: 1.875rem;
 }
 
 form a {
-  margin-inline-end: 2.0rem;
+  margin-inline-end: 1.25rem;
 }
 
 /* px used deliberately here, since icon size doesn't change */
@@ -224,7 +239,7 @@ form a {
   text-align: center;
   font-family: "First Font", cursive;
   font-size: 16px;
-  letter-spacing: 0.08rem;
+  letter-spacing: 0.05rem;
   color: var(--c-text);
   inset-inline: 0;
   inset-block-start: 47.5%;
@@ -274,11 +289,11 @@ form a {
 
   form {
     inline-size: 360px;
-    margin-block-end: 2.4rem;
+    margin-block-end: 1.5rem;
   }
 
   footer {
-    padding-block-end: 2.0rem;
+    padding-block-end: 1.25rem;
   }
 
   footer ul {
@@ -294,7 +309,7 @@ form a {
   li:not(:first-child):before {
     display: block;
     margin-block-start: 0;
-    margin-block-end: 0.8rem;
+    margin-block-end: 0.5rem;
     margin-inline: 0;
   }
 }
