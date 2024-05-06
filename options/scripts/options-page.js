@@ -117,7 +117,8 @@ class OptionsPage {
       keyboard_shortcut_not_configurable: this.setKeyboardShortcutStr,
       name_version_copyright_ricky: this.setMainCopyrightStr,
       copyright_steven: this.setCSSCopyrightStr,
-      fix_permissions_header: this.setPermissionsHeader
+      fix_header: this.setFixHeader,
+      fix_lm3: this.setLearnMorePara
     }
 
     if (el.dataset.i18nLocked !== '\ud83d\udd12') {
@@ -233,12 +234,17 @@ class OptionsPage {
     el.dataset.i18nLocked = '\ud83d\udd12'
   }
 
-  setPermissionsHeader (el) {
+  setFixHeader (el) {
     el.innerText = browser.i18n.getMessage(
       window.location.hash.endsWith('welcome')
-        ? 'fix_permissions_header_welcome'
-        : 'fix_permissions_header'
+        ? 'fix_header_welcome'
+        : 'fix_header'
     )
+  }
+
+  setLearnMorePara (el) {
+    this.sanitizeHTML(browser.i18n.getMessage('fix_lm3')).forEach((child) => el.appendChild(child))
+    el.dataset.i18nLocked = '\ud83d\udd12'
   }
 
   async requestPermission (from) {
@@ -258,7 +264,7 @@ class Egg {
   constructor () {
     this.eggText = document.createElement('div')
     this.eggText.classList.add('egg')
-    $('figure').insertBefore(this.eggText, $('img'))
+    $('figure').insertBefore(this.eggText, $('.options__bubble'))
 
     this.counter = 0
 
@@ -278,7 +284,7 @@ class Egg {
     ]
 
     window.removeEventListener('mousemove', this.restlessEgg, false)
-    $('img').addEventListener('mouseenter', this.dismissEgg.bind(this), { once: true })
+    $('.options__bubble').addEventListener('mouseenter', this.dismissEgg.bind(this), { once: true })
 
     this.eggText.classList.remove(`step-${this.counter}`)
     this.eggText.innerText = messages[this.counter]

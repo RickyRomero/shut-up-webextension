@@ -1,8 +1,9 @@
 @font-face {
+  src: url('../fonts/first-font.woff2') format('woff2');
+  font-family: 'First Font';
   font-weight: normal;
   font-style: normal;
-  font-family: 'First Font';
-  src: url('../fonts/first-font.woff2') format('woff2');
+  font-synthesis: none;
 }
 
 html {
@@ -109,7 +110,7 @@ figure {
   position: relative;
 }
 
-.bubble {
+.options__bubble {
   position: absolute;
   block-size: auto;
   inline-size: 100%;
@@ -256,7 +257,6 @@ form a {
 /* px used deliberately here, since icon size doesn't change */
 .egg {
   position: absolute;
-  font-weight: bold;
   text-align: center;
   font-family: "First Font", cursive;
   font-size: 16px;

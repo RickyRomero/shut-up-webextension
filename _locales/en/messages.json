@@ -87,5 +87,55 @@
   },
   "release_notes": {
     "message": "Release Notes"
+  },
+  "review_header": {
+    "message": "Shut Up has limited website access"
+  },
+  "review_permissions": {
+    "message": "Comment sections will be blocked automatically, but only on these websites:"
+  },
+  "review_guidance": {
+    "message": "This extension works best when it can access all websites, but you may continue using Shut Up with reduced permissions."
+  },
+  "review_dismiss_button": {
+    "message": "Dismiss"
+  },
+  "review_continue_button": {
+    "message": "Update Permissions"
+  },
+  "fix_header": {
+    "message": "Additional permissions needed"
+  },
+  "fix_header_welcome": {
+    "message": "Welcome to Shut Up"
+  },
+  "fix_guidance": {
+    "message": "Shut Up needs access to the websites you visit to function. It only uses this access to hide comment sections."
+  },
+  "fix_continue_button": {
+    "message": "Continue"
+  },
+  "fix_reassurance": {
+    "message": "Shut Up won't record or share your browsing history."
+  },
+  "fix_learn_more": {
+    "message": "Learn More"
+  },
+  "fix_lm1": {
+    "message": "This extension adds CSS rules into every website you visit to block comment sections before you can see them. This function requires permission to change the websites you visit."
+  },
+  "fix_lm2": {
+    "message": "Shut Up won't read the contents of the sites you visit, nor will it contact any other services. It can't track you."
+  },
+  "fix_lm3": {
+    "message": "I'm committed to your security and privacy. $privacy_policy_link$ Shut Up is $an_open_source_project$ so anyone can audit its behavior.",
+    "placeholders": {
+      "privacy_policy_link": {
+        "content": "<a target=\"_blank\" href=\"https://rickyromero.com/shutup/privacy/\">Read my plain-English privacy policy here.</a>"
+      },
+      "an_open_source_project": {
+        "content": "<a target=\"_blank\" href=\"https://github.com/RickyRomero/shut-up-webextension\">an open-source hobby project,</a>"
+      }
+    }
   }
 }

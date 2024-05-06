@@ -30,7 +30,7 @@
 
       <main class="options__contents">
         <figure>
-          <img class="bubble" alt="" src="../images/large-bubble.png" width="800" height="714" />
+          <img class="options__bubble" alt="" src="../images/large-bubble.png" width="800" height="714" />
         </figure>
         <form>
           <div class="stack">
@@ -62,40 +62,33 @@
 
   <dialog class="review-modal">
     <header>
-      <h1>Shut Up has limited website access</h1>
+      <h1 data-i18n="review_header"></h1>
     </header>
     <main>
-      <p>Comment sections will be blocked automatically, but only on these websites:</p>
-      <ul>[scrolling list]</ul>
-      <p>This extension works best when it can access all websites, though you can continue using Shut Up with reduced
-        permissions.</p>
+      <p data-i18n="review_permissions"></p>
+      <ul class="review-modal__allowed-sites"></ul>
+      <p data-i18n="review_guidance"></p>
     </main>
     <footer>
-      <button class="review-modal-dismiss">Dismiss</button>
-      <button class="review-modal-request-permission">Update Permissions</button>
+      <button class="review-modal-dismiss" data-i18n="review_dismiss_button"></button>
+      <button class="review-modal-request-permission" data-i18n="review_continue_button"></button>
     </footer>
   </dialog>
 
   <dialog class="fix-modal">
     <header>
-      <h1>Additional permissions needed</h1>
+      <h1 data-i18n="fix_header"></h1>
     </header>
     <main>
-      <p>Shut Up needs access to the websites you visit to function. It only uses this access to hide comment sections.
-      </p>
-      <button class="fix-modal-request-permission">Continue</button>
+      <p data-i18n="fix_guidance"></p>
+      <button class="fix-modal-request-permission" data-i18n="fix_continue_button"></button>
       <hr />
-      <div>Shut Up won't record or share your browsing history.</div>
+      <div data-i18n="fix_reassurance"></div>
       <details class="fix-modal-details">
-        <summary>Learn More</summary>
-        <p>This extension adds CSS rules into every website you visit to block comment sections before you can see them.
-          This function requires permission to change the websites you visit.</p>
-        <p>Shut Up won't read the contents of the sites you visit, nor will it contact any other services. It can't
-          track you.</p>
-        <p>I'm committed to your security and privacy. <a target="_blank"
-            href="https://rickyromero.com/shutup/privacy/">Read my plain-English privacy policy here.</a> Shut Up is <a
-            target="_blank" href="https://github.com/RickyRomero/shut-up-webextension">an open-source hobby project,</a>
-          so anyone can audit its behavior.</p>
+        <summary data-i18n="fix_learn_more"></summary>
+        <p data-i18n="fix_lm1"></p>
+        <p data-i18n="fix_lm2"></p>
+        <p data-i18n="fix_lm3"></p>
       </details>
     </main>
   </dialog>
