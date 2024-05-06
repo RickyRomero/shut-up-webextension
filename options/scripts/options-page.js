@@ -65,6 +65,17 @@ class OptionsPage {
 
     const permittedOrigins = await uiBridge.verifyOrigins()
 
+    $('.review-modal__allowed-sites').innerText = ''
+    ;[...permittedOrigins]
+      .sort()
+      .map(origin => {
+        const el = document.createElement('li')
+        el.innerText = origin
+        return el
+      }).forEach(
+        el => $('.review-modal__allowed-sites').appendChild(el)
+      )
+
     // Update permissions banners
     if (permittedOrigins.length === 0) {
       $('.access-banner__wrapper').classList.remove('access-banner__wrapper--limited')
