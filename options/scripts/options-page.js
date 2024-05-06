@@ -30,7 +30,6 @@ class OptionsPage {
     $('.review-modal-request-permission').addEventListener('click', this.requestPermission.bind(this, 'review'), false)
     $('.review-modal-dismiss').addEventListener('click', this.presentModal.bind(this, null), false)
     $('.fix-modal-request-permission').addEventListener('click', this.requestPermission.bind(this, 'fix'), false)
-    $('.fix-modal-manage').addEventListener('click', this.openExtensionSettings.bind(this), false)
 
     $('.review-modal').addEventListener('cancel', this.presentModal.bind(this, null), false)
     $('.fix-modal').addEventListener('cancel', this.presentModal.bind(this, null), false)
@@ -49,6 +48,10 @@ class OptionsPage {
       browser.commands.onChanged.addListener(options.onUpdate)
     }
 
+    if (window.location.hash.endsWith('welcome')) {
+      this.presentModal('fix')
+    }
+
     this.updatePage()
 
     return new Egg()
@@ -60,7 +63,7 @@ class OptionsPage {
     $('.allowlist').checked = (await options.automaticAllowlist())
     $('.context-menu').checked = (await options.contextMenu())
 
-    const permittedOrigins = await uiBridge.verifyPermissions()
+    const permittedOrigins = await uiBridge.verifyOrigins()
 
     // Update permissions banners
     if (permittedOrigins.length === 0) {
@@ -99,6 +102,12 @@ class OptionsPage {
 
   presentModal (modal) {
     this.permissionsModal = modal
+
+    if (modal === null) {
+      // Clear the welcome flag
+      window.location.hash = ''
+    }
+
     this.updatePage()
   }
 
@@ -107,7 +116,8 @@ class OptionsPage {
       keyboard_shortcut: this.setKeyboardShortcutStr,
       keyboard_shortcut_not_configurable: this.setKeyboardShortcutStr,
       name_version_copyright_ricky: this.setMainCopyrightStr,
-      copyright_steven: this.setCSSCopyrightStr
+      copyright_steven: this.setCSSCopyrightStr,
+      fix_permissions_header: this.setPermissionsHeader
     }
 
     if (el.dataset.i18nLocked !== '\ud83d\udd12') {
@@ -223,6 +233,14 @@ class OptionsPage {
     el.dataset.i18nLocked = '\ud83d\udd12'
   }
 
+  setPermissionsHeader (el) {
+    el.innerText = browser.i18n.getMessage(
+      window.location.hash.endsWith('welcome')
+        ? 'fix_permissions_header_welcome'
+        : 'fix_permissions_header'
+    )
+  }
+
   async requestPermission (from) {
     const granted = await browser.permissions.request({
       origins: ['http://*/*', 'https://*/*']
@@ -231,28 +249,8 @@ class OptionsPage {
     if (!granted && from === 'fix') {
       $('.fix-modal-details').open = true
     } else if (granted) {
-      this.permissionsModal = null
-      this.updatePage()
+      this.presentModal(null)
     }
-  }
-
-  openExtensionSettings () {
-    let destination
-    switch (platform.name) {
-      case 'Chrome':
-      case 'Edge':
-      case 'Opera':
-        destination = `${platform.name.toLowerCase()}://extensions`
-        break
-      case 'Firefox':
-        destination = 'about:addons'
-        break
-      default:
-        destination = 'chrome://extensions'
-        break
-    }
-
-    browser.tabs.update({ url: destination })
   }
 }
 

@@ -25,11 +25,11 @@ class UIBridge {
     this.tabClosed = this.tabClosed.bind(this)
     this.tabUpdated = this.tabUpdated.bind(this)
     this.addListeners = this.addListeners.bind(this)
+    this.verifyOrigins = this.verifyOrigins.bind(this)
     this.addContextMenu = this.addContextMenu.bind(this)
     this.updateActionIcon = this.updateActionIcon.bind(this)
     this.refreshActionIcon = this.refreshActionIcon.bind(this)
     this.removeContextMenu = this.removeContextMenu.bind(this)
-    this.verifyPermissions = this.verifyPermissions.bind(this)
     this.toggleBlockerStates = this.toggleBlockerStates.bind(this)
     this.refreshAllActionIcons = this.refreshAllActionIcons.bind(this)
   }
@@ -62,11 +62,11 @@ class UIBridge {
     }))
 
     browser.permissions.onAdded.addListener(() => taskQueue.add({
-      task: async () => await this.verifyPermissions()
+      task: async () => await this.verifyOrigins()
     }))
 
     browser.permissions.onRemoved.addListener(() => taskQueue.add({
-      task: async () => await this.verifyPermissions()
+      task: async () => await this.verifyOrigins()
     }))
   }
 
@@ -158,7 +158,7 @@ class UIBridge {
     }
   }
 
-  async verifyPermissions () {
+  async verifyOrigins () {
     const { origins } = await browser.permissions.getAll()
 
     if (origins.length === 0) {
