@@ -13,49 +13,52 @@
 </head>
 
 <body>
-  <header>
-    <div class="limited-access">
-      <img alt="Info" src="../images/options/info.svg" width="32" height="32" />
-      <span>Shut Up has limited website access.</span>
-      <button class="open-review-modal">Review…</button>
-    </div>
-    <div class="no-access">
-      <img alt="Warning" src="../images/options/warning.svg" width="32" height="32" />
-      <span>Shut Up needs additional permissions.</span>
-      <button class="open-fix-modal">Fix It…</button>
-    </div>
-  </header>
+  <div class="options__position">
+    <div class="options__wrapper">
+      <header class="access-banner__wrapper">
+        <div class="access-banner__limited">
+          <img alt="Info" src="../images/options/info.svg" width="32" height="32" />
+          <span>Shut Up has limited website access.</span>
+          <button class="access-banner__limited-button">Review…</button>
+        </div>
+        <div class="access-banner__fix">
+          <img alt="Warning" src="../images/options/warning.svg" width="32" height="32" />
+          <span>Shut Up needs additional permissions.</span>
+          <button class="access-banner__fix-button">Fix It…</button>
+        </div>
+      </header>
 
-  <main>
-    <div>
-      <figure>
-        <img class="bubble" alt="" src="../images/large-bubble.png" width="800" height="714" />
-      </figure>
-      <form>
-        <div class="stack">
-          <label><input class="allowlist" type="checkbox"><span data-i18n="automatic_allowlisting"></span></label>
-          <aside class="private note" data-i18n="placeholder"></aside>
-        </div>
-        <div class="trailing-gap">
-          <label><input class="context-menu" type="checkbox"><span data-i18n="show_item_in_context_menu"></span></label>
-        </div>
-        <div>
-          <a href="chrome://extensions/shortcuts" class="change-shortcut" href="#"
-            data-i18n="change_keyboard_shortcut"></a>
-          <aside class="keyboard-shortcut" data-i18n="keyboard_shortcut"></aside>
-          <aside class="keyboard-shortcut-not-configurable" data-i18n="keyboard_shortcut_not_configurable"></aside>
-        </div>
-      </form>
-    </div>
-  </main>
+      <main class="options__contents">
+        <figure>
+          <img class="bubble" alt="" src="../images/large-bubble.png" width="800" height="714" />
+        </figure>
+        <form>
+          <div class="stack">
+            <label><input class="allowlist" type="checkbox"><span data-i18n="automatic_allowlisting"></span></label>
+            <aside class="private note" data-i18n="placeholder"></aside>
+          </div>
+          <div class="trailing-gap">
+            <label><input class="context-menu" type="checkbox"><span
+                data-i18n="show_item_in_context_menu"></span></label>
+          </div>
+          <div>
+            <a href="chrome://extensions/shortcuts" class="change-shortcut" href="#"
+              data-i18n="change_keyboard_shortcut"></a>
+            <aside class="keyboard-shortcut" data-i18n="keyboard_shortcut"></aside>
+            <aside class="keyboard-shortcut-not-configurable" data-i18n="keyboard_shortcut_not_configurable"></aside>
+          </div>
+        </form>
+      </main>
 
-  <footer>
-    <ul>
-      <li data-i18n="name_version_copyright_ricky"></li>
-      <li data-i18n="copyright_steven"></li>
-      <li><a class="release-notes" href="../release-notes/index.html" data-i18n="release_notes"></a></li>
-    </ul>
-  </footer>
+      <footer>
+        <ul>
+          <li data-i18n="name_version_copyright_ricky"></li>
+          <li data-i18n="copyright_steven"></li>
+          <li><a class="release-notes" href="../release-notes/index.html" data-i18n="release_notes"></a></li>
+        </ul>
+      </footer>
+    </div>
+  </div>
 
   <dialog class="review-modal">
     <header>

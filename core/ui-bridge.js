@@ -3,14 +3,33 @@ import { blocker } from './blocker.js'
 import { taskQueue } from './task-queue.js'
 import { browser, platform, Utils } from './utils.js'
 
+const iconStates = {
+  default: {
+    16: '/images/action/default-state.png',
+    32: '/images/action/default-state@2x.png'
+  },
+  turnOff: {
+    16: `/images/action/${platform.engine.toLowerCase()}-turn-off.png`,
+    32: `/images/action/${platform.engine.toLowerCase()}-turn-off@2x.png`
+  },
+  turnOn: {
+    16: `/images/action/${platform.engine.toLowerCase()}-turn-on.png`,
+    32: `/images/action/${platform.engine.toLowerCase()}-turn-on@2x.png`
+  }
+}
+
 class UIBridge {
   constructor () {
+    this.permissionsListeners = []
+
     this.tabClosed = this.tabClosed.bind(this)
     this.tabUpdated = this.tabUpdated.bind(this)
     this.addListeners = this.addListeners.bind(this)
     this.addContextMenu = this.addContextMenu.bind(this)
     this.updateActionIcon = this.updateActionIcon.bind(this)
+    this.refreshActionIcon = this.refreshActionIcon.bind(this)
     this.removeContextMenu = this.removeContextMenu.bind(this)
+    this.verifyPermissions = this.verifyPermissions.bind(this)
     this.toggleBlockerStates = this.toggleBlockerStates.bind(this)
   }
 
@@ -32,16 +51,31 @@ class UIBridge {
     }))
 
     browser.action.onClicked.addListener(tab => taskQueue.add({
-      task: async () => await this.toggleBlockerStates(tab)
+      task: async () => {
+        if ((await browser.permissions.getAll()).origins.length === 0) {
+          await browser.runtime.openOptionsPage()
+        } else {
+          await this.toggleBlockerStates(tab)
+        }
+      }
     }))
+
+    browser.permissions.onAdded.addListener(() => {
+      return taskQueue.add({
+        task: async () => await this.verifyPermissions()
+      })
+    })
+
+    browser.permissions.onRemoved.addListener(() => {
+      return taskQueue.add({
+        task: async () => await this.verifyPermissions()
+      })
+    })
   }
 
   async tabUpdated (_, changeInfo, tab) {
     await blocker.sync(tab, changeInfo)
-    const isEligible = Utils.urlEligible(tab.url)
-    const nextState = !blocker.query(tab)
-
-    this.updateActionIcon(tab, nextState, isEligible)
+    this.refreshActionIcon(tab)
   }
 
   tabClosed (tabId) {
@@ -86,23 +120,15 @@ class UIBridge {
     this.updateActionIcon(tab, nextState, isEligible)
   }
 
+  refreshActionIcon (tab) {
+    const isEligible = Utils.urlEligible(tab.url)
+    const nextState = !blocker.query(tab)
+
+    this.updateActionIcon(tab, nextState, isEligible)
+  }
+
   updateActionIcon ({ id }, state, enable) {
     let displayedState = 'default'
-    const prefix = platform.engine.toLowerCase()
-    const iconStates = {
-      default: {
-        16: 'images/action/default-state.png',
-        32: 'images/action/default-state@2x.png'
-      },
-      turnOff: {
-        16: `images/action/${prefix}-turn-off.png`,
-        32: `images/action/${prefix}-turn-off@2x.png`
-      },
-      turnOn: {
-        16: `images/action/${prefix}-turn-on.png`,
-        32: `images/action/${prefix}-turn-on@2x.png`
-      }
-    }
 
     if (enable) {
       displayedState = `turn${state ? 'On' : 'Off'}`
@@ -133,9 +159,21 @@ class UIBridge {
     const { origins } = await browser.permissions.getAll()
 
     if (origins.length === 0) {
+      // No origins allowed; show a warning badge
       await browser.action.setBadgeBackgroundColor({ color: '#ffcc00' })
       await browser.action.setBadgeTextColor({ color: '#000000' })
       await browser.action.setBadgeText({ text: '!' })
+
+      // Enable button on all tabs for fixing the problem
+      await browser.action.enable()
+      await browser.action.setIcon({ path: iconStates.default })
+    } else {
+      await browser.action.setBadgeText({ text: '' })
+
+      // Re-initialize action icons
+      await browser.action.disable()
+      const tabs = await browser.tabs.query({})
+      tabs.forEach(this.refreshActionIcon)
     }
 
     return origins

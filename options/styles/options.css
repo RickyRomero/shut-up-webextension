@@ -6,31 +6,28 @@
 }
 
 html {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-inline: hidden;
+  overflow-x: hidden;
   background-color: var(--c-bg);
-  block-size: 80vb;
-  padding: 10px;
 }
 
 html * {
   box-sizing: border-box;
 }
 
-html[dir="ltr"] body {
-  background: radial-gradient(circle 70rem at var(--p-gradient-x-ltr) 50%,
-      var(--c-bg-light) 0%, var(--c-bg) 100%);
-}
-
-html[dir="rtl"] body {
-  background: radial-gradient(circle 70rem at var(--p-gradient-x-rtl) 50%,
-      var(--c-bg-light) 0%, var(--c-bg) 100%);
-}
-
 body {
   font: var(--fs-main) -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 10px;
+}
+
+.options__position {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  block-size: 80vb;
+}
+
+.options__wrapper {
+  overflow: hidden;
   inline-size: 800px;
   min-block-size: 400px;
   margin: 0;
@@ -38,20 +35,50 @@ body {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
-header .no-access,
-header .limited-access {
+html[dir="ltr"] .options__wrapper {
+  background: radial-gradient(circle 70rem at var(--p-gradient-x-ltr) 50%,
+      var(--c-bg-light) 0%, var(--c-bg) 100%);
+}
+
+html[dir="rtl"] .options__wrapper {
+  background: radial-gradient(circle 70rem at var(--p-gradient-x-rtl) 50%,
+      var(--c-bg-light) 0%, var(--c-bg) 100%);
+}
+
+.options__contents {
+  display: flex;
+
+  /* Font sizes act differently in Chinese */
+  block-size: 360px;
+}
+
+.access-banner__wrapper {
+  --expanded-banner-height: 2.5rem;
+
+  overflow: hidden;
+  background-color: var(--c-error);
+  block-size: 0;
+  transition: block-size 400ms ease-out;
+}
+
+.access-banner__wrapper--fix,
+.access-banner__wrapper--limited {
+  block-size: var(--expanded-banner-height);
+}
+
+.access-banner__fix,
+.access-banner__limited {
   display: none;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: var(--c-error);
-  block-size: 2.5rem;
+  block-size: var(--expanded-banner-height);
 }
 
-header .banner {
+.access-banner__wrapper--fix .access-banner__fix,
+.access-banner__wrapper--limited .access-banner__limited {
   display: flex;
 }
-
 
 footer,
 aside {
@@ -70,17 +97,11 @@ footer a:hover {
 
 input {
   -webkit-appearance: none;
+  appearance: none;
 }
 
 input:focus {
   outline: none;
-}
-
-main>div {
-  display: flex;
-
-  /* Font sizes act differently in Chinese */
-  block-size: 360px;
 }
 
 figure {
@@ -276,7 +297,7 @@ form a {
 }
 
 @media (max-width: 750px) {
-  main>div {
+  .options__contents {
     flex-direction: column;
     align-items: center;
     block-size: initial;

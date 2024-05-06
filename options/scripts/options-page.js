@@ -24,8 +24,8 @@ class OptionsPage {
     $('.context-menu').addEventListener('change', this.updateContextMenuOption.bind(this), false)
     $('.change-shortcut').addEventListener('click', this.openLinkInFullTab.bind(this), false)
 
-    $('.open-review-modal').addEventListener('click', this.presentModal.bind(this, 'review'), false)
-    $('.open-fix-modal').addEventListener('click', this.presentModal.bind(this, 'fix'), false)
+    $('.access-banner__limited-button').addEventListener('click', this.presentModal.bind(this, 'review'), false)
+    $('.access-banner__fix-button').addEventListener('click', this.presentModal.bind(this, 'fix'), false)
 
     $('.review-modal-request-permission').addEventListener('click', this.requestPermission.bind(this, 'review'), false)
     $('.review-modal-dismiss').addEventListener('click', this.presentModal.bind(this, null), false)
@@ -35,9 +35,10 @@ class OptionsPage {
     $('.review-modal').addEventListener('cancel', this.presentModal.bind(this, null), false)
     $('.fix-modal').addEventListener('cancel', this.presentModal.bind(this, null), false)
 
-    options.onUpdate = this.updatePage.bind(this)
+    browser.permissions.onAdded.addListener(this.updatePage.bind(this))
+    browser.permissions.onRemoved.addListener(this.updatePage.bind(this))
 
-    this.permittedOrigins = await uiBridge.verifyPermissions()
+    options.onUpdate = this.updatePage.bind(this)
 
     if (platform.name === 'Firefox') {
       document.querySelectorAll('input[type=checkbox]').forEach((el) => {
@@ -59,19 +60,21 @@ class OptionsPage {
     $('.allowlist').checked = (await options.automaticAllowlist())
     $('.context-menu').checked = (await options.contextMenu())
 
+    const permittedOrigins = await uiBridge.verifyPermissions()
+
     // Update permissions banners
-    if (this.permittedOrigins.length === 0) {
-      $('.limited-access').classList.remove('banner')
-      $('.no-access').classList.add('banner')
+    if (permittedOrigins.length === 0) {
+      $('.access-banner__wrapper').classList.remove('access-banner__wrapper--limited')
+      $('.access-banner__wrapper').classList.add('access-banner__wrapper--fix')
     } else if (
-      !this.permittedOrigins.includes('http://*/*') ||
-      !this.permittedOrigins.includes('https://*/*')
+      !permittedOrigins.includes('http://*/*') ||
+      !permittedOrigins.includes('https://*/*')
     ) {
-      $('.limited-access').classList.add('banner')
-      $('.no-access').classList.remove('banner')
+      $('.access-banner__wrapper').classList.add('access-banner__wrapper--limited')
+      $('.access-banner__wrapper').classList.remove('access-banner__wrapper--fix')
     } else {
-      $('.limited-access').classList.remove('banner')
-      $('.no-access').classList.remove('banner')
+      $('.access-banner__wrapper').classList.remove('access-banner__wrapper--limited')
+      $('.access-banner__wrapper').classList.remove('access-banner__wrapper--fix')
     }
 
     // Set modal visibility
@@ -229,7 +232,6 @@ class OptionsPage {
       $('.fix-modal-details').open = true
     } else if (granted) {
       this.permissionsModal = null
-      this.permittedOrigins = await uiBridge.verifyPermissions()
       this.updatePage()
     }
   }

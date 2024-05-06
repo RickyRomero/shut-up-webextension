@@ -9,7 +9,6 @@
   "minimum_chrome_version": "90",
   "default_locale": "en",
   "permissions": [
-    "activeTab",
     "contextMenus",
     "tabs",
     "scripting",
