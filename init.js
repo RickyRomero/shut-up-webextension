@@ -29,3 +29,4 @@ taskQueue.add({
   }
 })
 taskQueue.add({ type, task: runUpgrade })
+taskQueue.add({ type, task: uiBridge.refreshAllActionIcons })

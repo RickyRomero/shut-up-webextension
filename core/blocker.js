@@ -53,9 +53,13 @@ class Blocker {
       id,
       type: 'reinject',
       task: async () => {
-        await browser.scripting.removeCSS(this.injection(id))
-        await browser.scripting.insertCSS(this.injection(id))
-        this.setState(id, true)
+        try { // This may fail if the extension doesn't have permission
+          await browser.scripting.removeCSS(this.injection(id))
+          await browser.scripting.insertCSS(this.injection(id))
+          this.setState(id, true)
+        } catch (e) {
+          console.error(e)
+        }
       }
     })
   }
@@ -64,8 +68,12 @@ class Blocker {
     taskQueue.add({
       id,
       task: async () => {
-        await browser.scripting.removeCSS(this.injection(id))
-        this.setState(id, false)
+        try { // This may fail if the extension doesn't have permission
+          await browser.scripting.removeCSS(this.injection(id))
+          this.setState(id, false)
+        } catch (e) {
+          console.error(e)
+        }
       }
     })
   }

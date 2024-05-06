@@ -31,6 +31,7 @@ class UIBridge {
     this.removeContextMenu = this.removeContextMenu.bind(this)
     this.verifyPermissions = this.verifyPermissions.bind(this)
     this.toggleBlockerStates = this.toggleBlockerStates.bind(this)
+    this.refreshAllActionIcons = this.refreshAllActionIcons.bind(this)
   }
 
   addListeners () {
@@ -60,17 +61,13 @@ class UIBridge {
       }
     }))
 
-    browser.permissions.onAdded.addListener(() => {
-      return taskQueue.add({
-        task: async () => await this.verifyPermissions()
-      })
-    })
+    browser.permissions.onAdded.addListener(() => taskQueue.add({
+      task: async () => await this.verifyPermissions()
+    }))
 
-    browser.permissions.onRemoved.addListener(() => {
-      return taskQueue.add({
-        task: async () => await this.verifyPermissions()
-      })
-    })
+    browser.permissions.onRemoved.addListener(() => taskQueue.add({
+      task: async () => await this.verifyPermissions()
+    }))
   }
 
   async tabUpdated (_, changeInfo, tab) {
@@ -118,6 +115,12 @@ class UIBridge {
 
     const nextState = blockerActive // Because we'd be returning to this state
     this.updateActionIcon(tab, nextState, isEligible)
+  }
+
+  async refreshAllActionIcons () {
+    await browser.action.disable()
+    const tabs = await browser.tabs.query({})
+    tabs.forEach(this.refreshActionIcon)
   }
 
   refreshActionIcon (tab) {
@@ -171,9 +174,7 @@ class UIBridge {
       await browser.action.setBadgeText({ text: '' })
 
       // Re-initialize action icons
-      await browser.action.disable()
-      const tabs = await browser.tabs.query({})
-      tabs.forEach(this.refreshActionIcon)
+      await this.refreshAllActionIcons()
     }
 
     return origins
