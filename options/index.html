@@ -17,25 +17,25 @@
     <div class="options__wrapper">
       <header class="access-banner__wrapper">
         <div class="access-banner__limited">
-          <img alt="Info" src="../images/options/info.svg" width="32" height="32" />
-          <span>Shut Up has limited website access.</span>
-          <button class="access-banner__limited-button">Review…</button>
+          <img class="access-banner__icon" alt="" src="../images/options/info.svg" width="32" height="32" />
+          <span data-i18n="review_banner"></span>
+          <button data-i18n="review_banner_button" class="access-banner__limited-button"></button>
         </div>
         <div class="access-banner__fix">
-          <img alt="Warning" src="../images/options/warning.svg" width="32" height="32" />
-          <span>Additional permissions needed.</span>
-          <button class="access-banner__fix-button">Fix It…</button>
+          <img class="access-banner__icon" alt="" src="../images/options/warning.svg" width="32" height="32" />
+          <span data-i18n="fix_banner"></span>
+          <button data-i18n="fix_banner_button" class="access-banner__fix-button"></button>
         </div>
       </header>
 
       <main class="options__contents">
-        <figure>
+        <figure class="options__logo">
           <img class="options__bubble" alt="" src="../images/large-bubble.png" width="800" height="714" />
         </figure>
-        <form>
+        <form class="options__items">
           <div class="stack">
             <label><input class="allowlist" type="checkbox"><span data-i18n="automatic_allowlisting"></span></label>
-            <aside class="private note" data-i18n="placeholder"></aside>
+            <aside class="options__secondary-text options__private-note private" data-i18n="placeholder"></aside>
           </div>
           <div class="trailing-gap">
             <label><input class="context-menu" type="checkbox"><span
@@ -44,13 +44,14 @@
           <div>
             <a href="chrome://extensions/shortcuts" class="change-shortcut" href="#"
               data-i18n="change_keyboard_shortcut"></a>
-            <aside class="keyboard-shortcut" data-i18n="keyboard_shortcut"></aside>
-            <aside class="keyboard-shortcut-not-configurable" data-i18n="keyboard_shortcut_not_configurable"></aside>
+            <aside class="options__secondary-text keyboard-shortcut" data-i18n="keyboard_shortcut"></aside>
+            <aside class="options__secondary-text keyboard-shortcut-not-configurable"
+              data-i18n="keyboard_shortcut_not_configurable"></aside>
           </div>
         </form>
       </main>
 
-      <footer>
+      <footer class="options__info">
         <ul>
           <li data-i18n="name_version_copyright_ricky"></li>
           <li data-i18n="copyright_steven"></li>

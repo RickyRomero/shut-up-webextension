@@ -88,6 +88,12 @@
   "release_notes": {
     "message": "Release Notes"
   },
+  "review_banner": {
+    "message": "Shut Up has limited website access."
+  },
+  "review_banner_button": {
+    "message": "Review…"
+  },
   "review_header": {
     "message": "Shut Up has limited website access"
   },
@@ -102,6 +108,12 @@
   },
   "review_continue_button": {
     "message": "Update Permissions"
+  },
+  "fix_banner": {
+    "message": "Additional permissions needed."
+  },
+  "fix_banner_button": {
+    "message": "Fix It…"
   },
   "fix_header": {
     "message": "Additional permissions needed"
