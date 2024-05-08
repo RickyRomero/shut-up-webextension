@@ -32,16 +32,18 @@
         <figure class="options__logo">
           <img class="options__bubble" alt="" src="../images/large-bubble.png" width="800" height="714" />
         </figure>
-        <form class="options__items">
-          <div class="stack">
-            <label><input class="allowlist" type="checkbox"><span data-i18n="automatic_allowlisting"></span></label>
-            <aside class="options__secondary-text options__private-note private" data-i18n="placeholder"></aside>
+        <form class="options__controls">
+          <div class="options__switches">
+            <div class="options__switch-group">
+              <label><input class="allowlist" type="checkbox"><span data-i18n="automatic_allowlisting"></span></label>
+              <aside class="options__secondary-text options__private-note private" data-i18n="placeholder"></aside>
+            </div>
+            <div class="options__switch-group">
+              <label><input class="context-menu" type="checkbox"><span
+                  data-i18n="show_item_in_context_menu"></span></label>
+            </div>
           </div>
-          <div class="trailing-gap">
-            <label><input class="context-menu" type="checkbox"><span
-                data-i18n="show_item_in_context_menu"></span></label>
-          </div>
-          <div>
+          <div class="options__keyboard">
             <a href="chrome://extensions/shortcuts" class="change-shortcut" href="#"
               data-i18n="change_keyboard_shortcut"></a>
             <aside class="options__secondary-text keyboard-shortcut" data-i18n="keyboard_shortcut"></aside>

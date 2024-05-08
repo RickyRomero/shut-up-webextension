@@ -32,6 +32,15 @@ button:focus {
   box-shadow: 0 0 0.75rem var(--c-accent);
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: block;
+}
+
 .options__position {
   display: flex;
   justify-content: center;
@@ -60,6 +69,8 @@ html[dir="rtl"] .options__wrapper {
 
 .options__contents {
   display: flex;
+  align-items: center;
+  padding-inline: 1rem;
 
   /* Font sizes act differently in Chinese */
   block-size: 360px;
@@ -137,6 +148,7 @@ html[dir="rtl"] .options__wrapper {
 .options__info {
   font-size: var(--fs-small);
   color: var(--c-text-secondary);
+  padding-inline: 1rem;
 }
 
 .options__info a {
@@ -254,43 +266,39 @@ label span {
   color: var(--c-text-secondary);
 }
 
-ul {
-  /* for non-uniform text sizes */
+.options__info ul {
   display: flex;
+  flex-direction: row;
   align-items: baseline;
   justify-content: center;
-  padding: 0;
+  gap: 1.25rem;
 }
 
-li {
-  display: block;
-}
-
-.options__info li:not(:first-child):before {
-  display: inline-block;
-  content: ' ';
-  margin-block: 0;
-  margin-inline: 0.75rem;
-}
-
-form>div {
-  position: relative;
+.options__controls {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  inline-size: 85%;
-}
-
-form>div.stack {
   flex-direction: column;
+  gap: 1.875rem;
 }
 
-form>div:not(:last-child) {
-  margin-block-end: 0.75rem;
+.options__switches {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.options__switch-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.options__keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
 }
 
 .options__private-note {
-  margin-block-start: 0.125rem;
   padding-inline-start: 2.5rem;
 }
 
@@ -345,10 +353,15 @@ form a {
 }
 
 @media (max-width: 750px) {
+  .options__wrapper {
+    --max-width: 480px;
+  }
+
   .options__contents {
     flex-direction: column;
     align-items: center;
     block-size: initial;
+    padding-inline: 1rem;
   }
 
   .options__logo {
@@ -356,32 +369,27 @@ form a {
     inline-size: 240px;
   }
 
-  .options__items {
+  .options__controls {
+    max-inline-size: var(--max-width);
     inline-size: 100%;
-    padding-inline: 1rem;
-    margin-block-end: 1.5rem;
+    margin-block-end: 2rem;
   }
 
   .options__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    inline-size: 100%;
     padding-block-end: 1.25rem;
   }
 
   .options__info ul {
-    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
-  }
-
-  .options__info li {
+    max-inline-size: var(--max-width);
     inline-size: 100%;
-    padding-inline: 1rem;
   }
 
-  .options__info li:not(:first-child):before {
-    display: block;
-    margin-block-start: 0;
-    margin-block-end: 0.5rem;
-    margin-inline: 0;
-  }
+  .options__info li {}
 }
