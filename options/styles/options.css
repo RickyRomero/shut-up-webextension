@@ -53,6 +53,7 @@ li {
   inline-size: 800px;
   min-block-size: 400px;
   margin: 0;
+  padding-block-end: 1.25rem;
   border-radius: 20px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
@@ -160,27 +161,31 @@ html[dir="rtl"] .options__wrapper {
   color: var(--c-accent);
 }
 
+.options__logo-wrapper {
+  margin: 0;
+  padding: 2rem;
+  block-size: 100%;
+  inline-size: 45%;
+}
+
 .options__logo {
-  inline-size: 33.33333%;
   position: relative;
+  inline-size: 100%;
+  block-size: 100%;
 }
 
 .options__bubble {
   position: absolute;
-  block-size: auto;
+  object-fit: contain;
   inline-size: 100%;
-  inset-inline-start: 50%;
-  inset-block-start: 50%;
-
-  /* Vertical offset for shadow */
-  translate: -50% -45%;
+  block-size: 100%;
 }
 
 .options__items {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  inline-size: 66.66667%;
+  inline-size: 55%;
 }
 
 label {
@@ -209,6 +214,8 @@ label span {
 
 .blink input[type=checkbox],
 .quantum input[type=checkbox]+span {
+  -webkit-appearance: none;
+  appearance: none;
   position: relative;
   background: var(--c-text-secondary);
   margin: 0;
@@ -216,8 +223,6 @@ label span {
   block-size: 0.8125rem;
   border-radius: 0.40625rem;
   flex-shrink: 0;
-  -webkit-appearance: none;
-  appearance: none;
 }
 
 .blink input[type=checkbox]:checked,
@@ -313,19 +318,23 @@ form a {
 /* px used deliberately here, since icon size doesn't change */
 .egg {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  color: var(--c-text);
   font-family: "First Font", cursive;
   font-size: 16px;
   letter-spacing: 0.05rem;
-  color: var(--c-text);
-  inset-inline: 0;
-  inset-block-start: 47.5%;
+  inline-size: 100%;
+  block-size: 100%;
+  padding-block-end: 9.3%;
   translate: 0 50px;
   opacity: 0.7;
 }
 
 .mac .egg {
-  inset-block-start: 47%;
+  padding-block-end: 9.3%;
 }
 
 .egg.bye {
@@ -364,9 +373,10 @@ form a {
     padding-inline: 1rem;
   }
 
-  .options__logo {
+  .options__logo-wrapper {
     block-size: 280px;
     inline-size: 240px;
+    padding: 0;
   }
 
   .options__controls {
@@ -380,16 +390,13 @@ form a {
     flex-direction: column;
     align-items: center;
     inline-size: 100%;
-    padding-block-end: 1.25rem;
   }
 
   .options__info ul {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
     max-inline-size: var(--max-width);
+    gap: 1rem;
     inline-size: 100%;
   }
-
-  .options__info li {}
 }

@@ -275,7 +275,7 @@ class Egg {
   constructor () {
     this.eggText = document.createElement('div')
     this.eggText.classList.add('egg')
-    $('figure').insertBefore(this.eggText, $('.options__bubble'))
+    $('.options__logo').insertBefore(this.eggText, $('.options__bubble'))
 
     this.counter = 0
 
