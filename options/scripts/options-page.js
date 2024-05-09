@@ -27,12 +27,12 @@ class OptionsPage {
     $('.access-banner__limited-button').addEventListener('click', this.presentModal.bind(this, 'review'), false)
     $('.access-banner__fix-button').addEventListener('click', this.presentModal.bind(this, 'fix'), false)
 
-    $('.review-modal-request-permission').addEventListener('click', this.requestPermission.bind(this, 'review'), false)
-    $('.review-modal-dismiss').addEventListener('click', this.presentModal.bind(this, null), false)
-    $('.fix-modal-request-permission').addEventListener('click', this.requestPermission.bind(this, 'fix'), false)
+    $('.review-modal__continue-button').addEventListener('click', this.requestPermission.bind(this, 'review'), false)
+    $('.review-modal__dismiss-button').addEventListener('click', this.presentModal.bind(this, null), false)
+    $('.fix-modal__continue-button').addEventListener('click', this.requestPermission.bind(this, 'fix'), false)
 
-    $('.review-modal').addEventListener('cancel', this.presentModal.bind(this, null), false)
-    $('.fix-modal').addEventListener('cancel', this.presentModal.bind(this, null), false)
+    $('.review-modal__wrapper').addEventListener('cancel', this.presentModal.bind(this, null), false)
+    $('.fix-modal__wrapper').addEventListener('cancel', this.presentModal.bind(this, null), false)
 
     browser.permissions.onAdded.addListener(this.updatePage.bind(this))
     browser.permissions.onRemoved.addListener(this.updatePage.bind(this))
@@ -71,6 +71,7 @@ class OptionsPage {
       .map(origin => {
         const el = document.createElement('li')
         el.innerText = origin
+        el.title = origin
         return el
       }).forEach(
         el => $('.review-modal__allowed-sites').appendChild(el)
@@ -94,16 +95,16 @@ class OptionsPage {
     // Set modal visibility
     switch (this.permissionsModal) {
       case 'review':
-        $('.review-modal').showModal()
-        $('.fix-modal').close()
+        $('.review-modal__wrapper').showModal()
+        $('.fix-modal__wrapper').close()
         break
       case 'fix':
-        $('.review-modal').close()
-        $('.fix-modal').showModal()
+        $('.review-modal__wrapper').close()
+        $('.fix-modal__wrapper').showModal()
         break
       default:
-        $('.review-modal').close()
-        $('.fix-modal').close()
+        $('.review-modal__wrapper').close()
+        $('.fix-modal__wrapper').close()
         break
     }
 
@@ -264,7 +265,7 @@ class OptionsPage {
     })
 
     if (!granted && from === 'fix') {
-      $('.fix-modal-details').open = true
+      $('.fix-modal__details').open = true
     } else if (granted) {
       this.presentModal(null)
     }

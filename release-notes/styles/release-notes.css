@@ -30,7 +30,7 @@ time {
 }
 
 code {
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family: var(--ff-monospace);
 }
 
 ul ul {

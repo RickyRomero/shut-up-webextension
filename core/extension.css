@@ -10,6 +10,11 @@
   --c-success: #00ff7e;
   --c-switch: var(--c-text);
 
+  --ff-main: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --ff-monospace: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+
+  --fs-xlarge: 3.0rem;
+  --fs-large: 1.5rem;
   --fs-main: 1.0rem;
   --fs-small: 0.75rem;
 
@@ -25,6 +30,7 @@
 }
 
 html {
+  font-family: var(--ff-main);
   font-size: 100%;
 }
 

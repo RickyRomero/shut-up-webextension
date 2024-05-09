@@ -27,7 +27,8 @@ input {
 
 a:focus,
 input:focus,
-button:focus {
+button:focus,
+summary:focus {
   outline: 1px solid var(--c-accent);
   box-shadow: 0 0 0.75rem var(--c-accent);
 }
@@ -307,15 +308,16 @@ label span {
   padding-inline-start: 2.5rem;
 }
 
-form>div.trailing-gap {
-  margin-block-end: 1.875rem;
-}
-
 form a {
   margin-inline-end: 1.25rem;
 }
 
-/* px used deliberately here, since icon size doesn't change */
+.quantum .change-shortcut,
+.quantum .keyboard-shortcut,
+.blink .keyboard-shortcut-not-configurable {
+  display: none;
+}
+
 .egg {
   position: absolute;
   display: flex;
@@ -354,12 +356,6 @@ form a {
 }
 
 
-
-.quantum .change-shortcut,
-.quantum .keyboard-shortcut,
-.blink .keyboard-shortcut-not-configurable {
-  display: none;
-}
 
 @media (max-width: 750px) {
   .options__wrapper {

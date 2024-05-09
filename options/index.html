@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="../core/extension.css" />
   <link rel="stylesheet" href="styles/options.css" />
+  <link rel="stylesheet" href="styles/permissions.css" />
   <link id="favicon" rel="icon" type="image/png" href="../images/favicon.png" />
 
   <title data-i18n="product_name"></title>
@@ -65,37 +66,46 @@
     </div>
   </div>
 
-  <dialog class="review-modal">
+  <dialog class="modal__wrapper review-modal__wrapper">
     <header>
       <h1 data-i18n="review_header"></h1>
     </header>
     <main>
       <p data-i18n="review_permissions"></p>
+      <hr />
       <ul class="review-modal__allowed-sites"></ul>
+      <hr />
       <p data-i18n="review_guidance"></p>
     </main>
     <footer>
-      <button class="review-modal-dismiss" data-i18n="review_dismiss_button"></button>
-      <button class="review-modal-request-permission" data-i18n="review_continue_button"></button>
+      <button class="modal__primary-button review-modal__dismiss-button" data-i18n="review_dismiss_button"></button>
+      <button class="modal__secondary-button review-modal__continue-button" data-i18n="review_continue_button"></button>
     </footer>
   </dialog>
 
-  <dialog class="fix-modal">
+  <dialog class="modal__wrapper fix-modal__wrapper">
     <header>
-      <h1 data-i18n="fix_header"></h1>
+      <h1 class="modal__large-text" data-i18n="fix_header"></h1>
     </header>
     <main>
-      <p data-i18n="fix_guidance"></p>
-      <button class="fix-modal-request-permission" data-i18n="fix_continue_button"></button>
-      <hr />
-      <div data-i18n="fix_reassurance"></div>
-      <details class="fix-modal-details">
-        <summary data-i18n="fix_learn_more"></summary>
-        <p data-i18n="fix_lm1"></p>
-        <p data-i18n="fix_lm2"></p>
-        <p data-i18n="fix_lm3"></p>
-      </details>
+      <p class="modal__large-text fix-modal__welcome-message" data-i18n="fix_welcome_message"></p>
+      <p class="modal__large-text" data-i18n="fix_guidance"></p>
     </main>
+    <footer>
+      <button class="modal__primary-button fix-modal__continue-button" data-i18n="fix_continue_button"></button>
+      <hr />
+      <div class="fix-modal__reassurance">
+        <p class="modal__secondary-text" data-i18n="fix_reassurance"></p>
+        <details class="fix-modal__details">
+          <summary data-i18n="fix_learn_more"></summary>
+          <div>
+            <p data-i18n="fix_lm1"></p>
+            <p data-i18n="fix_lm2"></p>
+            <p data-i18n="fix_lm3"></p>
+          </div>
+        </details>
+      </div>
+    </footer>
   </dialog>
 </body>
 
