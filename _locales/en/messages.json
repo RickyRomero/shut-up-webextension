@@ -3,7 +3,7 @@
     "message": "Shut Up"
   },
   "manifest_description": {
-    "message": "Toggles comments on many popular websites."
+    "message": "Blocks comment sections on many popular websites."
   },
   "toggle_comments_menu": {
     "message": "Toggle Comments"

@@ -88,7 +88,7 @@ class Blocker {
   }
 
   async resetFreeze () {
-    await browser.storage.local.remove('blockerFreeze')
+    await browser.storage.session.remove('blockerFreeze')
   }
 
   async freezeStates () {
@@ -107,12 +107,12 @@ class Blocker {
       ({ value }) => value
     )
 
-    await browser.storage.local.set({ blockerFreeze: validTabs })
+    await browser.storage.session.set({ blockerFreeze: validTabs })
   }
 
   async defrostStates () {
     this._states = new Map(
-      ((await browser.storage.local.get('blockerFreeze'))?.blockerFreeze) || []
+      ((await browser.storage.session.get('blockerFreeze'))?.blockerFreeze) || []
     )
   }
 }
