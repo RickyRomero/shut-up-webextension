@@ -3,13 +3,13 @@
     "message": "Shut Up"
   },
   "manifest_description": {
-    "message": "在許多熱門網站上切換評論開關狀態。"
+    "message": "封鎖許多熱門網站上的留言區。"
   },
   "toggle_comments_menu": {
     "message": "切換評論開關"
   },
   "automatic_allowlisting": {
-    "message": "記住我在何處啟用了評論"
+    "message": "記住我在何處啟用了留言"
   },
   "private_chrome_note": {
     "message": "這個選項在隱身標籤頁中忽略。"
@@ -51,7 +51,7 @@
     "message": "當前未啟用"
   },
   "name_version_copyright_ricky": {
-    "message": "$name$ $version$ ©2011 - $latest_year$ $ricky_link$",
+    "message": "$name$ $version$ ©2011 - $latest_year$ $ricky_html_link_start_tag$Ricky Romero$ricky_html_link_end_tag$",
     "placeholders": {
       "name": {
         "content": "$1",
@@ -65,27 +65,111 @@
         "content": "$3",
         "example": "2023"
       },
-      "ricky_link": {
-        "content": "<a href=\"https://rickyromero.com/\">Ricky Romero</a>"
+      "ricky_html_link_start_tag": {
+        "content": "<a href=\"https://rickyromero.com/\">"
+      },
+      "ricky_html_link_end_tag": {
+        "content": "</a>"
       }
     }
   },
   "copyright_steven": {
-    "message": "shutup.css ©2010 - $latest_year$ $steven_link$ 和 $contributors_link$",
+    "message": "shutup.css ©2010 - $latest_year$ $steven_html_link_start_tag$Steven Frank$steven_html_link_end_tag$ 和 $contributors_html_link_start_tag$合作者$contributors_html_link_end_tag$",
     "placeholders": {
       "latest_year": {
         "content": "$1",
         "example": "2023"
       },
-      "steven_link": {
-        "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"
+      "steven_html_link_start_tag": {
+        "content": "<a href=\"https://stevenf.com/\">"
       },
-      "contributors_link": {
-        "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">合作者</a>"
+      "steven_html_link_end_tag": {
+        "content": "</a>"
+      },
+      "contributors_html_link_start_tag": {
+        "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">"
+      },
+      "contributors_html_link_end_tag": {
+        "content": "</a>"
       }
     }
   },
   "release_notes": {
     "message": "發行說明"
+  },
+  "review_banner": {
+    "message": "Shut Up 存取網站受到限制。"
+  },
+  "review_banner_button": {
+    "message": "確認…"
+  },
+  "review_header": {
+    "message": "Shut Up 網站存取受到限制"
+  },
+  "review_permissions": {
+    "message": "將自動封鎖留言區，但僅限下列網站："
+  },
+  "review_guidance": {
+    "message": "此擴充功能在能存取所有網站時的效果最佳，不過您可以在權限減少時繼續使用 Shut Up。"
+  },
+  "review_dismiss_button": {
+    "message": "關閉"
+  },
+  "review_continue_button": {
+    "message": "更新權限"
+  },
+  "fix_banner": {
+    "message": "需要更多權限。"
+  },
+  "fix_banner_button": {
+    "message": "更正…"
+  },
+  "fix_header": {
+    "message": "需要更多權限"
+  },
+  "fix_header_welcome": {
+    "message": "歡迎使用 Shut Up"
+  },
+  "fix_welcome_message": {
+    "message": "您只剩一步就可以在瀏覽時不受到留言干擾。"
+  },
+  "fix_guidance": {
+    "message": "Shut Up 需取得權限才能在您所造訪的網站發揮功能，且僅會使用此存取權來隱藏留言區。"
+  },
+  "fix_continue_button": {
+    "message": "繼續"
+  },
+  "fix_reassurance": {
+    "message": "Shut Up 不會記錄或分享您的瀏覽紀錄。"
+  },
+  "fix_learn_more": {
+    "message": "深入了解"
+  },
+  "fix_lm1": {
+    "message": "此擴充功能將 CSS 規則新增至您所造訪的每個網站，在您看到留言區之前就將其封鎖。此功能需獲得權限以變更您造訪的網站。"
+  },
+  "fix_lm2": {
+    "message": "Shut Up 不會讀取您所造訪的網站的內容，也不會聯絡任何其他服務，更無法追蹤您。"
+  },
+  "fix_lm3": {
+    "message": "我致力於保護您的安全及隱私。$privacy_html_link_start_tag$請在此處閱讀我的簡明英文隱私政策。$privacy_html_link_end_tag$Shut Up 是$oss_html_link_start_tag$一個開源愛好專案，$oss_html_link_end_tag$所以任何人都能審核其行為。",
+    "placeholders": {
+      "privacy_html_link_start_tag": {
+        "content": "<a target=\"_blank\" href=\"https://rickyromero.com/shutup/privacy/\">",
+        "example": "<a target=\"_blank\" href=\"https://rickyromero.com/shutup/privacy/\">"
+      },
+      "privacy_html_link_end_tag": {
+        "content": "</a>",
+        "example": "</a>"
+      },
+      "oss_html_link_start_tag": {
+        "content": "<a target=\"_blank\" href=\"https://github.com/RickyRomero/shut-up-webextension\">",
+        "example": "<a target=\"_blank\" href=\"https://github.com/RickyRomero/shut-up-webextension\">"
+      },
+      "oss_html_link_end_tag": {
+        "content": "</a>",
+        "example": "</a>"
+      }
+    }
   }
 }

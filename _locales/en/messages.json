@@ -51,7 +51,7 @@
     "message": "Not currently enabled"
   },
   "name_version_copyright_ricky": {
-    "message": "$name$ $version$ ©2011 - $latest_year$ $ricky_link$",
+    "message": "$name$ $version$ ©2011 - $latest_year$ $ricky_html_link_start_tag$Ricky Romero$ricky_html_link_end_tag$",
     "placeholders": {
       "name": {
         "content": "$1",
@@ -65,23 +65,32 @@
         "content": "$3",
         "example": "2023"
       },
-      "ricky_link": {
-        "content": "<a href=\"https://rickyromero.com/\">Ricky Romero</a>"
+      "ricky_html_link_start_tag": {
+        "content": "<a href=\"https://rickyromero.com/\">"
+      },
+      "ricky_html_link_end_tag": {
+        "content": "</a>"
       }
     }
   },
   "copyright_steven": {
-    "message": "shutup.css ©2010 - $latest_year$ $steven_link$ and $contributors_link$",
+    "message": "shutup.css ©2010 - $latest_year$ $steven_html_link_start_tag$Steven Frank$steven_html_link_end_tag$ and $contributors_html_link_start_tag$contributors$contributors_html_link_end_tag$",
     "placeholders": {
       "latest_year": {
         "content": "$1",
         "example": "2023"
       },
-      "steven_link": {
-        "content": "<a href=\"https://stevenf.com/\">Steven Frank</a>"
+      "steven_html_link_start_tag": {
+        "content": "<a href=\"https://stevenf.com/\">"
       },
-      "contributors_link": {
-        "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">contributors</a>"
+      "steven_html_link_end_tag": {
+        "content": "</a>"
+      },
+      "contributors_html_link_start_tag": {
+        "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">"
+      },
+      "contributors_html_link_end_tag": {
+        "content": "</a>"
       }
     }
   },
@@ -89,13 +98,13 @@
     "message": "Release Notes"
   },
   "review_banner": {
-    "message": "Shut Up has limited website access."
+    "message": "Shut Up's access to websites is limited."
   },
   "review_banner_button": {
     "message": "Review…"
   },
   "review_header": {
-    "message": "Shut Up has limited website access"
+    "message": "Shut Up's access to websites is limited"
   },
   "review_permissions": {
     "message": "Comment sections will be blocked automatically, but only on these websites:"
@@ -143,13 +152,23 @@
     "message": "Shut Up won’t read the contents of the sites you visit, nor will it contact any other services. It can’t track you."
   },
   "fix_lm3": {
-    "message": "I’m committed to your security and privacy. $privacy_policy_link$ Shut Up is $an_open_source_project$ so anyone can audit its behavior.",
+    "message": "I’m committed to your security and privacy. $privacy_html_link_start_tag$Read my plain-English privacy policy here.$privacy_html_link_end_tag$ Shut Up is $oss_html_link_start_tag$an open-source hobby project,$oss_html_link_end_tag$ so anyone can audit its behavior.",
     "placeholders": {
-      "privacy_policy_link": {
-        "content": "<a target=\"_blank\" href=\"https://rickyromero.com/shutup/privacy/\">Read my plain-English privacy policy here.</a>"
+      "privacy_html_link_start_tag": {
+        "content": "<a target=\"_blank\" href=\"https://rickyromero.com/shutup/privacy/\">",
+        "example": "<a target=\"_blank\" href=\"https://rickyromero.com/shutup/privacy/\">"
       },
-      "an_open_source_project": {
-        "content": "<a target=\"_blank\" href=\"https://github.com/RickyRomero/shut-up-webextension\">an open-source hobby project,</a>"
+      "privacy_html_link_end_tag": {
+        "content": "</a>",
+        "example": "</a>"
+      },
+      "oss_html_link_start_tag": {
+        "content": "<a target=\"_blank\" href=\"https://github.com/RickyRomero/shut-up-webextension\">",
+        "example": "<a target=\"_blank\" href=\"https://github.com/RickyRomero/shut-up-webextension\">"
+      },
+      "oss_html_link_end_tag": {
+        "content": "</a>",
+        "example": "</a>"
       }
     }
   }
