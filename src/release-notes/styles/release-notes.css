@@ -5,14 +5,16 @@ html {
 
 body {
   font: var(--fs-main)/calc(var(--fs-main) * var(--leading-factor)) -apple-system, BlinkMacSystemFont, sans-serif;
-  width: 800px;
+  max-width: 800px;
+  padding: 0 1rem;
   margin: 0 auto;
 }
 
 h4 {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: baseline;
+  gap: 0.9375rem;
 
   font-size: 2.0rem;
   font-weight: 300;
@@ -76,11 +78,14 @@ svg:hover {
   fill: var(--c-accent);
 }
 
+.version {
+  flex-shrink: 0;
+}
+
 .release-tags {
   display: flex;
-  flex-direction: row;
-
-  margin-left: 0.9375rem;
+  flex-flow: row nowrap;
+  gap: 0.625rem;
 
   text-transform: uppercase;
   font-size: var(--fs-small);
@@ -90,11 +95,6 @@ svg:hover {
 
 .release-tag {
   display: block;
-  margin-right: 0.625rem;
-}
-
-.release-tag:last-child {
-  margin-right: 0;
 }
 
 #version-6-0 {

@@ -6,7 +6,7 @@
   "description": "__MSG_manifest_description__",
   "author": "Ricky Romero",
   "homepage_url": "https://rickyromero.com/shutup/",
-  "minimum_chrome_version": "90",
+  "minimum_chrome_version": "124",
   "default_locale": "en",
   "permissions": [
     "contextMenus",
