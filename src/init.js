@@ -27,14 +27,5 @@ taskQueue.add({ type, task: blocker.defrostStates })
 taskQueue.add({ type, task: allowlist.init })
 taskQueue.add({ type, task: options.init })
 taskQueue.add({ type, task: async () => await uiBridge.addContextMenu(options) })
-taskQueue.add({
-  type,
-  task: async () => {
-  // Init context menus
-    browser.contextMenus.onClicked.addListener((_, tab) => {
-      uiBridge.toggleBlockerStates(tab)
-    })
-  }
-})
 taskQueue.add({ type, task: runUpgrade })
 taskQueue.add({ type, task: uiBridge.refreshAllActionIcons })

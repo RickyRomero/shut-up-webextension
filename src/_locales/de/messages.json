@@ -74,7 +74,7 @@
     }
   },
   "copyright_steven": {
-    "message": "shutup.css ©2010 - $latest_year$ $steven_html_link_start_tag$Steven Frank$steven_html_link_end_tag$ and $contributors_html_link_start_tag$mitwirkende$contributors_html_link_end_tag$",
+    "message": "shutup.css ©2010 - $latest_year$ $steven_html_link_start_tag$Steven Frank$steven_html_link_end_tag$ und $contributors_html_link_start_tag$mitwirkende$contributors_html_link_end_tag$",
     "placeholders": {
       "latest_year": {
         "content": "$1",

@@ -61,6 +61,12 @@ class UIBridge {
       }
     }))
 
+    browser.contextMenus.onClicked.addListener((_, tab) => taskQueue.add({
+      task: async () => {
+        await uiBridge.toggleBlockerStates(tab)
+      }
+    }))
+
     browser.permissions.onAdded.addListener(() => taskQueue.add({
       task: async () => await this.verifyOrigins()
     }))
