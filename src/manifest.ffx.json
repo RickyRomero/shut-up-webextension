@@ -49,5 +49,15 @@
   "options_ui": {
     "page": "options/index.html",
     "open_in_tab": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{aebf1dbd-b50a-4ca2-abe3-e6dade590c2a}",
+      "strict_min_version": "124.0"
+    },
+    "gecko_android": {
+      "id": "{3eb0a6d1-b98a-4b59-8b5c-a64b9b18c218}",
+      "strict_min_version": "124.0"
+    }
   }
 }
