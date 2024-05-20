@@ -61,7 +61,7 @@ class UIBridge {
       }
     }))
 
-    browser.contextMenus.onClicked.addListener((_, tab) => taskQueue.add({
+    browser.contextMenus?.onClicked.addListener((_, tab) => taskQueue.add({
       task: async () => {
         await uiBridge.toggleBlockerStates(tab)
       }
@@ -154,9 +154,9 @@ class UIBridge {
   }
 
   async addContextMenu (options) {
-    await browser.contextMenus.removeAll()
+    await browser.contextMenus?.removeAll()
     if (await options.contextMenu()) {
-      browser.contextMenus.create({
+      browser.contextMenus?.create({
         id: 'toggle-comments-ctx',
         title: browser.i18n.getMessage('toggle_comments_menu'),
         contexts: ['page']

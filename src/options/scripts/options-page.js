@@ -45,7 +45,17 @@ class OptionsPage {
         el.parentNode.insertBefore(span, el.nextSibling)
       })
 
-      browser.commands.onChanged.addListener(options.onUpdate)
+      browser.commands?.onChanged.addListener(options.onUpdate)
+    }
+
+    // If keyboard commands are unavailable (Firefox on Android)
+    if (!browser.commands) {
+      $('html').classList.add('no-keyboard-shortcuts')
+    }
+
+    // If context menus are unavailable (Firefox on Android)
+    if (!browser.contextMenus) {
+      $('html').classList.add('no-context-menus')
     }
 
     if (window.location.hash.endsWith('welcome')) {
@@ -212,7 +222,7 @@ class OptionsPage {
   }
 
   async setKeyboardShortcutStr (el) {
-    browser.commands.getAll(async function (commands) {
+    browser.commands?.getAll(async function (commands) {
       if (commands.length === 0) { return }
 
       const shortcut = commands[0].shortcut

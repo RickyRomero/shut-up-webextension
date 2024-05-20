@@ -69,6 +69,14 @@ html[dir="rtl"] .options__wrapper {
       var(--c-bg-light) 0%, var(--c-bg) 100%);
 }
 
+html.no-keyboard-shortcuts .options__keyboard {
+  display: none;
+}
+
+html.no-context-menus .options__context-menu {
+  display: none;
+}
+
 .options__contents {
   display: flex;
   align-items: center;
