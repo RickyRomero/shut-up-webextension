@@ -24,8 +24,8 @@ If you're simply looking to *install* Shut Up, these are the links you're lookin
 
 This version of Shut Up is known to work in the following browser releases:
 
-* Chrome 124 or later
-* Firefox 125 or later
+* Chrome 123 or later
+* Firefox 124 or later
 * Edge 120 or later
 * Brave 1.65.130 or later
 * Opera 109 or later
