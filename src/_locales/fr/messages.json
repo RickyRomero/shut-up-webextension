@@ -1,0 +1,175 @@
+{
+  "product_name": {
+    "message": "Shut Up"
+  },
+  "manifest_description": {
+    "message": "Bloque la section de commentaires sur de nombreux sites populaires."
+  },
+  "toggle_comments_menu": {
+    "message": "Cacher ou afficher les commentaires"
+  },
+  "automatic_allowlisting": {
+    "message": "Se rappeler où j'ai activé les commentaires"
+  },
+  "private_chrome_note": {
+    "message": "Cette option est ignorée dans les onglets de navigation privée."
+  },
+  "private_edge_note": {
+    "message": "Cette option est ignorée lors de la navigation privée."
+  },
+  "private_firefox_note": {
+    "message": "Cette option est ignorée lors de la navigation privée."
+  },
+  "private_opera_note": {
+    "message": "Cette option est ignorée lors de la navigation privée."
+  },
+  "show_item_in_context_menu": {
+    "message": "Afficher dans le menu contextuel"
+  },
+  "change_keyboard_shortcut": {
+    "message": "Changer le raccourci clavier"
+  },
+  "keyboard_shortcut": {
+    "message": "Actuellement $shortcut$",
+    "placeholders": {
+      "shortcut": {
+        "content": "$1",
+        "example": "Ctrl+Shift+X"
+      }
+    }
+  },
+  "keyboard_shortcut_not_configurable": {
+    "message": "Vous pouvez également basculer sur les commentaires en appuyant sur $shortcut$.",
+    "placeholders": {
+      "shortcut": {
+        "content": "$1",
+        "example": "Ctrl+Shift+X"
+      }
+    }
+  },
+  "keyboard_shortcut_disabled": {
+    "message": "Actuellement pas activé"
+  },
+  "name_version_copyright_ricky": {
+    "message": "$name$ $version$ ©2011 - $latest_year$ $ricky_html_link_start_tag$Ricky Romero$ricky_html_link_end_tag$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Shut Up"
+      },
+      "version": {
+        "content": "$2",
+        "example": "3.0"
+      },
+      "latest_year": {
+        "content": "$3",
+        "example": "2023"
+      },
+      "ricky_html_link_start_tag": {
+        "content": "<a href=\"https://rickyromero.com/\">"
+      },
+      "ricky_html_link_end_tag": {
+        "content": "</a>"
+      }
+    }
+  },
+  "copyright_steven": {
+    "message": "shutup.css ©2010 - $latest_year$ $steven_html_link_start_tag$Steven Frank$steven_html_link_end_tag$ et $contributors_html_link_start_tag$contributeurs$contributors_html_link_end_tag$",
+    "placeholders": {
+      "latest_year": {
+        "content": "$1",
+        "example": "2023"
+      },
+      "steven_html_link_start_tag": {
+        "content": "<a href=\"https://stevenf.com/\">"
+      },
+      "steven_html_link_end_tag": {
+        "content": "</a>"
+      },
+      "contributors_html_link_start_tag": {
+        "content": "<a href=\"https://github.com/panicsteve/shutup-css/commits/master\">"
+      },
+      "contributors_html_link_end_tag": {
+        "content": "</a>"
+      }
+    }
+  },
+  "release_notes": {
+    "message": "Notes de version"
+  },
+  "review_banner": {
+    "message": "L'accès de Shut Up aux sites Web est limité."
+  },
+  "review_banner_button": {
+    "message": "Examiner…"
+  },
+  "review_header": {
+    "message": "L'accès de Shut Up aux sites Web est limité"
+  },
+  "review_permissions": {
+    "message": "Les sections de commentaires seront bloquées automatiquement, mais seulement sur ces sites Web :"
+  },
+  "review_guidance": {
+    "message": "Cette extension fonctionne mieux quand elle peut accéder à tous les sites Web, mais vous pouvez continuer à utiliser Shut Up avec des permissions réduites."
+  },
+  "review_dismiss_button": {
+    "message": "Ignorer"
+  },
+  "review_continue_button": {
+    "message": "Mettre les permissions à jour"
+  },
+  "fix_banner": {
+    "message": "Autorisations supplémentaires requises."
+  },
+  "fix_banner_button": {
+    "message": "Corriger…"
+  },
+  "fix_header": {
+    "message": "Autorisations supplémentaires requises"
+  },
+  "fix_header_welcome": {
+    "message": "Bienvenue dans Shut Up"
+  },
+  "fix_welcome_message": {
+    "message": "Vous êtes à un pas de la navigation sans commentaires."
+  },
+  "fix_guidance": {
+    "message": "Shut Up a besoin d'accéder aux sites Web que vous visitez pour fonctionner. Il n'utilise cet accès que pour masquer les sections de commentaires."
+  },
+  "fix_continue_button": {
+    "message": "Continuer"
+  },
+  "fix_reassurance": {
+    "message": "Shut Up n'enregistrera ni ne partagera votre historique de navigation."
+  },
+  "fix_learn_more": {
+    "message": "En savoir plus"
+  },
+  "fix_lm1": {
+    "message": "Cette extension ajoute des règles CSS à chaque site Web que vous visitez pour bloquer les sections de commentaires avant que vous ne les voyiez. Cette fonction nécessite l'autorisation de modifier les sites Web que vous visitez."
+  },
+  "fix_lm2": {
+    "message": "Shut Up ne lira pas le contenu des sites que vous visitez, et ne contactera aucun autre service. L'extension ne peut pas vous traquer."
+  },
+  "fix_lm3": {
+    "message": "Je m'engage à respecter votre sécurité et votre vie privée. $privacy_html_link_start_tag$Lisez ma politique de confidentialité en anglais ici.$privacy_html_link_end_tag$ Shut Up est $oss_html_link_start_tag$un projet de passe-temps open-source,$oss_html_link_end_tag$ tout le monde peut donc vérifier son comportement.",
+    "placeholders": {
+      "privacy_html_link_start_tag": {
+        "content": "<a target=\"_blank\" href=\"https://rickyromero.com/shutup/privacy/\">",
+        "example": "<a target=\"_blank\" href=\"https://rickyromero.com/shutup/privacy/\">"
+      },
+      "privacy_html_link_end_tag": {
+        "content": "</a>",
+        "example": "</a>"
+      },
+      "oss_html_link_start_tag": {
+        "content": "<a target=\"_blank\" href=\"https://github.com/RickyRomero/shut-up-webextension\">",
+        "example": "<a target=\"_blank\" href=\"https://github.com/RickyRomero/shut-up-webextension\">"
+      },
+      "oss_html_link_end_tag": {
+        "content": "</a>",
+        "example": "</a>"
+      }
+    }
+  }
+}

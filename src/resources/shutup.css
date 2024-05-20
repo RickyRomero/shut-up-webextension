@@ -1,0 +1,932 @@
+/*
+ * shutup.css
+ * web - peanut gallery = bliss
+ *
+ * by Steven Frank <stevenf@panic.com> and contributors
+ * <https://stevenf.com/shutupcss/>
+ *
+ * Please do not use shutup.css in derivative works (such as iOS
+ * Content Blockers or browser extensions) without permission.
+ *
+ * Notes:
+ *
+ * 1. If you want to RE-ENABLE comments for a specific site, add an
+ * override after importing this file.  For example, to re-enable
+ * just Slashdot comments:
+ *
+ * @import url("https://stevenf.com/shutup/shutup-latest.css");
+ *
+ * #commentlisting {
+ *     display: inherit !important;
+ * }
+ *
+ * Be aware that some sites may be affected by more than one rule.
+ *
+ * 2. If you'd like to just fade comments out rather than completely
+ * remove them from the page:
+ *
+ * Replace:
+ *     display: none !important;
+ *
+ * With something like:
+ *     opacity: 0.1;
+ *
+ */
+
+/* WordPress */
+.wp-block-latest-comments,
+
+/* YouTube */
+#watch-comment-panel,
+#watch-comments-core,
+#watch-discussion,
+#comments-test-iframe,
+ytm-comment-section-renderer,
+ytm-comments-entry-point-header-renderer,
+ytd-comments,
+ytd-comment-thread-renderer,
+ytd-comment-renderer,
+ytd-comments-entry-point-header-renderer,
+[section-identifier="comment-item-section"],
+
+/* Disqus */
+a[data-disqus-identifier],
+iframe[src*="disqus.com/embed"],
+body [id*=disqus i],
+body [class*=disqus i],
+#dsq-content,
+
+/* spot.im AKA OpenWeb */
+body [id*=spotim i],
+body [id*=spot-im i],
+body [class*=spotim i],
+body [class*=spot-im i],
+[data-spot-im-shadow-host],
+
+/* Coral */
+div#coral_talk_stream,    /* v4 */
+div#coral_thread,         /* v5 */
+#coral-container,         /* as seen on WSJ */
+
+/* Ain't It Cool News */
+.block-talkback_story,
+
+/* VersionTracker */
+#prodReviews,
+
+/* MacUpdate */
+.revcontent,
+
+/* CBC News */
+#socialcomments,
+
+/* Reddit */
+.commentarea,
+shreddit-comment-tree,
+shreddit-comment,
+comment-body-header,
+shreddit-comments-page-ad,
+faceplate-batch[target="#comment-tree"],
+
+/* Designer News */
+#story-comments,
+
+/* KATU */
+#commentform,
+
+/* Gannett newspapers and other sites that use Pluck */
+div#pluckcomments,
+
+/* Last.fm shoutbox */
+div#page div#content h2#shoutbox,
+div#page div#content div#shoutboxContainer,
+div#shoutbox section.shoutbox,
+
+/* The Globe and Mail */
+#latest-comments,
+
+/* EW */
+.commentHolder,
+
+/* CNN */
+#commentblob,
+#cnnComments,
+
+/* The Stranger */
+#BrowseComments, .fa-comment, .comment-count,
+
+/* Seattle Times */
+#showcomments,
+
+/* Crosscut */
+.comments__btn,
+
+/* Yahoo News */
+.mwpphu-comments,
+.ugccmt-comments,
+
+/* Coding Horror */
+#discourse-comments,
+
+/* nationalpost.com (Pluck) */
+.pluck-comm,
+
+/* DeviantArt */
+#gmi-CCommentMaster,
+div[data-hook=comments_thread],
+
+/* Oprah */
+#media_comments,
+
+/* 9to5mac */
+#idc-container-parent,
+
+/* Livefyre */
+#livefyre_comment_stream,
+#livefyre-body,
+#livefyre,
+.fyre,
+
+/* Slate */
+.js-CommentsArea,
+
+/* NYTimes Blogs */
+#readerComments,
+.readerComments,
+.commentsModule,
+
+/* nytimes.com */
+span.postMetaHeaderCommentCount.commentCount,
+button.comments-button,
+a.commentCountLink,
+p.theme-comments,
+#comments-speech-bubble-top,
+#comments-speech-bubble-bottom,
+#comments-speech-bubble-header,
+#comments-speech-bubble-footer,
+#comments-speech-bubble-bigBottom,
+#comments-speech-bubble-inStoryMasthead,
+
+/* cooking.nytimes.com */
+#userNotesMount,
+#notes_section,
+
+/* Wall Street Journal */
+#comments_sector,
+#article-comments-tool,
+[class*="comment-count"],
+
+/* BBC News */
+.comments-button,
+.dna-comment,
+.nw-c-comment,
+
+/* thetimes.co.uk */
+[class*="CommentContainer" i],
+
+/* ZDNet */
+.view-6,
+.space-_5,
+
+/* Gamasutra */
+.all_comments,
+
+/* dvice.com */
+#display_comments,
+
+/* hp.com */
+.article-comments,
+
+/* ifc.com */
+.echo-stream-container,
+
+/* creativereview.co.uk */
+#feedback,
+
+/* thenextweb.com */
+#lf_comments,
+#lf_twitter_comments,
+#lf_facebook_comments,
+#lf_comment_stream,
+
+/* ft.com */
+#inferno-comments,
+
+/* tidbits.com */
+.cb_block,
+
+/* dilbert.com */
+.CMT_CommentList,
+
+/* Facebook comments */
+html#facebook [aria-label^="Comment"],                                                  /* English, French, Italian */
+html#facebook [aria-label^="B\EC nh\ lu\1EAD n"],                                       /* Vietnamese */
+html#facebook [aria-label^="Coment"],                                                   /* Portuguese, Romanian, Spanish */
+html#facebook [aria-label*="hozz\E1 sz\F3 l\E1 sa"],                                    /* Hungarian */
+html#facebook [aria-label^="Koment"],                                                   /* Croatian, Malay, Slovak, Slovene */
+html#facebook [aria-label*="komment" i],                                                /* Danish, Finnish, German, Norwegian, Swedish */
+html#facebook [aria-label^="Opmerking"],                                                /* Dutch */
+html#facebook [aria-label*="yorumu"],                                                   /* Turkish */
+html#facebook [aria-label^="\41A \43E \43C \435 \43D \442 \430 \440 "],                 /* Ukrainian */
+html#facebook [aria-label^="\41A \43E \43C \43C \435 \43D \442 \430 \440 \438 \439 "],  /* Russian */
+html#facebook [aria-label*="\E04 \E34 \E14 \E40 \E2B \E47 \E19 "],                      /* Thai */
+html#facebook [aria-label*="\B313 \AE00 "],                                             /* Korean */
+html#facebook [aria-label*="\30B3 \30E1 \30F3 \30C8 "],                                 /* Japanese */
+html#facebook [aria-label*="\7684 \7559 \8A00 "],                                       /* Traditional Chinese */
+html#facebook [aria-label*="\8BC4 \8BBA "],                                             /* Simplified Chinese */
+
+/* Facebook replies (where not hidden by the above) */
+html#facebook [aria-label^="Reply"],                                          /* English */
+html#facebook [aria-label^="Antwo"],                                          /* Dutch, German */
+html#facebook [aria-label^="Balasan"],                                        /* Malay */
+html#facebook [aria-label^="Odgovor"],                                        /* Croatian, Slovene */
+html#facebook [aria-label^="Odpo"],                                           /* Polish, Slovak */
+html#facebook [aria-label^="R\103 spuns"],                                    /* Romanian */
+html#facebook [aria-label^="R\E9 ponse"],                                     /* French */
+html#facebook [aria-label^="Resposta"],                                       /* Portuguese */
+html#facebook [aria-label^="Respuesta"],                                      /* Spanish */
+html#facebook [aria-label^="Risposta"],                                       /* Italian */
+html#facebook [aria-label^="Svar"],                                           /* Danish, Norwegian, Swedish */
+html#facebook [aria-label^="Tr\1EA3 \ l\1EDD i"],                             /* Vietnamese */
+html#facebook [aria-label*="v\E1 lasza"],                                     /* Hungarian */
+html#facebook [aria-label^="\412 \456 \434 \43F \43E \432 \456 \434 \44C "],  /* Ukrainian */
+html#facebook [aria-label^="\41E \442 \432 \435 \442 "],                      /* Russian */
+
+/* Facebook (mobile site) */
+[data-sigil="comments-token"],
+[data-sigil^="comment"],
+[data-sigil="replies-see-more"],
+[data-sigil*="inline-reply"],
+[id^="comment_replies"],
+
+/* Facebook (previously-known selectors) */
+.fb-comments,
+.UFIComment,
+fb\:comments,
+div[data-testid^=UFI2CommentsList],
+
+/* LinkedIn */
+.comments-comment-item,
+.comments-comments-list,
+.comments-comments-list__comment-item,
+.feed-shared-update-v2__comments-container,
+.social-details-first-prompt-block,
+.social-details-social-counts__comments,
+
+/* buzzfeed */
+#responses,
+#facebook_responses,
+#facebook_conversations,
+#fb_comments_wrapper,
+#fb_comments_control,
+.fb-comments-area,
+#respond,
+#badge_voting,
+
+/* spiegel.de */
+.spCommentsBoxBody,
+#spArticleFunctionForum,
+body[data-guj-zone~="forum"] #postList,
+#js-article-comments-box-form,
+.spInteractionMarks,
+.clearfix.article-comments-box.module-box,
+
+/* handelsblatt.de */
+a[href*="detail_tab_comments"],
+.vhb-comments-container,
+
+/* handelsblatt.com */
+.hcf-article.hcf-content.hcf-article-type2,
+
+/* auto-motor-und-sport.de */
+.kommentare_uebersicht,
+
+/* corriere.it */
+#body_dlt,
+#comment_box_article,
+
+/* repubblica.it */
+#ugc-container,
+#gs-social-comments,
+.gig-comments-container,
+
+/* faz.net */
+.ArtikelKommentieren,
+.tsr-Base_ContentMetaItem-social-feedback,
+#lesermeinungen,
+
+/* Giant Bomb avatars */
+.comment-avatar-wrap,
+
+/* hlntv.com */
+.fbFeedbackContent,
+
+/* mirror.co.uk */
+.pluck-wrap,
+
+/* TwitPic */
+#media-comments,
+
+/* Guardian */
+#d2-root,
+
+/* E! Online */
+.thyme-comment-list,
+
+/* SoundCloud */
+.commentsList__item .commentItem,
+.commentPopover,
+
+/* Penny Arcade report */
+#vanilla-comments,
+
+/* Treehugger */
+.replies-wrapper > .replies,
+.view-comment-list,
+
+/* New Jalopnik (and Gawker?) */
+.js_replies,
+.js_comments-iframe,
+
+/* TSN.ca */
+#tsnYourCallStory,
+
+/* NewsBlur */
+.NB-feed-story-comments,
+
+/* Russia Today */
+.b-comments_page,
+
+/* Hearst sites */
+.hdn-comments,
+
+/* Cox Media sites */
+#cmComments,
+
+/* cleveland.com */
+.rtb-apps-comments-container,
+
+/* derstandard.at */
+.communityCanvas,
+
+/* derstandard.de */
+section#story-community.story-community,
+
+/* presse.at */
+#newcommentform,
+
+/* ka-news.de */
+#QuickRegCon,
+
+/* tagesschau.de */
+.user-kommentar-block,
+
+/* taz.de */
+.full.community.page.last.even,
+
+/* fr-online.de */
+#commentsRoot,
+
+/* huffingtonpost.de */
+#conversations-huffpost-web-main,
+
+/* wiwo.de */
+.hcf-detail.hcf-comments-container,
+
+/* arstechnica.com */
+section#promoted-comments,
+aside.comments-hotness,
+a.comment-count,
+div.comments-bar,
+
+/* trakt.tv */
+.summary-comments,
+
+/* Kotaku */
+.post-content .annotation-footnote-wrapper,
+.post-content .annotateButton,
+
+/* imgur */
+.Gallery-CommentsCounter,
+
+/* Curbed */
+.post-comments-module,
+.comments-body-container,
+
+/* Polygon */
+.m-hero__comment-count,
+
+/* SB Nation */
+.m-comment-count__bubble,
+.m-stream__node-list__comments,
+
+/* The Verge */
+[data-ui=comment],
+.duet--article--comments-join-the-conversation,
+.duet--article--comments-link,
+
+/* lemonde.fr */
+.liste_reactions,
+
+/* lefigaro.fr */
+.fig-comments,
+
+/* huffingtonpost.fr */
+#conversations-huffpost-web,
+
+/* Civil Comments */
+#civil-comments,
+
+/* Engadget (Confab) */
+.confab,
+
+/* Gamasutra */
+#dynamiccomments,
+
+/* GameSpot */
+.comments-block,
+
+/* GiantBomb */
+.js-comments-block,
+
+/* NAVER News */
+#cbox_module,
+
+/* DAUM News */
+.cmt_view,
+
+/* Radio-Canada */
+.viafoura,
+
+/* Medium */
+.responsesWrapper,
+.responsesStreamWrapper,
+div#root > div.a.b.c article ~ div div + div + button,
+
+/* G1 and Globo */
+#boxComentarios,
+
+/* Veja */
+.abril-comentarios-widget,
+
+/* VK */
+.replies_wrap > div:first-child,
+#pv_comments.wall_module,
+#mv_comments.wall_module,
+.wl_replies_block_wrap,
+
+/* Dailymotion */
+.pl_video_comment_post_and_comments,
+
+/* nu.nl */
+.comments-link-wrapper,
+
+/* investor.bg and possibly others */
+.comments_article,
+
+/* hs.fi */
+#commenting,
+
+/* iltasanomat.fi */
+.is-comments-widget,
+
+/* MacRumors */
+div[class^="footer"] a[href*="forums.macrumors.com/threads"],
+div#root > div[class^="app"] > div[class^="contentWrap"] > div[class^="trending"],
+div#root > div[class^="app"] > div[class^="contentWrap"] .glide .post--thread,
+div#root > div[class^="app"] > div[class^="contentWrap"] div[class^="sidebar"] div[class^="widget"][class*="secondary--"],
+
+/* USgamer paragraph comment buttons */
+a.button.annotation-count,
+
+/* Twitch Chat */
+#right-column .chat-room,
+.right-column .chat-room__container,
+.channel-page__right-column .chat__container,
+.chat-pane .chat-pane__chat-list,
+div[data-a-target="right-column-chat-bar"],
+.stream-chat,
+
+/* YouTube Live Chat */
+#watch-sidebar-live-chat,
+ytd-live-chat-frame,
+
+/* Hopin Chat */
+nav[aria-label="Hopin main menu"] ~ div.test-id-panel#side-panel,
+
+/* GoComics */
+.js-comments-thread-container,
+
+/* Patreon */
+[data-test-tag="comment-row"],
+[data-tag="post-details"] ~ :last-child,
+
+/* Instagram */
+ul._a9ym, /* Detail page, all comments except OP */
+article._ab6k._ab6m div._ab8w > div._ab8w > div._ab8w, /* Feed, all comments except OP */
+article._ab6k._ab6m div._ab8w > div._ab8w a div._aad6._aade, /* Feed, show comments link */
+
+/* Instagram (mobile site) */
+div.rBNOH.ybXk5, /* Detail page, all comments except OP */
+div.EtaWk > div > div:nth-child(2), /* Replies container */
+
+/* Pixiv */
+div#root > div#gtm-var-theme-kind ~ div main > section > div > div >
+	section[class^="sc-"],
+
+/* Pixiv Fanbox */
+div#root > div[class^="sc-"] > div[class^="sc-"] > div:not([class])
+	div[class^="sc-"] > article ~ div:not([class]) > div[class^="sc-"],
+
+/* Yahoo! News floating comment dingus */
+#YDC-MainCanvas .canvas-share-buttons > div:last-child,
+
+/* Refinery29 */
+.sppre_conversation-view,
+
+/* Steam Community */
+.commentthread_area,
+
+/* HLTV */
+.contentCol .forum,
+
+/* Quora */
+.threaded_comments,
+
+/* Times of India */
+.topcomment,
+.bottom-comments,
+.cmtwrapper,
+
+/* Sydney Morning Herald (and possibly others) */
+iframe[src*="ffx.io/api/comments"],
+
+/* Opinary Widgets */
+.opinary-iframe,
+.opinary-widget-wrapper,
+
+/* Apester Widgets */
+.apester-fill-content,
+
+/* heise.de */
+.media-icon--comments,
+.a-article-meta__icon--comments,
+.kommentare_lesen_link,
+.forenbeitraege_show,
+a[name="meldung.newsticker.header.kommentarelesen"],
+.kommentare-info,
+
+/* mactechnews.de */
+span[title*="#comments"],
+.MtnCommentScroll,
+#ContentPlaceHolder1_FieldsetCommentEditor,
+#ContentPlaceHolder1_ButtonCommentPublish,
+
+/* maclife.de */
+.shares .count,
+#maclife #comments,
+
+/* apfelpage.de */
+a[href*="#respond"],
+a[href*="#comments"],
+
+/* computerbase.de */
+.article__comments-link,
+
+/* giga.de */
+#comments + #weiterethemen,
+
+/* mdr.de */
+.modComments,
+
+/* tagesspiegel.de */
+#kommentare,
+#hcf-comment-wrapper.hcf-comments,
+#commentInput.hcf-comments-input,
+.hcf-comments,
+
+/* haz.de */
+.pdb-article-comments,
+
+/* welt.de */
+.o-teaser__comment-count,
+div[data-external-component="User.Article.Likes"],
+
+/* focus.de */
+#article #commentForm,
+
+/* t-online.de */
+#talk_community,
+
+/* curved.de */
+.article-content .engagement,
+
+/* netzwelt.de */
+a[href*="#kommentare"],
+
+/* perspective-daily.de */
+body[ng-app="pdaily"] a.discussions,
+.discussion_body,
+.tabs_container li:last-child,
+
+/* tz.de */
+.id-Comment,
+
+/* piqd.de */
+.pq-comment-form-wrap,
+.rspec-comments-total,
+
+/* PressTV.com */
+#hypercomments_widget,
+
+/* Thehindu.com */
+#vuukle-comments,
+
+/* tekstowo.pl */
+#comments_content,
+#comm_show_more,
+a[name="komentarze"],
+
+/* Thrillist */
+.comments__spotim,
+
+/* Comments.app */
+iframe[src*="comments.app"],
+
+/* IGN */
+iframe[src*="comments.ign.com"],
+
+/* Product Hunt */
+[class^=main] div[class^=content] div[data-test^=thread],
+
+/* Le Figaro */
+#commentsTitle,
+#commentsTitle + ul,
+#commentsTitle + ul + span,
+
+/* Le Monde */
+.article__reactions,
+
+/* Tweetdeck */
+div.js-replies-to.replies-after article + article,
+div.js-tweet-replies article,
+div.js-conversation-show-more.conversation-more,
+
+/* Newgrounds */
+div.pod-body.review,
+
+/* Funimation */
+.reviews-section-wrap,
+
+/* MyAnimeList */
+#myanimelist .review-element,
+
+/* teltarif.de */
+#LxComments,
+
+/* AppleInsider */
+.comment-section-head,
+.comment-section-head ~ .forum-comment,
+
+/* metro.co.uk */
+#metro-comments-area,
+
+/* Bandcamp */
+.deets.populated > .writing,
+.spotlight-unit .item-desc,
+
+/* Various French streaming mirrors */
+.barremenu ~ div.row div[id^="critique"],
+
+/* kinopoisk.ru */
+.media-post-page__comments-section,
+
+/* opennet.ru */
+table.ttxt2 td.ctxt,
+
+/* AniList */
+#app .page-content .activity-feed-wrap + div > .recent-threads,
+#app .page-content .media .threads,
+
+/* Crunchyroll */
+.c-comments-count,
+
+/* 1plus1.video */
+._opo_-playlist-comments,
+
+/* Stack Exchange sites (e.g., Stack Overflow) */
+[itemprop="commentCount"],
+.js-post-comments-component,
+
+/* LeagueofComicGeeks.com */
+#comic-details #reviews,
+#comic-details #discussion,
+
+/* theage.com.au */
+[data-testid="comments-cta"],
+
+/* formel1.de */
+.fa-comments,
+
+/* vnexpress.net */
+.count_cmt,
+
+/* memberme.net */
+app-creator-detail-page app-post-detail-card div.card-footer,
+
+/* flightaware.com */
+#squawk-comments,
+
+/*Goodreads*/
+.ReviewsList,
+
+/* itch.io */
+.game_comments_widget,
+
+/* Sites using Insticator (e.g., National Review) */
+.insticator-unit,
+#insticator-commenting,
+.instiengage-comments,
+
+/* Ghost */
+div.gh-comments,
+
+/* GitHub */
+.inline-comments,
+#all_commit_comments,
+.gist-content a[name="comments"] + div,
+
+/* Various shady sites */
+.content form ~ a#ci ~ div[id^=c0],
+.content form ~ a#ci ~ div[id^=c1],
+.content form ~ a#ci ~ div[id^=c2],
+.content form ~ a#ci ~ div[id^=c3],
+.content form ~ a#ci ~ div[id^=c4],
+.content form ~ a#ci ~ div[id^=c5],
+.content form ~ a#ci ~ div[id^=c6],
+.content form ~ a#ci ~ div[id^=c7],
+.content form ~ a#ci ~ div[id^=c8],
+.content form ~ a#ci ~ div[id^=c9],
+.ncomments_container,
+#cdiv.gm,
+#ws > #content > table#details ~ table,
+
+/* *** Generic *** */
+body [id*=commentaires i],
+body [class*=commentaires i],
+.all-comments,
+.article-comments,
+.articleComments,
+.btn-comments,
+.com_text,
+.comment_area,
+.comment_count,
+.comment-button,
+.comment-container,
+.comment-list,
+.comment-section,
+.comment,
+.Comment,
+.commentBox,
+.commentBoxStyle,
+.commenting-wrapper,
+.commentlist,
+.comments__container,
+.comments_area,
+.comments-area,
+.comments-container,
+.comments-list,
+.comments-pane,
+.comments-section,
+.comments-wrap,
+.comments:not(code),
+.Comments:not(code),
+.commentsApp,
+.commentsContainer,
+.commentsList,
+.CommentsList,
+.commentText,
+.commenttxt,
+.commentwrapper,
+.discussionContainer,
+.icon-comments,
+.Opinions,
+.page-comments,
+.pagecomment,
+.pagecommentheader,
+.post-comment-list,
+.post-comment,
+.post-comments,
+.reacties,
+.section-comment,
+.user_comment,
+.widget-comments,
+.widget_recent_comments,
+#article-comments,
+#articleComments,
+#blogComments,
+#box_comment,
+#cmtWrapper,
+#comentarios,
+#comment_container,
+#comment_entries,
+#comment_form,
+#comment-container,
+#comment-list,
+#comment-section,
+#commentbox,
+#commentcontainer,
+#commentlist,
+#commentList,
+#commentlisting,
+#comments_box,
+#comments_container,
+#comments_pane,
+#comments-app-container,
+#comments-component,
+#comments-container,
+#comments-count,
+#comments-frame,
+#comments-list,
+#comments-panel,
+#comments-wrapper,
+#comments:not(code),
+#Comments:not(code),
+#commentsBox,
+#commentscontainer,
+#commentsContainer,
+#commentsDiv,
+#commentwrapper,
+#post-comments,
+#reacties,
+#show-comments-container,
+#user_commeent_section,
+#user-comments
+{
+	display: none !important;
+}
+
+
+
+/* *** Exceptions *** */
+
+/*
+ * Some pages use a comments class on the top level element,
+ * blocking the whole page. Weird.
+ */
+html.comments, body.comments,
+html.Comments, body.Comments,
+html#comments, body#comments,
+html#Comments, body#Comments,
+
+/* City Observatory's "City Commentary" posts */
+body.post-template-default.category-commentary
+	> div.header:first-child
+	+ div.content.comments,
+
+/* highlight.js and Prism */
+code span.comment,
+pre span.comment,
+
+/* MediaWiki edit summaries (Wikipedia, etc.) */
+#pagehistory .comment,
+table.diff .comment,
+.mw-summary-preview .comment
+{
+	display: initial !important;
+}
+
+
+
+/* Fimfiction */
+.group-page > .group > div[data-thread-id] .comment,
+body > div#dimmers + .quote_container .comment
+{
+	display: table !important;
+}
+
+
+
+/* GitHub comments in pull requests and discussions/issues */
+.pull-request-tab-content .comment,
+#discussion_bucket .comment,
+
+/* Substack comments pages */
+div.comments-page div.comment-list,
+div.comments-page div.comment-list div.comment,
+
+/* WordPress admin panel comment view */
+#wpcom main.comments,
+#wpcom main.comments .comment-list,
+#wpcom main.comments .comment-list .comment
+{
+	display: block !important;
+}
+
+
+
+/* GitHub pull request inline comments */
+.pull-request-tab-content .inline-comments
+{
+	display: table-row !important;
+}

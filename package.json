@@ -1,0 +1,20 @@
+{
+  "name": "shut-up-webextension",
+  "version": "8.1",
+  "type": "module",
+  "main": "init.js",
+  "repository": "git@github.com:RickyRomero/shut-up-webextension.git",
+  "author": "Ricky Romero <ricky.romero@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --fix ./"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-standard": "^17",
+    "eslint-plugin-import": "^2",
+    "eslint-plugin-promise": "^6",
+    "eslint-plugin-n": "^16"
+  }
+}

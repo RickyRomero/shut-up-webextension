@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../core/extension.css" />
+  <link rel="stylesheet" href="styles/options.css" />
+  <link rel="stylesheet" href="styles/permissions.css" />
+  <link id="favicon" rel="icon" type="image/png" href="../images/favicon.png" />
+
+  <title data-i18n="product_name"></title>
+</head>
+
+<body>
+  <div class="options__position">
+    <div class="options__wrapper">
+      <header class="access-banner__wrapper">
+        <div class="access-banner__limited">
+          <img class="access-banner__icon" alt="" src="../images/options/info.svg" width="32" height="32" />
+          <span data-i18n="review_banner"></span>
+          <button data-i18n="review_banner_button" class="access-banner__limited-button"></button>
+        </div>
+        <div class="access-banner__fix">
+          <img class="access-banner__icon" alt="" src="../images/options/warning.svg" width="32" height="32" />
+          <span data-i18n="fix_banner"></span>
+          <button data-i18n="fix_banner_button" class="access-banner__fix-button"></button>
+        </div>
+      </header>
+
+      <main class="options__contents">
+        <figure class="options__logo-wrapper">
+          <div class="options__logo">
+            <img class="options__bubble" alt="" src="../images/large-bubble.png" width="800" height="714" />
+          </div>
+        </figure>
+        <form class="options__controls">
+          <div class="options__switches">
+            <div class="options__switch-group">
+              <label><input class="allowlist" type="checkbox"><span data-i18n="automatic_allowlisting"></span></label>
+              <aside class="options__secondary-text options__private-note private" data-i18n="placeholder"></aside>
+            </div>
+            <div class="options__switch-group">
+              <label><input class="context-menu" type="checkbox"><span
+                  data-i18n="show_item_in_context_menu"></span></label>
+            </div>
+          </div>
+          <div class="options__keyboard">
+            <a href="chrome://extensions/shortcuts" class="change-shortcut" href="#"
+              data-i18n="change_keyboard_shortcut"></a>
+            <aside class="options__secondary-text keyboard-shortcut" data-i18n="keyboard_shortcut"></aside>
+            <aside class="options__secondary-text keyboard-shortcut-not-configurable"
+              data-i18n="keyboard_shortcut_not_configurable"></aside>
+          </div>
+        </form>
+      </main>
+
+      <footer class="options__info">
+        <ul>
+          <li data-i18n="name_version_copyright_ricky"></li>
+          <li data-i18n="copyright_steven"></li>
+          <li><a class="release-notes" href="../release-notes/index.html" data-i18n="release_notes"></a></li>
+        </ul>
+      </footer>
+    </div>
+  </div>
+
+  <dialog class="modal__wrapper review-modal__wrapper">
+    <header>
+      <h1 data-i18n="review_header"></h1>
+    </header>
+    <main>
+      <p data-i18n="review_permissions"></p>
+      <hr />
+      <ul class="review-modal__allowed-sites" dir="ltr"></ul>
+      <hr />
+      <p data-i18n="review_guidance"></p>
+    </main>
+    <footer>
+      <button class="modal__primary-button review-modal__dismiss-button" data-i18n="review_dismiss_button"></button>
+      <button class="modal__secondary-button review-modal__continue-button" data-i18n="review_continue_button"></button>
+    </footer>
+  </dialog>
+
+  <dialog class="modal__wrapper fix-modal__wrapper">
+    <header>
+      <h1 class="modal__large-text" data-i18n="fix_header"></h1>
+    </header>
+    <main>
+      <p class="modal__large-text fix-modal__welcome-message" data-i18n="fix_welcome_message"></p>
+      <p class="modal__large-text" data-i18n="fix_guidance"></p>
+    </main>
+    <footer>
+      <button class="modal__primary-button fix-modal__continue-button" data-i18n="fix_continue_button"></button>
+      <hr />
+      <div class="fix-modal__reassurance">
+        <p class="modal__secondary-text" data-i18n="fix_reassurance"></p>
+        <details class="fix-modal__details">
+          <summary data-i18n="fix_learn_more"></summary>
+          <div>
+            <p data-i18n="fix_lm1"></p>
+            <p data-i18n="fix_lm2"></p>
+            <p data-i18n="fix_lm3"></p>
+          </div>
+        </details>
+      </div>
+    </footer>
+  </dialog>
+</body>
+
+<script src="scripts/options-page.js" type="module"></script>
+
+</html>
