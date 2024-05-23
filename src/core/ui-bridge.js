@@ -105,22 +105,17 @@ class UIBridge {
       tabs = [tab]
     }
 
-    let blockerTasks = []
     if (blockerActive) {
       await allowlist.add(tab)
-      blockerTasks = tabs.map(async tab => {
-        blocker.remove(tab)
-      })
+      tabs.forEach(blocker.remove)
     } else {
       await allowlist.remove(tab)
-      blockerTasks = tabs.map(async tab => {
-        blocker.add(tab)
-      })
+      tabs.forEach(blocker.add)
     }
-    await Promise.all(blockerTasks)
 
-    const nextState = blockerActive // Because we'd be returning to this state
-    this.updateActionIcon(tab, nextState, isEligible)
+    tabs.forEach(t => {
+      this.updateActionIcon(t, blockerActive, isEligible)
+    })
   }
 
   async refreshAllActionIcons () {

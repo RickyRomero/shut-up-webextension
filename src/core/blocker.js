@@ -50,7 +50,7 @@ class Blocker {
 
   add ({ id }) {
     taskQueue.add({
-      id,
+      tabId: id,
       type: 'reinject',
       task: async () => {
         try { // This may fail if the extension doesn't have permission
@@ -66,7 +66,7 @@ class Blocker {
 
   remove ({ id }) {
     taskQueue.add({
-      id,
+      tabId: id,
       task: async () => {
         try { // This may fail if the extension doesn't have permission
           await browser.scripting.removeCSS(this.injection(id))
