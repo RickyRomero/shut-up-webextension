@@ -20,6 +20,56 @@ If you're simply looking to *install* Shut Up, these are the links you're lookin
 * [Shut Up for Edge][ext-edge]
 * [Shut Up for Opera][ext-opera]
 
+## Development
+
+There are three ways to run the extension as a developer, depending on what you want to do:
+
+### Basic development in Chrome
+
+If you only want to test in Chrome, navigate to `chrome://extensions` and turn on "Developer mode." Then load the `src` folder as an unpacked extension.
+
+### Chrome and Firefox development
+
+If you're on a Mac and you want to develop in Chrome and Firefox simultaneously, do this:
+
+```zsh
+cd shut-up-webextension
+yarn
+yarn dev
+```
+
+This script will place a folder on your Desktop called `Shut Up Test Extensions`. Inside those are separate `chrome` and `firefox` folders. It will watch the source folder, copying any changes to those `chrome` and `firefox` folders simultaneously.
+
+- To test in Chrome, follow the instructions in the previous section, but load the extension from the `chrome` folder instead.
+- To test in Firefox, navigate to `about:debugging#/runtime/this-firefox`. Click "Load Temporary Add-On…", navigate to to the `firefox` folder, and load `manifest.json`.
+
+The script is necessary because we need separate `manifest.json` files for Chrome and Firefox, and there's no way to tell these browsers which manifest to load.
+
+### Developing for Firefox on Android
+
+First, run these commands on your Mac:
+
+```zsh
+cd shut-up-webextension
+yarn
+mv src/manifest.json src/manifest.json.bak
+mv src/manifest.ffx.json src/manifest.json
+```
+
+Next, [follow the guide here.](https://extensionworkshop.com/documentation/develop/developing-extensions-for-firefox-for-android/)
+
+When you get to the step where you run `web-ext`, you will need to modify the command slightly.
+
+```zsh
+yarn web-ext run -t firefox-android --adb-device DEVICE_ID --firefox-apk org.mozilla.firefox -s ./src
+```
+
+This command will run `web-ext` from `node_modules`, pointing it at the `./src` directory. Replace `DEVICE_ID` with the ID of the Android phone or simulated device you want to try. If you want to run a different version of Firefox, use one of these IDs:
+
+- Firefox Stable: `org.mozilla.firefox`
+- Firefox Beta: `org.mozilla.firefox_beta`
+- Firefox Nightly: `org.mozilla.fenix`
+
 ## Minimum Requirements
 
 This version of Shut Up is known to work in the following browser releases:
