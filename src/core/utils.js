@@ -133,4 +133,23 @@ export const browser = (() => {
   return self.browser
 })()
 
+export const limitTime =
+  async (func, limit) =>
+    Promise.race([
+      func(),
+      new Promise((resolve, reject) => {
+        setTimeout(resolve, limit, 'elapsed')
+      })
+    ])
+
+export const multiAttempt = async ({ func, maxAttempts, baseTimeout, errorStr }) => {
+  for (let attempts = 0; attempts <= maxAttempts; attempts += 1) {
+    // const startTime = performance.now()
+    if (attempts === maxAttempts) throw new Error(errorStr)
+    const result = await limitTime(func, baseTimeout * (attempts + 1))
+    // console.log('result:', result, performance.now() - startTime, 'ms')
+    if (result !== 'elapsed') break
+  }
+}
+
 export { platform }

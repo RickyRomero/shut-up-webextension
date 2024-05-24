@@ -1,6 +1,10 @@
 import { allowlist } from './allowlist.js'
 import { taskQueue } from './task-queue.js'
-import { browser, Utils } from './utils.js'
+import { browser, multiAttempt, Utils } from './utils.js'
+
+// See add/remove methods below...
+const maxAttempts = 20
+const baseTimeout = 50 // ms
 
 class Blocker {
   constructor () {
@@ -48,14 +52,31 @@ class Blocker {
     this.freezeStates()
   }
 
+  // The following add and remove routines are more complex than they should
+  // be. Firefox sometimes fails to settle its removeCSS/insertCSS promises
+  // entirely on heavy websites like Reddit or YouTube during page load.
+  // Therefore, we have to enforce our own timeout. The timeout grows until we
+  // hit 20 attempts, at which point we throw a timeout error.
   add ({ id }) {
     taskQueue.add({
       tabId: id,
       type: 'reinject',
       task: async () => {
-        try { // This may fail if the extension doesn't have permission
-          await browser.scripting.removeCSS(this.injection(id))
-          await browser.scripting.insertCSS(this.injection(id))
+        try { // This may also fail if the extension doesn't have permission
+          await multiAttempt({
+            func: async () => await browser.scripting.removeCSS(this.injection(id)),
+            errorStr: 'Timed out removing CSS from the page during reinjection.',
+            baseTimeout,
+            maxAttempts
+          })
+
+          await multiAttempt({
+            func: async () => await browser.scripting.insertCSS(this.injection(id)),
+            errorStr: 'Timed out adding CSS to the page during reinjection.',
+            baseTimeout,
+            maxAttempts
+          })
+
           this.setState(id, true)
         } catch (e) {
           console.error(e)
@@ -68,8 +89,13 @@ class Blocker {
     taskQueue.add({
       tabId: id,
       task: async () => {
-        try { // This may fail if the extension doesn't have permission
-          await browser.scripting.removeCSS(this.injection(id))
+        try { // This may also fail if the extension doesn't have permission
+          await multiAttempt({
+            func: async () => await browser.scripting.removeCSS(this.injection(id)),
+            errorStr: 'Timed out removing CSS from the page.',
+            baseTimeout,
+            maxAttempts
+          })
           this.setState(id, false)
         } catch (e) {
           console.error(e)
