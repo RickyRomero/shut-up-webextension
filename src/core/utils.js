@@ -144,10 +144,12 @@ export const limitTime =
 
 export const multiAttempt = async ({ func, maxAttempts, baseTimeout, errorStr }) => {
   for (let attempts = 0; attempts <= maxAttempts; attempts += 1) {
-    // const startTime = performance.now()
+    console.log(`%cmultiAttempt attempt ${attempts + 1}/${maxAttempts}`, 'color: gray')
+    const startTime = performance.now()
     if (attempts === maxAttempts) throw new Error(errorStr)
     const result = await limitTime(func, baseTimeout * (attempts + 1))
-    // console.log('result:', result, performance.now() - startTime, 'ms')
+    const color = result === 'elapsed' ? 'red' : 'green'
+    console.log(`%cresult: ${result} in ${performance.now() - startTime}ms`, `color: ${color}`)
     if (result !== 'elapsed') break
   }
 }

@@ -4,7 +4,7 @@ import { browser, multiAttempt, Utils } from './utils.js'
 
 // See add/remove methods below...
 const maxAttempts = 20
-const baseTimeout = 50 // ms
+const baseTimeout = 10 * 1000 // ms
 
 class Blocker {
   constructor () {
@@ -63,6 +63,7 @@ class Blocker {
       type: 'reinject',
       task: async () => {
         try { // This may also fail if the extension doesn't have permission
+          console.log('%cattempting blocker.add removeCSS stage', 'background-color: #ff07')
           await multiAttempt({
             func: async () => await browser.scripting.removeCSS(this.injection(id)),
             errorStr: 'Timed out removing CSS from the page during reinjection.',
@@ -70,6 +71,7 @@ class Blocker {
             maxAttempts
           })
 
+          console.log('%cattempting blocker.add insertCSS stage', 'background-color: #ff07')
           await multiAttempt({
             func: async () => await browser.scripting.insertCSS(this.injection(id)),
             errorStr: 'Timed out adding CSS to the page during reinjection.',
@@ -90,6 +92,7 @@ class Blocker {
       tabId: id,
       task: async () => {
         try { // This may also fail if the extension doesn't have permission
+          console.log('%cattempting blocker.remove removeCSS', 'background-color: #ff07')
           await multiAttempt({
             func: async () => await browser.scripting.removeCSS(this.injection(id)),
             errorStr: 'Timed out removing CSS from the page.',
