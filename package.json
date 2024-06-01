@@ -1,6 +1,6 @@
 {
   "name": "shut-up-webextension",
-  "version": "8.1",
+  "version": "0.0.1",
   "type": "module",
   "repository": "git@github.com:RickyRomero/shut-up-webextension.git",
   "author": "Ricky Romero <ricky.romero@gmail.com>",

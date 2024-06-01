@@ -46,20 +46,20 @@ aside {
   line-height: calc(var(--fs-small) * var(--leading-factor));
 }
 
-aside *:first-child {
+article aside *:first-child {
   margin-top: 0;
 }
 
-aside *:last-child {
+article aside *:last-child {
   margin-bottom: 0;
 }
 
-aside a {
+article aside a {
   color: var(--c-accent-secondary);
   font-weight: bold;
 }
 
-svg {
+.insignia {
   cursor: pointer;
   display: block;
   margin: 6.25rem auto;
@@ -73,9 +73,28 @@ svg {
   transition-duration: 200ms, 500ms;
 }
 
-svg:hover {
+.insignia:hover {
   color: var(--c-accent-hover);
   fill: var(--c-accent);
+}
+
+.info-banner {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  color: var(--c-text);
+  padding-block-start: 2rem;
+  gap: 0.5rem;
+}
+
+.info-banner p {
+  margin: 0;
+}
+
+.info-icon {
+  filter: contrast(0) brightness(10);
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .version {
