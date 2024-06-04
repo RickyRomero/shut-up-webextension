@@ -1,24 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "Shut Up: Comment Blocker",
-  "short_name": "__MSG_product_name__",
-  "version": "8.1.2",
-  "description": "__MSG_manifest_description__",
-  "author": "Ricky Romero",
-  "homepage_url": "https://rickyromero.com/shutup/",
-  "minimum_chrome_version": "123",
-  "default_locale": "en",
+  "name": "insertCSS/removeCSS test case",
+  "version": "1.0.0",
   "permissions": [
-    "contextMenus",
     "tabs",
-    "scripting",
-    "storage"
+    "scripting"
   ],
   "host_permissions": [
-    "http://*/*",
     "https://*/*"
   ],
-  "incognito": "split",
   "icons": {
     "16": "images/main-icon/16.png",
     "32": "images/main-icon/32.png",
@@ -26,17 +16,11 @@
     "128": "images/main-icon/128.png",
     "256": "images/main-icon/256.png"
   },
-  "commands": {
-    "_execute_action": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+X",
-        "mac": "Command+Shift+X"
-      }
-    }
-  },
   "background": {
     "type": "module",
-    "service_worker": "init.js"
+    "scripts": [
+      "init.js"
+    ]
   },
   "action": {
     "default_icon": {
@@ -45,8 +29,14 @@
     },
     "default_title": "__MSG_product_name__"
   },
-  "options_ui": {
-    "page": "options/index.html",
-    "open_in_tab": true
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{b6840179-45a1-4a2d-a4ef-e2815c1faa28}",
+      "strict_min_version": "124.0"
+    },
+    "gecko_android": {
+      "id": "{b6840179-45a1-4a2d-a4ef-e2815c1faa28}",
+      "strict_min_version": "124.0"
+    }
   }
 }
