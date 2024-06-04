@@ -46,23 +46,6 @@ browser.tabs.onUpdated.addListener(async (_, __, tab) => {
       origin: 'USER'
     }
 
-    // Remove the inserted CSS. This seems silly but let me explain.
-    //
-    // Someone using my extension can choose to add or remove its CSS at any
-    // time without reloading the page.
-    //
-    // The up-front removeCSS step is necessary because the background script
-    // doesn't persist, and I don't have an API to check whether the injection
-    // is already present from a previous instance of my background script.
-    // removeCSS doesn't complain if there are zero injections, so this
-    // sequence guarantees I only insert the CSS once per frame per page in
-    // both Firefox and Chrome.
-    taskQueue.push(async () => {
-      console.log('removing css')
-      await browser.scripting.removeCSS(injection)
-      console.log('css removed')
-    })
-
     // Insert the CSS.
     taskQueue.push(async () => {
       console.log('adding css')
