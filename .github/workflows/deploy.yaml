@@ -17,7 +17,7 @@ jobs:
         env:
           AMO_ISSUER: ${{ secrets.AMO_ISSUER }}
           AMO_SECRET: ${{ secrets.AMO_SECRET }}
-          AMO_ADDON_GUID: ${{ secrets.AMO_ADDON_GUID }}
+          AMO_ADDON_SLUG: ${{ secrets.AMO_ADDON_SLUG }}
           AMO_BUILD_NAME: ${{ secrets.AMO_BUILD_NAME }}
   deploy-to-cws:
     runs-on: ubuntu-latest
