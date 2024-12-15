@@ -3,6 +3,7 @@ export class Utils {
     const denylist = [
       'apps.oregon.gov',
       'chrome.google.com',
+      'docs.google.com',
       'icloud.com',
       'portal.edd.ca.gov',
       'read.amazon.com'
