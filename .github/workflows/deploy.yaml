@@ -39,8 +39,7 @@ jobs:
       - name: Deploy update
         uses: RickyRomero/shut-up-mpc@main
         env:
-          MPC_PRODUCT_ID: ${{ secrets.MPC_PRODUCT_ID }}
-          MPC_CLIENT_ID: ${{ secrets.MPC_CLIENT_ID }}
-          MPC_SECRET: ${{ secrets.MPC_SECRET }}
-          MPC_TOKEN_URL: ${{ secrets.MPC_TOKEN_URL }}
+          MPC_API_KEY: ${{ secrets.MPC_API_KEY }}
           MPC_API_SERVER: ${{ secrets.MPC_API_SERVER }}
+          MPC_CLIENT_ID: ${{ secrets.MPC_CLIENT_ID }}
+          MPC_PRODUCT_ID: ${{ secrets.MPC_PRODUCT_ID }}
