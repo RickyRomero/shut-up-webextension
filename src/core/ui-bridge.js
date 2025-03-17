@@ -8,13 +8,13 @@ const iconStates = {
     16: '/images/action/default-state.png',
     32: '/images/action/default-state@2x.png'
   },
-  turnOff: {
-    16: `/images/action/${platform.engine.toLowerCase()}-turn-off.png`,
-    32: `/images/action/${platform.engine.toLowerCase()}-turn-off@2x.png`
+  active: {
+    16: `/images/action/${platform.engine.toLowerCase()}-active.png`,
+    32: `/images/action/${platform.engine.toLowerCase()}-active@2x.png`
   },
-  turnOn: {
-    16: `/images/action/${platform.engine.toLowerCase()}-turn-on.png`,
-    32: `/images/action/${platform.engine.toLowerCase()}-turn-on@2x.png`
+  inactive: {
+    16: `/images/action/${platform.engine.toLowerCase()}-inactive.png`,
+    32: `/images/action/${platform.engine.toLowerCase()}-inactive@2x.png`
   }
 }
 
@@ -114,7 +114,7 @@ class UIBridge {
     }
 
     tabs.forEach(t => {
-      this.updateActionIcon(t, blockerActive, isEligible)
+      this.updateActionIcon(t, !blockerActive, isEligible)
     })
   }
 
@@ -126,16 +126,16 @@ class UIBridge {
 
   refreshActionIcon (tab) {
     const isEligible = Utils.urlEligible(tab.url)
-    const nextState = !blocker.query(tab)
+    const state = blocker.query(tab)
 
-    this.updateActionIcon(tab, nextState, isEligible)
+    this.updateActionIcon(tab, state, isEligible)
   }
 
   updateActionIcon ({ id }, state, enable) {
     let displayedState = 'default'
 
     if (enable) {
-      displayedState = `turn${state ? 'On' : 'Off'}`
+      displayedState = state ? 'active' : 'inactive'
     }
 
     browser.action.setIcon({

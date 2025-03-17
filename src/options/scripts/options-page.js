@@ -6,7 +6,7 @@ const $ = document.querySelector.bind(document)
 
 class OptionsPage {
   constructor () {
-    this.latestCopyrightYear = 2024
+    this.latestCopyrightYear = 2025
     this.permissionsModal = null
 
     this.init()
