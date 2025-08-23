@@ -342,6 +342,13 @@ p[class^="TuoreimmatItem__CommentTypography"],
 /* .io
  * --------------------------------------------------------- */
 
+
+/* .is
+ * --------------------------------------------------------- */
+/* flibusta.is */
+div#main-wrapper > div#main:has(form[name="formrecs"]) > span[class^="container_"],
+
+
 /* itch.io */
 .game_comments_widget,
 
@@ -1155,6 +1162,7 @@ egy-discussion,
 #commentscontainer,
 #commentsContainer,
 #commentsDiv,
+#commentsInner,
 #commentwrapper,
 #id-Comments,
 #post-comments,
