@@ -146,6 +146,9 @@ p.theme-comments,
 /* phoronix.com */
 a[href^="/forums/node/"],
 
+/* polygon.com */
+.footer-threads,
+
 /* PressTV.com */
 #hypercomments_widget,
 
@@ -897,6 +900,9 @@ iframe[src*="ffx.io/api/comments"],
 .topcomment,
 .bottom-comments,
 .cmtwrapper,
+
+/* Tom's Hardware */
+.xenforo-comment-widget,
 
 /* trakt.tv */
 .summary-comments,
