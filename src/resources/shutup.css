@@ -143,6 +143,9 @@ p.theme-comments,
 #comments-speech-bubble-bigBottom,
 #comments-speech-bubble-inStoryMasthead,
 
+/* onemileatatime.com */
+.comments-prompt__inner,
+
 /* phoronix.com */
 a[href^="/forums/node/"],
 
@@ -177,6 +180,13 @@ a[href^="/forums/node/"],
 
 /* uol.com.br */
 section.solar-comment,
+section[data-nosnippet].solar-comment,
+section[class*="solar-comment"],
+section[data-nosnippet] article.solar-comment-published,
+article.solar-comment-published,
+.solar-comment-published,
+section[data-nosnippet] iframe,
+section[data-nosnippet] .porteira_piano_comments_tasting,
 
 
 /* .de
