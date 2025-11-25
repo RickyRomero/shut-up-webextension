@@ -166,6 +166,7 @@ a[href^="/forums/node/"],
 
 /* tidbits.com */
 .cb_block,
+.c-teaser__header .c-post__comments,
 
 
 /* .com.au
@@ -938,6 +939,9 @@ div[data-a-target="right-column-chat-bar"],
 
 /* USgamer paragraph comment buttons */
 a.button.annotation-count,
+
+/* utteranc.es embeds */
+iframe[src*="utteranc.es"],
 
 
 /* V
