@@ -306,6 +306,9 @@ a[href="#kommune"],
 /* teltarif.de */
 #LxComments,
 
+/* transfermarkt.de */
+div.box:has(a.profil-wappen),
+
 /* tz.de */
 .id-Comment,
 
@@ -640,6 +643,9 @@ div.gh-comments,
 /* GiantBomb avatars */
 .comment-avatar-wrap,
 
+/* Giscus embeds */
+iframe[src*="giscus.app"],
+
 /* GitHub */
 .inline-comments,
 #all_commit_comments,
@@ -752,6 +758,9 @@ div#root > div[class^="app"] > div[class^="contentWrap"] div[class^="sidebar"] d
 .responsesWrapper,
 .responsesStreamWrapper,
 div#root > div.a.b.c article ~ div div + div + button,
+
+/* Micro.blog comments */
+div.microblog_conversation,
 
 /* MyAnimeList */
 #myanimelist .review-element,
